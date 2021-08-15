@@ -1,22 +1,26 @@
-import { createTheme, ThemeProvider } from '@material-ui/core';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#212121',
-        },
-        secondary: {
-            main: '#000',
-        },
-    },
-});
+import { useMemo } from "react";
+import { createTheme, ThemeProvider, useMediaQuery } from "@material-ui/core";
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-        </ThemeProvider>
-    );
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          primary: { main: "#212121" },
+          secondary: { main: "#000" },
+          mode: prefersDarkMode ? "dark" : "light",
+        },
+      }),
+    [prefersDarkMode]
+  );
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
