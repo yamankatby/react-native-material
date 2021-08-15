@@ -1,0 +1,10 @@
+{
+  "name": "@react-native-material/core",
+  "version": "0.0.0",
+  "description": "Modular and customizable Material Design UI components for React Native",
+  "main": "index.js",
+  "repository": "git@github.com:yamankatby/react-native-material.git",
+  "author": "Yaman KATBY <m.yaman.katby@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
