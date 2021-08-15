@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useTheme } from "@material-ui/core";
+import { alpha, styled, useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,17 +11,64 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Container from "@material-ui/core/Container";
 import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
+import InputBase from "@material-ui/core/InputBase";
+import Hidden from "@material-ui/core/Hidden";
+import MailIcon from "@material-ui/icons/Mail";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
 import GitHub from "@material-ui/icons/GitHub";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import { ColorModeContext } from "../../pages/_app";
 
 const drawerWidth = 240;
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  marginRight: theme.spacing(1),
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 
 const Layout = ({ window, children }) => {
   const theme = useTheme();
@@ -83,6 +130,20 @@ const Layout = ({ window, children }) => {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+            Material-UI
+          </Typography>
+          <Hidden mdDown>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Hidden>
           <div>
             <Tooltip title="Toggle light/dark mode">
               <IconButton
