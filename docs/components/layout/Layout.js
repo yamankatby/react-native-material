@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,10 +17,15 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Container from "@material-ui/core/Container";
 import Tooltip from "@material-ui/core/Tooltip";
 import GitHub from "@material-ui/icons/GitHub";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
+import { ColorModeContext } from "../../pages/_app";
 
 const drawerWidth = 240;
 
 const Layout = ({ window, children }) => {
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -78,6 +84,22 @@ const Layout = ({ window, children }) => {
             <MenuIcon />
           </IconButton>
           <div>
+            <Tooltip title="Toggle light/dark mode">
+              <IconButton
+                size="large"
+                aria-label="Toggle light/dark mode"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+                onClick={colorMode.toggleColorMode}
+              >
+                {theme.palette.mode === "dark" ? (
+                  <Brightness7Icon />
+                ) : (
+                  <Brightness4Icon />
+                )}
+              </IconButton>
+            </Tooltip>
             <Tooltip title="GitHub repository">
               <IconButton
                 size="large"

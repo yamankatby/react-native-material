@@ -1,8 +1,20 @@
-import { useMemo } from "react";
-import { createTheme, ThemeProvider, useMediaQuery } from "@material-ui/core";
+import { createContext, useMemo, useState } from "react";
+import { createTheme, ThemeProvider } from "@material-ui/core";
+
+export const ColorModeContext = createContext({
+  toggleColorMode: () => {},
+});
 
 function MyApp({ Component, pageProps }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = useState("light");
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    []
+  );
 
   const theme = useMemo(
     () =>
@@ -10,16 +22,18 @@ function MyApp({ Component, pageProps }) {
         palette: {
           primary: { main: "#212121" },
           secondary: { main: "#000" },
-          mode: prefersDarkMode ? "dark" : "light",
+          mode,
         },
       }),
-    [prefersDarkMode]
+    [mode]
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
