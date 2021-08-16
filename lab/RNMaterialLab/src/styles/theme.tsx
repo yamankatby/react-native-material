@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { createPalette, Palette } from "./palette";
+import { createPalette, Palette, PaletteOptions } from "./palette";
 
 export interface Shadows {
 
@@ -30,9 +30,21 @@ export const defaultDarkTheme: Theme = {
 
 export const ThemeContext = createContext<Theme>(defaultTheme);
 
-export const ThemeProvider = ({ theme, children }: any) => {
+export interface ThemeOptions {
+  palette?: PaletteOptions;
+}
+
+export const createTheme = (options: ThemeOptions): Theme => {
+  return {
+    palette: createPalette(options.palette ?? {}),
+    shadows: {},
+    typography: {}
+  };
+};
+
+export const ThemeProvider = ({ theme, children }: { theme?: Theme, children: any }) => {
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={theme ?? defaultTheme}>
       {children}
     </ThemeContext.Provider>
   );

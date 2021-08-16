@@ -41,21 +41,21 @@ const DEFAULT_DARK_BACKGROUND = "#121212";
 const DEFAULT_DARK_SURFACE = "#121212";
 const DEFAULT_DARK_ERROR = "#CF6679";
 
-export const createPalette = (palette: PaletteOptions): Palette => {
-  const mode = palette.mode ? palette.mode : "light";
-  const primary = palette.primary ? palette.primary : mode === "light" ? DEFAULT_PRIMARY : DEFAULT_DARK_PRIMARY;
-  const secondary = palette.secondary ? palette.secondary : mode === "light" ? DEFAULT_SECONDARY : DEFAULT_DARK_SECONDARY;
-  const background = palette.background ? palette.background : mode === "light" ? DEFAULT_BACKGROUND : DEFAULT_DARK_BACKGROUND;
-  const surface = palette.surface ? palette.surface : mode === "light" ? DEFAULT_SURFACE : DEFAULT_DARK_SURFACE;
-  const error = palette.error ? palette.error : mode === "light" ? DEFAULT_ERROR : DEFAULT_DARK_ERROR;
+export const createPalette = (options: PaletteOptions): Palette => {
+  const mode = options.mode ? options.mode : "light";
+  const primary = options.primary ? options.primary : mode === "light" ? DEFAULT_PRIMARY : DEFAULT_DARK_PRIMARY;
+  const secondary = options.secondary ? options.secondary : mode === "light" ? DEFAULT_SECONDARY : DEFAULT_DARK_SECONDARY;
+  const background = options.background ? options.background : mode === "light" ? DEFAULT_BACKGROUND : DEFAULT_DARK_BACKGROUND;
+  const surface = options.surface ? options.surface : mode === "light" ? DEFAULT_SURFACE : DEFAULT_DARK_SURFACE;
+  const error = options.error ? options.error : mode === "light" ? DEFAULT_ERROR : DEFAULT_DARK_ERROR;
 
   const on = (c: string) => chroma.contrast(c, "white") > 4.5 ? "white" : "black";
 
   return {
-    primary: { main: primary, on: palette.onPrimary ? palette.onPrimary : on(primary) },
-    secondary: { main: secondary, on: palette.onSecondary ? palette.onSecondary : on(secondary) },
-    background: { main: background, on: palette.onBackground ? palette.onBackground : on(background) },
-    surface: { main: surface, on: palette.onSurface ? palette.onSurface : on(surface) },
-    error: { main: error, on: palette.onError ? palette.onError : on(error) }
+    primary: { main: primary, on: options.onPrimary ? options.onPrimary : on(primary) },
+    secondary: { main: secondary, on: options.onSecondary ? options.onSecondary : on(secondary) },
+    background: { main: background, on: options.onBackground ? options.onBackground : on(background) },
+    surface: { main: surface, on: options.onSurface ? options.onSurface : on(surface) },
+    error: { main: error, on: options.onError ? options.onError : on(error) }
   };
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text, useColorScheme, View } from "react-native";
-import { defaultDarkTheme, defaultTheme, ThemeProvider, useStyleSheet, useTheme } from "./src/styles";
+import { createTheme, ThemeProvider, useStyleSheet, useTheme } from "./src/styles";
 
 const InnerApp = () => {
   const styles = useStyleSheet(({ palette }) => ({
@@ -71,9 +71,25 @@ const InnerApp = () => {
 };
 
 export default function App() {
-  const isDark = useColorScheme() === "dark"
+  const isDark = useColorScheme() === "dark";
+
+  const d = createTheme({
+    palette: {
+      primary: "#ffeb3b",
+      secondary: "#f44336"
+    }
+  });
+
+  const dark = createTheme({
+    palette: {
+      mode: "dark",
+      primary: "#ffff72",
+      secondary: "#ff7961"
+    }
+  });
+
   return (
-    <ThemeProvider theme={isDark? defaultDarkTheme: defaultTheme}>
+    <ThemeProvider theme={isDark ? dark : d}>
       <InnerApp />
     </ThemeProvider>
   );
