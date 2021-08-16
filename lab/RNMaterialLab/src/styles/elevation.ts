@@ -1,4 +1,5 @@
 import { ImageStyle, Platform, TextStyle, ViewStyle } from "react-native";
+
 type Style = ViewStyle | TextStyle | ImageStyle;
 
 export interface Elevation {

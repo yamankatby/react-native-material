@@ -2,12 +2,9 @@ import React, { createContext, useContext, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
 import { createPalette, Palette, PaletteOptions } from "./palette";
 import { elevation, Elevation } from "./elevation";
+import { typography, Typography } from "./typography";
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle }
-
-export interface Typography {
-
-}
 
 export interface Theme {
   palette: Palette;
@@ -18,13 +15,13 @@ export interface Theme {
 export const defaultTheme: Theme = {
   palette: createPalette({}),
   elevation,
-  typography: {}
+  typography
 };
 
 export const defaultDarkTheme: Theme = {
   palette: createPalette({ mode: "dark" }),
   elevation,
-  typography: {}
+  typography
 };
 
 export const ThemeContext = createContext<Theme>(defaultTheme);
@@ -37,7 +34,7 @@ export const createTheme = (options: ThemeOptions): Theme => {
   return {
     palette: createPalette(options.palette ?? {}),
     elevation: elevation,
-    typography: {}
+    typography: typography
   };
 };
 

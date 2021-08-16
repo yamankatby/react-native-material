@@ -3,7 +3,7 @@ import { SafeAreaView, Text, useColorScheme, View } from "react-native";
 import { createTheme, ThemeProvider, useStyleSheet, useTheme } from "./src/styles";
 
 const InnerApp = () => {
-  const styles = useStyleSheet(({ palette, elevation }) => ({
+  const styles = useStyleSheet(({ palette, elevation, typography }) => ({
     container: {
       flex: 1,
       backgroundColor: palette.background.main
@@ -24,7 +24,8 @@ const InnerApp = () => {
     appBarTitle: {
       flex: 1,
       color: palette.primary.on,
-      textAlign: "center"
+      textAlign: "center",
+      ...typography.h6
     },
     appBarAction: {
       width: 24,
@@ -62,8 +63,8 @@ const InnerApp = () => {
       </View>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 16 }}>
-          <Text style={{ color: theme.palette.background.on }}>Hi, App screen!</Text>
-          <Text style={{ color: theme.palette.error.main, fontSize: 55 }}>Some error here!!!</Text>
+          <Text style={{ color: theme.palette.background.on, ...theme.typography.body1 }}>Hi, App screen!</Text>
+          <Text style={{ color: theme.palette.error.main, ...theme.typography.h2 }}>Some error here!!!</Text>
           <View style={{
             borderRadius: 4,
             backgroundColor: theme.palette.primary.main,
@@ -71,7 +72,7 @@ const InnerApp = () => {
             alignSelf: "flex-start",
             paddingVertical: 8, ...theme.elevation["2"]
           }}>
-            <Text style={{ color: theme.palette.primary.on }}>Reload</Text>
+            <Text style={{ color: theme.palette.primary.on, ...theme.typography.button }}>Reload</Text>
           </View>
           <View style={styles.fab}>
             <Text style={{ color: theme.palette.secondary.on }}>Add</Text>
