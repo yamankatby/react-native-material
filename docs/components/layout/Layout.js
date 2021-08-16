@@ -35,7 +35,6 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  marginRight: theme.spacing(1),
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
@@ -145,22 +144,24 @@ const Layout = ({ window, children }) => {
             </Search>
           </Hidden>
           <div>
-            <Tooltip title="Toggle light/dark mode">
-              <IconButton
-                size="large"
-                aria-label="Toggle light/dark mode"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-                onClick={colorMode.toggleColorMode}
-              >
-                {theme.palette.mode === "dark" ? (
-                  <Brightness7Icon />
-                ) : (
-                  <Brightness4Icon />
-                )}
-              </IconButton>
-            </Tooltip>
+            <Box display={"inline"} mx={1}>
+              <Tooltip title="Toggle light/dark mode">
+                <IconButton
+                  size="large"
+                  aria-label="Toggle light/dark mode"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={colorMode.toggleColorMode}
+                >
+                  {theme.palette.mode === "dark" ? (
+                    <Brightness7Icon />
+                  ) : (
+                    <Brightness4Icon />
+                  )}
+                </IconButton>
+              </Tooltip>
+            </Box>
             <Tooltip title="GitHub repository">
               <IconButton
                 size="large"
