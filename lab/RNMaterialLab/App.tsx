@@ -61,9 +61,18 @@ const InnerApp = () => {
         </View>
       </View>
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, padding: 16 }}>
           <Text style={{ color: theme.palette.background.on }}>Hi, App screen!</Text>
           <Text style={{ color: theme.palette.error.main, fontSize: 55 }}>Some error here!!!</Text>
+          <View style={{
+            borderRadius: 4,
+            backgroundColor: theme.palette.primary.main,
+            paddingHorizontal: 12,
+            alignSelf: "flex-start",
+            paddingVertical: 8, ...theme.elevation["2"]
+          }}>
+            <Text style={{ color: theme.palette.primary.on }}>Reload</Text>
+          </View>
           <View style={styles.fab}>
             <Text style={{ color: theme.palette.secondary.on }}>Add</Text>
           </View>
