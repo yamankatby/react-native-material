@@ -1,19 +1,17 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
 
+export interface PaletteColor {
+  main: string;
+  on: string;
+}
+
 export interface Palette {
-  primary: string;
-  primaryVariant: string;
-  secondary: string;
-  secondaryVariant: string;
-  background: string;
-  surface: string;
-  error: string;
-  onPrimary: string;
-  onSecondary: string;
-  onBackground: string;
-  onSurface: string;
-  onError: string;
+  primary: PaletteColor;
+  secondary: PaletteColor;
+  background: PaletteColor;
+  surface: PaletteColor;
+  error: PaletteColor;
 }
 
 export interface Shadows {
@@ -32,18 +30,11 @@ export interface Theme {
 
 export const defaultTheme: Theme = {
   palette: {
-    primary: "#6200EE",
-    primaryVariant: "#3700B3",
-    secondary: "#03DAC6",
-    secondaryVariant: "#018786",
-    background: "#FFF",
-    surface: "#FFF",
-    error: "#B00020",
-    onPrimary: "#FFF",
-    onSecondary: "#000",
-    onBackground: "#000",
-    onSurface: "#000",
-    onError: "#FFF"
+    primary: { main: "#6200EE", on: "#FFF" },
+    secondary: { main: "#03DAC6", on: "#000" },
+    background: { main: "#FFF", on: "#000" },
+    surface: { main: "#FFF", on: "#000" },
+    error: { main: "#B00020", on: "#FFF" }
   },
   shadows: {},
   typography: {}
@@ -52,18 +43,11 @@ export const defaultTheme: Theme = {
 export const defaultDarkTheme: Theme = {
   ...defaultTheme,
   palette: {
-    primary: "#BB86FC",
-    primaryVariant: "#3700B3",
-    secondary: "#03DAC5",
-    secondaryVariant: "#018786",
-    background: "#121212",
-    surface: "#121212",
-    error: "#CF6679",
-    onPrimary: "#000",
-    onSecondary: "#000",
-    onBackground: "#FFF",
-    onSurface: "#FFF",
-    onError: "#000"
+    primary: { main: "#BB86FC", on: "#000" },
+    secondary: { main: "#03DAC5", on: "#000" },
+    background: { main: "#121212", on: "#FFF" },
+    surface: { main: "#121212", on: "#FFF" },
+    error: { main: "#CF6679", on: "#000" }
   }
 };
 

@@ -6,11 +6,11 @@ const InnerApp = () => {
   const styles = useStyleSheet(({ palette }) => ({
     container: {
       flex: 1,
-      backgroundColor: palette.background
+      backgroundColor: palette.background.main
     },
     appBar: {
       height: 34 + 58,
-      backgroundColor: palette.primary
+      backgroundColor: palette.primary.main
     },
     appBarContentContainer: {
       flex: 1,
@@ -22,13 +22,13 @@ const InnerApp = () => {
     },
     appBarTitle: {
       flex: 1,
-      color: palette.onPrimary,
+      color: palette.primary.on,
       textAlign: "center"
     },
     appBarAction: {
       width: 24,
       height: 24,
-      backgroundColor: palette.onPrimary
+      backgroundColor: palette.primary.on
     },
     fab: {
       width: 56,
@@ -37,7 +37,7 @@ const InnerApp = () => {
       bottom: 0,
       right: 16,
       borderRadius: 28,
-      backgroundColor: palette.secondary,
+      backgroundColor: palette.secondary.main,
       justifyContent: "center",
       alignItems: "center"
     }
@@ -60,9 +60,9 @@ const InnerApp = () => {
       </View>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <Text style={{ color: theme.palette.onBackground }}>Hi, App screen!</Text>
+          <Text style={{ color: theme.palette.background.on }}>Hi, App screen!</Text>
           <View style={styles.fab}>
-            <Text style={{ color: theme.palette.onSecondary }}>Add</Text>
+            <Text style={{ color: theme.palette.secondary.on }}>Add</Text>
           </View>
         </View>
       </SafeAreaView>
