@@ -6,6 +6,32 @@ import { typography, Typography } from "./typography";
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle }
 
+export interface ShapeOptions {
+  family: "rounded" | "cut";
+  size: (number | string) | [(number | string), (number | string), (number | string), (number | string)];
+}
+
+export interface Shape {
+  small: ShapeOptions;
+  medium: ShapeOptions;
+  large: ShapeOptions;
+}
+
+const shape: Shape = {
+  small: {
+    family: "rounded",
+    size: 4
+  },
+  medium: {
+    family: "rounded",
+    size: 4
+  },
+  large: {
+    family: "rounded",
+    size: 0
+  }
+};
+
 export interface Theme {
   palette: Palette;
   elevation: Elevation;
