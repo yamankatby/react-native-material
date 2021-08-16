@@ -15,8 +15,6 @@ export interface Palette {
 
 export interface PaletteOptions {
   mode?: "light" | "dark";
-  blend?: boolean;
-
   primary?: string;
   secondary?: string;
   background?: string;

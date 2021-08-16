@@ -3,14 +3,15 @@ import { SafeAreaView, Text, useColorScheme, View } from "react-native";
 import { createTheme, ThemeProvider, useStyleSheet, useTheme } from "./src/styles";
 
 const InnerApp = () => {
-  const styles = useStyleSheet(({ palette }) => ({
+  const styles = useStyleSheet(({ palette, elevation }) => ({
     container: {
       flex: 1,
       backgroundColor: palette.background.main
     },
     appBar: {
       height: 34 + 58,
-      backgroundColor: palette.primary.main
+      backgroundColor: palette.primary.main,
+      ...elevation["4"]
     },
     appBarContentContainer: {
       flex: 1,
@@ -39,7 +40,8 @@ const InnerApp = () => {
       borderRadius: 28,
       backgroundColor: palette.secondary.main,
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
+      ...elevation["6"]
     }
   }));
 
@@ -61,6 +63,7 @@ const InnerApp = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <Text style={{ color: theme.palette.background.on }}>Hi, App screen!</Text>
+          <Text style={{ color: theme.palette.error.main, fontSize: 55 }}>Some error here!!!</Text>
           <View style={styles.fab}>
             <Text style={{ color: theme.palette.secondary.on }}>Add</Text>
           </View>
@@ -73,18 +76,11 @@ const InnerApp = () => {
 export default function App() {
   const isDark = useColorScheme() === "dark";
 
-  const d = createTheme({
-    palette: {
-      primary: "#ffeb3b",
-      secondary: "#f44336"
-    }
-  });
+  const d = createTheme({});
 
   const dark = createTheme({
     palette: {
       mode: "dark",
-      primary: "#ffff72",
-      secondary: "#ff7961"
     }
   });
 
