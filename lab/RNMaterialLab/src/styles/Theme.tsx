@@ -1,18 +1,6 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-
-export interface PaletteColor {
-  main: string;
-  on: string;
-}
-
-export interface Palette {
-  primary: PaletteColor;
-  secondary: PaletteColor;
-  background: PaletteColor;
-  surface: PaletteColor;
-  error: PaletteColor;
-}
+import { createPalette, Palette } from "./palette";
 
 export interface Shadows {
 
@@ -29,26 +17,15 @@ export interface Theme {
 }
 
 export const defaultTheme: Theme = {
-  palette: {
-    primary: { main: "#6200EE", on: "#FFF" },
-    secondary: { main: "#03DAC6", on: "#000" },
-    background: { main: "#FFF", on: "#000" },
-    surface: { main: "#FFF", on: "#000" },
-    error: { main: "#B00020", on: "#FFF" }
-  },
+  palette: createPalette({}),
   shadows: {},
   typography: {}
 };
 
 export const defaultDarkTheme: Theme = {
-  ...defaultTheme,
-  palette: {
-    primary: { main: "#BB86FC", on: "#000" },
-    secondary: { main: "#03DAC5", on: "#000" },
-    background: { main: "#121212", on: "#FFF" },
-    surface: { main: "#121212", on: "#FFF" },
-    error: { main: "#CF6679", on: "#000" }
-  }
+  palette: createPalette({ mode: "dark" }),
+  shadows: {},
+  typography: {}
 };
 
 export const ThemeContext = createContext<Theme>(defaultTheme);
