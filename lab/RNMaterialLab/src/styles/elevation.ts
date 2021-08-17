@@ -2,20 +2,11 @@ import { ImageStyle, Platform, TextStyle, ViewStyle } from "react-native";
 
 type Style = ViewStyle | TextStyle | ImageStyle;
 
-export interface Elevation {
-  "0": Style;
-  "1": Style;
-  "2": Style;
-  "3": Style;
-  "4": Style;
-  "6": Style;
-  "8": Style;
-  "12": Style;
-  "16": Style;
-  "24": Style;
-}
+export type Elevation = "0" | "1" | "2" | "3" | "4" | "6" | "8" | "12" | "16" | "24";
 
-export const elevation: Elevation = {
+export type ElevationSchema = Record<Elevation, Style>
+
+export const elevation: ElevationSchema = {
   "0": {},
   "1": {
     ...Platform.select({

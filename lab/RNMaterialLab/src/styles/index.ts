@@ -8,3 +8,15 @@ export { elevation } from "./elevation";
 export type { Elevation } from "./elevation";
 export { typography } from "./typography";
 export type { Typography } from "./typography";
+export {
+  defaultShapeSchema,
+  createShapeSchema
+} from "./shape";
+export type {
+  ShapeCategory,
+  ShapeFamily,
+  ShapeSize,
+  ShapeConfig,
+  ShapeSchema,
+  ShapeOptions
+} from "./shape";

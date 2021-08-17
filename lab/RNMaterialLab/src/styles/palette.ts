@@ -13,19 +13,21 @@ export interface Palette {
   error: PaletteColor;
 }
 
-export interface PaletteOptions {
-  mode?: "light" | "dark";
-  primary?: string;
-  secondary?: string;
-  background?: string;
-  surface?: string;
-  error?: string;
-  onPrimary?: string;
-  onSecondary?: string;
-  onBackground?: string;
-  onSurface?: string;
-  onError?: string;
-}
+export type ThemeMode = "light" | "dark";
+
+export type ThemeColor =
+  "primary"
+  | "secondary"
+  | "background"
+  | "surface"
+  | "error"
+  | "onPrimary"
+  | "onSecondary"
+  | "onBackground"
+  | "onSurface"
+  | "onError"
+
+export type PaletteOptions = { mode?: ThemeMode } & { [key in ThemeColor]?: string }
 
 const DEFAULT_PRIMARY = "#6200EE";
 const DEFAULT_SECONDARY = "#03DAC6";

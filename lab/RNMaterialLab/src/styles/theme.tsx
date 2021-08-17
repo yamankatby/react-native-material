@@ -1,51 +1,29 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
 import { createPalette, Palette, PaletteOptions } from "./palette";
-import { elevation, Elevation } from "./elevation";
+import { elevation, ElevationSchema } from "./elevation";
 import { typography, Typography } from "./typography";
+import { createShapeSchema, ShapeOptions, ShapeSchema } from "./shape";
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle }
 
-export interface ShapeOptions {
-  family: "rounded" | "cut";
-  size: (number | string) | [(number | string), (number | string), (number | string), (number | string)];
-}
-
-export interface Shape {
-  small: ShapeOptions;
-  medium: ShapeOptions;
-  large: ShapeOptions;
-}
-
-const shape: Shape = {
-  small: {
-    family: "rounded",
-    size: 4
-  },
-  medium: {
-    family: "rounded",
-    size: 4
-  },
-  large: {
-    family: "rounded",
-    size: 0
-  }
-};
-
 export interface Theme {
   palette: Palette;
-  elevation: Elevation;
+  elevation: ElevationSchema;
   typography: Typography;
+  shapeSchema: ShapeSchema;
 }
 
 export const defaultTheme: Theme = {
   palette: createPalette({}),
+  shapeSchema: createShapeSchema({}),
   elevation,
   typography
 };
 
 export const defaultDarkTheme: Theme = {
   palette: createPalette({ mode: "dark" }),
+  shapeSchema: createShapeSchema({}),
   elevation,
   typography
 };
@@ -54,11 +32,13 @@ export const ThemeContext = createContext<Theme>(defaultTheme);
 
 export interface ThemeOptions {
   palette?: PaletteOptions;
+  shape?: ShapeOptions;
 }
 
 export const createTheme = (options: ThemeOptions): Theme => {
   return {
     palette: createPalette(options.palette ?? {}),
+    shapeSchema: createShapeSchema(options.shape ?? {}),
     elevation: elevation,
     typography: typography
   };
