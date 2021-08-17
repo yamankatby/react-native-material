@@ -1,7 +1,14 @@
 import React, { FC, useMemo, useState } from "react";
 import { Platform, View, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import { Elevation, ShapeCategory, ShapeFamily, ShapeSize, ThemeColor, useTheme } from "../foundation";
+import {
+  Elevation,
+  ShapeCategory,
+  ShapeFamily,
+  ShapeSize,
+  ThemeColor,
+  useTheme
+} from "@react-native-material/lab/lib/foundation";
 
 export interface ShapeProps {
   category?: ShapeCategory;

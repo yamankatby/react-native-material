@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform, SafeAreaView, Text, useColorScheme, View } from "react-native";
-import { createTheme, ThemeProvider, useStyleSheet } from "./src/foundation";
+import { createTheme, ThemeProvider, useStyleSheet } from "@react-native-material/lab/lib/foundation";
 import Shape from "./src/shape/Shape";
 
 const DemoApp = () => {
@@ -34,6 +34,7 @@ const DemoApp = () => {
       </Shape>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.contentContainer}>
+          <Text style={styles.title}>Hi</Text>
           <Text style={styles.title}>Hi</Text>
         </View>
       </SafeAreaView>
