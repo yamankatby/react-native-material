@@ -1,8 +1,7 @@
 import React, { FC, useMemo, useState } from "react";
 import { Platform, View, ViewStyle } from "react-native";
-import { ThemeColor } from "../styles/palette";
-import { Elevation, ShapeCategory, ShapeFamily, ShapeSize, useTheme } from "../styles";
 import Svg, { Polygon } from "react-native-svg";
+import { Elevation, ShapeCategory, ShapeFamily, ShapeSize, ThemeColor, useTheme } from "../foundation";
 
 export interface ShapeProps {
   category?: ShapeCategory;
@@ -28,29 +27,29 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
   const backgroundColor = useMemo(() => {
     switch (rest.backgroundColor) {
       case "primary":
-        return theme.palette.primary.main;
+        return theme.colors.primary.main;
       case "secondary":
-        return theme.palette.secondary.main;
+        return theme.colors.secondary.main;
       case "background":
-        return theme.palette.background.main;
+        return theme.colors.background.main;
       case "surface":
-        return theme.palette.surface.main;
+        return theme.colors.surface.main;
       case "error":
-        return theme.palette.error.main;
+        return theme.colors.error.main;
       case "onPrimary":
-        return theme.palette.primary.on;
+        return theme.colors.primary.on;
       case "onSecondary":
-        return theme.palette.secondary.on;
+        return theme.colors.secondary.on;
       case "onBackground":
-        return theme.palette.background.on;
+        return theme.colors.background.on;
       case "onSurface":
-        return theme.palette.surface.on;
+        return theme.colors.surface.on;
       case "onError":
-        return theme.palette.error.on;
+        return theme.colors.error.on;
       default:
         return rest.backgroundColor;
     }
-  }, [rest.backgroundColor, theme.palette]);
+  }, [rest.backgroundColor, theme.colors]);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -62,7 +61,7 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
         borderTopEndRadius: size[1],
         borderBottomEndRadius: size[2],
         borderBottomStartRadius: size[3],
-        ...theme.elevation[elevation!],
+        ...theme.elevations[elevation!],
         backgroundColor
       }, style]}
     >
@@ -76,7 +75,7 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
           borderTopEndRadius: size[1] * 3 / 2,
           borderBottomEndRadius: size[2] * 3 / 2,
           borderBottomStartRadius: size[3] * 3 / 2,
-          ...theme.elevation[elevation!]
+          ...theme.elevations[elevation!]
         }
       })]}
       onLayout={e => {
@@ -88,7 +87,7 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
         position: "absolute",
         width,
         height,
-        ...Platform.select({ ios: theme.elevation[elevation!] })
+        ...Platform.select({ ios: theme.elevations[elevation!] })
       }, style]}>
         <Polygon points={`0,${size[0]} ${size[0]},0 ${width - size[1]},0 ${width},${size[1]} ${width},${height - size[2]} ${width - size[2]},${height} ${size[3]},${height} 0,${height - size[3]}`} fill={backgroundColor} />
       </Svg>
@@ -100,7 +99,7 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
 Shape.defaultProps = {
   category: "small",
   backgroundColor: "surface",
-  elevation: "0"
+  elevation: 0
 };
 
 export default Shape;

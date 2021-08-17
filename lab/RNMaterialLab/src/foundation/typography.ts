@@ -1,22 +1,23 @@
 import { TextStyle } from "react-native";
 
-export interface Typography {
-  h1: TextStyle;
-  h2: TextStyle;
-  h3: TextStyle;
-  h4: TextStyle;
-  h5: TextStyle;
-  h6: TextStyle;
-  subtitle1: TextStyle;
-  subtitle2: TextStyle;
-  body1: TextStyle;
-  body2: TextStyle;
-  button: TextStyle;
-  caption: TextStyle;
-  overline: TextStyle;
-}
+export type TypographyVariant =
+  "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "subtitle1"
+  | "subtitle2"
+  | "body1"
+  | "body2"
+  | "button"
+  | "caption"
+  | "overline"
 
-export const typography: Typography = {
+export type TypographyStyles = Record<TypographyVariant, TextStyle>
+
+export const createTypographyStyles = (): TypographyStyles => ({
   h1: {
     fontWeight: "300",
     fontSize: 96,
@@ -84,4 +85,4 @@ export const typography: Typography = {
     textTransform: "uppercase",
     letterSpacing: 1.5
   }
-};
+});

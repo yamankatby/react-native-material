@@ -9,23 +9,11 @@ export interface ShapeConfig {
 
 export type ShapeSchema = Record<ShapeCategory, ShapeConfig>
 
-export const defaultShapeSchema: ShapeSchema = {
-  small: {
-    family: "rounded",
-    size: 4
-  },
-  medium: {
-    family: "rounded",
-    size: 4
-  },
-  large: {
-    family: "rounded",
-    size: 0
-  }
-};
-
 export type ShapeOptions = Partial<ShapeSchema>
 
-export const createShapeSchema = (options: ShapeOptions): ShapeSchema => {
-  return { ...defaultShapeSchema, ...options };
-};
+export const createShapeSchema = (options: ShapeOptions = {}): ShapeSchema => ({
+  small: { family: "rounded", size: 4 },
+  medium: { family: "rounded", size: 4 },
+  large: { family: "rounded", size: 0 },
+  ...options
+});

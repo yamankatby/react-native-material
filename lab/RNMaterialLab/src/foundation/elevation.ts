@@ -1,13 +1,14 @@
 import { ImageStyle, Platform, TextStyle, ViewStyle } from "react-native";
+import { Colors } from "./";
 
-type Style = ViewStyle | TextStyle | ImageStyle;
+export type Elevation = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16 | 24
+export type ElevationStyle = ViewStyle | TextStyle | ImageStyle
+export type Elevations = Record<Elevation, ElevationStyle>
 
-export type Elevation = "0" | "1" | "2" | "3" | "4" | "6" | "8" | "12" | "16" | "24";
-
-export type ElevationSchema = Record<Elevation, Style>
-
-export const elevation: ElevationSchema = {
-  "0": {},
+export const createElevations = (colors: Colors) => ({
+  "0": {
+    backgroundColor: colors.surfaceVariants["0"]
+  },
   "1": {
     ...Platform.select({
       ios: {
@@ -22,7 +23,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 1
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["1"]
   },
   "2": {
     ...Platform.select({
@@ -38,7 +40,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 2
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["2"]
   },
   "3": {
     ...Platform.select({
@@ -54,7 +57,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 3
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["3"]
   },
   "4": {
     ...Platform.select({
@@ -70,7 +74,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 4
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["4"]
   },
   "6": {
     ...Platform.select({
@@ -86,7 +91,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 6
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["6"]
   },
   "8": {
     ...Platform.select({
@@ -102,7 +108,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 8
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["8"]
   },
   "12": {
     ...Platform.select({
@@ -118,7 +125,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 12
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["12"]
   },
   "16": {
     ...Platform.select({
@@ -134,7 +142,8 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 16
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["16"]
   },
   "24": {
     ...Platform.select({
@@ -150,6 +159,7 @@ export const elevation: ElevationSchema = {
       android: {
         elevation: 24
       }
-    })
+    }),
+    backgroundColor: colors.surfaceVariants["24"]
   }
-};
+});

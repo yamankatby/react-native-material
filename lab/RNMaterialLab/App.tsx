@@ -1,29 +1,51 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
-import { ThemeProvider } from "./src/styles";
+import { Platform, SafeAreaView, Text, useColorScheme, View } from "react-native";
+import { createTheme, ThemeProvider, useStyleSheet } from "./src/foundation";
 import Shape from "./src/shape/Shape";
 
-const InnerApp = () => {
+const DemoApp = () => {
+  const styles = useStyleSheet(({ colors, typographyStyles, elevations }) => ({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background.main
+    },
+    appBar: {
+      height: Platform.OS === "ios" ? 62 + 28 : 62,
+      backgroundColor: colors.primary.main
+    },
+    appBarTitle: {
+      ...typographyStyles.h6,
+      color: colors.primary.on
+    },
+    contentContainer: {
+      flex: 1,
+      padding: 16
+    },
+    title: {
+      ...typographyStyles.h1,
+      color: colors.background.on
+    }
+  }));
+
   return (
-    <SafeAreaView style={{ flex: 1, margin: 16 }}>
-      <Shape family={"cut"} elevation={"12"} style={{ width: 168, height: 168 }} backgroundColor={"primary"}>
-
+    <View style={styles.container}>
+      <Shape style={styles.appBar} elevation={4} size={0}>
+        <Text style={styles.appBarTitle}>Home</Text>
       </Shape>
-      <View style={{ height: 32 }} />
-      <Shape family={"cut"} elevation={"12"} backgroundColor={"secondary"} size={[12, 0, 15, 0]} style={{
-        width: 168,
-        height: 168
-      }}>
-
-      </Shape>
-    </SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>Hi</Text>
+        </View>
+      </SafeAreaView>
+    </View>
   );
 };
 
 const App = () => {
+  const mode = useColorScheme();
   return (
-    <ThemeProvider>
-      <InnerApp />
+    <ThemeProvider theme={createTheme({ mode: mode ?? "light" })}>
+      <DemoApp />
     </ThemeProvider>
   );
 };
