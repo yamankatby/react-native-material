@@ -9,6 +9,7 @@ import {
   ThemeColor,
   useTheme
 } from "@react-native-material/lab/lib/foundation";
+import { useThemeColor } from "../index";
 
 export interface ShapeProps {
   category?: ShapeCategory;
@@ -31,32 +32,7 @@ const Shape: FC<ShapeProps> = ({ category, elevation, style, children, ...rest }
     });
   }, [category, rest.family, rest.size, theme.shapeSchema]);
 
-  const backgroundColor = useMemo(() => {
-    switch (rest.backgroundColor) {
-      case "primary":
-        return theme.colors.primary.main;
-      case "secondary":
-        return theme.colors.secondary.main;
-      case "background":
-        return theme.colors.background.main;
-      case "surface":
-        return theme.colors.surface.main;
-      case "error":
-        return theme.colors.error.main;
-      case "onPrimary":
-        return theme.colors.primary.on;
-      case "onSecondary":
-        return theme.colors.secondary.on;
-      case "onBackground":
-        return theme.colors.background.on;
-      case "onSurface":
-        return theme.colors.surface.on;
-      case "onError":
-        return theme.colors.error.on;
-      default:
-        return rest.backgroundColor;
-    }
-  }, [rest.backgroundColor, theme.colors]);
+  const backgroundColor = useThemeColor(rest.backgroundColor);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
