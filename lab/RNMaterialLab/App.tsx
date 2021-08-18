@@ -1,17 +1,17 @@
-import React from 'react';
-import { Platform, SafeAreaView, useColorScheme, View } from 'react-native';
 import {
   createTheme,
   ThemeProvider,
   useStyleSheet,
 } from '@react-native-material/lab/lib/foundation';
+import React from 'react';
+import { Platform, SafeAreaView, useColorScheme, View } from 'react-native';
+import Button from './src/button/Button';
+import FAB from './src/fab/FAB';
 import Shape from './src/shape/Shape';
 import Typography from './src/typography/Typography';
-import FAB from './src/fab/FAB';
-import Surface from './src/surface/Surface';
 
 const DemoApp = () => {
-  const styles = useStyleSheet(({ colors, typographyStyles, elevations }) => ({
+  const styles = useStyleSheet(({ colors, typographyStyles }) => ({
     container: {
       flex: 1,
       backgroundColor: colors.background.main,
@@ -42,11 +42,34 @@ const DemoApp = () => {
       </Shape>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.contentContainer}>
-          <Typography variant="h1">Hi</Typography>
-          <Typography variant="h2">Welcome back!</Typography>
-          <Typography>This is my name</Typography>
-
-          <Surface style={{ width: 180, height: 90 }} elevation={6}></Surface>
+          <View style={{ alignItems: 'flex-start' }}>
+            <Button title="button" />
+            <View style={{ height: 12 }} />
+            <Button title="button" variant="outlined" />
+            <View style={{ height: 12 }} />
+            <Button title="button" variant="text" />
+            <View style={{ height: 12 }} />
+            <Button title="see all" loading color="error" disableElevation />
+            <View style={{ height: 12 }} />
+            <Button
+              title="see all"
+              color="error"
+              variant="outlined"
+              loading
+              leading={({ color }) => (
+                <View
+                  style={{ width: 16, height: 16, backgroundColor: color }}
+                />
+              )}
+              trailing={({ color }) => (
+                <View
+                  style={{ width: 16, height: 16, backgroundColor: color }}
+                />
+              )}
+            />
+            <View style={{ height: 12 }} />
+            <Button title="Go to the homepage" variant="text" color="error" />
+          </View>
         </View>
         <FAB />
       </SafeAreaView>
