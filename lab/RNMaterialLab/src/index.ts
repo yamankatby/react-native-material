@@ -1,29 +1,31 @@
-import { ThemeColor, useTheme } from "@react-native-material/lab/lib/foundation";
-import { useMemo } from "react";
+import {ThemeColor, useTheme} from '@react-native-material/lab/lib/foundation';
+import {useMemo} from 'react';
 
-export const useThemeColor = (color?: ThemeColor | string): string | undefined => {
-  const { colors } = useTheme();
+export const useThemeColor = (
+  color?: ThemeColor | string,
+): string | undefined => {
+  const {colors} = useTheme();
   return useMemo(() => {
     switch (color) {
-      case "primary":
+      case 'primary':
         return colors.primary.main;
-      case "secondary":
+      case 'secondary':
         return colors.secondary.main;
-      case "background":
+      case 'background':
         return colors.background.main;
-      case "surface":
+      case 'surface':
         return colors.surface.main;
-      case "error":
+      case 'error':
         return colors.error.main;
-      case "onPrimary":
+      case 'onPrimary':
         return colors.primary.on;
-      case "onSecondary":
+      case 'onSecondary':
         return colors.secondary.on;
-      case "onBackground":
+      case 'onBackground':
         return colors.background.on;
-      case "onSurface":
+      case 'onSurface':
         return colors.surface.on;
-      case "onError":
+      case 'onError':
         return colors.error.on;
     }
   }, [colors, color]);
