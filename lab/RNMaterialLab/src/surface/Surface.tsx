@@ -1,5 +1,5 @@
-import React, {useMemo} from 'react';
-import {Text, View, ViewProps} from 'react-native';
+import React, { useMemo } from 'react';
+import { Text, View, ViewProps } from 'react-native';
 import {
   Elevation,
   ShapeCategory,
@@ -16,7 +16,7 @@ interface SurfaceProps extends ViewProps {
 }
 
 const Surface: React.FC<SurfaceProps> = props => {
-  const {category, family, size, elevation, style, children, ...rest} = props;
+  const { category, family, size, elevation, style, children, ...rest } = props;
 
   const theme = useTheme();
 

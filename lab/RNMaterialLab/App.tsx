@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, SafeAreaView, useColorScheme, View} from 'react-native';
+import { Platform, SafeAreaView, useColorScheme, View } from 'react-native';
 import {
   createTheme,
   ThemeProvider,
@@ -11,7 +11,7 @@ import FAB from './src/fab/FAB';
 import Surface from './src/surface/Surface';
 
 const DemoApp = () => {
-  const styles = useStyleSheet(({colors, typographyStyles, elevations}) => ({
+  const styles = useStyleSheet(({ colors, typographyStyles, elevations }) => ({
     container: {
       flex: 1,
       backgroundColor: colors.background.main,
@@ -40,13 +40,13 @@ const DemoApp = () => {
           Home
         </Typography>
       </Shape>
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.contentContainer}>
           <Typography variant="h1">Hi</Typography>
           <Typography variant="h2">Welcome back!</Typography>
           <Typography>This is my name</Typography>
 
-          <Surface style={{width: 180, height: 90}} elevation={6}></Surface>
+          <Surface style={{ width: 180, height: 90 }} elevation={6}></Surface>
         </View>
         <FAB />
       </SafeAreaView>
@@ -57,7 +57,7 @@ const DemoApp = () => {
 const App = () => {
   const mode = useColorScheme();
   return (
-    <ThemeProvider theme={createTheme({mode: mode ?? 'light'})}>
+    <ThemeProvider theme={createTheme({ mode: mode ?? 'light' })}>
       <DemoApp />
     </ThemeProvider>
   );

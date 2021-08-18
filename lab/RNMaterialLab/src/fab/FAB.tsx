@@ -1,5 +1,5 @@
-import React, {useMemo} from 'react';
-import {View, ViewProps} from 'react-native';
+import React, { useMemo } from 'react';
+import { View, ViewProps } from 'react-native';
 import {
   Color,
   ColorVariants,
@@ -13,7 +13,7 @@ interface FABProps extends ViewProps {
 
 const FAB: React.FC<FABProps> = props => {
   const theme = useTheme();
-  const {color} = props;
+  const { color } = props;
 
   const variants = useColor(color!);
 
@@ -40,14 +40,14 @@ const FAB: React.FC<FABProps> = props => {
           left: 0,
           backgroundColor: 'red',
         }}>
-        <View style={{width: 24, height: 24, backgroundColor: variants.on}} />
+        <View style={{ width: 24, height: 24, backgroundColor: variants.on }} />
       </View>
     </Surface>
   );
 };
 
 const useColor = (color: Color | ColorVariants): ColorVariants => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   return useMemo(
     () => (typeof color === 'string' ? colors[color] : color),
     [colors, color],

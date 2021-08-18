@@ -1,10 +1,13 @@
-import {ThemeColor, useTheme} from '@react-native-material/lab/lib/foundation';
-import {useMemo} from 'react';
+import {
+  ThemeColor,
+  useTheme,
+} from '@react-native-material/lab/lib/foundation';
+import { useMemo } from 'react';
 
 export const useThemeColor = (
   color?: ThemeColor | string,
 ): string | undefined => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   return useMemo(() => {
     switch (color) {
       case 'primary':

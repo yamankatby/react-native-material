@@ -1,6 +1,6 @@
-import React, {FC, useMemo, useState} from 'react';
-import {Platform, View, ViewStyle} from 'react-native';
-import Svg, {Polygon} from 'react-native-svg';
+import React, { FC, useMemo, useState } from 'react';
+import { Platform, View, ViewStyle } from 'react-native';
+import Svg, { Polygon } from 'react-native-svg';
 import {
   Elevation,
   ShapeCategory,
@@ -9,7 +9,7 @@ import {
   ThemeColor,
   useTheme,
 } from '@react-native-material/lab/lib/foundation';
-import {useThemeColor} from '../index';
+import { useThemeColor } from '../index';
 
 export interface ShapeProps {
   category?: ShapeCategory;
@@ -29,7 +29,7 @@ const Shape: FC<ShapeProps> = ({
 }) => {
   const theme = useTheme();
 
-  const {family, size} = useMemo(() => {
+  const { family, size } = useMemo(() => {
     const shapeConfig = theme.shapeSchema[category!];
     const size = rest.size ?? shapeConfig.size;
     return {
@@ -61,7 +61,7 @@ const Shape: FC<ShapeProps> = ({
   ) : (
     <View
       style={[
-        {width: style?.width, height: style?.height},
+        { width: style?.width, height: style?.height },
         Platform.select({
           android: {
             borderTopStartRadius: (size[0] * 3) / 2,
@@ -82,7 +82,7 @@ const Shape: FC<ShapeProps> = ({
             position: 'absolute',
             width,
             height,
-            ...Platform.select({ios: theme.elevations[elevation!]}),
+            ...Platform.select({ ios: theme.elevations[elevation!] }),
           },
           style,
         ]}>
