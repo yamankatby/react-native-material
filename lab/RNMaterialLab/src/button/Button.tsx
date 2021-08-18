@@ -135,11 +135,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <Surface
-      style={[
-        styles.container,
-        select(styles.contained, styles.outlined, styles.text),
-        style,
-      ]}>
+      category="small"
+      style={{
+        ...styles.container,
+        ...select(styles.contained, styles.outlined, styles.text),
+        ...style,
+      }}>
       {leadingView && (
         <View style={[styles.leading, leadingContainerStyle]}>
           {leadingView}

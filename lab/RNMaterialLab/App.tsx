@@ -35,11 +35,11 @@ const DemoApp = () => {
 
   return (
     <View style={styles.container}>
-      <Shape style={styles.appBar} elevation={4} size={0}>
+      {/* <Shape style={styles.appBar} elevation={4} size={0}>
         <Typography variant={'h6'} color={'onPrimary'}>
           Home
         </Typography>
-      </Shape>
+      </Shape> */}
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.contentContainer}>
           <View style={{ alignItems: 'flex-start' }}>
@@ -77,12 +77,38 @@ const DemoApp = () => {
   );
 };
 
-const App = () => {
+const F = () => {
   const mode = useColorScheme();
   return (
-    <ThemeProvider theme={createTheme({ mode: mode ?? 'light' })}>
+    <ThemeProvider
+      theme={createTheme({
+        mode: mode ?? 'light',
+        shape: { small: { family: 'cut', size: 4 } },
+      })}>
       <DemoApp />
     </ThemeProvider>
+  );
+};
+
+const S = () => {
+  const mode = useColorScheme();
+  return (
+    <ThemeProvider
+      theme={createTheme({
+        mode: mode ?? 'light',
+        shape: { small: { family: 'rounded', size: 4 } },
+      })}>
+      <DemoApp />
+    </ThemeProvider>
+  );
+};
+
+const App = () => {
+  return (
+    <>
+      <F />
+      <S />
+    </>
   );
 };
 
