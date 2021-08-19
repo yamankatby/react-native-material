@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import chroma from "chroma-js";
+import React, { useMemo } from "react";
 import {
   Platform,
   TouchableHighlight,
@@ -9,42 +10,41 @@ import {
   TouchableOpacityProps,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
-} from 'react-native';
-import chroma from 'chroma-js';
+} from "react-native";
 
 export type TouchableProps = TouchableHighlightProps &
   TouchableOpacityProps &
   TouchableWithoutFeedbackProps &
   TouchableNativeFeedbackProps;
 
-export type TouchableVariant =
-  | 'highlight'
-  | 'opacity'
-  | 'without-feedback'
-  | 'native-feedback';
+export type TouchableCustomFeedbackVariant =
+  | "highlight"
+  | "opacity"
+  | "without-feedback"
+  | "native-feedback";
 
 export interface TouchableCustomFeedbackProps {
-  iosVariant?: TouchableVariant;
-  androidVariant?: TouchableVariant;
+  iosVariant?: TouchableCustomFeedbackVariant;
+  androidVariant?: TouchableCustomFeedbackVariant;
   overlayColor?: string;
 }
 
 const TouchableCustomFeedback: React.FC<
-  TouchableProps & TouchableCustomFeedbackProps
-> = ({ iosVariant: ios, androidVariant: android, overlayColor, ...rest }) => {
+  TouchableCustomFeedbackProps & TouchableProps
+> = ({ iosVariant, androidVariant, overlayColor, ...rest }) => {
   const color = useMemo(
-    () => chroma(overlayColor!).alpha(0.2).hex(),
-    [overlayColor],
+    () => chroma(overlayColor!).alpha(0.3).hex(),
+    [overlayColor]
   );
 
-  switch (Platform.OS === 'ios' ? ios! : android!) {
-    case 'highlight':
+  switch (Platform.OS === "ios" ? iosVariant! : androidVariant!) {
+    case "highlight":
       return <TouchableHighlight underlayColor={color} {...rest} />;
-    case 'opacity':
+    case "opacity":
       return <TouchableOpacity {...rest} />;
-    case 'without-feedback':
+    case "without-feedback":
       return <TouchableWithoutFeedback {...rest} />;
-    case 'native-feedback':
+    case "native-feedback":
       return (
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple(color, false)}
@@ -55,9 +55,9 @@ const TouchableCustomFeedback: React.FC<
 };
 
 TouchableCustomFeedback.defaultProps = {
-  iosVariant: 'highlight',
-  androidVariant: 'native-feedback',
-  overlayColor: 'black',
+  iosVariant: "highlight",
+  androidVariant: "native-feedback",
+  overlayColor: "black",
 };
 
 export default TouchableCustomFeedback;

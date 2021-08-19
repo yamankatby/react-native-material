@@ -1,29 +1,27 @@
-import React from 'react';
-import { Text, TextProps } from 'react-native';
-import { ThemeColor, TypographyVariant, useTheme } from '../foundation';
-import { useThemeColor } from '../index';
+import React from "react";
+import { Text, TextProps } from "react-native";
+import { TypographyVariant, useTheme } from "../foundation";
 
-interface TypographyProps extends TextProps {
+export interface TypographyProps {
   variant?: TypographyVariant;
-  color?: ThemeColor;
 }
 
-const Typography: React.FC<TypographyProps> = props => {
-  const { variant, color, style, children, ...rest } = props;
+const Typography: React.FC<TypographyProps & TextProps> = ({
+  variant,
+  style,
+  children,
+  ...rest
+}) => {
   const theme = useTheme();
-  const textColor = useThemeColor(color);
   return (
-    <Text
-      style={[{ ...theme.typographyStyles[variant!], color: textColor }, style]}
-      {...rest}>
+    <Text style={[theme.typographyStyles[variant!], style]} {...rest}>
       {children}
     </Text>
   );
 };
 
 Typography.defaultProps = {
-  variant: 'subtitle1',
-  color: 'onBackground',
+  variant: "subtitle1",
 };
 
 export default Typography;

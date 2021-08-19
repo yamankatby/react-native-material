@@ -1,14 +1,4 @@
 export {
-  ThemeContext,
-  ThemeProvider,
-  useStyleSheet,
-  useTheme,
-  withTheme,
-} from "./context";
-
-export { createTheme, Theme, ThemeMode, ThemeOptions } from "./theme";
-
-export {
   Color,
   Colors,
   ColorsOptions,
@@ -16,22 +6,23 @@ export {
   createColors,
   ThemeColor,
 } from "./color";
-
+export {
+  ThemeContext,
+  ThemeProvider,
+  useStyleSheet,
+  useTheme,
+  withTheme,
+} from "./context";
 export {
   createElevations,
   Elevation,
   Elevations,
   ElevationStyle,
 } from "./elevation";
-
-export {
-  createTypographyStyles,
-  TypographyStyles,
-  TypographyVariant,
-} from "./typography";
-
 export {
   createShapeSchema,
+  getFirstValue,
+  getShapeRadius,
   ShapeCategory,
   ShapeConfig,
   ShapeConfigOptions,
@@ -41,3 +32,9 @@ export {
   ShapeRadiusOptions,
   ShapeSchema,
 } from "./shape";
+export { createTheme, Theme, ThemeMode, ThemeOptions } from "./theme";
+export {
+  createTypographyStyles,
+  TypographyStyles,
+  TypographyVariant,
+} from "./typography";

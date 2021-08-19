@@ -1,12 +1,9 @@
-import React from 'react';
-import { GestureResponderEvent, ViewStyle } from 'react-native';
-import { ShapeCategory, ShapeFamily, useTheme } from '../foundation';
-import CutSurface from './CutSurface';
-import RoundedSurface from './RoundedSurface';
-import {
-  TouchableCustomFeedbackProps,
-  TouchableProps,
-} from '../button/TouchableCustomFeedback';
+import React from "react";
+import { GestureResponderEvent, ViewStyle } from "react-native";
+import { ShapeCategory, ShapeFamily, useTheme } from "../foundation";
+import { TouchableCustomFeedbackProps, TouchableProps } from "../button";
+import CutSurface from "./CutSurface";
+import RoundedSurface from "./RoundedSurface";
 
 export interface SharedSurfaceProps extends TouchableCustomFeedbackProps {
   category?: ShapeCategory;
@@ -24,7 +21,7 @@ export interface SurfaceProps extends SharedSurfaceProps {
 const Surface: React.FC<SurfaceProps> = ({ family, ...rest }) => {
   const theme = useTheme();
 
-  return (family ?? theme.shapeSchema[rest.category!].family) === 'rounded' ? (
+  return (family ?? theme.shapeSchema[rest.category!].family) === "rounded" ? (
     <RoundedSurface {...rest} />
   ) : (
     <CutSurface {...rest} />
@@ -32,7 +29,7 @@ const Surface: React.FC<SurfaceProps> = ({ family, ...rest }) => {
 };
 
 Surface.defaultProps = {
-  category: 'small',
+  category: "small",
 };
 
 export default Surface;

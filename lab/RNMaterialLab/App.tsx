@@ -1,96 +1,40 @@
-import { createTheme, ThemeProvider } from './src/foundation';
 import React from 'react';
+import { SafeAreaView, useColorScheme, View } from 'react-native';
 import {
-  SafeAreaView,
-  TouchableNativeFeedback,
-  useColorScheme,
-  View,
-  Text,
-} from 'react-native';
-import Button from './src/button/Button';
+  createTheme,
+  ThemeProvider,
+  Typography,
+  useStyleSheet,
+} from '@react-native-material/lab';
 
-const DemoApp = () => {
+const App: React.FC = () => {
+  const styles = useStyleSheet(({ colors }) => ({
+    container: {
+      margin: 16,
+    },
+    title: {
+      color: colors.background.on,
+    },
+  }));
   return (
-    <SafeAreaView style={{ margin: 16 }}>
-      <Button title="Button" style={{ alignSelf: 'flex-start' }} />
-      <Button
-        title="Button"
-        color="secondary"
-        loading
-        style={{ alignSelf: 'flex-start', marginTop: 12 }}
-      />
-      <Button
-        title="Button"
-        color="error"
-        leading={({ color }) => (
-          <View
-            style={{
-              backgroundColor: color,
-              width: 18,
-              height: 18,
-              borderRadius: 9,
-            }}
-          />
-        )}
-        trailing={({ color }) => (
-          <View
-            style={{
-              backgroundColor: color,
-              width: 18,
-              height: 18,
-              borderRadius: 9,
-            }}
-          />
-        )}
-        style={{ alignSelf: 'flex-start', marginTop: 12 }}
-      />
-      <Button
-        title="home page"
-        variant="outlined"
-        style={{ alignSelf: 'flex-start', marginTop: 12 }}
-      />
-      <Button
-        title="Test button"
-        variant="text"
-        style={{ alignSelf: 'flex-start', marginTop: 12 }}
-      />
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Typography style={styles.title} variant="h2">
+          Hi, welcome back!
+        </Typography>
+      </View>
     </SafeAreaView>
   );
 };
 
-const F = () => {
+const AppProvider: React.FC = () => {
   const mode = useColorScheme();
   return (
     <ThemeProvider
-      theme={createTheme({
-        mode: mode ?? 'light',
-        shape: { small: { family: 'cut', radius: { borderRadius: 12 } } },
-      })}>
-      <DemoApp />
+      theme={createTheme({ mode: mode === 'dark' ? 'dark' : 'light' })}>
+      <App />
     </ThemeProvider>
   );
 };
 
-const S = () => {
-  const mode = useColorScheme();
-  return (
-    <ThemeProvider
-      theme={createTheme({
-        mode: mode ?? 'light',
-        shape: { small: { family: 'rounded' } },
-      })}>
-      <DemoApp />
-    </ThemeProvider>
-  );
-};
-
-const App = () => {
-  return (
-    <>
-      <F />
-      <S />
-    </>
-  );
-};
-
-export default App;
+export default AppProvider;

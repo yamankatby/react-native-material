@@ -1,13 +1,12 @@
-import chroma from 'chroma-js';
-import React, { useCallback, useMemo } from 'react';
-import { ActivityIndicator, TextStyle, View, ViewStyle } from 'react-native';
-import { Color, useStyleSheet, useTheme } from '../foundation';
-import Surface from '../surface/Surface';
-import Typography from '../typography/Typography';
+import React, { useCallback, useMemo } from "react";
+import { ActivityIndicator, TextStyle, View, ViewStyle } from "react-native";
+import { Color, useStyleSheet, useTheme } from "../foundation";
+import { Surface, SurfaceProps } from "../surface";
+import { Typography } from "../typography";
 
-export interface ButtonProps {
+export interface ButtonProps extends SurfaceProps {
   title: string;
-  variant?: 'contained' | 'outlined' | 'text';
+  variant?: "contained" | "outlined" | "text";
   color?: Color;
   leading?: (info: { color?: string }) => React.ReactElement | null;
   trailing?: (info: { color?: string }) => React.ReactElement | null;
@@ -15,7 +14,7 @@ export interface ButtonProps {
   uppercase?: boolean;
   disableElevation?: boolean;
   indicatorColor?: string;
-  indciatorSize?: number | 'small' | 'large' | undefined;
+  indciatorSize?: number | "small" | "large" | undefined;
   style?: ViewStyle;
   titleStyle?: TextStyle;
   leadingContainerStyle?: ViewStyle;
@@ -39,15 +38,23 @@ const Button: React.FC<ButtonProps> = ({
   leadingContainerStyle,
   trailingContainerStyle,
   indicatorStyle,
+  category,
+  family,
+  onPress,
+  onLongPress,
+  touchableProps,
+  iosVariant,
+  androidVariant,
+  overlayColor,
 }) => {
   const theme = useTheme();
 
   const styles = useStyleSheet(
     ({ colors, elevations, typographyStyles }) => ({
       container: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         paddingHorizontal: 12,
         paddingVertical: 8,
       },
@@ -58,14 +65,14 @@ const Button: React.FC<ButtonProps> = ({
       outlined: {
         borderWidth: 1,
         borderColor: colors[color!].main,
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
       },
       text: {
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
       },
       title: {
         ...typographyStyles.button,
-        textTransform: uppercase ? 'uppercase' : 'none',
+        textTransform: uppercase ? "uppercase" : "none",
       },
       leading: {
         marginEnd: 8,
@@ -74,21 +81,21 @@ const Button: React.FC<ButtonProps> = ({
         marginStart: 8,
       },
     }),
-    [color, uppercase, disableElevation],
+    [color, uppercase, disableElevation]
   );
 
   const select = useCallback(
     <C, O, T>(contained?: C, outlined?: O, text?: T) => {
       switch (variant) {
-        case 'contained':
+        case "contained":
           return contained;
-        case 'outlined':
+        case "outlined":
           return outlined;
-        case 'text':
+        case "text":
           return text;
       }
     },
-    [variant],
+    [variant]
   );
 
   const foregroundColor = useMemo(
@@ -96,17 +103,9 @@ const Button: React.FC<ButtonProps> = ({
       select(
         theme.colors[color!].on,
         theme.colors[color!].main,
-        theme.colors[color!].main,
+        theme.colors[color!].main
       ),
-    [select, theme.colors, color],
-  );
-
-  const overlayColor = useMemo(
-    () =>
-      chroma(foregroundColor ?? 'black')
-        .alpha(0.2)
-        .hex(),
-    [foregroundColor],
+    [select, theme.colors, color]
   );
 
   const leadingView = useMemo(() => {
@@ -138,9 +137,16 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <Surface
-      onPress={() => {}}
-      overlayColor={foregroundColor}
-      style={[select(styles.contained, styles.outlined, styles.text), style]}>
+      category={category}
+      family={family}
+      iosVariant={iosVariant}
+      androidVariant={androidVariant}
+      overlayColor={overlayColor ?? foregroundColor}
+      onPress={onPress}
+      onLongPress={onLongPress}
+      touchableProps={touchableProps}
+      style={[select(styles.contained, styles.outlined, styles.text), style]}
+    >
       <View style={styles.container}>
         {leadingView && (
           <View style={[styles.leading, leadingContainerStyle]}>
@@ -149,7 +155,8 @@ const Button: React.FC<ButtonProps> = ({
         )}
         <Typography
           variant="button"
-          style={[styles.title, { color: foregroundColor }, titleStyle]}>
+          style={[styles.title, { color: foregroundColor }, titleStyle]}
+        >
           {title}
         </Typography>
         {trailingView && (
@@ -163,8 +170,8 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 Button.defaultProps = {
-  variant: 'contained',
-  color: 'primary',
+  variant: "contained",
+  color: "primary",
   uppercase: true,
 };
 

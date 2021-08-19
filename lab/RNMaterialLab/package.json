@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.6",
-    "@react-native-material/lab": "^1.0.0-alpha.1",
+    "@react-native-material/lab": "^1.0.0-alpha.2",
     "chroma-js": "^2.1.2",
     "react": "17.0.1",
     "react-native": "0.64.1",

@@ -1,9 +1,8 @@
-import React from 'react';
-import { View } from 'react-native';
-import { useTheme } from '../foundation';
-import { SharedSurfaceProps } from './Surface';
-import TouchableCustomFeedback from '../button/TouchableCustomFeedback';
-import { getShapeRadius } from '../foundation/shape';
+import React from "react";
+import { View } from "react-native";
+import { useTheme, getShapeRadius } from "../foundation";
+import { SharedSurfaceProps } from "./Surface";
+import { TouchableCustomFeedback } from "../button";
 
 const RoundedSurface: React.FC<SharedSurfaceProps> = ({
   category,
@@ -23,19 +22,20 @@ const RoundedSurface: React.FC<SharedSurfaceProps> = ({
 
   const radius = getShapeRadius(
     mergedStyles,
-    theme.shapeSchema[category!].radius,
+    theme.shapeSchema[category!].radius
   );
 
   return (
     <View style={[radius, style]}>
       {!!(onPress || onLongPress) ? (
-        <View style={[radius, { overflow: 'hidden' }]}>
+        <View style={[radius, { overflow: "hidden" }]}>
           <TouchableCustomFeedback
             iosVariant={iosVariant}
             androidVariant={androidVariant}
             overlayColor={overlayColor}
             onPress={onPress}
-            onLongPress={onLongPress}>
+            onLongPress={onLongPress}
+          >
             {children}
           </TouchableCustomFeedback>
         </View>
@@ -47,7 +47,7 @@ const RoundedSurface: React.FC<SharedSurfaceProps> = ({
 };
 
 RoundedSurface.defaultProps = {
-  category: 'small',
+  category: "small",
   style: {},
 };
 

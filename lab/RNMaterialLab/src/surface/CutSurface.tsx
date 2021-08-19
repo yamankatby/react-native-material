@@ -1,10 +1,9 @@
-import { ShapeRadius, useTheme } from '../foundation';
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import Svg, { Polygon } from 'react-native-svg';
-import TouchableCustomFeedback from '../button/TouchableCustomFeedback';
-import { SharedSurfaceProps } from './Surface';
-import { getShapeRadius } from '../foundation/shape';
+import React, { useState } from "react";
+import { View } from "react-native";
+import Svg, { Polygon } from "react-native-svg";
+import { getShapeRadius, useTheme } from "../foundation";
+import { TouchableCustomFeedback } from "../button";
+import { SharedSurfaceProps } from "./Surface";
 
 const CutSurface: React.FC<SharedSurfaceProps> = ({
   category,
@@ -33,11 +32,12 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
   return (
     <View
       style={rest}
-      onLayout={e => {
+      onLayout={(e) => {
         setWidth(e.nativeEvent.layout.width);
         setHeight(e.nativeEvent.layout.height);
-      }}>
-      <Svg style={{ position: 'absolute', width, height }}>
+      }}
+    >
+      <Svg style={{ position: "absolute", width, height }}>
         <Polygon
           points={[
             [borderWidth, radius.borderTopStartRadius + borderWidth],
@@ -60,20 +60,21 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
               borderWidth,
               height - radius.borderBottomStartRadius - borderWidth,
             ],
-          ].reduce((p, c) => `${p} ${c}`, '')}
+          ].reduce((p, c) => `${p} ${c}`, "")}
           fill={backgroundColor as any}
           stroke={borderColor as any}
           strokeWidth={borderWidth}
         />
       </Svg>
       {!!(onPress || onLongPress) ? (
-        <View style={[radius, { overflow: 'hidden' }]}>
+        <View style={[radius, { overflow: "hidden" }]}>
           <TouchableCustomFeedback
             iosVariant={iosVariant}
             androidVariant={androidVariant}
             overlayColor={overlayColor}
             onPress={onPress}
-            onLongPress={onLongPress}>
+            onLongPress={onLongPress}
+          >
             {children}
           </TouchableCustomFeedback>
         </View>
@@ -85,7 +86,7 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
 };
 
 CutSurface.defaultProps = {
-  category: 'small',
+  category: "small",
   style: {},
 };
 

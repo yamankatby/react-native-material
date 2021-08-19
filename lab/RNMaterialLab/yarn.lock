@@ -1113,10 +1113,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-masked-view/masked-view/-/masked-view-0.2.6.tgz#b26c52d5db3ad0926b13deea79c69620966a9221"
   integrity sha512-303CxmetUmgiX9NSUxatZkNh9qTYYdiM8xkGf9I3Uj20U3eGY3M78ljeNQ4UVCJA+FNGS5nC1dtS9GjIqvB4dg==
 
-"@react-native-material/lab@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@react-native-material/lab/-/lab-1.0.0-alpha.1.tgz#c5b95a73ba261b0ccc46a0c3cd66efdc58794a35"
-  integrity sha512-EFnGDMc+x+RFHz6ocvpLc+IPg8/d04qn06TMFwKgtMuEKNamFG19Nd6zjGguKMWbBMGHg9rYUllLvYAdictSfw==
+"@react-native-material/lab@^1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@react-native-material/lab/-/lab-1.0.0-alpha.2.tgz#f6537ae1ea7d87bf865bc4f713860a3d9742afbf"
+  integrity sha512-U6XPqW/gEq/VXZHo4EbLPTg8/nKXgSmz5iwmmUgKRmcAszlxbyhB1e9FTCZKGLYY8Nibly7WGrEklJpFo4nP3Q==
   dependencies:
     chroma-js "^2.1.2"
 
