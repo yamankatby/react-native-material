@@ -1,12 +1,13 @@
 {
   "name": "@react-native-material/lab",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "@types/chroma-js": "^2.1.3",
     "@types/react-native": "^0.64.13",
+    "react-native-svg": "^12.1.1",
     "typescript": "^4.3.5"
   },
   "files": [
