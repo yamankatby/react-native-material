@@ -1,7 +1,4 @@
-import {
-  ThemeColor,
-  useTheme,
-} from '@react-native-material/lab/lib/foundation';
+import { ThemeColor, useTheme } from './foundation';
 import { useMemo } from 'react';
 
 export const useThemeColor = (

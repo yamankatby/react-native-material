@@ -6,11 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {
-  Color,
-  useStyleSheet,
-  useTheme,
-} from '@react-native-material/lab/lib/foundation';
+import { Color, useStyleSheet, useTheme } from '../foundation';
 import chroma from 'chroma-js';
 import Surface from '../surface/Surface';
 import Touchable from '../touchable/Touchable';

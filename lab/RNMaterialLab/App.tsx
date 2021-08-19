@@ -1,7 +1,4 @@
-import {
-  createTheme,
-  ThemeProvider,
-} from '@react-native-material/lab/lib/foundation';
+import { createTheme, ThemeProvider } from './src/foundation';
 import React from 'react';
 import {
   SafeAreaView,
@@ -67,7 +64,7 @@ const F = () => {
     <ThemeProvider
       theme={createTheme({
         mode: mode ?? 'light',
-        shape: { small: { family: 'cut', size: 6 } },
+        shape: { small: { family: 'cut', radius: { borderRadius: 12 } } },
       })}>
       <DemoApp />
     </ThemeProvider>
@@ -80,7 +77,7 @@ const S = () => {
     <ThemeProvider
       theme={createTheme({
         mode: mode ?? 'light',
-        shape: { small: { family: 'rounded', size: 4 } },
+        shape: { small: { family: 'rounded' } },
       })}>
       <DemoApp />
     </ThemeProvider>

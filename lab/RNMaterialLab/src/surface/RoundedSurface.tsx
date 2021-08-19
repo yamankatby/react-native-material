@@ -1,8 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { useTheme } from '@react-native-material/lab/lib/foundation';
+import { useTheme } from '../foundation';
 import { SharedSurfaceProps } from './Surface';
 import TouchableCustomFeedback from '../button/TouchableCustomFeedback';
+import { getShapeRadius } from '../foundation/shape';
 
 const RoundedSurface: React.FC<SharedSurfaceProps> = ({
   category,
@@ -14,41 +15,21 @@ const RoundedSurface: React.FC<SharedSurfaceProps> = ({
   overlayColor,
   children,
 }) => {
-  const mergedStyle = Array.isArray(style)
+  const mergedStyles = Array.isArray(style)
     ? Object.assign({}, ...style)
     : style;
 
   const theme = useTheme();
-  const size = theme.shapeSchema[category!].size;
-  const sizes = Array.isArray(size) ? size : [size, size, size, size];
 
-  const round = {
-    borderTopStartRadius:
-      mergedStyle.borderTopStartRadius ??
-      mergedStyle.borderTopLeftRadius ??
-      mergedStyle.borderRadius ??
-      sizes[0],
-    borderTopEndRadius:
-      mergedStyle.borderTopEndRadius ??
-      mergedStyle.borderTopRightRadius ??
-      mergedStyle.borderRadius ??
-      sizes[1],
-    borderBottomEndRadius:
-      mergedStyle.borderBottomEndRadius ??
-      mergedStyle.borderBottomRightRadius ??
-      mergedStyle.borderRadius ??
-      sizes[2],
-    borderBottomStartRadius:
-      mergedStyle.borderBottomStartRadius ??
-      mergedStyle.borderBottomLeftRadius ??
-      mergedStyle.borderRadius ??
-      sizes[3],
-  };
+  const radius = getShapeRadius(
+    mergedStyles,
+    theme.shapeSchema[category!].radius,
+  );
 
   return (
-    <View style={[round, style]}>
+    <View style={[radius, style]}>
       {!!(onPress || onLongPress) ? (
-        <View style={[round, { overflow: 'hidden' }]}>
+        <View style={[radius, { overflow: 'hidden' }]}>
           <TouchableCustomFeedback
             iosVariant={iosVariant}
             androidVariant={androidVariant}

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Text, TextProps } from 'react-native';
-import {
-  ThemeColor,
-  TypographyVariant,
-  useTheme,
-} from '@react-native-material/lab/lib/foundation';
+import { ThemeColor, TypographyVariant, useTheme } from '../foundation';
 import { useThemeColor } from '../index';
 
 interface TypographyProps extends TextProps {

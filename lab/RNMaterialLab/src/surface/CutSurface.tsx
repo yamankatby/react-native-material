@@ -1,9 +1,10 @@
-import { useTheme } from '@react-native-material/lab/lib/foundation';
+import { ShapeRadius, useTheme } from '../foundation';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import Svg, { Polygon } from 'react-native-svg';
 import TouchableCustomFeedback from '../button/TouchableCustomFeedback';
 import { SharedSurfaceProps } from './Surface';
+import { getShapeRadius } from '../foundation/shape';
 
 const CutSurface: React.FC<SharedSurfaceProps> = ({
   category,
@@ -16,41 +17,15 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
   children,
 }) => {
   const {
-    borderTopStartRadius,
-    borderTopLeftRadius,
-    borderRadius,
-    borderTopEndRadius,
-    borderTopRightRadius,
-    borderBottomEndRadius,
-    borderBottomRightRadius,
-    borderBottomStartRadius,
-    borderBottomLeftRadius,
-    borderWidth = 0,
     backgroundColor,
+    borderWidth = 0,
     borderColor,
     ...rest
   } = Array.isArray(style) ? Object.assign({}, ...style) : style;
 
   const theme = useTheme();
-  const size = theme.shapeSchema[category!].size;
-  const sizes = Array.isArray(size) ? size : [size, size, size, size];
 
-  const round = {
-    borderTopStartRadius:
-      borderTopStartRadius ?? borderTopLeftRadius ?? borderRadius ?? sizes[0],
-    borderTopEndRadius:
-      borderTopEndRadius ?? borderTopRightRadius ?? borderRadius ?? sizes[1],
-    borderBottomEndRadius:
-      borderBottomEndRadius ??
-      borderBottomRightRadius ??
-      borderRadius ??
-      sizes[2],
-    borderBottomStartRadius:
-      borderBottomStartRadius ??
-      borderBottomLeftRadius ??
-      borderRadius ??
-      sizes[3],
-  };
+  const radius = getShapeRadius(rest, theme.shapeSchema[category!].radius);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -65,20 +40,26 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
       <Svg style={{ position: 'absolute', width, height }}>
         <Polygon
           points={[
-            [borderWidth, round.borderTopStartRadius + borderWidth],
-            [round.borderTopStartRadius + borderWidth, borderWidth],
-            [width - round.borderTopEndRadius - borderWidth, borderWidth],
-            [width - borderWidth, round.borderTopEndRadius + borderWidth],
+            [borderWidth, radius.borderTopStartRadius + borderWidth],
+            [radius.borderTopStartRadius + borderWidth, borderWidth],
+            [width - radius.borderTopEndRadius - borderWidth, borderWidth],
+            [width - borderWidth, radius.borderTopEndRadius + borderWidth],
             [
               width - borderWidth,
-              height - round.borderBottomEndRadius - borderWidth,
+              height - radius.borderBottomEndRadius - borderWidth,
             ],
             [
-              width - round.borderBottomEndRadius - borderWidth,
+              width - radius.borderBottomEndRadius - borderWidth,
               height - borderWidth,
             ],
-            [round.borderBottomStartRadius + borderWidth, height - borderWidth],
-            [borderWidth, height - round.borderBottomStartRadius - borderWidth],
+            [
+              radius.borderBottomStartRadius + borderWidth,
+              height - borderWidth,
+            ],
+            [
+              borderWidth,
+              height - radius.borderBottomStartRadius - borderWidth,
+            ],
           ].reduce((p, c) => `${p} ${c}`, '')}
           fill={backgroundColor as any}
           stroke={borderColor as any}
@@ -86,7 +67,7 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
         />
       </Svg>
       {!!(onPress || onLongPress) ? (
-        <View style={[round, { overflow: 'hidden' }]}>
+        <View style={[radius, { overflow: 'hidden' }]}>
           <TouchableCustomFeedback
             iosVariant={iosVariant}
             androidVariant={androidVariant}

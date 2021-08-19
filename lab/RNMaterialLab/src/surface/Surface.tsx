@@ -1,10 +1,6 @@
 import React from 'react';
 import { GestureResponderEvent, ViewStyle } from 'react-native';
-import {
-  ShapeCategory,
-  ShapeFamily,
-  useTheme,
-} from '@react-native-material/lab/lib/foundation';
+import { ShapeCategory, ShapeFamily, useTheme } from '../foundation';
 import CutSurface from './CutSurface';
 import RoundedSurface from './RoundedSurface';
 import {

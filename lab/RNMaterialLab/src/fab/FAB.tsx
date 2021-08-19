@@ -1,10 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, ViewProps } from 'react-native';
-import {
-  Color,
-  ColorVariants,
-  useTheme,
-} from '@react-native-material/lab/lib/foundation';
+import { Color, ColorVariants, useTheme } from '../foundation';
 import Surface from '../surface/Surface';
 
 interface FABProps extends ViewProps {
