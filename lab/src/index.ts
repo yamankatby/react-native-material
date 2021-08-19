@@ -1,4 +1,6 @@
 export {
+  Button,
+  ButtonProps,
   TouchableCustomFeedback,
   TouchableCustomFeedbackProps,
   TouchableCustomFeedbackVariant,
