@@ -1,15 +1,8 @@
-import React, { useCallback, useMemo } from 'react';
-import {
-  ActivityIndicator,
-  TextStyle,
-  TouchableNativeFeedback,
-  View,
-  ViewStyle,
-} from 'react-native';
-import { Color, useStyleSheet, useTheme } from '../foundation';
 import chroma from 'chroma-js';
+import React, { useCallback, useMemo } from 'react';
+import { ActivityIndicator, TextStyle, View, ViewStyle } from 'react-native';
+import { Color, useStyleSheet, useTheme } from '../foundation';
 import Surface from '../surface/Surface';
-import Touchable from '../touchable/Touchable';
 import Typography from '../typography/Typography';
 
 export interface ButtonProps {
