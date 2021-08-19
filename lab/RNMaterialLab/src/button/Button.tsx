@@ -1,10 +1,8 @@
-import React, { Children, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {
   ActivityIndicator,
   TextStyle,
-  TouchableHighlight,
   TouchableNativeFeedback,
-  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
@@ -13,7 +11,9 @@ import {
   useStyleSheet,
   useTheme,
 } from '@react-native-material/lab/lib/foundation';
+import chroma from 'chroma-js';
 import Surface from '../surface/Surface';
+import Touchable from '../touchable/Touchable';
 import Typography from '../typography/Typography';
 
 export interface ButtonProps {
@@ -112,6 +112,14 @@ const Button: React.FC<ButtonProps> = ({
     [select, theme.colors, color],
   );
 
+  const overlayColor = useMemo(
+    () =>
+      chroma(foregroundColor ?? 'black')
+        .alpha(0.2)
+        .hex(),
+    [foregroundColor],
+  );
+
   const leadingView = useMemo(() => {
     if (loading) {
       return (
@@ -143,28 +151,30 @@ const Button: React.FC<ButtonProps> = ({
     <Surface
       category="small"
       style={[select(styles.contained, styles.outlined, styles.text), style]}>
-      <TouchableHighlight
-        onPress={() => {}}
-        style={{ borderRadius: 4 }}
-        underlayColor={color}>
-        <View style={[styles.container, {}]}>
-          {leadingView && (
-            <View style={[styles.leading, leadingContainerStyle]}>
-              {leadingView}
-            </View>
-          )}
-          <Typography
-            variant="button"
-            style={[styles.title, { color: foregroundColor }, titleStyle]}>
-            {title}
-          </Typography>
-          {trailingView && (
-            <View style={[styles.trailing, trailingContainerStyle]}>
-              {trailingView}
-            </View>
-          )}
-        </View>
-      </TouchableHighlight>
+      <View style={{ borderRadius: 4, overflow: 'hidden' }}>
+        <Touchable
+          onPress={() => {}}
+          background={TouchableNativeFeedback.Ripple(overlayColor, false)}
+          underlayColor={overlayColor}>
+          <View style={[styles.container, {}]}>
+            {leadingView && (
+              <View style={[styles.leading, leadingContainerStyle]}>
+                {leadingView}
+              </View>
+            )}
+            <Typography
+              variant="button"
+              style={[styles.title, { color: foregroundColor }, titleStyle]}>
+              {title}
+            </Typography>
+            {trailingView && (
+              <View style={[styles.trailing, trailingContainerStyle]}>
+                {trailingView}
+              </View>
+            )}
+          </View>
+        </Touchable>
+      </View>
     </Surface>
   );
 };
