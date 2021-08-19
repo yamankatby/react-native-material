@@ -79,7 +79,7 @@ CutSurface.defaultProps = {
 export interface SurfaceProps {
   category?: ShapeCategory;
   family?: ShapeFamily;
-  style?: ViewStyle | ViewStyle[];
+  style?: ViewStyle | (ViewStyle | undefined)[];
 }
 
 const Surface: React.FC<SurfaceProps> = ({

@@ -1,5 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
-import { ActivityIndicator, TextStyle, View, ViewStyle } from 'react-native';
+import React, { Children, useCallback, useMemo } from 'react';
+import {
+  ActivityIndicator,
+  TextStyle,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {
   Color,
   useStyleSheet,
@@ -51,16 +59,14 @@ const Button: React.FC<ButtonProps> = ({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 14,
-        paddingVertical: 9,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
       },
       contained: {
         ...elevations[disableElevation ? 0 : 2],
         backgroundColor: colors[color!].main,
       },
       outlined: {
-        paddingHorizontal: 13,
-        paddingVertical: 8,
         borderWidth: 1,
         borderColor: colors[color!].main,
         backgroundColor: 'transparent',
@@ -136,26 +142,29 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <Surface
       category="small"
-      style={{
-        ...styles.container,
-        ...select(styles.contained, styles.outlined, styles.text),
-        ...style,
-      }}>
-      {leadingView && (
-        <View style={[styles.leading, leadingContainerStyle]}>
-          {leadingView}
+      style={[select(styles.contained, styles.outlined, styles.text), style]}>
+      <TouchableHighlight
+        onPress={() => {}}
+        style={{ borderRadius: 4 }}
+        underlayColor={color}>
+        <View style={[styles.container, {}]}>
+          {leadingView && (
+            <View style={[styles.leading, leadingContainerStyle]}>
+              {leadingView}
+            </View>
+          )}
+          <Typography
+            variant="button"
+            style={[styles.title, { color: foregroundColor }, titleStyle]}>
+            {title}
+          </Typography>
+          {trailingView && (
+            <View style={[styles.trailing, trailingContainerStyle]}>
+              {trailingView}
+            </View>
+          )}
         </View>
-      )}
-      <Typography
-        variant="button"
-        style={[styles.title, { color: foregroundColor }, titleStyle]}>
-        {title}
-      </Typography>
-      {trailingView && (
-        <View style={[styles.trailing, trailingContainerStyle]}>
-          {trailingView}
-        </View>
-      )}
+      </TouchableHighlight>
     </Surface>
   );
 };
