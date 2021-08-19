@@ -1,4 +1,11 @@
 export {
+  TouchableCustomFeedback,
+  TouchableCustomFeedbackProps,
+  TouchableCustomFeedbackVariant,
+  TouchableProps,
+} from "./button";
+
+export {
   Color,
   Colors,
   ColorsOptions,
