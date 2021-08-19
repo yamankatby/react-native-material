@@ -4,7 +4,6 @@ export {
   TouchableCustomFeedbackVariant,
   TouchableProps,
 } from "./button";
-
 export {
   Color,
   Colors,
@@ -18,6 +17,8 @@ export {
   Elevation,
   Elevations,
   ElevationStyle,
+  getFirstValue,
+  getShapeRadius,
   ShapeCategory,
   ShapeConfig,
   ShapeConfigOptions,
@@ -38,3 +39,11 @@ export {
   useTheme,
   withTheme,
 } from "./foundation";
+export {
+  CutSurface,
+  RoundedSurface,
+  SharedSurfaceProps,
+  Surface,
+  SurfaceProps,
+} from "./surface";
+export { Typography, TypographyProps } from "./typography";
