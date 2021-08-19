@@ -149,31 +149,25 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <Surface
-      category="small"
+      onPress={() => {}}
+      overlayColor={foregroundColor}
       style={[select(styles.contained, styles.outlined, styles.text), style]}>
-      <View style={{ borderRadius: 4, overflow: 'hidden' }}>
-        <Touchable
-          onPress={() => {}}
-          background={TouchableNativeFeedback.Ripple(overlayColor, false)}
-          underlayColor={overlayColor}>
-          <View style={[styles.container, {}]}>
-            {leadingView && (
-              <View style={[styles.leading, leadingContainerStyle]}>
-                {leadingView}
-              </View>
-            )}
-            <Typography
-              variant="button"
-              style={[styles.title, { color: foregroundColor }, titleStyle]}>
-              {title}
-            </Typography>
-            {trailingView && (
-              <View style={[styles.trailing, trailingContainerStyle]}>
-                {trailingView}
-              </View>
-            )}
+      <View style={styles.container}>
+        {leadingView && (
+          <View style={[styles.leading, leadingContainerStyle]}>
+            {leadingView}
           </View>
-        </Touchable>
+        )}
+        <Typography
+          variant="button"
+          style={[styles.title, { color: foregroundColor }, titleStyle]}>
+          {title}
+        </Typography>
+        {trailingView && (
+          <View style={[styles.trailing, trailingContainerStyle]}>
+            {trailingView}
+          </View>
+        )}
       </View>
     </Surface>
   );
