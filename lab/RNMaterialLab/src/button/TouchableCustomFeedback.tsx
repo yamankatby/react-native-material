@@ -26,27 +26,38 @@ export type TouchableCustomFeedbackBehavior =
 
 export interface TouchableCustomFeedbackProps {
   /**
-   * Behavior of the Touchable on iOS
+   * Behavior of the Touchable component on iOS.
    */
-  iosBehavior?: TouchableCustomFeedbackBehavior;
+  iosBehavior?: TouchableCustomFeedbackBehavior | undefined;
   /**
-   * Behavior of the Touchable on Android
+   * Behavior of the Touchable component on Android.
    */
-  androidBehavior?: TouchableCustomFeedbackBehavior;
+  androidBehavior?: TouchableCustomFeedbackBehavior | undefined;
   /**
-   * Custom color will be used as `underlayColor` for TouchableHighlight and `background` for TouchableNativeFeedback
+   * Custom color will override the `underlay` prop for the TouchableHighlight component
+   * and the `background` prop for the TouchableNativeFeedback component.
    */
-  overlayColor?: string;
+  overlayColor?: string | undefined;
+  /**
+   *
+   */
+  accessibilityLabel?: string | undefined;
+  /**
+   *
+   */
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  /**
+   *
+   */
   onLongPress?: ((event: GestureResponderEvent) => void) | undefined;
   /**
-   * Object of props will be passed to the Touchable component
+   * Extra props object will be spread on the Touchable component.
    */
-  extraTouchableProps?: TouchableProps;
+  extraTouchableProps?: TouchableProps | undefined;
 }
 
 const TouchableCustomFeedback: React.FC<
-  TouchableCustomFeedbackProps & TouchableProps
+  TouchableProps & TouchableCustomFeedbackProps
 > = ({
   iosBehavior,
   androidBehavior,

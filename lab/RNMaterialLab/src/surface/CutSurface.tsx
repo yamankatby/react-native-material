@@ -32,11 +32,10 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
   return (
     <View
       style={rest}
-      onLayout={(e) => {
+      onLayout={e => {
         setWidth(e.nativeEvent.layout.width);
         setHeight(e.nativeEvent.layout.height);
-      }}
-    >
+      }}>
       <Svg style={{ position: "absolute", width, height }}>
         <Polygon
           points={[
@@ -73,8 +72,7 @@ const CutSurface: React.FC<SharedSurfaceProps> = ({
             androidVariant={androidVariant}
             overlayColor={overlayColor}
             onPress={onPress}
-            onLongPress={onLongPress}
-          >
+            onLongPress={onLongPress}>
             {children}
           </TouchableCustomFeedback>
         </View>
