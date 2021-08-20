@@ -5,7 +5,9 @@ import {
   ThemeProvider,
   Typography,
   useStyleSheet,
-} from '@react-native-material/lab';
+  Button,
+} from './src';
+import FAB from './src/fab/FAB';
 
 const App: React.FC = () => {
   const styles = useStyleSheet(({ colors }) => ({
@@ -22,6 +24,12 @@ const App: React.FC = () => {
         <Typography style={styles.title} variant="h2">
           Hi, welcome back!
         </Typography>
+
+        <FAB color="error" overlayColor="black" onPress={() => {}} />
+        <FAB family="cut" onPress={() => {}} />
+
+        <Button title="Hi" onPress={() => {}} />
+        <Button title="Google" family="cut" onPress={() => {}} />
       </View>
     </SafeAreaView>
   );

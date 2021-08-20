@@ -5,7 +5,7 @@ export {
   TouchableCustomFeedbackProps,
   TouchableCustomFeedbackVariant,
   TouchableProps,
-} from "./button";
+} from './button';
 export {
   Color,
   Colors,
@@ -40,12 +40,12 @@ export {
   useStyleSheet,
   useTheme,
   withTheme,
-} from "./foundation";
+} from './foundation';
 export {
   CutSurface,
   RoundedSurface,
   SharedSurfaceProps,
   Surface,
   SurfaceProps,
-} from "./surface";
-export { Typography, TypographyProps } from "./typography";
+} from './surface';
+export { Typography, TypographyProps } from './typography';
