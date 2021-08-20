@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
+import { Elevation, ShapeCategory } from "../base";
 import { TouchableCustomFeedbackProps } from "../button";
-import { Elevation, ShapeCategory } from "../foundation";
 
 export interface RoundedSurfaceProps extends TouchableCustomFeedbackProps {
   category?: ShapeCategory | undefined;
@@ -35,16 +35,3 @@ RoundedSurface.defaultProps = {
 };
 
 export default RoundedSurface;
-
-const shapeSchema = {
-  small: {
-    family: "rounded",
-    cornerRadius: 4, // { topStart: 4, topEnd: 4, bottomStart: 4, bottomEnd: 4 },
-  },
-  medium: {
-    family: "rounded",
-  },
-  large: {
-    family: "rounded",
-  },
-};

@@ -1,7 +1,7 @@
 import { DependencyList, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { Theme } from "../base";
-import { useTheme } from "./ThemeProvider";
+import { Theme } from "../theme";
+import useTheme from "./use-theme";
 
 export type NamedStyles<T> = {
   [P in keyof T]: ViewStyle | TextStyle | ImageStyle;

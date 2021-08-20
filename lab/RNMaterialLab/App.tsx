@@ -1,56 +1,13 @@
 import React from "react";
-import { SafeAreaView, useColorScheme, View } from "react-native";
-import {
-  createTheme,
-  ThemeProvider,
-  Typography,
-  useStyleSheet,
-  Button,
-} from "./src";
-import FAB from "./src/fab/FAB";
+import { ThemeProvider } from "./src";
 
-const App: React.FC = () => {
-  const styles = useStyleSheet(({ colors }) => ({
-    container: {
-      margin: 16,
-    },
-    title: {
-      color: colors.background.on,
-    },
-  }));
-  return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Typography style={styles.title} variant="h2">
-          Hi, welcome back!
-        </Typography>
-
-        <FAB
-          color="error"
-          overlayColor="black"
-          onPress={() => {
-            console.warn("hi");
-          }}
-        />
-        <FAB family="cut" onPress={() => {}} />
-
-        <Button
-          title="Hi"
-          onPress={() => {
-            console.warn("hi");
-          }}
-        />
-        <Button title="Google" family="cut" onPress={() => {}} />
-      </View>
-    </SafeAreaView>
-  );
+const App = () => {
+  return null;
 };
 
-const AppProvider: React.FC = () => {
-  const mode = useColorScheme();
+const AppProvider = () => {
   return (
-    <ThemeProvider
-      theme={createTheme({ mode: mode === "dark" ? "dark" : "light" })}>
+    <ThemeProvider>
       <App />
     </ThemeProvider>
   );
