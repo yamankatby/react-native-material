@@ -3,6 +3,7 @@ import {
   ShapeCornerRadius,
   ShapeFamily,
   ShapeSchema,
+  ShapeValues,
 } from "./shapeSchema";
 
 export interface ShapeValuesOptions {
@@ -22,36 +23,26 @@ const getCorner = (
   return typeof cornerRadius === "number" ? cornerRadius : cornerRadius[corner];
 };
 
-export const createShapeSchema = (
-  options?: ShapeSchemaOptions | undefined
-): ShapeSchema => {
+const createShapeValues = (
+  options: ShapeValuesOptions | undefined,
+  defaultValue: number
+): ShapeValues => {
+  const cornerRadius = options?.cornerRadius;
   return {
-    small: {
-      family: options?.small?.family ?? "rounded",
-      cornerRadius: {
-        topStart: getCorner(options?.small?.cornerRadius, "topStart") ?? 4,
-        topEnd: getCorner(options?.small?.cornerRadius, "topStart") ?? 4,
-        bottomStart: getCorner(options?.small?.cornerRadius, "topStart") ?? 4,
-        bottomEnd: getCorner(options?.small?.cornerRadius, "topStart") ?? 4,
-      },
-    },
-    medium: {
-      family: options?.medium?.family ?? "rounded",
-      cornerRadius: {
-        topStart: getCorner(options?.medium?.cornerRadius, "topStart") ?? 4,
-        topEnd: getCorner(options?.medium?.cornerRadius, "topStart") ?? 4,
-        bottomStart: getCorner(options?.medium?.cornerRadius, "topStart") ?? 4,
-        bottomEnd: getCorner(options?.medium?.cornerRadius, "topStart") ?? 4,
-      },
-    },
-    large: {
-      family: options?.large?.family ?? "rounded",
-      cornerRadius: {
-        topStart: getCorner(options?.large?.cornerRadius, "topStart") ?? 0,
-        topEnd: getCorner(options?.large?.cornerRadius, "topStart") ?? 0,
-        bottomStart: getCorner(options?.large?.cornerRadius, "topStart") ?? 0,
-        bottomEnd: getCorner(options?.large?.cornerRadius, "topStart") ?? 0,
-      },
+    family: options?.family ?? "rounded",
+    cornerRadius: {
+      topStart: getCorner(cornerRadius, "topStart") ?? defaultValue,
+      topEnd: getCorner(cornerRadius, "topEnd") ?? defaultValue,
+      bottomStart: getCorner(cornerRadius, "bottomStart") ?? defaultValue,
+      bottomEnd: getCorner(cornerRadius, "bottomEnd") ?? defaultValue,
     },
   };
 };
+
+export const createShapeSchema = (
+  options?: ShapeSchemaOptions | undefined
+): ShapeSchema => ({
+  small: createShapeValues(options?.small, 4),
+  medium: createShapeValues(options?.medium, 4),
+  large: createShapeValues(options?.large, 4),
+});
