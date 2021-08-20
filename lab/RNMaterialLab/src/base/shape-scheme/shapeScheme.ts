@@ -14,4 +14,4 @@ export interface ShapeValues {
   cornerRadius: ShapeCornerRadius;
 }
 
-export type ShapeSchema = Record<ShapeCategory, ShapeValues>;
+export type ShapeScheme = Record<ShapeCategory, ShapeValues>;
