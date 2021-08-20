@@ -1,7 +1,11 @@
 import { Colors, ColorsOptions, createColors } from "./color";
-import { Elevations, createElevations } from "./elevation";
-import { TypographyStyles, createTypographyStyles } from "./typography";
-import { ShapeOptions, createShapeSchema, ShapeSchema } from "./shape";
+import { createElevations, Elevations } from "./elevation";
+import { createTypographyStyles, TypographyStyles } from "./typography";
+import {
+  createShapeSchema,
+  ShapeSchema,
+  ShapeSchemaOptions,
+} from "./shapeSchema";
 
 export type ThemeMode = "light" | "dark";
 
@@ -16,7 +20,7 @@ export interface Theme {
 export interface ThemeOptions {
   mode?: ThemeMode;
   colors?: ColorsOptions;
-  shape?: ShapeOptions;
+  shapeSchema?: ShapeSchemaOptions;
 }
 
 export const createTheme = (options: ThemeOptions = {}): Theme => {
@@ -27,6 +31,6 @@ export const createTheme = (options: ThemeOptions = {}): Theme => {
     colors: colors,
     elevations: createElevations(colors),
     typographyStyles: createTypographyStyles(),
-    shapeSchema: createShapeSchema(options.shape),
+    shapeSchema: createShapeSchema(options.shapeSchema),
   };
 };

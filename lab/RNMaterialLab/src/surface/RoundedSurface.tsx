@@ -1,53 +1,50 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useTheme, getShapeRadius } from '../foundation';
-import { SharedSurfaceProps } from './Surface';
-import { TouchableCustomFeedback } from '../button';
+import React from "react";
+import { View } from "react-native";
+import { TouchableCustomFeedbackProps } from "../button";
+import { Elevation, ShapeCategory } from "../foundation";
 
-const RoundedSurface: React.FC<SharedSurfaceProps> = ({
+export interface RoundedSurfaceProps extends TouchableCustomFeedbackProps {
+  category?: ShapeCategory | undefined;
+  borderRadius?: number | undefined;
+  elevation?: Elevation | undefined;
+  backgroundColor?: string | undefined;
+  borderWidth?: number | undefined;
+  borderColor?: string | undefined;
+}
+
+const RoundedSurface: React.FC<RoundedSurfaceProps> = ({
   category,
-  style,
+  iosBehavior,
+  androidBehavior,
+  overlayColor,
+  accessibilityLabel,
   onPress,
   onLongPress,
-  iosVariant,
-  androidVariant,
-  overlayColor,
+  extraTouchableProps,
   children,
 }) => {
-  const mergedStyles = Array.isArray(style)
-    ? Object.assign({}, ...style)
-    : style;
-
-  const theme = useTheme();
-
-  const radius = getShapeRadius(
-    mergedStyles,
-    theme.shapeSchema[category!].radius,
-  );
-
   return (
-    <View style={[radius, style]}>
-      {!!(onPress || onLongPress) ? (
-        <View style={[{ overflow: 'hidden', backgroundColor: 'red' }]}>
-          <TouchableCustomFeedback
-            iosVariant={iosVariant}
-            androidVariant={androidVariant}
-            overlayColor={overlayColor}
-            onPress={onPress}
-            onLongPress={onLongPress}>
-            {children}
-          </TouchableCustomFeedback>
-        </View>
-      ) : (
-        children
-      )}
+    <View>
+      <View>{children}</View>
     </View>
   );
 };
 
 RoundedSurface.defaultProps = {
-  category: 'small',
-  style: {},
+  category: "small",
 };
 
 export default RoundedSurface;
+
+const shapeSchema = {
+  small: {
+    family: "rounded",
+    cornerRadius: 4, // { topStart: 4, topEnd: 4, bottomStart: 4, bottomEnd: 4 },
+  },
+  medium: {
+    family: "rounded",
+  },
+  large: {
+    family: "rounded",
+  },
+};

@@ -27,15 +27,18 @@ export type TouchableCustomFeedbackBehavior =
 export interface TouchableCustomFeedbackProps {
   /**
    * Behavior of the Touchable component on iOS.
+   * @default 'highlight'
    */
   iosBehavior?: TouchableCustomFeedbackBehavior | undefined;
   /**
    * Behavior of the Touchable component on Android.
+   * @default 'native-feedback'
    */
   androidBehavior?: TouchableCustomFeedbackBehavior | undefined;
   /**
    * Custom color will override the `underlay` prop for the TouchableHighlight component
    * and the `background` prop for the TouchableNativeFeedback component.
+   * @default 'black'
    */
   overlayColor?: string | undefined;
   /**
