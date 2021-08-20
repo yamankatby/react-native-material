@@ -1,13 +1,13 @@
-import React from 'react';
-import { SafeAreaView, useColorScheme, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, useColorScheme, View } from "react-native";
 import {
   createTheme,
   ThemeProvider,
   Typography,
   useStyleSheet,
   Button,
-} from './src';
-import FAB from './src/fab/FAB';
+} from "./src";
+import FAB from "./src/fab/FAB";
 
 const App: React.FC = () => {
   const styles = useStyleSheet(({ colors }) => ({
@@ -25,10 +25,21 @@ const App: React.FC = () => {
           Hi, welcome back!
         </Typography>
 
-        <FAB color="error" overlayColor="black" onPress={() => {}} />
+        <FAB
+          color="error"
+          overlayColor="black"
+          onPress={() => {
+            console.warn("hi");
+          }}
+        />
         <FAB family="cut" onPress={() => {}} />
 
-        <Button title="Hi" onPress={() => {}} />
+        <Button
+          title="Hi"
+          onPress={() => {
+            console.warn("hi");
+          }}
+        />
         <Button title="Google" family="cut" onPress={() => {}} />
       </View>
     </SafeAreaView>
@@ -39,7 +50,7 @@ const AppProvider: React.FC = () => {
   const mode = useColorScheme();
   return (
     <ThemeProvider
-      theme={createTheme({ mode: mode === 'dark' ? 'dark' : 'light' })}>
+      theme={createTheme({ mode: mode === "dark" ? "dark" : "light" })}>
       <App />
     </ThemeProvider>
   );
