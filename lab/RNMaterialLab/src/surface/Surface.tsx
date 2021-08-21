@@ -1,12 +1,14 @@
 import React, { useMemo, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
 import MaskedView from "@react-native-masked-view/masked-view";
 import {
+  Color,
   createCornerRadius,
   ShapeCategory,
   ShapeCornerRadiusOptions,
   ShapeFamily,
+  useColor,
   useTheme,
 } from "../base";
 import {
@@ -25,11 +27,13 @@ export interface SurfaceProps extends TouchableCustomFeedbackProps {
     | { width?: number | undefined; height?: number | undefined }
     | undefined;
 
-  backgroundColor?: string | undefined;
+  backgroundColor?: Color | string | undefined;
 
   borderWidth?: number | undefined;
 
-  borderColor?: string | undefined;
+  borderColor?: Color | string | undefined;
+
+  containerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
 const Surface: React.FC<SurfaceProps> = ({
@@ -40,6 +44,7 @@ const Surface: React.FC<SurfaceProps> = ({
   backgroundColor,
   borderWidth = 0,
   borderColor,
+  containerStyle,
   children,
   ...rest
 }) => {
@@ -90,8 +95,16 @@ const Surface: React.FC<SurfaceProps> = ({
     [halfBorder, height - mergedCornerRadius.bottomStart - halfBorder],
   ].reduce((p, c) => `${p} ${c}`, "");
 
+  const resolvedBackgroundColor = useColor(backgroundColor);
+  const resolvedBorderColor = useColor(borderColor);
+
   return (family ?? theme.shapeScheme[category!].family) === "rounded" ? (
-    <View style={[borderRadius, surfaceSize, { borderWidth, borderColor }]}>
+    <View
+      style={[
+        borderRadius,
+        surfaceSize,
+        { borderWidth, borderColor: resolvedBorderColor },
+      ]}>
       <View
         style={[
           innerBorderRadius,
@@ -104,7 +117,8 @@ const Surface: React.FC<SurfaceProps> = ({
           <View
             style={[
               surfaceSize && StyleSheet.absoluteFill,
-              { backgroundColor },
+              { backgroundColor: resolvedBackgroundColor },
+              containerStyle,
             ]}>
             {children}
           </View>
@@ -122,7 +136,7 @@ const Surface: React.FC<SurfaceProps> = ({
         <Polygon
           points={points}
           strokeWidth={borderWidth}
-          stroke={borderColor}
+          stroke={resolvedBorderColor}
         />
       </Svg>
       <MaskedView
@@ -139,7 +153,8 @@ const Surface: React.FC<SurfaceProps> = ({
           <View
             style={[
               surfaceSize && StyleSheet.absoluteFill,
-              { backgroundColor },
+              { backgroundColor: resolvedBackgroundColor },
+              containerStyle,
             ]}>
             {children}
           </View>

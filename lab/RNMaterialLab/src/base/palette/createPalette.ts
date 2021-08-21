@@ -22,7 +22,7 @@ const DEFAULT_DARK_COLORS: Record<PaletteColor, string> = {
   error: "#CF6679",
 };
 
-const on = (color: string) =>
+export const on = (color: string) =>
   chroma.contrast(color, "white") > 4.5 ? "white" : "black";
 
 export const createPalette = (
