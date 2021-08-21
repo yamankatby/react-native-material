@@ -33,6 +33,8 @@ export interface SurfaceProps extends TouchableCustomFeedbackProps {
 
   borderColor?: Color | string | undefined;
 
+  style?: StyleProp<ViewStyle> | undefined;
+
   containerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
@@ -44,6 +46,7 @@ const Surface: React.FC<SurfaceProps> = ({
   backgroundColor,
   borderWidth = 0,
   borderColor,
+  style,
   containerStyle,
   children,
   ...rest
@@ -104,6 +107,7 @@ const Surface: React.FC<SurfaceProps> = ({
         borderRadius,
         surfaceSize,
         { borderWidth, borderColor: resolvedBorderColor },
+        style,
       ]}>
       <View
         style={[
@@ -127,7 +131,7 @@ const Surface: React.FC<SurfaceProps> = ({
     </View>
   ) : (
     <View
-      style={[surfaceSize]}
+      style={[surfaceSize, style]}
       onLayout={e => {
         setWidth(e.nativeEvent.layout.width);
         setHeight(e.nativeEvent.layout.height);

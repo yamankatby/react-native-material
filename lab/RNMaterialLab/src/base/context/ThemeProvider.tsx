@@ -8,7 +8,7 @@ export interface ThemeProviderProps {
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ theme, children }) => {
   return (
-    <ThemeContext.Provider value={defaultTheme ?? theme}>
+    <ThemeContext.Provider value={theme ?? defaultTheme}>
       {children}
     </ThemeContext.Provider>
   );

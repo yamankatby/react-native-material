@@ -10,11 +10,9 @@ export type Color =
   | "onSurface"
   | "onError";
 
-export type ColorOptions = Color;
+export type ColorOption = Color | string;
 
-const useColor = (
-  color?: ColorOptions | string | undefined
-): string | undefined => {
+const useColor = (color?: ColorOption | undefined): string | undefined => {
   const { palette } = useTheme();
   return useMemo(() => {
     switch (color) {
