@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, TextProps } from "react-native";
-import { TypographyVariant } from "../base";
-import { useTheme } from "../context";
+import { TypographyVariant, useTheme } from "../base";
 
 export interface TypographyProps {
   variant?: TypographyVariant;

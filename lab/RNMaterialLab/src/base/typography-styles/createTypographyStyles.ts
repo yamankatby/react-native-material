@@ -1,4 +1,4 @@
-import { TypographyStyles } from "../../foundation";
+import { TypographyStyles } from "./typographyStyles";
 
 export type TypographyStylesOptions = Partial<TypographyStyles>;
 

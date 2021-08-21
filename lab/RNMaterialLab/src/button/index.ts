@@ -1,7 +1,2 @@
-export { ButtonProps, default as Button } from "./Button";
-export {
-  default as TouchableCustomFeedback,
-  TouchableCustomFeedbackProps,
-  TouchableCustomFeedbackBehavior,
-  TouchableProps,
-} from "./TouchableCustomFeedback";
+export * from "./TouchableCustomFeedback";
+export { default as TouchableCustomFeedback } from "./TouchableCustomFeedback";

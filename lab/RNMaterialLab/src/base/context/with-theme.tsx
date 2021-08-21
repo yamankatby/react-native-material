@@ -2,7 +2,7 @@ import React from "react";
 import { Theme } from "../theme";
 import useTheme from "./use-theme";
 
-export const withTheme = <P extends object>(
+const withTheme = <P extends object>(
   Component: React.ComponentType<P>
 ): React.FC<P & { theme: Theme }> => {
   const theme = useTheme();
@@ -10,3 +10,5 @@ export const withTheme = <P extends object>(
     return <Component {...{ ...props, theme }} />;
   };
 };
+
+export default withTheme;

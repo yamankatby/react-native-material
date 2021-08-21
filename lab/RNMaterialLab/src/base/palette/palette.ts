@@ -1,4 +1,4 @@
-import { Elevation } from "../../foundation";
+import { Elevation } from "../elevations";
 
 export type PaletteColor =
   | "primary"

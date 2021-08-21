@@ -7,10 +7,12 @@ export type NamedStyles<T> = {
   [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
 };
 
-export const useStyleSheet = <T extends NamedStyles<T> | NamedStyles<any>>(
+const useStyleSheet = <T extends NamedStyles<T> | NamedStyles<any>>(
   styles: (theme: Theme) => T,
   deps: DependencyList = []
 ) => {
   const theme = useTheme();
   return useMemo(() => styles(theme), [theme, ...deps]);
 };
+
+export default useStyleSheet;
