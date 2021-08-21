@@ -75,7 +75,7 @@ const AppProvider = () => {
     <ThemeProvider
       theme={createTheme({
         mode: theme === "light" ? "light" : "dark",
-        shapeScheme: { small: { family: "rounded", cornerRadius: 4 } },
+        shapeScheme: { small: { family: "cut", cornerRadius: 4 } },
       })}>
       <App />
     </ThemeProvider>

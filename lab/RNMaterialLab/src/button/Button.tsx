@@ -97,6 +97,7 @@ const Button: React.FC<ButtonProps> = ({
       backgroundColor={variant === "contained" ? paletteColor?.main : undefined}
       borderWidth={variant === "outlined" ? 2 : undefined}
       borderColor={variant === "outlined" ? paletteColor?.main : undefined}
+      elevation={variant === "contained" && !disableElevation ? 2 : 0}
       overlayColor={
         variant === "contained" ? paletteColor?.on : paletteColor?.main
       }

@@ -1,10 +1,11 @@
+import MaskedView from "@react-native-masked-view/masked-view";
 import React, { useMemo, useState } from "react";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import MaskedView from "@react-native-masked-view/masked-view";
 import {
   Color,
   createCornerRadius,
+  Elevation,
   ShapeCategory,
   ShapeCornerRadiusOptions,
   ShapeFamily,
@@ -33,6 +34,8 @@ export interface SurfaceProps extends TouchableCustomFeedbackProps {
 
   borderColor?: Color | string | undefined;
 
+  elevation?: Elevation | undefined;
+
   style?: StyleProp<ViewStyle> | undefined;
 
   containerStyle?: StyleProp<ViewStyle> | undefined;
@@ -46,6 +49,7 @@ const Surface: React.FC<SurfaceProps> = ({
   backgroundColor,
   borderWidth = 0,
   borderColor,
+  elevation,
   style,
   containerStyle,
   children,
@@ -107,6 +111,7 @@ const Surface: React.FC<SurfaceProps> = ({
         borderRadius,
         surfaceSize,
         { borderWidth, borderColor: resolvedBorderColor },
+        theme.elevations[elevation!],
         style,
       ]}>
       <View
@@ -170,6 +175,7 @@ const Surface: React.FC<SurfaceProps> = ({
 
 Surface.defaultProps = {
   category: "small",
+  elevation: 0,
 };
 
 export default Surface;
