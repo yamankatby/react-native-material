@@ -9,7 +9,7 @@ import { ScrollView } from "react-native";
 const TypographyExample: React.FC = () => {
   const styles = useStyleSheet(({ palette }) => ({
     text: {
-      color: palette.primary.main,
+      color: palette.background.on,
     },
   }));
 

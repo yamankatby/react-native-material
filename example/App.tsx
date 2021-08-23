@@ -3,6 +3,21 @@ import {
   useFonts as useLektonFonts,
 } from "@expo-google-fonts/lekton";
 import {
+  LibreFranklin_300Light,
+  LibreFranklin_400Regular,
+  LibreFranklin_500Medium,
+  LibreFranklin_700Bold,
+  useFonts as useLibreFranklinFonts,
+} from "@expo-google-fonts/libre-franklin";
+import {
+  Merriweather_300Light,
+  Merriweather_400Regular,
+  Merriweather_400Regular_Italic,
+  Merriweather_700Bold_Italic,
+  Merriweather_900Black_Italic,
+  useFonts as useMerriweatherFonts,
+} from "@expo-google-fonts/merriweather";
+import {
   Montserrat_400Regular,
   Montserrat_500Medium,
   Montserrat_600SemiBold,
@@ -12,22 +27,23 @@ import {
 import {
   Raleway_300Light,
   Raleway_400Regular,
-  Raleway_600SemiBold,
   Raleway_500Medium,
+  Raleway_600SemiBold,
   useFonts as useRalewayFonts,
 } from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import Navigator from "./Navigator";
-import basil from "./themes/crane";
+import theme from "./themes/fortnightly";
 
 const App = () => (
-  <ThemeProvider theme={basil}>
+  <ThemeProvider theme={theme}>
     <Navigator />
   </ThemeProvider>
 );
 
 const FontLoader = () => {
+  // Basil
   const [montserratLoaded] = useMontserratFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
@@ -39,14 +55,39 @@ const FontLoader = () => {
     Lekton_700Bold,
   });
 
+  // Crane
   const [ralewayLoaded] = useRalewayFonts({
     Raleway_300Light,
     Raleway_400Regular,
+    Merriweather_400Regular_Italic,
     Raleway_600SemiBold,
     Raleway_500Medium,
   });
 
-  if (!montserratLoaded || !lektonLoaded || !ralewayLoaded) return null;
+  // Fortnightly
+
+  const [merriweatherLoaded] = useMerriweatherFonts({
+    Merriweather_900Black_Italic,
+    Merriweather_700Bold_Italic,
+    Merriweather_400Regular,
+    Merriweather_300Light,
+  });
+
+  const [libreFranklinLoaded] = useLibreFranklinFonts({
+    LibreFranklin_300Light,
+    LibreFranklin_400Regular,
+    LibreFranklin_500Medium,
+    LibreFranklin_700Bold,
+  });
+
+  if (
+    !montserratLoaded ||
+    !lektonLoaded ||
+    !ralewayLoaded ||
+    !merriweatherLoaded ||
+    !libreFranklinLoaded
+  )
+    return null;
 
   return <App />;
 };

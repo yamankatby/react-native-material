@@ -8,8 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo-google-fonts/inter": "^0.2.0",
     "@expo-google-fonts/lekton": "^0.2.0",
+    "@expo-google-fonts/libre-franklin": "^0.2.0",
+    "@expo-google-fonts/merriweather": "^0.2.0",
     "@expo-google-fonts/montserrat": "^0.2.0",
     "@expo-google-fonts/raleway": "^0.2.0",
     "@react-native-masked-view/masked-view": "0.2.4",
