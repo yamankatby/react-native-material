@@ -48,14 +48,35 @@ import {
 } from "@expo-google-fonts/work-sans";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
+import { Provider } from "react-redux";
+import { store, useAppSelector } from "./config/store";
 import Navigator from "./Navigator";
-import theme from "./themes/shrine";
+import basil from "./themes/basil";
+import crane from "./themes/crane";
+import fortnightly from "./themes/fortnightly";
+import owl from "./themes/owl";
+import shrine from "./themes/shrine";
+import reply from "./themes/shrine";
 
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <Navigator />
-  </ThemeProvider>
-);
+const App = () => {
+  const activeTheme = useAppSelector((state) => state.theme);
+  return (
+    <ThemeProvider
+      theme={
+        {
+          basil,
+          crane,
+          fortnightly,
+          owl,
+          reply,
+          shrine,
+        }[activeTheme]
+      }
+    >
+      <Navigator />
+    </ThemeProvider>
+  );
+};
 
 const FontLoader = () => {
   // Basil
@@ -125,7 +146,11 @@ const FontLoader = () => {
   )
     return null;
 
-  return <App />;
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 };
 
 export default FontLoader;

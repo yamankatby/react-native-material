@@ -1,6 +1,6 @@
 import { createTheme } from "@react-native-material/lab";
 
-const reply = createTheme({
+const shrine = createTheme({
   palette: {
     primary: {
       main: "#FEDBD0",
@@ -82,4 +82,4 @@ const reply = createTheme({
   },
 });
 
-export default reply;
+export default shrine;
