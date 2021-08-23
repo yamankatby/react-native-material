@@ -1,10 +1,5 @@
 import { createTheme } from "@react-native-material/lab";
 
-// WorkSans_600SemiBold,
-// WorkSans_400Regular,
-// WorkSans_700Bold,
-// WorkSans_300Light,
-
 const reply = createTheme({
   palette: {
     primary: {

@@ -32,23 +32,24 @@ import {
   useFonts as useRalewayFonts,
 } from "@expo-google-fonts/raleway";
 import {
-  Rubik_700Bold,
-  Rubik_500Medium,
+  Rubik_300Light,
   Rubik_400Regular,
+  Rubik_500Medium,
+  Rubik_700Bold,
   useFonts as useRubikFonts,
 } from "@expo-google-fonts/rubik";
 import {
-  WorkSans_600SemiBold,
-  WorkSans_400Regular,
-  WorkSans_700Bold,
-  WorkSans_500Medium,
-  WorkSans_300Light,
   useFonts as useWorkSansFonts,
+  WorkSans_300Light,
+  WorkSans_400Regular,
+  WorkSans_500Medium,
+  WorkSans_600SemiBold,
+  WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import Navigator from "./Navigator";
-import theme from "./themes/reply";
+import theme from "./themes/shrine";
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -99,6 +100,7 @@ const FontLoader = () => {
   const [rubikLoaded] = useRubikFonts({
     Rubik_700Bold,
     Rubik_500Medium,
+    Rubik_300Light,
     Rubik_400Regular,
   });
 
