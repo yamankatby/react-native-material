@@ -8,11 +8,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.0",
+    "@expo-google-fonts/lekton": "^0.2.0",
+    "@expo-google-fonts/montserrat": "^0.2.0",
     "@react-native-masked-view/masked-view": "0.2.4",
     "@react-native-material/lab": "^1.0.0-alpha.3",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "expo": "~42.0.1",
+    "expo-font": "~9.2.1",
     "expo-status-bar": "~1.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
