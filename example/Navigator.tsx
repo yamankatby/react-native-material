@@ -33,10 +33,9 @@ const Navigator: React.FC = () => {
           },
           headerTitleStyle: {
             fontFamily: theme.typographyStyles.h6.fontFamily,
-            fontSize: theme.typographyStyles.h6.fontSize,
           },
           headerBackTitleStyle: {
-            fontFamily: theme.typographyStyles.h5.fontFamily,
+            fontFamily: theme.typographyStyles.h6.fontFamily,
           },
         }}
       >

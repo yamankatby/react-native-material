@@ -31,10 +31,16 @@ import {
   Raleway_600SemiBold,
   useFonts as useRalewayFonts,
 } from "@expo-google-fonts/raleway";
+import {
+  Rubik_700Bold,
+  Rubik_500Medium,
+  Rubik_400Regular,
+  useFonts as useRubikFonts,
+} from "@expo-google-fonts/rubik";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import Navigator from "./Navigator";
-import theme from "./themes/fortnightly";
+import theme from "./themes/owl";
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -80,12 +86,21 @@ const FontLoader = () => {
     LibreFranklin_700Bold,
   });
 
+  // Owl
+
+  const [rubikLoaded] = useRubikFonts({
+    Rubik_700Bold,
+    Rubik_500Medium,
+    Rubik_400Regular,
+  });
+
   if (
     !montserratLoaded ||
     !lektonLoaded ||
     !ralewayLoaded ||
     !merriweatherLoaded ||
-    !libreFranklinLoaded
+    !libreFranklinLoaded ||
+    !rubikLoaded
   )
     return null;
 

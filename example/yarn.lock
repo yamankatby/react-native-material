@@ -1157,6 +1157,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/raleway/-/raleway-0.2.0.tgz#28d2664943e6019f27653f02e9ee86afb64d4b04"
   integrity sha512-5b6MABfcPcKSxtVGBM7pQBIU6hbxVuuGMrZgV6V2HWUENmUjSYHJszrorbkRaC6qkV6K2DWtGFksh4iEskeXIw==
 
+"@expo-google-fonts/rubik@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/rubik/-/rubik-0.2.0.tgz#b8bcc8fb9804cd22dcfe1c456fd07fa20bd541fd"
+  integrity sha512-l3wg0RN7ma9YoFQkILkY/UEmAtlhsxW7884SAr/oM+yMnQWmYcmihfd8wn4b25xWo1Fy6vZ1dTFX2GzDHIJ/bA==
+
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
