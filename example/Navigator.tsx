@@ -31,6 +31,13 @@ const Navigator: React.FC = () => {
           headerStyle: {
             backgroundColor: theme.palette.primary.main,
           },
+          headerTitleStyle: {
+            fontFamily: theme.typographyStyles.h6.fontFamily,
+            fontSize: theme.typographyStyles.h6.fontSize,
+          },
+          headerBackTitleStyle: {
+            fontFamily: theme.typographyStyles.h5.fontFamily,
+          },
         }}
       >
         <Stack.Screen name="Home" component={Home} />
