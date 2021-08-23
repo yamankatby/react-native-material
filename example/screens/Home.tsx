@@ -1,6 +1,7 @@
 import { Surface } from "@react-native-material/lab";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ScrollView, View, Image } from "react-native";
+import { ScrollView, View, Image, Button } from "react-native";
 
 const themes = [
   require("../assets/themes/basil.png"),
@@ -13,6 +14,7 @@ const themes = [
 ];
 
 const Home = () => {
+  const navigation = useNavigation();
   return (
     <View style={{ marginTop: 16 }}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -26,6 +28,12 @@ const Home = () => {
           </React.Fragment>
         ))}
       </ScrollView>
+
+      <Button title="Surface" onPress={() => navigation.navigate("Surface")} />
+      <Button
+        title="Typography"
+        onPress={() => navigation.navigate("Typography")}
+      />
     </View>
   );
 };

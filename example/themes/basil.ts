@@ -1,6 +1,6 @@
 import { createTheme } from "@react-native-material/lab";
 
-const basilTheme = createTheme({
+const basil = createTheme({
   palette: {
     primary: {
       main: "#356859",
@@ -15,6 +15,11 @@ const basilTheme = createTheme({
       main: "#B9E4C9",
     },
   },
+  shapeScheme: {
+    small: { family: "cut", cornerRadius: 0 },
+    medium: { family: "cut", cornerRadius: 0 },
+    large: { family: "cut", cornerRadius: 0 },
+  },
 });
 
-export default basilTheme;
+export default basil;
