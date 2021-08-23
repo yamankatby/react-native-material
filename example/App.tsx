@@ -46,7 +46,7 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
-import { ThemeProvider } from "@react-native-material/lab";
+import { createTheme, ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import { Provider } from "react-redux";
 import { store, useAppSelector } from "./config/store";
@@ -55,8 +55,8 @@ import basil from "./themes/basil";
 import crane from "./themes/crane";
 import fortnightly from "./themes/fortnightly";
 import owl from "./themes/owl";
+import reply from "./themes/reply";
 import shrine from "./themes/shrine";
-import reply from "./themes/shrine";
 
 const App = () => {
   const activeTheme = useAppSelector((state) => state.theme);
@@ -70,6 +70,7 @@ const App = () => {
           owl,
           reply,
           shrine,
+          default: createTheme(),
         }[activeTheme]
       }
     >

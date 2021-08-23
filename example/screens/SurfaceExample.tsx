@@ -34,6 +34,7 @@ const SurfaceExample: React.FC = () => {
               justifyContent: "center",
               alignItems: "center",
             }}
+            onPress={() => {}}
             overlayColor={theme.palette.surface.on}
             backgroundColor={theme.palette.elevationColors[item]}
           >

@@ -3,6 +3,7 @@ import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import ButtonExample from "./screens/ButtonExample";
 import Home from "./screens/Home";
 import SurfaceExample from "./screens/SurfaceExample";
 import TypographyExample from "./screens/TypographyExample";
@@ -42,6 +43,7 @@ const Navigator: React.FC = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Surface" component={SurfaceExample} />
         <Stack.Screen name="Typography" component={TypographyExample} />
+        <Stack.Screen name="Button" component={ButtonExample} />
       </Stack.Navigator>
     </NavigationContainer>
   );

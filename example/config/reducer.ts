@@ -7,7 +7,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  theme: "basil",
+  theme: "default",
 };
 
 const reducer = createReducer(initialState, (builder) =>

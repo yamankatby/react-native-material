@@ -6,6 +6,7 @@ import { setTheme } from "../config/reducer";
 import { useAppDispatch } from "../config/store";
 
 const themes = [
+  { name: "default", source: require("../assets/themes/basil.png") },
   { name: "basil", source: require("../assets/themes/basil.png") },
   { name: "crane", source: require("../assets/themes/crane.png") },
   { name: "fortnightly", source: require("../assets/themes/fortnightly.png") },
@@ -37,6 +38,7 @@ const Home = () => {
         title="Typography"
         onPress={() => navigation.navigate("Typography")}
       />
+      <Button title="Button" onPress={() => navigation.navigate("Button")} />
     </View>
   );
 };
