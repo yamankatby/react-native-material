@@ -37,10 +37,18 @@ import {
   Rubik_400Regular,
   useFonts as useRubikFonts,
 } from "@expo-google-fonts/rubik";
+import {
+  WorkSans_600SemiBold,
+  WorkSans_400Regular,
+  WorkSans_700Bold,
+  WorkSans_500Medium,
+  WorkSans_300Light,
+  useFonts as useWorkSansFonts,
+} from "@expo-google-fonts/work-sans";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import Navigator from "./Navigator";
-import theme from "./themes/owl";
+import theme from "./themes/reply";
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -94,13 +102,24 @@ const FontLoader = () => {
     Rubik_400Regular,
   });
 
+  // Reply
+
+  const [workSansLoaded] = useWorkSansFonts({
+    WorkSans_600SemiBold,
+    WorkSans_400Regular,
+    WorkSans_500Medium,
+    WorkSans_700Bold,
+    WorkSans_300Light,
+  });
+
   if (
     !montserratLoaded ||
     !lektonLoaded ||
     !ralewayLoaded ||
     !merriweatherLoaded ||
     !libreFranklinLoaded ||
-    !rubikLoaded
+    !rubikLoaded ||
+    !workSansLoaded
   )
     return null;
 
