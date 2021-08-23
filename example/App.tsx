@@ -9,10 +9,17 @@ import {
   Montserrat_700Bold,
   useFonts as useMontserratFonts,
 } from "@expo-google-fonts/montserrat";
+import {
+  Raleway_300Light,
+  Raleway_400Regular,
+  Raleway_600SemiBold,
+  Raleway_500Medium,
+  useFonts as useRalewayFonts,
+} from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "@react-native-material/lab";
 import React from "react";
 import Navigator from "./Navigator";
-import basil from "./themes/basil";
+import basil from "./themes/crane";
 
 const App = () => (
   <ThemeProvider theme={basil}>
@@ -32,7 +39,14 @@ const FontLoader = () => {
     Lekton_700Bold,
   });
 
-  if (!montserratLoaded || !lektonLoaded) return null;
+  const [ralewayLoaded] = useRalewayFonts({
+    Raleway_300Light,
+    Raleway_400Regular,
+    Raleway_600SemiBold,
+    Raleway_500Medium,
+  });
+
+  if (!montserratLoaded || !lektonLoaded || !ralewayLoaded) return null;
 
   return <App />;
 };

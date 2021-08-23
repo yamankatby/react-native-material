@@ -1147,6 +1147,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/montserrat/-/montserrat-0.2.0.tgz#5408c3c287f25bda14a77a8dd98c510e27df773a"
   integrity sha512-wOdsgn1HCZlyqZ5MpdxGR1NOgJvTcDlOtW760gPKSrRnfB+HAC8YsCaRz+TEtARcjINmt7EjuwVv1T4Hty+jCQ==
 
+"@expo-google-fonts/raleway@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/raleway/-/raleway-0.2.0.tgz#28d2664943e6019f27653f02e9ee86afb64d4b04"
+  integrity sha512-5b6MABfcPcKSxtVGBM7pQBIU6hbxVuuGMrZgV6V2HWUENmUjSYHJszrorbkRaC6qkV6K2DWtGFksh4iEskeXIw==
+
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
