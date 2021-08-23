@@ -1,6 +1,6 @@
 {
   "name": "@react-native-material/lab",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "chroma-js": "^2.1.2"
   },
   "peerDependencies": {
+    "@react-native-masked-view/masked-view": "^0.2.6",
     "react": "^17.0.2",
     "react-native": "^0.64.2",
     "react-native-svg": "^12.1.1"
