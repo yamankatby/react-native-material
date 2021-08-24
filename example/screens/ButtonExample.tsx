@@ -1,4 +1,4 @@
-import { Button } from "@react-native-material/lab";
+import { Button } from "../lab";
 import React from "react";
 import { ScrollView } from "react-native";
 

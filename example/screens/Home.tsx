@@ -1,4 +1,4 @@
-import { Surface } from "@react-native-material/lab";
+import { Surface } from "../lab";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Button, Image, ScrollView, View } from "react-native";

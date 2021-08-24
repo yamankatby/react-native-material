@@ -1,9 +1,4 @@
-import {
-  Elevation,
-  Surface,
-  Typography,
-  useTheme,
-} from "@react-native-material/lab";
+import { Elevation, Surface, Typography, useTheme } from "../lab";
 import React from "react";
 import { FlatList, View } from "react-native";
 

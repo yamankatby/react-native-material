@@ -1,4 +1,4 @@
-import { createTheme } from "@react-native-material/lab";
+import { createTheme } from "../lab";
 
 const shrine = createTheme({
   palette: {

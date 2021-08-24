@@ -1,8 +1,4 @@
-import {
-  Typography,
-  usePaletteColor,
-  useStyleSheet,
-} from "@react-native-material/lab";
+import { Typography, usePaletteColor, useStyleSheet } from "../lab";
 import React from "react";
 import { ScrollView } from "react-native";
 

@@ -1,4 +1,4 @@
-import { useTheme } from "@react-native-material/lab";
+import { useTheme } from "./lab";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";

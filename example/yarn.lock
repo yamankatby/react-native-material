@@ -1545,13 +1545,6 @@
   resolved "https://registry.yarnpkg.com/@react-native-masked-view/masked-view/-/masked-view-0.2.4.tgz#305a548abd47dee494a38f90016432d3a6e4164c"
   integrity sha512-2Y9OXWHRutYmdyW+bNMaFTW8uTBpaaK20xdIFoVtqahEOO9++B+ut3CAWKPZcdRtb9ikG0LUKChGqMeocg0PGA==
 
-"@react-native-material/lab@^1.0.0-alpha.3":
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@react-native-material/lab/-/lab-1.0.0-alpha.3.tgz#f5ac7140cb95cac2f5618a89de9d770918d13ab8"
-  integrity sha512-GCz+Rw8kgaEzMFr/8VBxMF9hCJOOKuy0EB5/jbpFYXJ3VSCCr0NoLFqwRC9LzI1YcMX6d6tSlJ/ZNyQyQt0HJw==
-  dependencies:
-    chroma-js "^2.1.2"
-
 "@react-navigation/core@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-6.0.1.tgz#4424ee1f83e2e305ef80d27c2778fb82fba852a0"

@@ -46,7 +46,7 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
-import { createTheme, ThemeProvider } from "@react-native-material/lab";
+import { createTheme, ThemeProvider } from "./lab";
 import React from "react";
 import { Provider } from "react-redux";
 import { store, useAppSelector } from "./config/store";
