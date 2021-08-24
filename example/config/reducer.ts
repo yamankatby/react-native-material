@@ -1,4 +1,5 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
+import { requireNativeComponent } from "react-native";
 
 export const setTheme = createAction<string>("SET_THEME");
 
@@ -17,3 +18,9 @@ const reducer = createReducer(initialState, (builder) =>
 );
 
 export default reducer;
+
+// color Scheme
+// elevation Scheme
+// typography Scheme
+// shape Scheme
+// motion Scheme
