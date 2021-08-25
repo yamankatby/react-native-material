@@ -10,6 +10,10 @@ const Home: React.FC = () => {
         title="Color Scheme"
         onPress={() => navigation.navigate("ColorScheme")}
       />
+      <Button
+        title="Typography Scheme"
+        onPress={() => navigation.navigate("TypographyScheme")}
+      />
     </View>
   );
 };
