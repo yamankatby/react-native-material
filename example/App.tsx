@@ -1,30 +1,10 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { useEffect } from "react";
-import { Text, useColorScheme, View } from "react-native";
-import { darkTheme, defaultTheme, ThemeProvider, useStyles } from "./src";
+import { useColorScheme } from "react-native";
+import { darkTheme, defaultTheme, ThemeProvider } from "./core";
+import Navigator from "./src/config/Navigator";
 
 const App = () => {
-  const styles = useStyles(({ colorScheme }) => ({
-    container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: colorScheme.background,
-    },
-    text: {
-      color: colorScheme.onBackground,
-    },
-  }));
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        Open up App.tsx to start working on your app!
-      </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <Navigator />;
 };
 
 const AppProvider = () => {
