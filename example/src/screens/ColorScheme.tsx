@@ -24,7 +24,7 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
         flex: 1,
         justifyContent: "space-between",
         height: row ? 100 : 186,
-        margin: 1,
+        margin: 0.5,
         padding: 16,
         backgroundColor: color,
       }}

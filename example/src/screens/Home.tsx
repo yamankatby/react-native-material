@@ -14,6 +14,10 @@ const Home: React.FC = () => {
         title="Typography Scheme"
         onPress={() => navigation.navigate("TypographyScheme")}
       />
+      <Button
+        title="Shape Scheme"
+        onPress={() => navigation.navigate("ShapeScheme")}
+      />
     </View>
   );
 };
