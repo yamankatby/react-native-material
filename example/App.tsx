@@ -1,19 +1,21 @@
 import React from "react";
-import { useColorScheme } from "react-native";
-import { darkTheme, defaultTheme, ThemeProvider } from "./core";
+import { ThemeProvider } from "./core";
 import Navigator from "./src/config/Navigator";
+import { basil } from "./src/config/themes/basil";
+import { crane } from "./src/config/themes/crane";
+import { fortnightly } from "./src/config/themes/fortnightly";
+import { owl } from "./src/config/themes/owl";
+import { reply } from "./src/config/themes/reply";
+import { shrine } from "./src/config/themes/shrine";
 
 const App = () => {
   return <Navigator />;
 };
 
-const AppProvider = () => {
-  const colorScheme = useColorScheme();
-  return (
-    <ThemeProvider theme={colorScheme === "light" ? defaultTheme : darkTheme}>
-      <App />
-    </ThemeProvider>
-  );
-};
+const AppProvider = () => (
+  <ThemeProvider theme={reply}>
+    <App />
+  </ThemeProvider>
+);
 
 export default AppProvider;

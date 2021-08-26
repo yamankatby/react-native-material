@@ -81,12 +81,7 @@ const ColorScheme: React.FC = () => {
           <View style={{ padding: 15 }}>
             <View>
               <View style={{ flexDirection: "row" }}>
-                <Preview
-                  index={1}
-                  name="Primary"
-                  color={colorScheme.primary}
-                  on={colorScheme.onPrimary}
-                />
+                <Preview index={1} name="Primary" color={colorScheme.primary} />
                 <Preview
                   index={2}
                   name="Primary Variant"
@@ -98,7 +93,6 @@ const ColorScheme: React.FC = () => {
                   index={3}
                   name="Secondary"
                   color={colorScheme.secondary}
-                  on={colorScheme.onSecondary}
                 />
                 <Preview
                   index={4}
@@ -112,23 +106,15 @@ const ColorScheme: React.FC = () => {
                 index={5}
                 name="Background"
                 color={colorScheme.background}
-                on={colorScheme.onBackground}
                 row
               />
               <Preview
                 index={6}
                 name="Surface"
                 color={colorScheme.surface}
-                on={colorScheme.onSurface}
                 row
               />
-              <Preview
-                index={7}
-                name="Error"
-                color={colorScheme.error}
-                on={colorScheme.onError}
-                row
-              />
+              <Preview index={7} name="Error" color={colorScheme.error} row />
             </View>
             <View style={{ marginTop: 15 }}>
               <View style={{ flexDirection: "row" }}>
