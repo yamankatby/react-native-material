@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "./core";
+import { darkTheme, ThemeProvider } from "./core";
 import Navigator from "./src/config/Navigator";
 import { basil } from "./src/config/themes/basil";
 import { crane } from "./src/config/themes/crane";
@@ -13,7 +13,7 @@ const App = () => {
 };
 
 const AppProvider = () => (
-  <ThemeProvider theme={reply}>
+  <ThemeProvider theme={shrine}>
     <App />
   </ThemeProvider>
 );

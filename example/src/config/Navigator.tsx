@@ -11,23 +11,11 @@ const Stack = createNativeStackNavigator();
 const Navigator: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="ColorScheme"
-          options={{ headerShown: false }}
-          component={ColorScheme}
-        />
-        <Stack.Screen
-          name="TypographyScheme"
-          options={{ headerShown: false }}
-          component={TypographyScheme}
-        />
-        <Stack.Screen
-          name="ShapeScheme"
-          options={{ headerShown: false }}
-          component={ShapeScheme}
-        />
+        <Stack.Screen name="ColorScheme" component={ColorScheme} />
+        <Stack.Screen name="TypographyScheme" component={TypographyScheme} />
+        <Stack.Screen name="ShapeScheme" component={ShapeScheme} />
       </Stack.Navigator>
     </NavigationContainer>
   );
