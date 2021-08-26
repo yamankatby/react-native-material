@@ -1,17 +1,16 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import chroma from "chroma-js";
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
+  Animated,
   Platform,
   StatusBar,
   Text,
-  Animated,
-  View,
-  Touchable,
   TouchableOpacity,
+  View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useStyles, useTheme } from "../../core";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Surface, useStyles, useTheme } from "../../core";
 
 const Home: React.FC = () => {
   const insets = useSafeAreaInsets();
@@ -34,7 +33,7 @@ const Home: React.FC = () => {
   };
 
   const styles = useStyles(
-    ({ colorScheme, typographyScheme }) => ({
+    ({ colorScheme }) => ({
       container: {
         flex: 1,
         backgroundColor: colorScheme.primary,
@@ -54,11 +53,6 @@ const Home: React.FC = () => {
         paddingHorizontal: 8,
       },
       frontContainer: {
-        flex: 1,
-        backgroundColor: colorScheme.background,
-        borderTopStartRadius: 12,
-        borderTopEndRadius: 12,
-        paddingHorizontal: 16,
         position: "absolute",
         start: 0,
         end: 0,
@@ -196,33 +190,48 @@ const Home: React.FC = () => {
       </View>
 
       <Animated.View style={[styles.frontContainer, { top: fadeAnim }]}>
-        <View style={styles.subheader}>
-          <Text
-            style={[
-              theme.typographyScheme.subtitle1,
-              { color: theme.colorScheme.onBackground },
-            ]}
-          >
-            Components
-          </Text>
-        </View>
+        <Surface
+          style={{
+            flex: 1,
+            backgroundColor: theme.colorScheme.background,
+            borderBottomStartRadius: 0,
+            borderBottomEndRadius: 0,
+            paddingHorizontal: 16,
+          }}
+        >
+          <View style={styles.subheader}>
+            <Text
+              style={[
+                theme.typographyScheme.subtitle1,
+                { color: theme.colorScheme.onBackground },
+              ]}
+            >
+              Components
+            </Text>
+          </View>
+        </Surface>
       </Animated.View>
 
-      <View
+      <Surface
         style={{
           position: "absolute",
-          justifyContent: 'center',
-          alignItems: 'center',
+          justifyContent: "center",
+          alignItems: "center",
           bottom: insets.bottom + 16,
           end: 16,
-          width: 58,
-          height: 58,
-          borderRadius: 58 / 2,
+          width: theme.shapeScheme.small.family === "rounded" ? 56 : 68,
+          height: theme.shapeScheme.small.family === "rounded" ? 56 : 68,
+          borderRadius:
+            theme.shapeScheme.small.family === "rounded" ? 56 / 2 : 68 / 2,
           backgroundColor: theme.colorScheme.secondary,
         }}
       >
-        <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary}/>
-        </View>
+        <MaterialIcons
+          name="star"
+          size={24}
+          color={theme.colorScheme.onSecondary}
+        />
+      </Surface>
     </View>
   );
 };
