@@ -16,4 +16,33 @@ export const crane: Theme = {
     onSurface: "#000000",
     onError: "#000000",
   },
+  shapeScheme: {
+    small: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 4,
+        topEnd: 4,
+        bottomStart: 4,
+        bottomEnd: 4,
+      },
+    },
+    medium: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 16,
+        topEnd: 16,
+        bottomStart: 16,
+        bottomEnd: 16,
+      },
+    },
+    large: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 20,
+        topEnd: 20,
+        bottomStart: 20,
+        bottomEnd: 20,
+      },
+    },
+  },
 };

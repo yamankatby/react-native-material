@@ -16,4 +16,33 @@ export const basil: Theme = {
     onSurface: "#356859",
     onError: "#FFFFFF",
   },
+  shapeScheme: {
+    small: {
+      family: "cut",
+      borderRadius: {
+        topStart: 0,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+    medium: {
+      family: "cut",
+      borderRadius: {
+        topStart: 0,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+    large: {
+      family: "cut",
+      borderRadius: {
+        topStart: 0,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+  },
 };

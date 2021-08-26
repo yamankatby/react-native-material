@@ -16,4 +16,33 @@ export const shrine: Theme = {
     onSurface: "#442C2E",
     onError: "#FFFFFF",
   },
+  shapeScheme: {
+    small: {
+      family: "cut",
+      borderRadius: {
+        topStart: 4,
+        topEnd: 4,
+        bottomStart: 4,
+        bottomEnd: 4,
+      },
+    },
+    medium: {
+      family: "cut",
+      borderRadius: {
+        topStart: 8,
+        topEnd: 8,
+        bottomStart: 8,
+        bottomEnd: 8,
+      },
+    },
+    large: {
+      family: "cut",
+      borderRadius: {
+        topStart: 24,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+  },
 };

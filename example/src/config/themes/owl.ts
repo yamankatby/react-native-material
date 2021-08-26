@@ -16,4 +16,33 @@ export const owl: Theme = {
     onSurface: "#000000",
     onError: "#FFFFFF",
   },
+  shapeScheme: {
+    small: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 0,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+    medium: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 0,
+        topEnd: 0,
+        bottomStart: 0,
+        bottomEnd: 0,
+      },
+    },
+    large: {
+      family: "rounded",
+      borderRadius: {
+        topStart: 16,
+        topEnd: 16,
+        bottomStart: 16,
+        bottomEnd: 16,
+      },
+    },
+  },
 };

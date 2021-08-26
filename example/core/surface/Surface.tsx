@@ -148,7 +148,7 @@ export const CutSurface: React.FC<CutSurfaceProps> = ({
       }}
       {...rest}
     >
-      <Svg style={{ position: "absolute" }}>
+      <Svg style={StyleSheet.absoluteFillObject}>
         <Polygon points={points} fill={backgroundColor?.toString()} />
       </Svg>
       {children}

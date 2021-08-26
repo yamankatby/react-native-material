@@ -7,6 +7,7 @@ import {
   StatusBar,
   Text,
   TouchableOpacity,
+  StyleSheet,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -108,32 +109,33 @@ const Home: React.FC = () => {
           setHeight(e.nativeEvent.layout.height);
         }}
       >
-        <View
+        <Surface
           style={{
-            flexDirection: "row",
-            alignItems: "center",
             backgroundColor: chroma(theme.colorScheme.onPrimary)
               .alpha(0.15)
               .hex(),
-            padding: 8,
-            borderRadius: 4,
             marginTop: 8,
           }}
         >
-          <MaterialIcons
-            name="palette"
-            size={24}
-            color={theme.colorScheme.onPrimary}
-          />
-          <Text
-            style={[
-              theme.typographyScheme.subtitle2,
-              { marginStart: 32, color: theme.colorScheme.onPrimary },
-            ]}
+          <View
+            style={{ padding: 8, flexDirection: "row", alignItems: "center" }}
           >
-            Color Scheme
-          </Text>
-        </View>
+            <MaterialIcons
+              name="palette"
+              size={24}
+              color={theme.colorScheme.onPrimary}
+            />
+            <Text
+              style={[
+                theme.typographyScheme.subtitle2,
+                { marginStart: 32, color: theme.colorScheme.onPrimary },
+              ]}
+            >
+              Color Scheme
+            </Text>
+          </View>
+        </Surface>
+
         <View
           style={{
             flexDirection: "row",
@@ -194,9 +196,10 @@ const Home: React.FC = () => {
           style={{
             flex: 1,
             backgroundColor: theme.colorScheme.background,
+            borderTopStartRadius: 12,
+            borderTopEndRadius: 12,
             borderBottomStartRadius: 0,
             borderBottomEndRadius: 0,
-            paddingHorizontal: 16,
           }}
         >
           <View style={styles.subheader}>
