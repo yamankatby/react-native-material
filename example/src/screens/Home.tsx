@@ -12,8 +12,11 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Surface, useStyles, useTheme } from "../../core";
+import { useAppSelector } from "../config/store";
+import { select } from "../config/utilities";
 
 const Home: React.FC = () => {
+  const currentTheme = useAppSelector((state) => state.theme);
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
@@ -196,10 +199,30 @@ const Home: React.FC = () => {
           style={{
             flex: 1,
             backgroundColor: theme.colorScheme.background,
-            borderTopStartRadius: 12,
-            borderTopEndRadius: 12,
             borderBottomStartRadius: 0,
             borderBottomEndRadius: 0,
+            ...select(currentTheme, {
+              crane: {
+                borderTopStartRadius: 20,
+                borderTopEndRadius: 20,
+              },
+              shrine: {
+                borderTopStartRadius: 24,
+                borderTopEndRadius: 0,
+              },
+              owl: {
+                borderTopStartRadius: 24,
+                borderTopEndRadius: 0,
+              },
+              reply: {
+                borderTopStartRadius: 12,
+                borderTopEndRadius: 12,
+              },
+              default: {
+                borderTopStartRadius: 16,
+                borderTopEndRadius: 16,
+              },
+            }),
           }}
         >
           <View style={styles.subheader}>
