@@ -1132,6 +1132,41 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@expo-google-fonts/lekton@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/lekton/-/lekton-0.2.0.tgz#848fc89c0ef2360968ad6e187b2c130c6bdb2533"
+  integrity sha512-10rV0WNUUGikOF2Q2v11QLiYWTd0QVlbMUVBLd70gNGHhyLu50G5GdnZF4mtvV7nXiZaqrDPKJ+n8FKCuzFCZQ==
+
+"@expo-google-fonts/libre-franklin@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/libre-franklin/-/libre-franklin-0.2.0.tgz#85cc6a6f447a42be104a63c3039146d269d610e1"
+  integrity sha512-aNKZF/HtVQ/7WRNuCfx6kDObd2Te04BYd0zh/gdzype49Cqeo7y14WHcJEaoHrZxzX1DwsdMlYNrLMS0KuuYfg==
+
+"@expo-google-fonts/merriweather@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/merriweather/-/merriweather-0.2.0.tgz#61a201036bcb90799f58fe741c49244412931e93"
+  integrity sha512-75Ma4Om5YICJz08sT6QqcME9U59EwlJZHEXJEdWrQ8K3sC10zOyarTKiq9Se5Q8S27XfKYGSmw7XTWSD4FeUmA==
+
+"@expo-google-fonts/montserrat@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/montserrat/-/montserrat-0.2.0.tgz#5408c3c287f25bda14a77a8dd98c510e27df773a"
+  integrity sha512-wOdsgn1HCZlyqZ5MpdxGR1NOgJvTcDlOtW760gPKSrRnfB+HAC8YsCaRz+TEtARcjINmt7EjuwVv1T4Hty+jCQ==
+
+"@expo-google-fonts/raleway@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/raleway/-/raleway-0.2.0.tgz#28d2664943e6019f27653f02e9ee86afb64d4b04"
+  integrity sha512-5b6MABfcPcKSxtVGBM7pQBIU6hbxVuuGMrZgV6V2HWUENmUjSYHJszrorbkRaC6qkV6K2DWtGFksh4iEskeXIw==
+
+"@expo-google-fonts/rubik@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/rubik/-/rubik-0.2.0.tgz#b8bcc8fb9804cd22dcfe1c456fd07fa20bd541fd"
+  integrity sha512-l3wg0RN7ma9YoFQkILkY/UEmAtlhsxW7884SAr/oM+yMnQWmYcmihfd8wn4b25xWo1Fy6vZ1dTFX2GzDHIJ/bA==
+
+"@expo-google-fonts/work-sans@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/work-sans/-/work-sans-0.2.0.tgz#07f4ebfa85468cb9f6dbd3e23131dfbfc77ef652"
+  integrity sha512-labuottehLLiUs/tIQqYYB8fBLu3byo6cpb1i2MFGAu0NEL6ArSTxTF6+XNdbJpH2tvMNzfbyNbnE1n+cO0m3A==
+
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"

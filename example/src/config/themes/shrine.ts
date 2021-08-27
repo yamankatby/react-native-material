@@ -45,4 +45,60 @@ export const shrine: Theme = {
       },
     },
   },
+  typographyScheme: {
+    h1: {
+      fontFamily: "Rubik_300Light",
+      fontSize: 96,
+    },
+    h2: {
+      fontFamily: "Rubik_300Light",
+      fontSize: 60,
+    },
+    h3: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 48,
+    },
+    h4: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 34,
+    },
+    h5: {
+      fontFamily: "Rubik_500Medium",
+      fontSize: 24,
+    },
+    h6: {
+      fontFamily: "Rubik_500Medium",
+      fontSize: 20,
+    },
+    subtitle1: {
+      fontFamily: "Rubik_500Medium",
+      fontSize: 16,
+    },
+    subtitle2: {
+      fontFamily: "Rubik_500Medium",
+      fontSize: 14,
+    },
+    body1: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 16,
+    },
+    body2: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 14,
+    },
+    button: {
+      fontFamily: "Rubik_500Medium",
+      fontSize: 14,
+      textTransform: "uppercase",
+    },
+    caption: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 12,
+    },
+    overline: {
+      fontFamily: "Rubik_400Regular",
+      fontSize: 14,
+      textTransform: "uppercase",
+    },
+  },
 };

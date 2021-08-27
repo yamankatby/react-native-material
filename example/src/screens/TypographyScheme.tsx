@@ -23,7 +23,7 @@ const Preview: React.FC<PreviewPorps> = ({ title, variant }) => {
 const TypographyScheme: React.FC = () => {
   return (
     <ScrollView>
-      {/* <Preview title="Headline 1" variant="h1" />
+      <Preview title="Headline 1" variant="h1" />
       <Preview title="Headline 2" variant="h2" />
       <Preview title="Headline 3" variant="h3" />
       <Preview title="Headline 4" variant="h4" />
@@ -35,7 +35,7 @@ const TypographyScheme: React.FC = () => {
       <Preview title="Body 2" variant="body2" />
       <Preview title="Button" variant="button" />
       <Preview title="Caption" variant="caption" />
-      <Preview title="Overline" variant="overline" /> */}
+      <Preview title="Overline" variant="overline" />
     </ScrollView>
   );
 };

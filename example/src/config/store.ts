@@ -1,4 +1,4 @@
-import { configureStore, createReducer } from "@reduxjs/toolkit";
+import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export interface State {
@@ -16,7 +16,13 @@ const initialState: State = {
   theme: "owl",
 };
 
-const reducer = createReducer(initialState, (builder) => builder);
+export const changeTheme = createAction<State["theme"]>("changeTheme");
+
+const reducer = createReducer(initialState, (builder) =>
+  builder.addCase(changeTheme, (state, action) => {
+    state.theme = action.payload;
+  })
+);
 
 export const store = configureStore({
   reducer,

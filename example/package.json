@@ -8,6 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/lekton": "^0.2.0",
+    "@expo-google-fonts/libre-franklin": "^0.2.0",
+    "@expo-google-fonts/merriweather": "^0.2.0",
+    "@expo-google-fonts/montserrat": "^0.2.0",
+    "@expo-google-fonts/raleway": "^0.2.0",
+    "@expo-google-fonts/rubik": "^0.2.0",
+    "@expo-google-fonts/work-sans": "^0.2.0",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@reduxjs/toolkit": "^1.6.1",

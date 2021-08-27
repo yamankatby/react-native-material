@@ -1,24 +1,28 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import chroma from "chroma-js";
 import React, { useRef, useState } from "react";
 import {
   Animated,
+  Button,
   Platform,
   StatusBar,
   Text,
   TouchableOpacity,
-  StyleSheet,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Surface, useStyles, useTheme } from "../../core";
-import { useAppSelector } from "../config/store";
+import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
 import { select } from "../config/utilities";
 
 const Home: React.FC = () => {
   const currentTheme = useAppSelector((state) => state.theme);
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation();
 
   const x = insets.top + 56;
   const [height, setHeight] = useState(0);
@@ -235,6 +239,53 @@ const Home: React.FC = () => {
               Components
             </Text>
           </View>
+
+          <Button
+            title="default"
+            onPress={() => dispatch(changeTheme("default"))}
+          />
+
+          <Button
+            title="basil"
+            onPress={() => dispatch(changeTheme("basil"))}
+          />
+
+          <Button
+            title="crane"
+            onPress={() => dispatch(changeTheme("crane"))}
+          />
+
+          <Button
+            title="fortnightly"
+            onPress={() => dispatch(changeTheme("fortnightly"))}
+          />
+
+          <Button title="owl" onPress={() => dispatch(changeTheme("owl"))} />
+
+          <Button
+            title="reply"
+            onPress={() => dispatch(changeTheme("reply"))}
+          />
+
+          <Button
+            title="shrine"
+            onPress={() => dispatch(changeTheme("shrine"))}
+          />
+
+          <Button
+            title="color"
+            onPress={() => navigation.navigate("ColorScheme")}
+          />
+
+          <Button
+            title="type"
+            onPress={() => navigation.navigate("TypographyScheme")}
+          />
+
+          <Button
+            title="Shape"
+            onPress={() => navigation.navigate("ShapeScheme")}
+          />
         </Surface>
       </Animated.View>
 
