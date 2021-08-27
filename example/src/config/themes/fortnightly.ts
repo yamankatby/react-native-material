@@ -7,7 +7,7 @@ export const fortnightly: Theme = {
     primaryVariant: "#E8E8E8",
     secondary: "#6B38FB",
     secondaryVariant: "#2100C7",
-    background: "#FFFFFF",
+    background: "#F1F1F1",
     surface: "#FFFFFF",
     error: "#B00020",
     onPrimary: "#000000",
@@ -38,7 +38,7 @@ export const fortnightly: Theme = {
     large: {
       family: "cut",
       borderRadius: {
-        topStart: 0,
+        topStart: 16,
         topEnd: 0,
         bottomStart: 0,
         bottomEnd: 0,

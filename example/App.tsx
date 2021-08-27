@@ -1,15 +1,3 @@
-import React from "react";
-import { useColorScheme } from "react-native";
-import { Provider } from "react-redux";
-import { darkTheme, defaultTheme, ThemeProvider } from "./core";
-import Navigator from "./src/config/Navigator";
-import { store, useAppSelector } from "./src/config/store";
-import { basil } from "./src/config/themes/basil";
-import { crane } from "./src/config/themes/crane";
-import { fortnightly } from "./src/config/themes/fortnightly";
-import { owl } from "./src/config/themes/owl";
-import { reply } from "./src/config/themes/reply";
-import { shrine } from "./src/config/themes/shrine";
 import {
   Lekton_700Bold,
   useFonts as useLektonFonts,
@@ -58,12 +46,24 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
+import React from "react";
+import { useColorScheme } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
+import { darkTheme, defaultTheme, ThemeProvider } from "./core";
+import Navigator from "./src/config/Navigator";
+import { store, useAppSelector } from "./src/config/store";
+import { basil } from "./src/config/themes/basil";
+import { crane } from "./src/config/themes/crane";
+import { fortnightly } from "./src/config/themes/fortnightly";
+import { owl } from "./src/config/themes/owl";
+import { reply } from "./src/config/themes/reply";
+import { shrine } from "./src/config/themes/shrine";
 
 const App = () => {
   const colorScheme = useColorScheme();
   const theme = useAppSelector((state) => state.theme);
 
-  // Basil
   const [montserratLoaded] = useMontserratFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
@@ -75,7 +75,6 @@ const App = () => {
     Lekton_700Bold,
   });
 
-  // Crane
   const [ralewayLoaded] = useRalewayFonts({
     Raleway_300Light,
     Raleway_400Regular,
@@ -83,8 +82,6 @@ const App = () => {
     Raleway_600SemiBold,
     Raleway_500Medium,
   });
-
-  // Fortnightly
 
   const [merriweatherLoaded] = useMerriweatherFonts({
     Merriweather_900Black_Italic,
@@ -100,16 +97,12 @@ const App = () => {
     LibreFranklin_700Bold,
   });
 
-  // Owl
-
   const [rubikLoaded] = useRubikFonts({
     Rubik_700Bold,
     Rubik_500Medium,
     Rubik_300Light,
     Rubik_400Regular,
   });
-
-  // Reply
 
   const [workSansLoaded] = useWorkSansFonts({
     WorkSans_600SemiBold,
@@ -151,7 +144,9 @@ const App = () => {
 
 const AppProvider = () => (
   <Provider store={store}>
-    <App />
+    <SafeAreaProvider>
+      <App />
+    </SafeAreaProvider>
   </Provider>
 );
 

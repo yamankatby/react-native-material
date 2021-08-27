@@ -1,315 +1,324 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import chroma from "chroma-js";
-import React, { useRef, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   Animated,
-  Button,
-  Platform,
-  StatusBar,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useDispatch } from "react-redux";
 import { Surface, useStyles, useTheme } from "../../core";
-import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
-import { select } from "../config/utilities";
+import { changeTheme, useAppSelector } from "../config/store";
+import ShapeScheme from "./ShapeScheme";
 
-const Home: React.FC = () => {
+const MaterialStudies: React.FC = () => {
+  const dispatch = useDispatch();
   const currentTheme = useAppSelector((state) => state.theme);
-  const insets = useSafeAreaInsets();
-  const theme = useTheme();
-
-  const dispatch = useAppDispatch();
-  const navigation = useNavigation();
-
-  const x = insets.top + 56;
-  const [height, setHeight] = useState(0);
-
-  const fadeAnim = useRef(new Animated.Value(x)).current;
-
-  const [opened, setOpened] = useState(false);
-
-  const toggle = () => {
-    Animated.timing(fadeAnim, {
-      toValue: opened ? x : x + height,
-      duration: 400,
-      useNativeDriver: false,
-    }).start();
-    setOpened((p) => !p);
-  };
 
   const styles = useStyles(
-    ({ colorScheme }) => ({
+    ({ colorScheme, shapeScheme, typographyScheme }) => ({
+      container: {
+        marginBottom: 8,
+      },
+      contentContainer: {
+        paddingStart: 16,
+        paddingEnd: 8,
+      },
+      chip: {
+        justifyContent: "center",
+        alignItems: "center",
+        height: 32,
+        marginEnd: 8,
+        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
+        borderRadius: shapeScheme.small.family === "rounded" ? 16 : undefined,
+      },
+      chipTitle: {
+        marginHorizontal: 12,
+        color: colorScheme.onPrimary,
+        textTransform:
+          currentTheme === "fortnightly" ? "uppercase" : "capitalize",
+        ...typographyScheme.body2,
+      },
+      selectedChip: {
+        backgroundColor: colorScheme.onPrimary,
+      },
+      selectedChipTitle: {
+        color: colorScheme.primary,
+      },
+    }),
+    [currentTheme]
+  );
+
+  const themes = useMemo(
+    () => [
+      "default",
+      "basil",
+      "crane",
+      "fortnightly",
+      "owl",
+      "reply",
+      "shrine",
+    ],
+    []
+  );
+
+  return (
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+    >
+      {themes.map((theme) => (
+        <TouchableOpacity
+          key={theme}
+          onPress={() => dispatch(changeTheme(theme as any))}
+        >
+          <Surface
+            style={[styles.chip, theme === currentTheme && styles.selectedChip]}
+          >
+            <Text
+              style={[
+                styles.chipTitle,
+                theme === currentTheme && styles.selectedChipTitle,
+              ]}
+            >
+              {currentTheme === "fortnightly" && "#"}
+              {theme}
+            </Text>
+          </Surface>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
+};
+
+const Theming: React.FC = () => {
+  const theme = useTheme();
+
+  const styles = useStyles(({ colorScheme, typographyScheme }) => ({
+    container: {
+      marginTop: 8,
+      marginHorizontal: 16,
+    },
+    option: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 8,
+    },
+    item: {
+      flex: 1,
+      marginStart: 32,
+      backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
+    },
+    itemTitle: {
+      marginHorizontal: 16,
+      marginVertical: 10,
+      color: colorScheme.onPrimary,
+      ...typographyScheme.body2,
+    },
+  }));
+
+  const options = [
+    { title: "Color Scheme" },
+    { title: "Shape Scheme" },
+    { title: "Typography Scheme" },
+  ];
+
+  return (
+    <View style={styles.container}>
+      {options.map((option) => (
+        <View key={option.title} style={styles.option}>
+          <MaterialIcons
+            name="message"
+            size={24}
+            color={theme.colorScheme.onPrimary}
+          />
+          <Surface style={styles.item}>
+            <Text style={styles.itemTitle}>{option.title}</Text>
+          </Surface>
+        </View>
+      ))}
+    </View>
+  );
+};
+
+const Home: React.FC = () => {
+  const insets = useSafeAreaInsets();
+
+  const theme = useTheme();
+
+  const currentTheme = useAppSelector((state) => state.theme);
+
+  const styles = useStyles(
+    ({ colorScheme, shapeScheme, typographyScheme }) => ({
       container: {
         flex: 1,
         backgroundColor: colorScheme.primary,
       },
-      appBar: {
-        justifyContent: "center",
-        height: 56,
-        marginTop: insets.top,
-        marginHorizontal: 16,
+      backLayerContainer: {
+        paddingTop: insets.top,
       },
-      appBarContent: {
+      appBar: {
+        margin: 16,
         flexDirection: "row",
         alignItems: "center",
       },
-      backContent: {
-        paddingBottom: 16,
-        paddingHorizontal: 8,
+      appBarTitle: {
+        marginStart: 32,
+        color: colorScheme.onPrimary,
+        ...typographyScheme.h6,
       },
-      frontContainer: {
+      backLayerTitle: {
         position: "absolute",
-        start: 0,
-        end: 0,
-        bottom: 0,
+        start: 56,
+        color: colorScheme.onPrimary,
+        ...typographyScheme.h6,
       },
-      subheader: {
-        marginVertical: 12,
-        height: 24,
+      backLayerDivider: {
+        height: 1,
+        marginHorizontal: 16,
+        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
+      },
+      backLayerSectionTitle: {
+        marginVertical: 8,
+        marginStart: 16,
+        ...typographyScheme.subtitle1,
+        color: colorScheme.onPrimary,
+      },
+      frontLayerContainer: {
+        position: "absolute",
+        top: insets.top + 56,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        backgroundColor: colorScheme.background,
+        borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
+        borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
+        borderBottomStartRadius: 0,
+        borderBottomEndRadius: 0,
+      },
+      fab: {
+        position: "absolute",
+        end: 16,
         justifyContent: "center",
+        alignItems: "center",
+        bottom: insets.bottom + 16,
+        width: shapeScheme.small.family === "rounded" ? 56 : 68,
+        height: shapeScheme.small.family === "rounded" ? 56 : 68,
+        borderRadius: shapeScheme.small.family === "rounded" ? 28 : 34,
+        backgroundColor: colorScheme.secondary,
       },
     }),
-    [insets, height]
+    [insets.top, insets.bottom, currentTheme]
   );
 
+  const [isBackdropOpened, setIsBackdropOpened] = useState(false);
+  const [backLayerHiddenSectionHeight, setBackLayerHiddenSectionHeight] =
+    useState(0);
+
+  const backdropAnimation = useRef(new Animated.Value(0)).current;
+
+  const frontLayerTranslate = backdropAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, backLayerHiddenSectionHeight],
+  });
+
+  const appBarTitleOpacity = backdropAnimation.interpolate({
+    inputRange: [0, 0.6],
+    outputRange: [1, 0],
+  });
+
+  const backLayerTitleOpacity = backdropAnimation.interpolate({
+    inputRange: [0.4, 1],
+    outputRange: [0, 1],
+  });
+
+  const fabScale = backdropAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+
+  const handleToggleBackdrop = useCallback(() => {
+    Animated.timing(backdropAnimation, {
+      toValue: isBackdropOpened ? 0 : 1,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+    setIsBackdropOpened((prev) => !prev);
+  }, [isBackdropOpened, backdropAnimation]);
+
   return (
-    <View style={styles.container}>
+    <>
       <StatusBar
-        barStyle={
-          chroma.contrast(
-            Platform.OS === "ios"
-              ? theme.colorScheme.primary
-              : theme.colorScheme.primaryVariant,
-            "#FFFFFF"
-          ) > 4.5
-            ? "light-content"
-            : "dark-content"
+        style={
+          chroma.contrast(theme.colorScheme.primary, "white") > 4.5
+            ? "light"
+            : "dark"
         }
-        backgroundColor={theme.colorScheme.primaryVariant}
+        translucent
       />
-      <View style={styles.appBar}>
-        <View style={styles.appBarContent}>
-          <TouchableOpacity onPress={toggle}>
-            <MaterialIcons
-              name="tune"
-              size={24}
-              color={theme.colorScheme.onPrimary}
-            />
-          </TouchableOpacity>
-          <Text
-            style={[
-              theme.typographyScheme.h6,
-              { marginStart: 32, color: theme.colorScheme.onPrimary },
-            ]}
-          >
-            Material UI
-          </Text>
-        </View>
-      </View>
-
-      <View
-        style={styles.backContent}
-        onLayout={(e) => {
-          setHeight(e.nativeEvent.layout.height);
-        }}
-      >
-        <Surface
-          style={{
-            backgroundColor: chroma(theme.colorScheme.onPrimary)
-              .alpha(0.15)
-              .hex(),
-            marginTop: 8,
-          }}
-        >
+      <View style={styles.container}>
+        <View style={styles.backLayerContainer}>
+          <View style={styles.appBar}>
+            <TouchableOpacity onPress={handleToggleBackdrop}>
+              <MaterialIcons
+                name="menu"
+                size={24}
+                color={theme.colorScheme.onPrimary}
+              />
+            </TouchableOpacity>
+            <Animated.Text
+              style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}
+            >
+              Material UI
+            </Animated.Text>
+            <Animated.Text
+              style={[
+                styles.backLayerTitle,
+                { opacity: backLayerTitleOpacity },
+              ]}
+            >
+              Theming
+            </Animated.Text>
+          </View>
           <View
-            style={{ padding: 8, flexDirection: "row", alignItems: "center" }}
+            style={{ paddingBottom: 16 }}
+            onLayout={(e) => {
+              setBackLayerHiddenSectionHeight(e.nativeEvent.layout.height);
+            }}
           >
-            <MaterialIcons
-              name="palette"
-              size={24}
-              color={theme.colorScheme.onPrimary}
-            />
-            <Text
-              style={[
-                theme.typographyScheme.subtitle2,
-                { marginStart: 32, color: theme.colorScheme.onPrimary },
-              ]}
-            >
-              Color Scheme
-            </Text>
+            <View style={styles.backLayerDivider} />
+            <Text style={styles.backLayerSectionTitle}>Material Studies</Text>
+            <MaterialStudies />
+
+            <View style={styles.backLayerDivider} />
+            <Text style={styles.backLayerSectionTitle}>Theming</Text>
+            <Theming />
           </View>
-        </Surface>
-
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: chroma(theme.colorScheme.onPrimary)
-              .alpha(0.15)
-              .hex(),
-            padding: 8,
-            borderRadius: 4,
-            marginTop: 8,
-          }}
-        >
-          <MaterialIcons
-            name="format-size"
-            size={24}
-            color={theme.colorScheme.onPrimary}
-          />
-          <Text
-            style={[
-              theme.typographyScheme.subtitle2,
-              { marginStart: 32, color: theme.colorScheme.onPrimary },
-            ]}
-          >
-            Typography Scheme
-          </Text>
         </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: chroma(theme.colorScheme.onPrimary)
-              .alpha(0.15)
-              .hex(),
-            padding: 8,
-            borderRadius: 4,
-            marginTop: 8,
-          }}
-        >
-          <MaterialIcons
-            name="format-shapes"
-            size={24}
-            color={theme.colorScheme.onPrimary}
-          />
-          <Text
-            style={[
-              theme.typographyScheme.subtitle2,
-              { marginStart: 32, color: theme.colorScheme.onPrimary },
-            ]}
-          >
-            Shape Scheme
-          </Text>
-        </View>
-      </View>
-
-      <Animated.View style={[styles.frontContainer, { top: fadeAnim }]}>
         <Surface
-          style={{
-            flex: 1,
-            backgroundColor: theme.colorScheme.background,
-            borderBottomStartRadius: 0,
-            borderBottomEndRadius: 0,
-            ...select(currentTheme, {
-              crane: {
-                borderTopStartRadius: 20,
-                borderTopEndRadius: 20,
-              },
-              shrine: {
-                borderTopStartRadius: 24,
-                borderTopEndRadius: 0,
-              },
-              owl: {
-                borderTopStartRadius: 24,
-                borderTopEndRadius: 0,
-              },
-              reply: {
-                borderTopStartRadius: 12,
-                borderTopEndRadius: 12,
-              },
-              default: {
-                borderTopStartRadius: 16,
-                borderTopEndRadius: 16,
-              },
-            }),
-          }}
+          category="large"
+          style={[
+            styles.frontLayerContainer,
+            { transform: [{ translateY: frontLayerTranslate as any }] },
+          ]}
+        ></Surface>
+        <Surface
+          style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}
         >
-          <View style={styles.subheader}>
-            <Text
-              style={[
-                theme.typographyScheme.subtitle1,
-                { color: theme.colorScheme.onBackground },
-              ]}
-            >
-              Components
-            </Text>
-          </View>
-
-          <Button
-            title="default"
-            onPress={() => dispatch(changeTheme("default"))}
-          />
-
-          <Button
-            title="basil"
-            onPress={() => dispatch(changeTheme("basil"))}
-          />
-
-          <Button
-            title="crane"
-            onPress={() => dispatch(changeTheme("crane"))}
-          />
-
-          <Button
-            title="fortnightly"
-            onPress={() => dispatch(changeTheme("fortnightly"))}
-          />
-
-          <Button title="owl" onPress={() => dispatch(changeTheme("owl"))} />
-
-          <Button
-            title="reply"
-            onPress={() => dispatch(changeTheme("reply"))}
-          />
-
-          <Button
-            title="shrine"
-            onPress={() => dispatch(changeTheme("shrine"))}
-          />
-
-          <Button
-            title="color"
-            onPress={() => navigation.navigate("ColorScheme")}
-          />
-
-          <Button
-            title="type"
-            onPress={() => navigation.navigate("TypographyScheme")}
-          />
-
-          <Button
-            title="Shape"
-            onPress={() => navigation.navigate("ShapeScheme")}
+          <MaterialIcons
+            name="star"
+            size={24}
+            color={theme.colorScheme.onSecondary}
           />
         </Surface>
-      </Animated.View>
-
-      <Surface
-        style={{
-          position: "absolute",
-          justifyContent: "center",
-          alignItems: "center",
-          bottom: insets.bottom + 16,
-          end: 16,
-          width: theme.shapeScheme.small.family === "rounded" ? 56 : 68,
-          height: theme.shapeScheme.small.family === "rounded" ? 56 : 68,
-          borderRadius:
-            theme.shapeScheme.small.family === "rounded" ? 56 / 2 : 68 / 2,
-          backgroundColor: theme.colorScheme.secondary,
-        }}
-      >
-        <MaterialIcons
-          name="star"
-          size={24}
-          color={theme.colorScheme.onSecondary}
-        />
-      </Surface>
-    </View>
+      </View>
+    </>
   );
 };
 

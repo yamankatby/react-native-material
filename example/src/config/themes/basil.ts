@@ -38,8 +38,8 @@ export const basil: Theme = {
     large: {
       family: "cut",
       borderRadius: {
-        topStart: 0,
-        topEnd: 0,
+        topStart: 16,
+        topEnd: 16,
         bottomStart: 0,
         bottomEnd: 0,
       },
