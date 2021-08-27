@@ -1,7 +1,10 @@
 import chroma from "chroma-js";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { useTheme } from "../../core";
 
 interface PreviewPorps {
@@ -74,82 +77,72 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
 const ColorScheme: React.FC = () => {
   const { mode, colorScheme } = useTheme();
 
+  const insets = useSafeAreaInsets();
+
   return (
     <View style={{ backgroundColor: mode === "light" ? "#E5E5E5" : "#292929" }}>
       <ScrollView>
-        <SafeAreaView>
-          <View style={{ padding: 15 }}>
-            <View>
-              <View style={{ flexDirection: "row" }}>
-                <Preview index={1} name="Primary" color={colorScheme.primary} />
-                <Preview
-                  index={2}
-                  name="Primary Variant"
-                  color={colorScheme.primaryVariant}
-                />
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <Preview
-                  index={3}
-                  name="Secondary"
-                  color={colorScheme.secondary}
-                />
-                <Preview
-                  index={4}
-                  name="Secondary Variant"
-                  color={colorScheme.secondaryVariant}
-                />
-              </View>
-            </View>
-            <View style={{ marginTop: 15 }}>
+        <View style={{ padding: 15, paddingBottom: insets.bottom + 15 }}>
+          <View>
+            <View style={{ flexDirection: "row" }}>
+              <Preview index={1} name="Primary" color={colorScheme.primary} />
               <Preview
-                index={5}
-                name="Background"
-                color={colorScheme.background}
-                row
+                index={2}
+                name="Primary Variant"
+                color={colorScheme.primaryVariant}
+              />
+            </View>
+            <View style={{ flexDirection: "row" }}>
+              <Preview
+                index={3}
+                name="Secondary"
+                color={colorScheme.secondary}
               />
               <Preview
-                index={6}
-                name="Surface"
-                color={colorScheme.surface}
-                row
+                index={4}
+                name="Secondary Variant"
+                color={colorScheme.secondaryVariant}
               />
-              <Preview index={7} name="Error" color={colorScheme.error} row />
             </View>
-            <View style={{ marginTop: 15 }}>
-              <View style={{ flexDirection: "row" }}>
-                <Preview
-                  index={8}
-                  name="On Primary"
-                  color={colorScheme.onPrimary}
-                />
-                <Preview
-                  index={9}
-                  name="On Secondary"
-                  color={colorScheme.onSecondary}
-                />
-              </View>
-            </View>
-            <Preview
-              index={10}
-              name="On Background"
-              color={colorScheme.onBackground}
-              row
-            />
-            <Preview
-              index={11}
-              name="On Surface"
-              color={colorScheme.onSurface}
-              row
-            />
-            <Preview
-              index={12}
-              name="On Error"
-              color={colorScheme.onError}
-              row
-            />
           </View>
-        </SafeAreaView>
+          <View style={{ marginTop: 15 }}>
+            <Preview
+              index={5}
+              name="Background"
+              color={colorScheme.background}
+              row
+            />
+            <Preview index={6} name="Surface" color={colorScheme.surface} row />
+            <Preview index={7} name="Error" color={colorScheme.error} row />
+          </View>
+          <View style={{ marginTop: 15 }}>
+            <View style={{ flexDirection: "row" }}>
+              <Preview
+                index={8}
+                name="On Primary"
+                color={colorScheme.onPrimary}
+              />
+              <Preview
+                index={9}
+                name="On Secondary"
+                color={colorScheme.onSecondary}
+              />
+            </View>
+          </View>
+          <Preview
+            index={10}
+            name="On Background"
+            color={colorScheme.onBackground}
+            row
+          />
+          <Preview
+            index={11}
+            name="On Surface"
+            color={colorScheme.onSurface}
+            row
+          />
+          <Preview index={12} name="On Error" color={colorScheme.onError} row />
+        </View>
       </ScrollView>
     </View>
   );
