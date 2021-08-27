@@ -7,7 +7,7 @@ export const fortnightly: Theme = {
     primaryVariant: "#E8E8E8",
     secondary: "#6B38FB",
     secondaryVariant: "#2100C7",
-    background: "#F1F1F1",
+    background: "#E8E8E8",
     surface: "#FFFFFF",
     error: "#B00020",
     onPrimary: "#000000",

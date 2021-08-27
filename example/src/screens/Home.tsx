@@ -1,4 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useMemo, useRef, useState } from "react";
@@ -10,34 +11,51 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useDispatch } from "react-redux";
 import { Surface, useStyles, useTheme } from "../../core";
-import { changeTheme, useAppSelector } from "../config/store";
-import ShapeScheme from "./ShapeScheme";
+import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
 
-const MaterialStudies: React.FC = () => {
-  const dispatch = useDispatch();
+const BackdropHiddenSection: React.FC = () => {
+  const theme = useTheme();
+
+  const dispatch = useAppDispatch();
   const currentTheme = useAppSelector((state) => state.theme);
+
+  const navigation = useNavigation();
 
   const styles = useStyles(
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
-      container: {
-        marginBottom: 8,
+      container: {},
+      divider: {
+        marginHorizontal: 16,
+        height: 1,
+        backgroundColor:
+          currentTheme === "default"
+            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
+            : colorScheme.primaryVariant,
       },
-      contentContainer: {
-        paddingStart: 16,
-        paddingEnd: 8,
+      title: {
+        marginTop: 16,
+        marginStart: 16,
+        color: colorScheme.onPrimary,
+        ...typographyScheme.subtitle1,
+      },
+      section: {
+        marginTop: 12,
+        marginBottom: 16,
       },
       chip: {
         justifyContent: "center",
         alignItems: "center",
-        height: 32,
-        marginEnd: 8,
-        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
-        borderRadius: shapeScheme.small.family === "rounded" ? 16 : undefined,
+        height: 30,
+        marginEnd: 6,
+        backgroundColor:
+          currentTheme === "default"
+            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
+            : colorScheme.primaryVariant,
+        borderRadius: shapeScheme.small.family === "rounded" ? 15 : undefined,
       },
       chipTitle: {
-        marginHorizontal: 12,
+        marginHorizontal: 16,
         color: colorScheme.onPrimary,
         textTransform:
           currentTheme === "fortnightly" ? "uppercase" : "capitalize",
@@ -48,6 +66,26 @@ const MaterialStudies: React.FC = () => {
       },
       selectedChipTitle: {
         color: colorScheme.primary,
+      },
+      schemeContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginHorizontal: 16,
+        marginBottom: 8,
+      },
+      scheme: {
+        flex: 1,
+        justifyContent: "center",
+        marginStart: 32,
+        backgroundColor:
+          currentTheme === "default"
+            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
+            : colorScheme.primaryVariant,
+      },
+      schemeTitle: {
+        marginStart: 16,
+        color: colorScheme.onPrimary,
+        ...typographyScheme.body2,
       },
     }),
     [currentTheme]
@@ -66,83 +104,73 @@ const MaterialStudies: React.FC = () => {
     []
   );
 
-  return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-    >
-      {themes.map((theme) => (
-        <TouchableOpacity
-          key={theme}
-          onPress={() => dispatch(changeTheme(theme as any))}
-        >
-          <Surface
-            style={[styles.chip, theme === currentTheme && styles.selectedChip]}
-          >
-            <Text
-              style={[
-                styles.chipTitle,
-                theme === currentTheme && styles.selectedChipTitle,
-              ]}
-            >
-              {currentTheme === "fortnightly" && "#"}
-              {theme}
-            </Text>
-          </Surface>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
-};
-
-const Theming: React.FC = () => {
-  const theme = useTheme();
-
-  const styles = useStyles(({ colorScheme, typographyScheme }) => ({
-    container: {
-      marginTop: 8,
-      marginHorizontal: 16,
+  const schemes = [
+    { icon: "colorize", title: "Color Scheme", screen: "ColorScheme" },
+    { icon: "format-shapes", title: "Shape Scheme", screen: "ShapeScheme" },
+    {
+      icon: "format-size",
+      title: "Typography Scheme",
+      screen: "TypographyScheme",
     },
-    option: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginBottom: 8,
-    },
-    item: {
-      flex: 1,
-      marginStart: 32,
-      backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
-    },
-    itemTitle: {
-      marginHorizontal: 16,
-      marginVertical: 10,
-      color: colorScheme.onPrimary,
-      ...typographyScheme.body2,
-    },
-  }));
-
-  const options = [
-    { title: "Color Scheme" },
-    { title: "Shape Scheme" },
-    { title: "Typography Scheme" },
   ];
 
   return (
     <View style={styles.container}>
-      {options.map((option) => (
-        <View key={option.title} style={styles.option}>
-          <MaterialIcons
-            name="message"
-            size={24}
-            color={theme.colorScheme.onPrimary}
-          />
-          <Surface style={styles.item}>
-            <Text style={styles.itemTitle}>{option.title}</Text>
-          </Surface>
-        </View>
-      ))}
+      <View style={styles.divider} />
+      <Text style={styles.title}>Material Studies</Text>
+      <View style={styles.section}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingStart: 16, paddingEnd: 8 }}
+        >
+          {themes.map((theme) => (
+            <TouchableOpacity
+              key={theme}
+              onPress={() => dispatch(changeTheme(theme as any))}
+            >
+              <Surface
+                style={[
+                  styles.chip,
+                  theme === currentTheme && styles.selectedChip,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.chipTitle,
+                    theme === currentTheme && styles.selectedChipTitle,
+                  ]}
+                >
+                  {currentTheme === "fortnightly" && "#"}
+                  {theme}
+                </Text>
+              </Surface>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
+      <View style={styles.divider} />
+      <Text style={styles.title}>Theming</Text>
+      <View style={styles.section}>
+        {schemes.map((scheme) => (
+          <View key={scheme.title} style={styles.schemeContainer}>
+            <MaterialIcons
+              name={scheme.icon as any}
+              size={24}
+              color={theme.colorScheme.onPrimary}
+            />
+            <TouchableOpacity
+              style={{ flex: 1, height: 38 }}
+              onPress={() => navigation.navigate(scheme.screen as any)}
+            >
+              <Surface style={styles.scheme}>
+                <Text style={styles.schemeTitle}>{scheme.title}</Text>
+              </Surface>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
     </View>
   );
 };
@@ -267,7 +295,7 @@ const Home: React.FC = () => {
           <View style={styles.appBar}>
             <TouchableOpacity onPress={handleToggleBackdrop}>
               <MaterialIcons
-                name="menu"
+                name="tune"
                 size={24}
                 color={theme.colorScheme.onPrimary}
               />
@@ -287,18 +315,11 @@ const Home: React.FC = () => {
             </Animated.Text>
           </View>
           <View
-            style={{ paddingBottom: 16 }}
             onLayout={(e) => {
               setBackLayerHiddenSectionHeight(e.nativeEvent.layout.height);
             }}
           >
-            <View style={styles.backLayerDivider} />
-            <Text style={styles.backLayerSectionTitle}>Material Studies</Text>
-            <MaterialStudies />
-
-            <View style={styles.backLayerDivider} />
-            <Text style={styles.backLayerSectionTitle}>Theming</Text>
-            <Theming />
+            <BackdropHiddenSection />
           </View>
         </View>
         <Surface

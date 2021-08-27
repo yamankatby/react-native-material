@@ -4,7 +4,7 @@ export const crane: Theme = {
   ...defaultTheme,
   colorScheme: {
     primary: "#5D1049",
-    primaryVariant: "#4E0D3A",
+    primaryVariant: "#720D5D",
     secondary: "#E30425",
     secondaryVariant: "#A80000",
     background: "#F9F6F8",
