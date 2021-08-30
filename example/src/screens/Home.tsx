@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
   Dimensions,
+  useColorScheme,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
@@ -275,8 +276,8 @@ const Home: React.FC = () => {
   });
 
   const fabScale = backdropAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 0],
+    inputRange: [0, 0.5, 1],
+    outputRange: [1, 0, 0],
   });
 
   const handleToggleBackdrop = useCallback(() => {
@@ -292,6 +293,8 @@ const Home: React.FC = () => {
     "https://api.github.com/repos/yamankatby/react-native-material/issues",
     fetcher
   );
+
+  const colorScheme = useColorScheme();
 
   return (
     <>
@@ -379,9 +382,13 @@ const Home: React.FC = () => {
                   flex: 1,
                   marginTop: 16,
                   marginHorizontal: 8,
-                  backgroundColor: theme.colorScheme.surface,
+                  backgroundColor:
+                    currentTheme === "default" && colorScheme === "dark"
+                      ? "#232323"
+                      : theme.colorScheme.surface,
                   borderWidth:
-                    currentTheme === "default" || currentTheme === "owl"
+                    (currentTheme === "default" && colorScheme === "light") ||
+                    currentTheme === "owl"
                       ? 1
                       : 0,
                   borderColor: chroma(theme.colorScheme.onBackground)

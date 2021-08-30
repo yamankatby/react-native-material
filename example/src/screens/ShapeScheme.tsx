@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 import React from "react";
 import {
   ScrollView,
@@ -6,7 +7,8 @@ import {
   Text,
   ViewStyle,
 } from "react-native";
-import { useTheme } from "../../core";
+import { Surface, useTheme } from "../../core";
+import { useAppSelector } from "../config/store";
 
 interface ShapeProps {
   unit: number;
@@ -28,18 +30,17 @@ const Shape: React.FC<ShapeProps> = ({
   style,
 }) => {
   const theme = useTheme();
+  const currentTheme = useAppSelector((state) => state.theme);
   return (
-    <View
+    <Surface
       style={[
         {
-          width: unit * width + 2,
-          height: unit * height + 2,
+          width: unit * width + 1,
+          height: unit * height + 1,
           position: "absolute",
-          top: top * unit - 1,
-          start: start * unit - 1,
+          top: top * unit - 0.5,
+          start: start * unit - 0.5,
           backgroundColor: "white",
-          borderWidth: 2,
-          borderColor: "#FFE211",
           justifyContent: "center",
           alignItems: "center",
         },
@@ -47,17 +48,69 @@ const Shape: React.FC<ShapeProps> = ({
       ]}
     >
       {title && (
-        <Text style={[theme.typographyScheme.h5, { color: "#FFC401" }]}>
+        <Text
+          style={[
+            theme.typographyScheme.h5,
+            {
+              color:
+                currentTheme === "fortnightly"
+                  ? theme.colorScheme.onBackground
+                  : theme.colorScheme.primary,
+            },
+          ]}
+        >
           {title}
         </Text>
       )}
-    </View>
+    </Surface>
   );
 };
 
 const ShapeScheme: React.FC = () => {
   const { width, height } = useWindowDimensions();
   const unit = width / 22;
+
+  const theme = useTheme();
+
+  const palette = {
+    basil: {
+      background: "#DEF3E5",
+      borders: "#BCD7C9",
+      surface: "#FFFBE6",
+    },
+    crane: {
+      background: "#F0CCE2",
+      borders: "#D1A4C1",
+      surface: "#FFFFFF",
+    },
+    fortnightly: {
+      background: "#EDEDED",
+      borders: "#FFFFFF",
+      surface: "#FFFFFF",
+    },
+    owl: {
+      background: "#FFF583",
+      borders: "#FFE211",
+      surface: "#FFFFFF",
+    },
+    reply: {
+      background: "#B4C1CC",
+      borders: "#8898A3",
+      surface: "#FFFFFF",
+    },
+    shrine: {
+      background: "#FFF0E8",
+      borders: "#FFD8CB",
+      surface: "#FFFFFF",
+    },
+    default: {
+      background: theme.mode === "light" ? "#E5E5E5" : "#292929",
+      borders: theme.mode === "light" ? "#CCCCCC" : "#121212",
+      surface: theme.mode === "light" ? "white" : "#121212",
+    },
+  };
+
+  const currentTheme = useAppSelector((state) => state.theme);
 
   const columns: JSX.Element[] = [];
 
@@ -71,7 +124,7 @@ const ShapeScheme: React.FC = () => {
           bottom: 0,
           start: unit * index - 1,
           width: 2,
-          backgroundColor: "#FFE211",
+          backgroundColor: palette[currentTheme].borders,
         }}
       />
     );
@@ -89,19 +142,19 @@ const ShapeScheme: React.FC = () => {
           start: 0,
           end: 0,
           height: 2,
-          backgroundColor: "#FFE211",
+          backgroundColor: palette[currentTheme].borders,
         }}
       />
     );
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: palette[currentTheme].background }}>
       <View
         style={{
           flex: 1,
           height: height > unit * 48 ? height : unit * 48,
-          backgroundColor: "#FFF583",
+          backgroundColor: palette[currentTheme].background,
         }}
       >
         {columns}
@@ -114,7 +167,10 @@ const ShapeScheme: React.FC = () => {
           top={2}
           start={2}
           title="S"
-          style={{ borderTopStartRadius: unit * 2 }}
+          style={{
+            borderTopStartRadius: unit * 2,
+            backgroundColor: palette[currentTheme].surface,
+          }}
         />
         <Shape
           unit={unit}
@@ -122,7 +178,10 @@ const ShapeScheme: React.FC = () => {
           height={7}
           top={9}
           start={2}
-          style={{ borderRadius: unit * 2.5 }}
+          style={{
+            borderRadius: unit * 2.5,
+            backgroundColor: palette[currentTheme].surface,
+          }}
         />
         <Shape
           unit={unit}
@@ -130,11 +189,36 @@ const ShapeScheme: React.FC = () => {
           height={5}
           top={18}
           start={2}
-          style={{ borderRadius: unit * 2.5 }}
+          style={{
+            borderRadius: unit * 2.5,
+            backgroundColor: palette[currentTheme].surface,
+          }}
         />
-        <Shape unit={unit} width={11} height={7} top={2} start={9} />
-        <Shape unit={unit} width={11} height={7} top={11} start={9} title="M" />
-        <Shape unit={unit} width={11} height={3} top={20} start={9} />
+        <Shape
+          unit={unit}
+          width={11}
+          height={7}
+          top={2}
+          start={9}
+          style={{ backgroundColor: palette[currentTheme].surface }}
+        />
+        <Shape
+          unit={unit}
+          width={11}
+          height={7}
+          top={11}
+          start={9}
+          title="M"
+          style={{ backgroundColor: palette[currentTheme].surface }}
+        />
+        <Shape
+          unit={unit}
+          width={11}
+          height={3}
+          top={20}
+          start={9}
+          style={{ backgroundColor: palette[currentTheme].surface }}
+        />
         <Shape
           unit={unit}
           width={18}
@@ -142,7 +226,11 @@ const ShapeScheme: React.FC = () => {
           top={25}
           start={2}
           title="L"
-          style={{ borderTopStartRadius: unit, borderTopEndRadius: unit }}
+          style={{
+            borderTopStartRadius: unit,
+            borderTopEndRadius: unit,
+            backgroundColor: palette[currentTheme].surface,
+          }}
         />
         <Shape
           unit={unit}
@@ -150,7 +238,11 @@ const ShapeScheme: React.FC = () => {
           height={6}
           top={40}
           start={2}
-          style={{ borderTopStartRadius: unit, borderTopEndRadius: unit }}
+          style={{
+            borderTopStartRadius: unit,
+            borderTopEndRadius: unit,
+            backgroundColor: palette[currentTheme].surface,
+          }}
         />
       </View>
     </ScrollView>
