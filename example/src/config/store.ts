@@ -13,7 +13,7 @@ export interface State {
 }
 
 const initialState: State = {
-  theme: "crane",
+  theme: "default",
 };
 
 export const changeTheme = createAction<State["theme"]>("changeTheme");

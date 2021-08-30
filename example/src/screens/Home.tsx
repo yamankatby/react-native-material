@@ -5,12 +5,15 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   Animated,
+  Linking,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
+  FlatList,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import useSWR from "swr";
 import { Surface, useStyles, useTheme } from "../../core";
 import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
 
@@ -175,6 +178,8 @@ const BackdropHiddenSection: React.FC = () => {
   );
 };
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 const Home: React.FC = () => {
   const insets = useSafeAreaInsets();
 
@@ -233,8 +238,6 @@ const Home: React.FC = () => {
       fab: {
         position: "absolute",
         end: 16,
-        justifyContent: "center",
-        alignItems: "center",
         bottom: insets.bottom + 16,
         width: shapeScheme.small.family === "rounded" ? 56 : 68,
         height: shapeScheme.small.family === "rounded" ? 56 : 68,
@@ -274,11 +277,16 @@ const Home: React.FC = () => {
   const handleToggleBackdrop = useCallback(() => {
     Animated.timing(backdropAnimation, {
       toValue: isBackdropOpened ? 0 : 1,
-      duration: 400,
+      duration: 300,
       useNativeDriver: true,
     }).start();
     setIsBackdropOpened((prev) => !prev);
   }, [isBackdropOpened, backdropAnimation]);
+
+  const { data } = useSWR(
+    "https://api.github.com/repos/yamankatby/react-native-material/issues",
+    fetcher
+  );
 
   return (
     <>
@@ -328,15 +336,119 @@ const Home: React.FC = () => {
             styles.frontLayerContainer,
             { transform: [{ translateY: frontLayerTranslate as any }] },
           ]}
-        ></Surface>
+        >
+          <View style={{ marginHorizontal: 16, marginTop: 10 }}>
+            <Text
+              style={[
+                theme.typographyScheme.subtitle1,
+                { color: theme.colorScheme.onBackground },
+              ]}
+            >
+              Components
+            </Text>
+            <View
+              style={{
+                marginTop: 10,
+                height: 1,
+                backgroundColor: chroma(theme.colorScheme.onBackground)
+                  .alpha(0.1)
+                  .hex(),
+              }}
+            />
+          </View>
+          <FlatList
+            contentContainerStyle={{
+              marginHorizontal: 16,
+              paddingBottom:
+                insets.bottom + theme.shapeScheme.small.family === "rounded"
+                  ? 56
+                  : 68 + 32,
+            }}
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <Surface
+                category="medium"
+                style={{
+                  marginTop: 16,
+                  backgroundColor: theme.colorScheme.surface,
+                  borderWidth:
+                    currentTheme === "default" || currentTheme === "owl"
+                      ? 1
+                      : 0,
+                  borderColor: chroma(theme.colorScheme.onBackground)
+                    .alpha(0.1)
+                    .hex(),
+                }}
+              >
+                <View style={{ margin: 16 }}>
+                  <Text
+                    style={[
+                      theme.typographyScheme.h5,
+                      { color: theme.colorScheme.onSurface },
+                    ]}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    style={[
+                      theme.typographyScheme.body2,
+                      { marginTop: 12, color: theme.colorScheme.onSurface },
+                    ]}
+                  >
+                    {item.body}
+                  </Text>
+
+                  <Text
+                    style={[
+                      theme.typographyScheme.body2,
+                      { color: theme.colorScheme.onSurface, marginTop: 12 },
+                    ]}
+                  >
+                    status: waiting for 👍
+                  </Text>
+
+                  <TouchableOpacity
+                    style={{ marginTop: 12 }}
+                    onPress={() => {
+                      Linking.openURL(item.html_url);
+                    }}
+                  >
+                    <Text
+                      style={[
+                        theme.typographyScheme.button,
+                        { color: theme.colorScheme.primary },
+                      ]}
+                    >
+                      Upvote
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </Surface>
+            )}
+          />
+        </Surface>
         <Surface
           style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}
         >
-          <MaterialIcons
-            name="star"
-            size={24}
-            color={theme.colorScheme.onSecondary}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              Linking.openURL(
+                "https://github.com/yamankatby/react-native-material"
+              );
+            }}
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <MaterialIcons
+              name="star"
+              size={24}
+              color={theme.colorScheme.onSecondary}
+            />
+          </TouchableOpacity>
         </Surface>
       </View>
     </>

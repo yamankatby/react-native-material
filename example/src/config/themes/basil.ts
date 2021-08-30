@@ -13,7 +13,7 @@ export const basil: Theme = {
     onPrimary: "#FFFFFF",
     onSecondary: "#000000",
     onBackground: "#356859",
-    onSurface: "#356859",
+    onSurface: "#29302E",
     onError: "#FFFFFF",
   },
   shapeScheme: {

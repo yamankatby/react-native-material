@@ -38,7 +38,7 @@ export const shrine: Theme = {
     large: {
       family: "cut",
       borderRadius: {
-        topStart: 24,
+        topStart: 16,
         topEnd: 0,
         bottomStart: 0,
         bottomEnd: 0,
