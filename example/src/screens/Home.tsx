@@ -11,6 +11,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
@@ -361,8 +362,9 @@ const Home: React.FC = () => {
             />
           </View>
           <FlatList
+            numColumns={Math.ceil(Dimensions.get("window").width / 500)}
             contentContainerStyle={{
-              marginHorizontal: 16,
+              marginHorizontal: 8,
               paddingBottom:
                 insets.bottom + theme.shapeScheme.small.family === "rounded"
                   ? 56
@@ -374,7 +376,9 @@ const Home: React.FC = () => {
               <Surface
                 category="medium"
                 style={{
+                  flex: 1,
                   marginTop: 16,
+                  marginHorizontal: 8,
                   backgroundColor: theme.colorScheme.surface,
                   borderWidth:
                     currentTheme === "default" || currentTheme === "owl"
