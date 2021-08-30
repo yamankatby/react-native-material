@@ -365,7 +365,7 @@ const Home: React.FC = () => {
                   : 68 + 32,
             }}
             data={data}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => `${item.id}`}
             renderItem={({ item }) => (
               <Surface
                 category="medium"
@@ -409,7 +409,7 @@ const Home: React.FC = () => {
                   </Text>
 
                   <TouchableOpacity
-                    style={{ marginTop: 12 }}
+                    style={{ marginTop: 12, alignSelf: "flex-start" }}
                     onPress={() => {
                       Linking.openURL(item.html_url);
                     }}
@@ -417,7 +417,14 @@ const Home: React.FC = () => {
                     <Text
                       style={[
                         theme.typographyScheme.button,
-                        { color: theme.colorScheme.primary },
+                        {
+                          color:
+                            currentTheme === "fortnightly"
+                              ? theme.colorScheme.secondary
+                              : currentTheme === "shrine"
+                              ? theme.colorScheme.onSurface
+                              : theme.colorScheme.primary,
+                        },
                       ]}
                     >
                       Upvote
