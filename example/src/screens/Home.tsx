@@ -5,12 +5,12 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   Animated,
+  FlatList,
   Linking,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
-  FlatList,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
@@ -138,15 +138,17 @@ const BackdropHiddenSection: React.FC = () => {
                   theme === currentTheme && styles.selectedChip,
                 ]}
               >
-                <Text
-                  style={[
-                    styles.chipTitle,
-                    theme === currentTheme && styles.selectedChipTitle,
-                  ]}
-                >
-                  {currentTheme === "fortnightly" && "#"}
-                  {theme}
-                </Text>
+                <View>
+                  <Text
+                    style={[
+                      styles.chipTitle,
+                      theme === currentTheme && styles.selectedChipTitle,
+                    ]}
+                  >
+                    {currentTheme === "fortnightly" && "#"}
+                    {theme}
+                  </Text>
+                </View>
               </Surface>
             </TouchableOpacity>
           ))}
@@ -168,7 +170,9 @@ const BackdropHiddenSection: React.FC = () => {
               onPress={() => navigation.navigate(scheme.screen as any)}
             >
               <Surface style={styles.scheme}>
-                <Text style={styles.schemeTitle}>{scheme.title}</Text>
+                <View>
+                  <Text style={styles.schemeTitle}>{scheme.title}</Text>
+                </View>
               </Surface>
             </TouchableOpacity>
           </View>
