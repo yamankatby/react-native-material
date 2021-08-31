@@ -1,28 +1,27 @@
-import { useContext, useState } from "react";
-import { alpha, styled, useTheme } from "@material-ui/core";
+import { alpha, ListSubheader, styled, useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import InputBase from "@material-ui/core/InputBase";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
-import Container from "@material-ui/core/Container";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Hidden from "@material-ui/core/Hidden";
-import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import GitHub from "@material-ui/icons/GitHub";
+import { FilterList } from "@material-ui/icons";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
+import GitHub from "@material-ui/icons/GitHub";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import { useContext, useState } from "react";
+import { components } from ".";
 import { ColorModeContext } from "../../pages/_app";
 
 const drawerWidth = 240;
@@ -82,24 +81,55 @@ const Layout = ({ window, children }) => {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+      <List subheader={<ListSubheader>Getting Started</ListSubheader>}>
+        <ListItem button>
+          <ListItemText primary="Installation" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Hello world!" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Support" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Contributing" />
+        </ListItem>
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+      <List subheader={<ListSubheader>Theming</ListSubheader>}>
+        <ListItem button>
+          <ListItemText primary="Theming overview" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Color scheme" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Shape scheme" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Typography scheme" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List
+        subheader={
+          <ListSubheader
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            Components
+            <IconButton size="small">
+              <FilterList />
+            </IconButton>
+          </ListSubheader>
+        }
+      >
+        {components.map((component) => (
+          <ListItem key={component.slug} button>
+            <ListItemText primary={component.title} />
           </ListItem>
         ))}
       </List>
