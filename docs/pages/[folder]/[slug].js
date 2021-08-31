@@ -5,7 +5,6 @@ import matter from "gray-matter";
 import marked from "marked";
 
 export default function post({ meta, md, listItems }) {
-  console.log(listItems);
   return (
     <Layout components={listItems}>
       <div dangerouslySetInnerHTML={{ __html: marked(md) }} />
