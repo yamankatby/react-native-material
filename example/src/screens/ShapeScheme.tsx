@@ -1,10 +1,10 @@
-import chroma from "chroma-js";
-import React from "react";
+import * as Analytics from "expo-firebase-analytics";
+import React, { useEffect } from "react";
 import {
   ScrollView,
+  Text,
   useWindowDimensions,
   View,
-  Text,
   ViewStyle,
 } from "react-native";
 import { Surface, useTheme } from "../../core";
@@ -67,6 +67,10 @@ const Shape: React.FC<ShapeProps> = ({
 };
 
 const ShapeScheme: React.FC = () => {
+  useEffect(() => {
+    Analytics.setCurrentScreen("ShapeScheme", "ShapeScheme");
+  }, []);
+
   const { width, height } = useWindowDimensions();
   const unit = width / 22;
 

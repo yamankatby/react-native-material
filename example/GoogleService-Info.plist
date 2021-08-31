@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>93597947415-f3efmp8dhrfo4rb2fl6locl9v85of87e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.93597947415-f3efmp8dhrfo4rb2fl6locl9v85of87e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB_gX1LBrpbqu4A_TdCflvT1-I_deEUXcg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>93597947415</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.swazer.material</string>
+	<key>PROJECT_ID</key>
+	<string>react-native-material</string>
+	<key>STORAGE_BUCKET</key>
+	<string>react-native-material.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:93597947415:ios:1c37bff7d9878ce91e6e52</string>
+</dict>
+</plist>

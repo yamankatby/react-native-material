@@ -18,6 +18,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
 import { Surface, useStyles, useTheme } from "../../core";
 import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
+import * as Analytics from "expo-firebase-analytics";
+import { useEffect } from "react";
 
 const BackdropHiddenSection: React.FC = () => {
   const theme = useTheme();
@@ -187,6 +189,10 @@ const BackdropHiddenSection: React.FC = () => {
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    Analytics.setCurrentScreen("Main", "Main");
+  }, []);
+
   const insets = useSafeAreaInsets();
 
   const theme = useTheme();

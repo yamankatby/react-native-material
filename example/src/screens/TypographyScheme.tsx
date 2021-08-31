@@ -1,13 +1,7 @@
-import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  useColorScheme,
-  TextStyle,
-} from "react-native";
-import { useTheme, useStyles, TypographyVariant } from "../../core";
+import * as Analytics from "expo-firebase-analytics";
+import React, { useEffect } from "react";
+import { ScrollView, Text, TextStyle } from "react-native";
+import { TypographyVariant, useTheme } from "../../core";
 import { useAppSelector } from "../config/store";
 
 interface PreviewPorps {
@@ -30,6 +24,10 @@ const Preview: React.FC<PreviewPorps> = ({ title, variant, style }) => {
 };
 
 const TypographyScheme: React.FC = () => {
+  useEffect(() => {
+    Analytics.setCurrentScreen("TypographyScheme", "TypographyScheme");
+  }, []);
+
   const theme = useTheme();
   const currentTheme = useAppSelector((state) => state.theme);
   const palette = {

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "93597947415",
+    "project_id": "react-native-material",
+    "storage_bucket": "react-native-material.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93597947415:android:15185252045ccce11e6e52",
+        "android_client_info": {
+          "package_name": "com.swazer.material"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93597947415-da97nn5mfpvvsgp1i2p85h64vuclghs3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBebmEdvgKc3zZbowZI16sHHfm68dvY25M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93597947415-da97nn5mfpvvsgp1i2p85h64vuclghs3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "93597947415-f3efmp8dhrfo4rb2fl6locl9v85of87e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.swazer.material"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

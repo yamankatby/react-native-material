@@ -1,10 +1,8 @@
 import chroma from "chroma-js";
-import React from "react";
+import * as Analytics from "expo-firebase-analytics";
+import React, { useEffect } from "react";
 import { ScrollView, Text, View } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "../../core";
 
 interface PreviewPorps {
@@ -75,6 +73,10 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
 };
 
 const ColorScheme: React.FC = () => {
+  useEffect(() => {
+    Analytics.setCurrentScreen("ColorScheme", "ColorScheme");
+  }, []);
+
   const { mode, colorScheme } = useTheme();
 
   const insets = useSafeAreaInsets();
