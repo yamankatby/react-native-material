@@ -38,3 +38,19 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+// for (let index = 0; index < components.length; index++) {
+//   const element = components[index];
+//   await writeFile(
+//     path.join("docs/components/" + element.slug + ".md"),
+//     `---
+// title: "${element.title}"
+// description: "${element.body}"
+// issue_url: "${element.url}"
+// ---
+
+// # ${element.title}
+// ${element.body}
+// `
+//   );
+// }

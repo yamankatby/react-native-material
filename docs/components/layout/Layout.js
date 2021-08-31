@@ -21,8 +21,8 @@ import GitHub from "@material-ui/icons/GitHub";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { useContext, useState } from "react";
-import { components } from ".";
 import { ColorModeContext } from "../../pages/_app";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -68,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Layout = ({ window, children }) => {
+const Layout = ({ window, components, children }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -82,33 +82,97 @@ const Layout = ({ window, children }) => {
       <Toolbar />
       <Divider />
       <List subheader={<ListSubheader>Getting Started</ListSubheader>}>
-        <ListItem button>
-          <ListItemText primary="Installation" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Hello world!" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Support" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Contributing" />
-        </ListItem>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "getting-started", slug: "installation" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Installation" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "getting-started", slug: "hello-world" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Hello world!" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "getting-started", slug: "support" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Support" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "getting-started", slug: "contributing" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Contributing" />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List subheader={<ListSubheader>Theming</ListSubheader>}>
-        <ListItem button>
-          <ListItemText primary="Theming overview" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Color scheme" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Shape scheme" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Typography scheme" />
-        </ListItem>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "theming", slug: "theming-overview" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Theming overview" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "theming", slug: "color-scheme" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Color scheme" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "theming", slug: "shape-scheme" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Shape scheme" />
+          </ListItem>
+        </Link>
+        <Link
+          href={{
+            pathname: "/[folder]/[slug]",
+            query: { folder: "theming", slug: "typography-scheme" },
+          }}
+          passHref
+        >
+          <ListItem button>
+            <ListItemText primary="Typography scheme" />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List
@@ -127,10 +191,19 @@ const Layout = ({ window, children }) => {
           </ListSubheader>
         }
       >
-        {components.map((component) => (
-          <ListItem key={component.slug} button>
-            <ListItemText primary={component.title} />
-          </ListItem>
+        {components?.map((component) => (
+          <Link
+            key={component.slug}
+            href={{
+              pathname: "/[folder]/[slug]",
+              query: { folder: "components", slug: component.slug },
+            }}
+            passHref
+          >
+            <ListItem button>
+              <ListItemText primary={component.title} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>
