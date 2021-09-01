@@ -65,7 +65,7 @@ const theme = {
 };
 
 const AppProvider = () => (
-  <ThemeProvider>
+  <ThemeProvider theme={theme}>
     <App />
   </ThemeProvider>
 );
