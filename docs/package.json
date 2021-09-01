@@ -13,11 +13,14 @@
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^5.0.0-beta.4",
     "@material-ui/icons": "^4.11.2",
+    "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^3.0.2",
     "next": "11.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-markdown": "^7.0.1",
+    "react-syntax-highlighter": "^15.4.4"
   },
   "devDependencies": {
     "eslint": "7.32.0",

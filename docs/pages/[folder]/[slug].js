@@ -1,13 +1,13 @@
 import { Layout } from "@components/layout";
 import { readdir, readFile } from "fs/promises";
-import path from "path";
 import matter from "gray-matter";
-import marked from "marked";
+import path from "path";
+import ReactMarkdown from "react-markdown";
 
 export default function post({ meta, md, listItems }) {
   return (
     <Layout components={listItems}>
-      <div dangerouslySetInnerHTML={{ __html: marked(md) }} />
+      <ReactMarkdown>{md}</ReactMarkdown>
     </Layout>
   );
 }
