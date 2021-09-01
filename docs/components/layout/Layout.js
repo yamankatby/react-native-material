@@ -89,7 +89,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Installation" />
           </ListItem>
         </Link>
@@ -100,7 +100,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Hello world!" />
           </ListItem>
         </Link>
@@ -111,7 +111,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Support" />
           </ListItem>
         </Link>
@@ -122,7 +122,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Contributing" />
           </ListItem>
         </Link>
@@ -136,7 +136,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Theming overview" />
           </ListItem>
         </Link>
@@ -147,7 +147,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Color scheme" />
           </ListItem>
         </Link>
@@ -158,7 +158,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Shape scheme" />
           </ListItem>
         </Link>
@@ -169,7 +169,7 @@ const Layout = ({ window, components, children }) => {
           }}
           passHref
         >
-          <ListItem button>
+          <ListItem button component="a">
             <ListItemText primary="Typography scheme" />
           </ListItem>
         </Link>
@@ -200,7 +200,7 @@ const Layout = ({ window, components, children }) => {
             }}
             passHref
           >
-            <ListItem button>
+            <ListItem button component="a">
               <ListItemText primary={component.title} />
             </ListItem>
           </Link>
