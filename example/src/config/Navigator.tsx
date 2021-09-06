@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { Text } from "react-native";
 import { useTheme } from "../../core";
 import ColorScheme from "../screens/ColorScheme";
 import Home from "../screens/Home";
@@ -13,7 +14,21 @@ const Navigator: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={{
+        prefixes: [],
+        config: {
+          initialRouteName: "Home",
+          screens: {
+            Home: { path: "/" },
+            ColorScheme: { path: "/color-scheme" },
+            TypographyScheme: { path: "/typography-scheme" },
+            ShapeScheme: { path: "/shape-scheme" },
+            NotFound: "*",
+          },
+        },
+      }}
+    >
       <Stack.Navigator
         screenOptions={{
           headerShadowVisible: true,
@@ -47,6 +62,11 @@ const Navigator: React.FC = () => {
           name="ShapeScheme"
           component={ShapeScheme}
           options={{ title: "Shape Scheme" }}
+        />
+        <Stack.Screen
+          name="NotFound"
+          component={() => <Text>404</Text>}
+          options={{ title: "404" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
