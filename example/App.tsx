@@ -46,6 +46,7 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
+import * as Analytics from "expo-firebase-analytics";
 import React from "react";
 import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -59,6 +60,10 @@ import { fortnightly } from "./src/config/themes/fortnightly";
 import { owl } from "./src/config/themes/owl";
 import { reply } from "./src/config/themes/reply";
 import { shrine } from "./src/config/themes/shrine";
+
+if (__DEV__) {
+  Analytics.setAnalyticsCollectionEnabled(false);
+}
 
 const App = () => {
   const colorScheme = useColorScheme();
