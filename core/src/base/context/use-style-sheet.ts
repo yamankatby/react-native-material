@@ -1,13 +1,13 @@
 import { DependencyList, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { Theme } from "../theme-scheme";
+import { Theme } from "../theme";
 import useTheme from "./use-theme";
 
 export type NamedStyles<T> = {
   [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
 };
 
-const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
+const useStyleSheet = <T extends NamedStyles<T> | NamedStyles<any>>(
   factory: (theme: Theme) => T,
   deps?: DependencyList | undefined
 ): T => {
@@ -15,4 +15,4 @@ const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
   return useMemo(() => factory(theme), [theme, deps]);
 };
 
-export default useStyles;
+export default useStyleSheet;

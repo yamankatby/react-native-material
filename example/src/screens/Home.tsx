@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Surface, useStyles, useTheme } from "@react-native-material/core";
+import { Surface, useStyleSheet, useTheme } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import * as Analytics from "expo-firebase-analytics";
@@ -28,7 +28,7 @@ const BackdropHiddenSection: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const styles = useStyles(
+  const styles = useStyleSheet(
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
       container: {},
       divider: {
@@ -199,7 +199,7 @@ const Home: React.FC = () => {
 
   const currentTheme = useAppSelector((state) => state.theme);
 
-  const styles = useStyles(
+  const styles = useStyleSheet(
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
       container: {
         flex: 1,
