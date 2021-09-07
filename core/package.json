@@ -8,6 +8,9 @@
   "author": "Yaman KATBY <me@yamankatby.com> (https://yamankatby.com/)",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "dev": "ts-node ../../material-dev/index.ts"
+  },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-native": "^0.65.1",
