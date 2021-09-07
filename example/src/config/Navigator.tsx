@@ -7,6 +7,7 @@ import ColorScheme from "../screens/ColorScheme";
 import Home from "../screens/Home";
 import ShapeScheme from "../screens/ShapeScheme";
 import TypographyScheme from "../screens/TypographyScheme";
+import BackdropExample from "../screens/BackdropExample";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ const Navigator: React.FC = () => {
             ColorScheme: { path: "/color-scheme", exact: true },
             TypographyScheme: { path: "/typography-scheme", exact: true },
             ShapeScheme: { path: "/shape-scheme", exact: true },
+            BackdropExample: { path: '/backdrop', exact: true },
             NotFound: "*"
           }
         }
@@ -63,6 +65,11 @@ const Navigator: React.FC = () => {
           name="ShapeScheme"
           component={ShapeScheme}
           options={{ title: "Shape Scheme" }}
+        />
+        <Stack.Screen
+          name={'BackdropExample'}
+          component={BackdropExample}
+          options={{ title: 'Backdrop Example', headerShown: false }}
         />
         <Stack.Screen
           name="NotFound"

@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Surface, useStyleSheet, useTheme } from "@react-native-material/core";
+import { Backdrop, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import * as Analytics from "expo-firebase-analytics";
@@ -201,15 +201,10 @@ const Home: React.FC = () => {
 
   const styles = useStyleSheet(
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
-      container: {
-        flex: 1,
-        backgroundColor: colorScheme.primary
-      },
-      backLayerContainer: {
-        paddingTop: insets.top
-      },
       appBar: {
-        margin: 16,
+        marginTop: insets.top,
+        marginHorizontal: 16,
+        height: 56,
         flexDirection: "row",
         alignItems: "center"
       },
@@ -235,18 +230,6 @@ const Home: React.FC = () => {
         ...typographyScheme.subtitle1,
         color: colorScheme.onPrimary
       },
-      frontLayerContainer: {
-        position: "absolute",
-        top: insets.top + 56,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        backgroundColor: colorScheme.background,
-        borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
-        borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
-        borderBottomStartRadius: 0,
-        borderBottomEndRadius: 0
-      },
       fab: {
         position: "absolute",
         end: 16,
@@ -261,15 +244,8 @@ const Home: React.FC = () => {
   );
 
   const [isBackdropOpened, setIsBackdropOpened] = useState(false);
-  const [backLayerHiddenSectionHeight, setBackLayerHiddenSectionHeight] =
-    useState(0);
 
   const backdropAnimation = useRef(new Animated.Value(0)).current;
-
-  const frontLayerTranslate = backdropAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, backLayerHiddenSectionHeight]
-  });
 
   const appBarTitleOpacity = backdropAnimation.interpolate({
     inputRange: [0, 0.6],
@@ -312,45 +288,36 @@ const Home: React.FC = () => {
         }
         translucent
       />
-      <View style={styles.container}>
-        <View style={styles.backLayerContainer}>
-          <View style={styles.appBar}>
-            <TouchableOpacity onPress={handleToggleBackdrop}>
-              <MaterialIcons
-                name="tune"
-                size={24}
-                color={theme.colorScheme.onPrimary}
-              />
-            </TouchableOpacity>
-            <Animated.Text
-              style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}
-            >
-              Material UI
-            </Animated.Text>
-            <Animated.Text
-              style={[
-                styles.backLayerTitle,
-                { opacity: backLayerTitleOpacity }
-              ]}
-            >
-              Theming
-            </Animated.Text>
-          </View>
-          <View
-            onLayout={(e) => {
-              setBackLayerHiddenSectionHeight(e.nativeEvent.layout.height);
-            }}
+      <Backdrop
+        frontLayerStyle={{
+          borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
+          borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
+        }}
+        expanded={isBackdropOpened}
+        header={<View style={styles.appBar}>
+          <TouchableOpacity onPress={handleToggleBackdrop}>
+            <MaterialIcons
+              name="tune"
+              size={24}
+              color={theme.colorScheme.onPrimary}
+            />
+          </TouchableOpacity>
+          <Animated.Text
+            style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}
           >
-            <BackdropHiddenSection />
-          </View>
-        </View>
-        <Surface
-          category="large"
-          style={[
-            styles.frontLayerContainer,
-            { transform: [{ translateY: frontLayerTranslate as any }] }
-          ]}
-        >
+            Material UI
+          </Animated.Text>
+          <Animated.Text
+            style={[
+              styles.backLayerTitle,
+              { opacity: backLayerTitleOpacity }
+            ]}
+          >
+            Theming
+          </Animated.Text>
+        </View>}
+        backLayer={<BackdropHiddenSection />}
+        subheader={
           <View style={{ marginHorizontal: 16, marginTop: 10 }}>
             <Text
               style={[
@@ -370,115 +337,117 @@ const Home: React.FC = () => {
               }}
             />
           </View>
-          <FlatList
-            numColumns={Math.ceil(Dimensions.get("window").width / 500)}
-            contentContainerStyle={{
-              marginHorizontal: 8,
-              paddingBottom:
-                insets.bottom + theme.shapeScheme.small.family === "rounded"
-                  ? 56
-                  : 68 + 32
-            }}
-            data={data}
-            keyExtractor={(item) => `${item.id}`}
-            renderItem={({ item }) => (
-              <Surface
-                category="medium"
-                style={{
-                  flex: 1,
-                  marginTop: 16,
-                  marginHorizontal: 8,
-                  backgroundColor:
-                    currentTheme === "default" && colorScheme === "dark"
-                      ? "#232323"
-                      : theme.colorScheme.surface,
-                  borderWidth:
-                    (currentTheme === "default" && colorScheme === "light") ||
-                    currentTheme === "owl"
-                      ? 1
-                      : 0,
-                  borderColor: chroma(theme.colorScheme.onBackground)
-                    .alpha(0.1)
-                    .hex()
-                }}
-              >
-                <View style={{ margin: 16 }}>
-                  <Text
-                    style={[
-                      theme.typographyScheme.h5,
-                      { color: theme.colorScheme.onSurface }
-                    ]}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text
-                    style={[
-                      theme.typographyScheme.body2,
-                      { marginTop: 12, color: theme.colorScheme.onSurface }
-                    ]}
-                  >
-                    {item.body}
-                  </Text>
+        }
+      >
+        <FlatList
+          numColumns={Math.ceil(Dimensions.get("window").width / 500)}
+          contentContainerStyle={{
+            marginHorizontal: 8,
+            paddingBottom:
+              insets.bottom + theme.shapeScheme.small.family === "rounded"
+                ? 56
+                : 68 + 32
+          }}
+          data={data}
+          keyExtractor={(item) => `${item.id}`}
+          renderItem={({ item }) => (
+            <Surface
+              category="medium"
+              style={{
+                flex: 1,
+                marginTop: 16,
+                marginHorizontal: 8,
+                backgroundColor:
+                  currentTheme === "default" && colorScheme === "dark"
+                    ? "#232323"
+                    : theme.colorScheme.surface,
+                borderWidth:
+                  (currentTheme === "default" && colorScheme === "light") ||
+                  currentTheme === "owl"
+                    ? 1
+                    : 0,
+                borderColor: chroma(theme.colorScheme.onBackground)
+                  .alpha(0.1)
+                  .hex()
+              }}
+            >
+              <View style={{ margin: 16 }}>
+                <Text
+                  style={[
+                    theme.typographyScheme.h5,
+                    { color: theme.colorScheme.onSurface }
+                  ]}
+                >
+                  {item.title}
+                </Text>
+                <Text
+                  style={[
+                    theme.typographyScheme.body2,
+                    { marginTop: 12, color: theme.colorScheme.onSurface }
+                  ]}
+                >
+                  {item.body}
+                </Text>
 
+                <Text
+                  style={[
+                    theme.typographyScheme.body2,
+                    { color: theme.colorScheme.onSurface, marginTop: 12 }
+                  ]}
+                >
+                  status: waiting for 👍
+                </Text>
+
+                <TouchableOpacity
+                  style={{ marginTop: 12, alignSelf: "flex-start" }}
+                  onPress={() => {
+                    Linking.openURL(item.html_url);
+                  }}
+                >
                   <Text
                     style={[
-                      theme.typographyScheme.body2,
-                      { color: theme.colorScheme.onSurface, marginTop: 12 }
+                      theme.typographyScheme.button,
+                      {
+                        color:
+                          currentTheme === "fortnightly"
+                            ? theme.colorScheme.secondary
+                            : currentTheme === "shrine"
+                              ? theme.colorScheme.onSurface
+                              : theme.colorScheme.primary
+                      }
                     ]}
                   >
-                    status: waiting for 👍
+                    Upvote
                   </Text>
+                </TouchableOpacity>
+              </View>
+            </Surface>
+          )}
+        />
+      </Backdrop>
 
-                  <TouchableOpacity
-                    style={{ marginTop: 12, alignSelf: "flex-start" }}
-                    onPress={() => {
-                      Linking.openURL(item.html_url);
-                    }}
-                  >
-                    <Text
-                      style={[
-                        theme.typographyScheme.button,
-                        {
-                          color:
-                            currentTheme === "fortnightly"
-                              ? theme.colorScheme.secondary
-                              : currentTheme === "shrine"
-                                ? theme.colorScheme.onSurface
-                                : theme.colorScheme.primary
-                        }
-                      ]}
-                    >
-                      Upvote
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </Surface>
-            )}
-          />
-        </Surface>
-        <Surface
-          style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}
+      <Surface
+        style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            Linking.openURL(
+              "https://github.com/yamankatby/react-native-material"
+            );
+          }}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
         >
-          <TouchableOpacity
-            onPress={() => {
-              Linking.openURL(
-                "https://github.com/yamankatby/react-native-material"
-              );
-            }}
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <MaterialIcons
-              name="star"
-              size={24}
-              color={theme.colorScheme.onSecondary}
-            />
-          </TouchableOpacity>
-        </Surface>
-      </View>
+          <MaterialIcons
+            name="star"
+            size={24}
+            color={theme.colorScheme.onSecondary}
+          />
+        </TouchableOpacity>
+      </Surface>
     </>
   );
 };
