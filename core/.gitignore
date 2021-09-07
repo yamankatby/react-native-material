@@ -15,3 +15,5 @@ buck-out/
 
 # Packages
 lib/
+
+.idea
