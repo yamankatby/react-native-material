@@ -1,4 +1,4 @@
-import { defaultTheme, Theme } from "../../../core";
+import { defaultTheme, Theme } from "@react-native-material/core";
 
 export const owl: Theme = {
   ...defaultTheme,

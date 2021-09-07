@@ -1,7 +1,7 @@
+import { TypographyVariant, useTheme } from "@react-native-material/core";
 import * as Analytics from "expo-firebase-analytics";
 import React, { useEffect } from "react";
 import { ScrollView, Text, TextStyle } from "react-native";
-import { TypographyVariant, useTheme } from "../../core";
 import { useAppSelector } from "../config/store";
 
 interface PreviewPorps {

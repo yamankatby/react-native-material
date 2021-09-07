@@ -1,3 +1,4 @@
+import { Surface, useTheme } from "@react-native-material/core";
 import * as Analytics from "expo-firebase-analytics";
 import React, { useEffect } from "react";
 import {
@@ -7,7 +8,6 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Surface, useTheme } from "../../core";
 import { useAppSelector } from "../config/store";
 
 interface ShapeProps {

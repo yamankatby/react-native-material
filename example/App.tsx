@@ -46,12 +46,16 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold,
 } from "@expo-google-fonts/work-sans";
+import {
+  darkTheme,
+  defaultTheme,
+  ThemeProvider,
+} from "@react-native-material/core";
 import * as Analytics from "expo-firebase-analytics";
 import React from "react";
 import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
-import { darkTheme, defaultTheme, ThemeProvider } from "./core";
 import Navigator from "./src/config/Navigator";
 import { store, useAppSelector } from "./src/config/store";
 import { basil } from "./src/config/themes/basil";

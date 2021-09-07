@@ -1832,6 +1832,13 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-material/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.0.0.tgz#e9289d34234975eab92bd23bdd713d9091910a02"
+  integrity sha512-CY5cymdxg9LkUnU0/JLQ8DUPerTGs8XpziyCdn5NjUd2GFDSqwoiWOWNz1iab4Mg83ChH7n1QCy16zqE9zEoXA==
+  dependencies:
+    chroma-js "^2.1.2"
+
 "@react-navigation/core@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-6.0.1.tgz#4424ee1f83e2e305ef80d27c2778fb82fba852a0"

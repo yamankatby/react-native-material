@@ -1,9 +1,9 @@
+import { useTheme } from "@react-native-material/core";
 import chroma from "chroma-js";
 import * as Analytics from "expo-firebase-analytics";
 import React, { useEffect } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useTheme } from "../../core";
 
 interface PreviewPorps {
   index: number;

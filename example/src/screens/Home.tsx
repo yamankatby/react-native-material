@@ -1,25 +1,30 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { Surface, useStyles, useTheme } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
+import * as Analytics from "expo-firebase-analytics";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Animated,
+  Dimensions,
   FlatList,
   Linking,
   ScrollView,
   Text,
   TouchableOpacity,
-  View,
-  Dimensions,
   useColorScheme,
+  View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
-import { Surface, useStyles, useTheme } from "../../core";
 import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
-import * as Analytics from "expo-firebase-analytics";
-import { useEffect } from "react";
 
 const BackdropHiddenSection: React.FC = () => {
   const theme = useTheme();

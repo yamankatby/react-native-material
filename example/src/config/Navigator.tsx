@@ -2,8 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { Platform, Text } from "react-native";
-import { useTheme } from "../../core";
-import Button from "../screens/Button";
+import { useTheme } from "@react-native-material/core";
 import ColorScheme from "../screens/ColorScheme";
 import Home from "../screens/Home";
 import ShapeScheme from "../screens/ShapeScheme";
@@ -25,7 +24,6 @@ const Navigator: React.FC = () => {
             ColorScheme: { path: "/color-scheme", exact: true },
             TypographyScheme: { path: "/typography-scheme", exact: true },
             ShapeScheme: { path: "/shape-scheme", exact: true },
-            Button: { path: "/button", exact: true },
             NotFound: "*",
           },
         },
@@ -65,11 +63,6 @@ const Navigator: React.FC = () => {
           name="ShapeScheme"
           component={ShapeScheme}
           options={{ title: "Shape Scheme" }}
-        />
-        <Stack.Screen
-          name="Button"
-          component={Button}
-          options={{ title: "Button" }}
         />
         <Stack.Screen
           name="NotFound"
