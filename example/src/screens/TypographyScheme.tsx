@@ -39,8 +39,8 @@ const TypographyScheme: React.FC = () => {
     shrine: { background: "#FFF0E8", color: "#5C4445" },
     default: {
       background: theme.colorScheme.background,
-      color: theme.colorScheme.onBackground,
-    },
+      color: theme.colorScheme.onBackground
+    }
   };
 
   return (

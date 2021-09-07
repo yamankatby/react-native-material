@@ -27,7 +27,7 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
         height: row ? 100 : 186,
         margin: 0.5,
         padding: 16,
-        backgroundColor: color,
+        backgroundColor: color
       }}
     >
       <Text style={[theme.typographyScheme.subtitle1, { color: onColor }]}>
@@ -37,7 +37,7 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
         style={{
           flexDirection: "row",
           justifyContent: row ? "space-between" : "flex-start",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <View
@@ -47,13 +47,13 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
             width: 24,
             height: 24,
             backgroundColor: onColor,
-            borderRadius: 12,
+            borderRadius: 12
           }}
         >
           <Text
             style={[
               theme.typographyScheme.subtitle2,
-              { color: getOn(onColor) },
+              { color: getOn(onColor) }
             ]}
           >
             {index}
@@ -62,7 +62,7 @@ const Preview: React.FC<PreviewPorps> = ({ index, name, color, on, row }) => {
         <Text
           style={[
             theme.typographyScheme.subtitle2,
-            { marginStart: 12, color: onColor },
+            { marginStart: 12, color: onColor }
           ]}
         >
           {color}

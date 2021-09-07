@@ -14,7 +14,7 @@ export const owl: Theme = {
     onSecondary: "#000000",
     onBackground: "#000000",
     onSurface: "#000000",
-    onError: "#FFFFFF",
+    onError: "#FFFFFF"
   },
   shapeScheme: {
     small: {
@@ -23,8 +23,8 @@ export const owl: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     medium: {
       family: "rounded",
@@ -32,8 +32,8 @@ export const owl: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     large: {
       family: "rounded",
@@ -41,64 +41,64 @@ export const owl: Theme = {
         topStart: 16,
         topEnd: 16,
         bottomStart: 16,
-        bottomEnd: 16,
-      },
-    },
+        bottomEnd: 16
+      }
+    }
   },
   typographyScheme: {
     h1: {
       fontFamily: "Rubik_700Bold",
-      fontSize: 96,
+      fontSize: 96
     },
     h2: {
       fontFamily: "Rubik_700Bold",
-      fontSize: 60,
+      fontSize: 60
     },
     h3: {
       fontFamily: "Rubik_700Bold",
-      fontSize: 48,
+      fontSize: 48
     },
     h4: {
       fontFamily: "Rubik_700Bold",
-      fontSize: 34,
+      fontSize: 34
     },
     h5: {
       fontFamily: "Rubik_700Bold",
-      fontSize: 24,
+      fontSize: 24
     },
     h6: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 20,
+      fontSize: 20
     },
     subtitle1: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 16,
+      fontSize: 16
     },
     subtitle2: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 14,
+      fontSize: 14
     },
     body1: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 16,
+      fontSize: 16
     },
     body2: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 14,
+      fontSize: 14
     },
     button: {
       fontFamily: "Rubik_700Bold",
       fontSize: 14,
-      textTransform: "uppercase",
+      textTransform: "uppercase"
     },
     caption: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 12,
+      fontSize: 12
     },
     overline: {
       fontFamily: "Rubik_400Regular",
       fontSize: 10,
-      textTransform: "uppercase",
-    },
-  },
+      textTransform: "uppercase"
+    }
+  }
 };

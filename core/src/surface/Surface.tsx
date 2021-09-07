@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Animated, StyleSheet, ViewProps } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import {
-  ShapeBorderRadius,
-  ShapeCategory,
-  ShapeFamily,
-  useTheme,
-} from "../base";
+import { ShapeBorderRadius, ShapeCategory, ShapeFamily, useTheme } from "../base";
 
 export interface SurfaceProps extends ViewProps {
   category?: ShapeCategory;
@@ -25,7 +20,7 @@ const Surface: React.FC<SurfaceProps> = ({ family, ...rest }) => {
 };
 
 Surface.defaultProps = {
-  category: "small",
+  category: "small"
 };
 
 export interface RoundedSurfaceProps extends ViewProps {
@@ -63,7 +58,7 @@ export const RoundedSurface: React.FC<RoundedSurfaceProps> = ({
       styles.borderBottomEndRadius ??
       styles.borderBottomRightRadius ??
       styles.borderRadius ??
-      radius.bottomEnd,
+      radius.bottomEnd
   };
 
   return (
@@ -74,8 +69,8 @@ export const RoundedSurface: React.FC<RoundedSurfaceProps> = ({
           borderTopStartRadius: borderRadius.topStart,
           borderTopEndRadius: borderRadius.topEnd,
           borderBottomStartRadius: borderRadius.bottomStart,
-          borderBottomEndRadius: borderRadius.bottomEnd,
-        },
+          borderBottomEndRadius: borderRadius.bottomEnd
+        }
       ]}
       {...rest}
     />
@@ -83,7 +78,7 @@ export const RoundedSurface: React.FC<RoundedSurfaceProps> = ({
 };
 
 RoundedSurface.defaultProps = {
-  category: "small",
+  category: "small"
 };
 
 export interface CutSurfaceProps extends ViewProps {
@@ -125,7 +120,7 @@ export const CutSurface: React.FC<CutSurfaceProps> = ({
       styles.borderBottomEndRadius ??
       styles.borderBottomRightRadius ??
       styles.borderRadius ??
-      radius.bottomEnd,
+      radius.bottomEnd
   };
 
   const points = [
@@ -136,7 +131,7 @@ export const CutSurface: React.FC<CutSurfaceProps> = ({
     [width, height - borderRadius.bottomEnd],
     [width - borderRadius.bottomEnd, height],
     [borderRadius.bottomStart, height],
-    [0, height - borderRadius.bottomStart],
+    [0, height - borderRadius.bottomStart]
   ].reduce((p, c) => `${p} ${c}`, "");
 
   return (
@@ -157,7 +152,7 @@ export const CutSurface: React.FC<CutSurfaceProps> = ({
 };
 
 CutSurface.defaultProps = {
-  category: "small",
+  category: "small"
 };
 
 export default Surface;

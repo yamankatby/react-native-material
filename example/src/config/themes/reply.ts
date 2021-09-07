@@ -14,7 +14,7 @@ export const reply: Theme = {
     onSecondary: "#344955",
     onBackground: "#4A6572",
     onSurface: "#000000",
-    onError: "#FFFFFF",
+    onError: "#FFFFFF"
   },
   shapeScheme: {
     small: {
@@ -23,8 +23,8 @@ export const reply: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     medium: {
       family: "rounded",
@@ -32,8 +32,8 @@ export const reply: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     large: {
       family: "rounded",
@@ -41,64 +41,64 @@ export const reply: Theme = {
         topStart: 12,
         topEnd: 12,
         bottomStart: 12,
-        bottomEnd: 12,
-      },
-    },
+        bottomEnd: 12
+      }
+    }
   },
   typographyScheme: {
     h1: {
       fontFamily: "WorkSans_300Light",
-      fontSize: 96,
+      fontSize: 96
     },
     h2: {
       fontFamily: "WorkSans_600SemiBold",
-      fontSize: 60,
+      fontSize: 60
     },
     h3: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 48,
+      fontSize: 48
     },
     h4: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 34,
+      fontSize: 34
     },
     h5: {
       fontFamily: "WorkSans_700Bold",
-      fontSize: 24,
+      fontSize: 24
     },
     h6: {
       fontFamily: "WorkSans_500Medium",
-      fontSize: 20,
+      fontSize: 20
     },
     subtitle1: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 16,
+      fontSize: 16
     },
     subtitle2: {
       fontFamily: "WorkSans_500Medium",
-      fontSize: 14,
+      fontSize: 14
     },
     body1: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 18,
+      fontSize: 18
     },
     body2: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 14,
+      fontSize: 14
     },
     button: {
       fontFamily: "WorkSans_500Medium",
       fontSize: 14,
-      textTransform: "uppercase",
+      textTransform: "uppercase"
     },
     caption: {
       fontFamily: "WorkSans_400Regular",
-      fontSize: 12,
+      fontSize: 12
     },
     overline: {
       fontFamily: "WorkSans_600SemiBold",
       fontSize: 12,
-      textTransform: "uppercase",
-    },
-  },
+      textTransform: "uppercase"
+    }
+  }
 };

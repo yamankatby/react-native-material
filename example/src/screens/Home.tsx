@@ -4,13 +4,7 @@ import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import * as Analytics from "expo-firebase-analytics";
 import { StatusBar } from "expo-status-bar";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
@@ -20,7 +14,7 @@ import {
   Text,
   TouchableOpacity,
   useColorScheme,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
@@ -43,17 +37,17 @@ const BackdropHiddenSection: React.FC = () => {
         backgroundColor:
           currentTheme === "default"
             ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
-            : colorScheme.primaryVariant,
+            : colorScheme.primaryVariant
       },
       title: {
         marginTop: 16,
         marginStart: 16,
         color: colorScheme.onPrimary,
-        ...typographyScheme.subtitle1,
+        ...typographyScheme.subtitle1
       },
       section: {
         marginTop: 12,
-        marginBottom: 16,
+        marginBottom: 16
       },
       chip: {
         justifyContent: "center",
@@ -64,26 +58,26 @@ const BackdropHiddenSection: React.FC = () => {
           currentTheme === "default"
             ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
             : colorScheme.primaryVariant,
-        borderRadius: shapeScheme.small.family === "rounded" ? 15 : undefined,
+        borderRadius: shapeScheme.small.family === "rounded" ? 15 : undefined
       },
       chipTitle: {
         marginHorizontal: 16,
         color: colorScheme.onPrimary,
         textTransform:
           currentTheme === "fortnightly" ? "uppercase" : "capitalize",
-        ...typographyScheme.body2,
+        ...typographyScheme.body2
       },
       selectedChip: {
-        backgroundColor: colorScheme.onPrimary,
+        backgroundColor: colorScheme.onPrimary
       },
       selectedChipTitle: {
-        color: colorScheme.primary,
+        color: colorScheme.primary
       },
       schemeContainer: {
         flexDirection: "row",
         alignItems: "center",
         marginHorizontal: 16,
-        marginBottom: 8,
+        marginBottom: 8
       },
       scheme: {
         flex: 1,
@@ -92,13 +86,13 @@ const BackdropHiddenSection: React.FC = () => {
         backgroundColor:
           currentTheme === "default"
             ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
-            : colorScheme.primaryVariant,
+            : colorScheme.primaryVariant
       },
       schemeTitle: {
         marginStart: 16,
         color: colorScheme.onPrimary,
-        ...typographyScheme.body2,
-      },
+        ...typographyScheme.body2
+      }
     }),
     [currentTheme]
   );
@@ -111,7 +105,7 @@ const BackdropHiddenSection: React.FC = () => {
       "fortnightly",
       "owl",
       "reply",
-      "shrine",
+      "shrine"
     ],
     []
   );
@@ -122,8 +116,8 @@ const BackdropHiddenSection: React.FC = () => {
     {
       icon: "format-size",
       title: "Typography Scheme",
-      screen: "TypographyScheme",
-    },
+      screen: "TypographyScheme"
+    }
   ];
 
   return (
@@ -144,14 +138,14 @@ const BackdropHiddenSection: React.FC = () => {
               <Surface
                 style={[
                   styles.chip,
-                  theme === currentTheme && styles.selectedChip,
+                  theme === currentTheme && styles.selectedChip
                 ]}
               >
                 <View>
                   <Text
                     style={[
                       styles.chipTitle,
-                      theme === currentTheme && styles.selectedChipTitle,
+                      theme === currentTheme && styles.selectedChipTitle
                     ]}
                   >
                     {currentTheme === "fortnightly" && "#"}
@@ -191,6 +185,7 @@ const BackdropHiddenSection: React.FC = () => {
   );
 };
 
+// @ts-ignore
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Home: React.FC = () => {
@@ -208,37 +203,37 @@ const Home: React.FC = () => {
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
       container: {
         flex: 1,
-        backgroundColor: colorScheme.primary,
+        backgroundColor: colorScheme.primary
       },
       backLayerContainer: {
-        paddingTop: insets.top,
+        paddingTop: insets.top
       },
       appBar: {
         margin: 16,
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "center"
       },
       appBarTitle: {
         marginStart: 32,
         color: colorScheme.onPrimary,
-        ...typographyScheme.h6,
+        ...typographyScheme.h6
       },
       backLayerTitle: {
         position: "absolute",
         start: 56,
         color: colorScheme.onPrimary,
-        ...typographyScheme.h6,
+        ...typographyScheme.h6
       },
       backLayerDivider: {
         height: 1,
         marginHorizontal: 16,
-        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex(),
+        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex()
       },
       backLayerSectionTitle: {
         marginVertical: 8,
         marginStart: 16,
         ...typographyScheme.subtitle1,
-        color: colorScheme.onPrimary,
+        color: colorScheme.onPrimary
       },
       frontLayerContainer: {
         position: "absolute",
@@ -250,7 +245,7 @@ const Home: React.FC = () => {
         borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
         borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
         borderBottomStartRadius: 0,
-        borderBottomEndRadius: 0,
+        borderBottomEndRadius: 0
       },
       fab: {
         position: "absolute",
@@ -259,8 +254,8 @@ const Home: React.FC = () => {
         width: shapeScheme.small.family === "rounded" ? 56 : 68,
         height: shapeScheme.small.family === "rounded" ? 56 : 68,
         borderRadius: shapeScheme.small.family === "rounded" ? 28 : 34,
-        backgroundColor: colorScheme.secondary,
-      },
+        backgroundColor: colorScheme.secondary
+      }
     }),
     [insets.top, insets.bottom, currentTheme]
   );
@@ -273,29 +268,29 @@ const Home: React.FC = () => {
 
   const frontLayerTranslate = backdropAnimation.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, backLayerHiddenSectionHeight],
+    outputRange: [0, backLayerHiddenSectionHeight]
   });
 
   const appBarTitleOpacity = backdropAnimation.interpolate({
     inputRange: [0, 0.6],
-    outputRange: [1, 0],
+    outputRange: [1, 0]
   });
 
   const backLayerTitleOpacity = backdropAnimation.interpolate({
     inputRange: [0.4, 1],
-    outputRange: [0, 1],
+    outputRange: [0, 1]
   });
 
   const fabScale = backdropAnimation.interpolate({
     inputRange: [0, 0.5, 1],
-    outputRange: [1, 0, 0],
+    outputRange: [1, 0, 0]
   });
 
   const handleToggleBackdrop = useCallback(() => {
     Animated.timing(backdropAnimation, {
       toValue: isBackdropOpened ? 0 : 1,
       duration: 300,
-      useNativeDriver: true,
+      useNativeDriver: true
     }).start();
     setIsBackdropOpened((prev) => !prev);
   }, [isBackdropOpened, backdropAnimation]);
@@ -335,7 +330,7 @@ const Home: React.FC = () => {
             <Animated.Text
               style={[
                 styles.backLayerTitle,
-                { opacity: backLayerTitleOpacity },
+                { opacity: backLayerTitleOpacity }
               ]}
             >
               Theming
@@ -353,14 +348,14 @@ const Home: React.FC = () => {
           category="large"
           style={[
             styles.frontLayerContainer,
-            { transform: [{ translateY: frontLayerTranslate as any }] },
+            { transform: [{ translateY: frontLayerTranslate as any }] }
           ]}
         >
           <View style={{ marginHorizontal: 16, marginTop: 10 }}>
             <Text
               style={[
                 theme.typographyScheme.subtitle1,
-                { color: theme.colorScheme.onBackground },
+                { color: theme.colorScheme.onBackground }
               ]}
             >
               Components
@@ -371,7 +366,7 @@ const Home: React.FC = () => {
                 height: 1,
                 backgroundColor: chroma(theme.colorScheme.onBackground)
                   .alpha(0.1)
-                  .hex(),
+                  .hex()
               }}
             />
           </View>
@@ -382,7 +377,7 @@ const Home: React.FC = () => {
               paddingBottom:
                 insets.bottom + theme.shapeScheme.small.family === "rounded"
                   ? 56
-                  : 68 + 32,
+                  : 68 + 32
             }}
             data={data}
             keyExtractor={(item) => `${item.id}`}
@@ -404,14 +399,14 @@ const Home: React.FC = () => {
                       : 0,
                   borderColor: chroma(theme.colorScheme.onBackground)
                     .alpha(0.1)
-                    .hex(),
+                    .hex()
                 }}
               >
                 <View style={{ margin: 16 }}>
                   <Text
                     style={[
                       theme.typographyScheme.h5,
-                      { color: theme.colorScheme.onSurface },
+                      { color: theme.colorScheme.onSurface }
                     ]}
                   >
                     {item.title}
@@ -419,7 +414,7 @@ const Home: React.FC = () => {
                   <Text
                     style={[
                       theme.typographyScheme.body2,
-                      { marginTop: 12, color: theme.colorScheme.onSurface },
+                      { marginTop: 12, color: theme.colorScheme.onSurface }
                     ]}
                   >
                     {item.body}
@@ -428,7 +423,7 @@ const Home: React.FC = () => {
                   <Text
                     style={[
                       theme.typographyScheme.body2,
-                      { color: theme.colorScheme.onSurface, marginTop: 12 },
+                      { color: theme.colorScheme.onSurface, marginTop: 12 }
                     ]}
                   >
                     status: waiting for 👍
@@ -448,9 +443,9 @@ const Home: React.FC = () => {
                             currentTheme === "fortnightly"
                               ? theme.colorScheme.secondary
                               : currentTheme === "shrine"
-                              ? theme.colorScheme.onSurface
-                              : theme.colorScheme.primary,
-                        },
+                                ? theme.colorScheme.onSurface
+                                : theme.colorScheme.primary
+                        }
                       ]}
                     >
                       Upvote
@@ -473,7 +468,7 @@ const Home: React.FC = () => {
             style={{
               flex: 1,
               justifyContent: "center",
-              alignItems: "center",
+              alignItems: "center"
             }}
           >
             <MaterialIcons

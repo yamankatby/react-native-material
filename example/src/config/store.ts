@@ -13,7 +13,7 @@ export interface State {
 }
 
 const initialState: State = {
-  theme: "default",
+  theme: "default"
 };
 
 export const changeTheme = createAction<State["theme"]>("changeTheme");
@@ -25,7 +25,7 @@ const reducer = createReducer(initialState, (builder) =>
 );
 
 export const store = configureStore({
-  reducer,
+  reducer
 });
 
 export type AppDispatch = typeof store.dispatch;

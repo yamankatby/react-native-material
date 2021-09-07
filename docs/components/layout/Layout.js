@@ -31,14 +31,14 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.25)
   },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
-    width: "auto",
-  },
+    width: "auto"
+  }
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -48,7 +48,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -62,10 +62,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     [theme.breakpoints.up("sm")]: {
       width: "12ch",
       "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
+        width: "20ch"
+      }
+    }
+  }
 }));
 
 const Layout = ({ window, components, children }) => {
@@ -85,7 +85,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "installation" },
+            query: { folder: "getting-started", slug: "installation" }
           }}
           passHref
         >
@@ -96,7 +96,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "hello-world" },
+            query: { folder: "getting-started", slug: "hello-world" }
           }}
           passHref
         >
@@ -107,7 +107,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "support" },
+            query: { folder: "getting-started", slug: "support" }
           }}
           passHref
         >
@@ -118,7 +118,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "contributing" },
+            query: { folder: "getting-started", slug: "contributing" }
           }}
           passHref
         >
@@ -132,7 +132,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "theming", slug: "theming-overview" },
+            query: { folder: "theming", slug: "theming-overview" }
           }}
           passHref
         >
@@ -143,7 +143,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "theming", slug: "color-scheme" },
+            query: { folder: "theming", slug: "color-scheme" }
           }}
           passHref
         >
@@ -154,7 +154,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "theming", slug: "shape-scheme" },
+            query: { folder: "theming", slug: "shape-scheme" }
           }}
           passHref
         >
@@ -165,7 +165,7 @@ const Layout = ({ window, components, children }) => {
         <Link
           href={{
             pathname: "/[folder]/[slug]",
-            query: { folder: "theming", slug: "typography-scheme" },
+            query: { folder: "theming", slug: "typography-scheme" }
           }}
           passHref
         >
@@ -181,7 +181,7 @@ const Layout = ({ window, components, children }) => {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center",
+              alignItems: "center"
             }}
           >
             Components
@@ -196,7 +196,7 @@ const Layout = ({ window, components, children }) => {
             key={component.slug}
             href={{
               pathname: "/[folder]/[slug]",
-              query: { folder: "components", slug: component.slug },
+              query: { folder: "components", slug: component.slug }
             }}
             passHref
           >
@@ -219,7 +219,7 @@ const Layout = ({ window, components, children }) => {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          ml: { sm: `${drawerWidth}px` }
         }}
       >
         <Toolbar>
@@ -293,14 +293,14 @@ const Layout = ({ window, components, children }) => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true // Better open performance on mobile.
           }}
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
-            },
+              width: drawerWidth
+            }
           }}
         >
           {drawer}
@@ -311,8 +311,8 @@ const Layout = ({ window, components, children }) => {
             display: { xs: "none", sm: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
-            },
+              width: drawerWidth
+            }
           }}
           open
         >

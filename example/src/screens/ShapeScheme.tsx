@@ -1,13 +1,7 @@
 import { Surface, useTheme } from "@react-native-material/core";
 import * as Analytics from "expo-firebase-analytics";
 import React, { useEffect } from "react";
-import {
-  ScrollView,
-  Text,
-  useWindowDimensions,
-  View,
-  ViewStyle,
-} from "react-native";
+import { ScrollView, Text, useWindowDimensions, View, ViewStyle } from "react-native";
 import { useAppSelector } from "../config/store";
 
 interface ShapeProps {
@@ -27,7 +21,7 @@ const Shape: React.FC<ShapeProps> = ({
   top,
   start,
   title,
-  style,
+  style
 }) => {
   const theme = useTheme();
   const currentTheme = useAppSelector((state) => state.theme);
@@ -42,9 +36,9 @@ const Shape: React.FC<ShapeProps> = ({
           start: start * unit - 0.5,
           backgroundColor: "white",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "center"
         },
-        style,
+        style
       ]}
     >
       {title && (
@@ -55,8 +49,8 @@ const Shape: React.FC<ShapeProps> = ({
               color:
                 currentTheme === "fortnightly"
                   ? theme.colorScheme.onBackground
-                  : theme.colorScheme.primary,
-            },
+                  : theme.colorScheme.primary
+            }
           ]}
         >
           {title}
@@ -80,38 +74,38 @@ const ShapeScheme: React.FC = () => {
     basil: {
       background: "#DEF3E5",
       borders: "#BCD7C9",
-      surface: "#FFFBE6",
+      surface: "#FFFBE6"
     },
     crane: {
       background: "#F0CCE2",
       borders: "#D1A4C1",
-      surface: "#FFFFFF",
+      surface: "#FFFFFF"
     },
     fortnightly: {
       background: "#EDEDED",
       borders: "#FFFFFF",
-      surface: "#FFFFFF",
+      surface: "#FFFFFF"
     },
     owl: {
       background: "#FFF583",
       borders: "#FFE211",
-      surface: "#FFFFFF",
+      surface: "#FFFFFF"
     },
     reply: {
       background: "#B4C1CC",
       borders: "#8898A3",
-      surface: "#FFFFFF",
+      surface: "#FFFFFF"
     },
     shrine: {
       background: "#FFF0E8",
       borders: "#FFD8CB",
-      surface: "#FFFFFF",
+      surface: "#FFFFFF"
     },
     default: {
       background: theme.mode === "light" ? "#E5E5E5" : "#292929",
       borders: theme.mode === "light" ? "#CCCCCC" : "#121212",
-      surface: theme.mode === "light" ? "white" : "#121212",
-    },
+      surface: theme.mode === "light" ? "white" : "#121212"
+    }
   };
 
   const currentTheme = useAppSelector((state) => state.theme);
@@ -128,7 +122,7 @@ const ShapeScheme: React.FC = () => {
           bottom: 0,
           start: unit * index - 1,
           width: 2,
-          backgroundColor: palette[currentTheme].borders,
+          backgroundColor: palette[currentTheme].borders
         }}
       />
     );
@@ -146,7 +140,7 @@ const ShapeScheme: React.FC = () => {
           start: 0,
           end: 0,
           height: 2,
-          backgroundColor: palette[currentTheme].borders,
+          backgroundColor: palette[currentTheme].borders
         }}
       />
     );
@@ -158,7 +152,7 @@ const ShapeScheme: React.FC = () => {
         style={{
           flex: 1,
           height: height > unit * 48 ? height : unit * 48,
-          backgroundColor: palette[currentTheme].background,
+          backgroundColor: palette[currentTheme].background
         }}
       >
         {columns}
@@ -173,7 +167,7 @@ const ShapeScheme: React.FC = () => {
           title="S"
           style={{
             borderTopStartRadius: unit * 2,
-            backgroundColor: palette[currentTheme].surface,
+            backgroundColor: palette[currentTheme].surface
           }}
         />
         <Shape
@@ -184,7 +178,7 @@ const ShapeScheme: React.FC = () => {
           start={2}
           style={{
             borderRadius: unit * 2.5,
-            backgroundColor: palette[currentTheme].surface,
+            backgroundColor: palette[currentTheme].surface
           }}
         />
         <Shape
@@ -195,7 +189,7 @@ const ShapeScheme: React.FC = () => {
           start={2}
           style={{
             borderRadius: unit * 2.5,
-            backgroundColor: palette[currentTheme].surface,
+            backgroundColor: palette[currentTheme].surface
           }}
         />
         <Shape
@@ -233,7 +227,7 @@ const ShapeScheme: React.FC = () => {
           style={{
             borderTopStartRadius: unit,
             borderTopEndRadius: unit,
-            backgroundColor: palette[currentTheme].surface,
+            backgroundColor: palette[currentTheme].surface
           }}
         />
         <Shape
@@ -245,7 +239,7 @@ const ShapeScheme: React.FC = () => {
           style={{
             borderTopStartRadius: unit,
             borderTopEndRadius: unit,
-            backgroundColor: palette[currentTheme].surface,
+            backgroundColor: palette[currentTheme].surface
           }}
         />
       </View>

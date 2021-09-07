@@ -1,12 +1,4 @@
-import {
-  Chip,
-  Container,
-  Stack,
-  Box,
-  CssBaseline,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { Box, Button, Chip, Container, CssBaseline, Stack, Typography } from "@material-ui/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -38,7 +30,7 @@ export default function Index() {
               <Link
                 href={{
                   pathname: "/[folder]/[slug]",
-                  query: { folder: "getting-started", slug: "installation" },
+                  query: { folder: "getting-started", slug: "installation" }
                 }}
                 passHref
               >
@@ -47,7 +39,7 @@ export default function Index() {
                   style={{
                     borderColor: "#424242",
                     color: "white",
-                    borderRadius: 0,
+                    borderRadius: 0
                   }}
                 >
                   Get Started
@@ -60,7 +52,7 @@ export default function Index() {
                 style={{
                   borderColor: "#424242",
                   color: "white",
-                  borderRadius: 0,
+                  borderRadius: 0
                 }}
               >
                 GitHub
@@ -84,7 +76,7 @@ export default function Index() {
             "fortnightly",
             "owl",
             "reply",
-            "shrine",
+            "shrine"
           ].map((theme) => (
             <Chip
               key={theme}

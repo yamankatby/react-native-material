@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -27,14 +27,14 @@ class MyDocument extends Document {
               gtag('js', new Date());
             
               gtag('config', 'G-5L00H23VKJ');
-              `,
+              `
               }}
             />
           )}
         </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );

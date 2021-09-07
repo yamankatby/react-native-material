@@ -5,7 +5,10 @@ desciption: "Get started with React Native Material."
 
 # Hello world!
 
-Wrap your root component in `ThemeProvider` from **@react-native-material/core**. If you have a bare React Native project, it's a good idea to add it in the component which is passed to `AppRegistry.registerComponent`. This will usually be in the `index.js` file. If you have an Expo project, you can do this inside the exported component in the `App.js` file.
+Wrap your root component in `ThemeProvider` from **@react-native-material/core**. If you have a bare React Native
+project, it's a good idea to add it in the component which is passed to `AppRegistry.registerComponent`. This will
+usually be in the `index.js` file. If you have an Expo project, you can do this inside the exported component in
+the `App.js` file.
 
 Example:
 
@@ -21,16 +24,18 @@ const App = () => {
 
 const AppProvider = () => (
   <ThemeProvider>
-    <App />
+    <App/>
   </ThemeProvider>
 );
 
 export default AppProvider;
 ```
 
-The `ThemeProvider` component provides the theme to all the components in the framework. It also acts as a portal to components that need to be rendered at the top level.
+The `ThemeProvider` component provides the theme to all the components in the framework. It also acts as a portal to
+components that need to be rendered at the top level.
 
-If you have another provider (such as Redux), wrap it outside ThemeProvider so that the context is available to components rendered inside a Modal from the library:
+If you have another provider (such as Redux), wrap it outside ThemeProvider so that the context is available to
+components rendered inside a Modal from the library:
 
 ```js
 import React from "react";
@@ -40,7 +45,7 @@ import { ThemeProvider } from "@react-native-material/core";
 const AppProvider = () => (
   <Provider>
     <ThemeProvider>
-      <App />
+      <App/>
     </ThemeProvider>
   </Provider>
 );
@@ -50,7 +55,9 @@ export default AppProvider;
 
 ## Customization
 
-You can provide a custom theme to customize the colors, fonts, etc. with the `ThemeProvider` component. Check the [default theme](https://github.com/yamankatby/react-native-material/blob/main/example/core/base/theme-scheme/theme-scheme.ts) to see what customization options are supported.
+You can provide a custom theme to customize the colors, fonts, etc. with the `ThemeProvider` component. Check
+the [default theme](https://github.com/yamankatby/react-native-material/blob/main/example/core/base/theme-scheme/theme-scheme.ts)
+to see what customization options are supported.
 
 ```js
 import React from "react";
@@ -66,7 +73,7 @@ const theme = {
 
 const AppProvider = () => (
   <ThemeProvider theme={theme}>
-    <App />
+    <App/>
   </ThemeProvider>
 );
 

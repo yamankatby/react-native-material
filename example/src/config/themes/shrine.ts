@@ -14,7 +14,7 @@ export const shrine: Theme = {
     onSecondary: "#442C2E",
     onBackground: "#442C2E",
     onSurface: "#442C2E",
-    onError: "#FFFFFF",
+    onError: "#FFFFFF"
   },
   shapeScheme: {
     small: {
@@ -23,8 +23,8 @@ export const shrine: Theme = {
         topStart: 4,
         topEnd: 4,
         bottomStart: 4,
-        bottomEnd: 4,
-      },
+        bottomEnd: 4
+      }
     },
     medium: {
       family: "cut",
@@ -32,8 +32,8 @@ export const shrine: Theme = {
         topStart: 8,
         topEnd: 8,
         bottomStart: 8,
-        bottomEnd: 8,
-      },
+        bottomEnd: 8
+      }
     },
     large: {
       family: "cut",
@@ -41,64 +41,64 @@ export const shrine: Theme = {
         topStart: 16,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
-    },
+        bottomEnd: 0
+      }
+    }
   },
   typographyScheme: {
     h1: {
       fontFamily: "Rubik_300Light",
-      fontSize: 96,
+      fontSize: 96
     },
     h2: {
       fontFamily: "Rubik_300Light",
-      fontSize: 60,
+      fontSize: 60
     },
     h3: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 48,
+      fontSize: 48
     },
     h4: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 34,
+      fontSize: 34
     },
     h5: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 24,
+      fontSize: 24
     },
     h6: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 20,
+      fontSize: 20
     },
     subtitle1: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 16,
+      fontSize: 16
     },
     subtitle2: {
       fontFamily: "Rubik_500Medium",
-      fontSize: 14,
+      fontSize: 14
     },
     body1: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 16,
+      fontSize: 16
     },
     body2: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 14,
+      fontSize: 14
     },
     button: {
       fontFamily: "Rubik_500Medium",
       fontSize: 14,
-      textTransform: "uppercase",
+      textTransform: "uppercase"
     },
     caption: {
       fontFamily: "Rubik_400Regular",
-      fontSize: 12,
+      fontSize: 12
     },
     overline: {
       fontFamily: "Rubik_400Regular",
       fontSize: 14,
-      textTransform: "uppercase",
-    },
-  },
+      textTransform: "uppercase"
+    }
+  }
 };

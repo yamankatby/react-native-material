@@ -24,9 +24,9 @@ const Navigator: React.FC = () => {
             ColorScheme: { path: "/color-scheme", exact: true },
             TypographyScheme: { path: "/typography-scheme", exact: true },
             ShapeScheme: { path: "/shape-scheme", exact: true },
-            NotFound: "*",
-          },
-        },
+            NotFound: "*"
+          }
+        }
       }}
     >
       <Stack.Navigator
@@ -34,14 +34,14 @@ const Navigator: React.FC = () => {
           headerShown: Platform.OS !== "web",
           headerShadowVisible: true,
           headerStyle: {
-            backgroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.primary
           },
           headerTitleStyle: {
             fontFamily: theme.typographyScheme.h6.fontFamily,
-            fontSize: theme.typographyScheme.h6.fontSize,
+            fontSize: theme.typographyScheme.h6.fontSize
           },
           headerBackTitle: "",
-          headerTintColor: theme.colorScheme.onPrimary,
+          headerTintColor: theme.colorScheme.onPrimary
         }}
       >
         <Stack.Screen

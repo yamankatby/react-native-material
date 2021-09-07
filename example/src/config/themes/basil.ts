@@ -14,7 +14,7 @@ export const basil: Theme = {
     onSecondary: "#000000",
     onBackground: "#356859",
     onSurface: "#29302E",
-    onError: "#FFFFFF",
+    onError: "#FFFFFF"
   },
   shapeScheme: {
     small: {
@@ -23,8 +23,8 @@ export const basil: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     medium: {
       family: "cut",
@@ -32,8 +32,8 @@ export const basil: Theme = {
         topStart: 0,
         topEnd: 0,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
+        bottomEnd: 0
+      }
     },
     large: {
       family: "cut",
@@ -41,64 +41,64 @@ export const basil: Theme = {
         topStart: 16,
         topEnd: 16,
         bottomStart: 0,
-        bottomEnd: 0,
-      },
-    },
+        bottomEnd: 0
+      }
+    }
   },
   typographyScheme: {
     h1: {
       fontFamily: "Montserrat_600SemiBold",
-      fontSize: 96,
+      fontSize: 96
     },
     h2: {
       fontFamily: "Montserrat_600SemiBold",
-      fontSize: 60,
+      fontSize: 60
     },
     h3: {
       fontFamily: "Montserrat_600SemiBold",
-      fontSize: 48,
+      fontSize: 48
     },
     h4: {
       fontFamily: "Montserrat_600SemiBold",
-      fontSize: 34,
+      fontSize: 34
     },
     h5: {
       fontFamily: "Montserrat_500Medium",
-      fontSize: 24,
+      fontSize: 24
     },
     h6: {
       fontFamily: "Lekton_700Bold",
-      fontSize: 21,
+      fontSize: 21
     },
     subtitle1: {
       fontFamily: "Lekton_700Bold",
-      fontSize: 17,
+      fontSize: 17
     },
     subtitle2: {
       fontFamily: "Lekton_700Bold",
-      fontSize: 15,
+      fontSize: 15
     },
     body1: {
       fontFamily: "Montserrat_600SemiBold",
-      fontSize: 16,
+      fontSize: 16
     },
     body2: {
       fontFamily: "Montserrat_400Regular",
-      fontSize: 14,
+      fontSize: 14
     },
     button: {
       fontFamily: "Montserrat_700Bold",
       fontSize: 14,
-      textTransform: "uppercase",
+      textTransform: "uppercase"
     },
     caption: {
       fontFamily: "Montserrat_500Medium",
-      fontSize: 12,
+      fontSize: 12
     },
     overline: {
       fontFamily: "Montserrat_400Regular",
       fontSize: 10,
-      textTransform: "uppercase",
-    },
-  },
+      textTransform: "uppercase"
+    }
+  }
 };

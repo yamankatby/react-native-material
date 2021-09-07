@@ -2,7 +2,8 @@ import { createContext, useMemo, useState } from "react";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 
 export const ColorModeContext = createContext({
-  toggleColorMode: () => {},
+  toggleColorMode: () => {
+  }
 });
 
 function MyApp({ Component, pageProps }) {
@@ -11,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
+      }
     }),
     []
   );
@@ -22,8 +23,8 @@ function MyApp({ Component, pageProps }) {
         palette: {
           primary: { main: "#212121" },
           secondary: { main: "#000" },
-          mode,
-        },
+          mode
+        }
       }),
     [mode]
   );
