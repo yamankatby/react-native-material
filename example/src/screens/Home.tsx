@@ -6,6 +6,7 @@ import * as Analytics from "expo-firebase-analytics";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
   FlatList,
@@ -293,7 +294,7 @@ const Home: React.FC = () => {
           borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
           borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
         }}
-        expanded={isBackdropOpened}
+        revealed={isBackdropOpened}
         header={<View style={styles.appBar}>
           <TouchableOpacity onPress={handleToggleBackdrop}>
             <MaterialIcons
@@ -317,27 +318,7 @@ const Home: React.FC = () => {
           </Animated.Text>
         </View>}
         backLayer={<BackdropHiddenSection />}
-        subheader={
-          <View style={{ marginHorizontal: 16, marginTop: 10 }}>
-            <Text
-              style={[
-                theme.typographyScheme.subtitle1,
-                { color: theme.colorScheme.onBackground }
-              ]}
-            >
-              Components
-            </Text>
-            <View
-              style={{
-                marginTop: 10,
-                height: 1,
-                backgroundColor: chroma(theme.colorScheme.onBackground)
-                  .alpha(0.1)
-                  .hex()
-              }}
-            />
-          </View>
-        }
+        subheader='Components'
       >
         <FlatList
           numColumns={Math.ceil(Dimensions.get("window").width / 500)}
@@ -360,7 +341,7 @@ const Home: React.FC = () => {
                 backgroundColor:
                   currentTheme === "default" && colorScheme === "dark"
                     ? "#232323"
-                    : theme.colorScheme.surface,
+                    : theme.colorScheme.background,
                 borderWidth:
                   (currentTheme === "default" && colorScheme === "light") ||
                   currentTheme === "owl"

@@ -7,22 +7,28 @@ const BackdropExample: React.FC = () => {
   const insets = useSafeAreaInsets();
 
   const [expanded, setExpanded] = useState(false)
+  const [x, setX] = useState(false)
+
+  const header = (
+    <View style={{ height: insets.top + 56, paddingTop: insets.top }}>
+      <Button title={'toggle'} onPress={() => setExpanded(p => !p)} />
+    </View>
+  )
+
+  const backLayer = (
+    <View style={{ height: x ? 800 : 500 }}>
+      <Text>Ji</Text>
+      <Button title={'d'} onPress={() => setX(p => !p)} />
+    </View>
+  )
 
   return (
     <Backdrop
-      header={
-        <View style={{ height: insets.top + 56, paddingTop: insets.top }}>
-          <Button title={'toggle'} onPress={() => setExpanded(p => !p)} />
-        </View>
-      }
+      header={header}
       headerHeight={insets.top + 56}
-      backLayer={
-        <View>
-          <Text>Ji</Text>
-        </View>
-      }
-      expanded={expanded}
-      subheader={<Text>Hi subheader</Text>}
+      backLayer={backLayer}
+      revealed={expanded}
+      subheader={<Backdrop.Subheader title={"Components"} />}
     >
       <Text>Hi</Text>
     </Backdrop>
