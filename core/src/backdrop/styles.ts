@@ -13,11 +13,12 @@ export const useBackdropStyles = () => useStyleSheet(({ colorScheme }) => ({
     bottom: 0,
     backgroundColor: colorScheme.surface,
     borderBottomStartRadius: 0,
-    borderBottomEndRadius: 0
+    borderBottomEndRadius: 0,
+    elevation: 1
   }
 }))
 
-export const useSubheaderStyles = () => useStyleSheet(({ colorScheme, typographyScheme }) => ({
+export const useSubheaderStyles = () => useStyleSheet(() => ({
   container: {
     flexDirection: 'row',
     alignItems: 'center',

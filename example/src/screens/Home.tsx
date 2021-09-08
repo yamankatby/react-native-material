@@ -1,20 +1,10 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import React, { useMemo, useState } from "react";
+import { Dimensions, FlatList, Linking, ScrollView, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import { Appbar, Backdrop, Divider, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import {
-  Animated,
-  Dimensions,
-  FlatList,
-  Linking,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  useColorScheme,
-  View
-} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
 import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
@@ -45,16 +35,13 @@ const BackdropHiddenSection: React.FC = () => {
         height: 30,
         marginEnd: 6,
         backgroundColor:
-          currentTheme === "default"
-            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
-            : colorScheme.primaryVariant,
+          currentTheme === "default" ? chroma(colorScheme.onPrimary).alpha(0.2).hex() : colorScheme.primaryVariant,
         borderRadius: shapeScheme.small.family === "rounded" ? 15 : undefined
       },
       chipTitle: {
         marginHorizontal: 16,
         color: colorScheme.onPrimary,
-        textTransform:
-          currentTheme === "fortnightly" ? "uppercase" : "capitalize",
+        textTransform: currentTheme === "fortnightly" ? "uppercase" : "capitalize",
         ...typographyScheme.body2
       },
       selectedChip: {
@@ -74,9 +61,7 @@ const BackdropHiddenSection: React.FC = () => {
         justifyContent: "center",
         marginStart: 32,
         backgroundColor:
-          currentTheme === "default"
-            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
-            : colorScheme.primaryVariant
+          currentTheme === "default" ? chroma(colorScheme.onPrimary).alpha(0.2).hex() : colorScheme.primaryVariant
       },
       schemeTitle: {
         marginStart: 16,
@@ -87,18 +72,7 @@ const BackdropHiddenSection: React.FC = () => {
     [currentTheme]
   );
 
-  const themes = useMemo(
-    () => [
-      "default",
-      "basil",
-      "crane",
-      "fortnightly",
-      "owl",
-      "reply",
-      "shrine"
-    ],
-    []
-  );
+  const themes = useMemo(() => ["default", "basil", "crane", "fortnightly", "owl", "reply", "shrine"], []);
 
   const schemes = [
     { icon: "colorize", title: "Color Scheme", screen: "ColorScheme" },
@@ -115,7 +89,9 @@ const BackdropHiddenSection: React.FC = () => {
       <Divider
         inset={16}
         color={
-          currentTheme === "default" ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex() : theme.colorScheme.primaryVariant
+          currentTheme === "default"
+            ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex()
+            : theme.colorScheme.primaryVariant
         }
       />
       <Text style={styles.title}>Material Studies</Text>
@@ -126,23 +102,10 @@ const BackdropHiddenSection: React.FC = () => {
           contentContainerStyle={{ paddingStart: 16, paddingEnd: 8 }}
         >
           {themes.map((theme) => (
-            <TouchableOpacity
-              key={theme}
-              onPress={() => dispatch(changeTheme(theme as any))}
-            >
-              <Surface
-                style={[
-                  styles.chip,
-                  theme === currentTheme && styles.selectedChip
-                ]}
-              >
+            <TouchableOpacity key={theme} onPress={() => dispatch(changeTheme(theme as any))}>
+              <Surface style={[styles.chip, theme === currentTheme && styles.selectedChip]}>
                 <View>
-                  <Text
-                    style={[
-                      styles.chipTitle,
-                      theme === currentTheme && styles.selectedChipTitle
-                    ]}
-                  >
+                  <Text style={[styles.chipTitle, theme === currentTheme && styles.selectedChipTitle]}>
                     {currentTheme === "fortnightly" && "#"}
                     {theme}
                   </Text>
@@ -156,7 +119,9 @@ const BackdropHiddenSection: React.FC = () => {
       <Divider
         inset={16}
         color={
-          currentTheme === "default" ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex() : theme.colorScheme.primaryVariant
+          currentTheme === "default"
+            ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex()
+            : theme.colorScheme.primaryVariant
         }
       />
 
@@ -164,15 +129,8 @@ const BackdropHiddenSection: React.FC = () => {
       <View style={styles.section}>
         {schemes.map((scheme) => (
           <View key={scheme.title} style={styles.schemeContainer}>
-            <MaterialIcons
-              name={scheme.icon as any}
-              size={24}
-              color={theme.colorScheme.onPrimary}
-            />
-            <TouchableOpacity
-              style={{ flex: 1, height: 38 }}
-              onPress={() => navigation.navigate(scheme.screen as any)}
-            >
+            <MaterialIcons name={scheme.icon as any} size={24} color={theme.colorScheme.onPrimary} />
+            <TouchableOpacity style={{ flex: 1, height: 38 }} onPress={() => navigation.navigate(scheme.screen as any)}>
               <Surface style={styles.scheme}>
                 <View>
                   <Text style={styles.schemeTitle}>{scheme.title}</Text>
@@ -211,113 +169,91 @@ const Home: React.FC = () => {
     [insets.top, insets.bottom, currentTheme]
   );
 
-  const [isBackdropOpened, setIsBackdropOpened] = useState(false);
+  const [backdropRevealed, setBackdropRevealed] = useState(false);
 
-  const backdropAnimation = useRef(new Animated.Value(0)).current;
-
-  const fabScale = backdropAnimation.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [1, 0, 0]
-  });
-
-  const handleToggleBackdrop = useCallback(() => {
-    Animated.timing(backdropAnimation, {
-      toValue: isBackdropOpened ? 0 : 1,
-      duration: 300,
-      useNativeDriver: true
-    }).start();
-    setIsBackdropOpened((prev) => !prev);
-  }, [isBackdropOpened, backdropAnimation]);
-
-  const { data } = useSWR(
-    "https://api.github.com/repos/yamankatby/react-native-material/issues",
-    fetcher
-  );
+  const { data } = useSWR("https://api.github.com/repos/yamankatby/react-native-material/issues", fetcher);
 
   const colorScheme = useColorScheme();
 
   return (
-    <>
-      <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
-      <Backdrop
-        frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
-        revealed={isBackdropOpened}
-        header={
-          <Appbar
-            style={{ marginTop: insets.top, elevation: 0 }}
-            title="Material UI"
-            leadingAction={
-              <TouchableOpacity onPress={handleToggleBackdrop}>
-                <MaterialIcons name={"tune"} size={24} color={theme.colorScheme.onPrimary} />
-              </TouchableOpacity>
-            }
-          />
-        }
-        headerHeight={insets.top + 56}
-        backLayer={<BackdropHiddenSection />}
-        subheader="Components"
-        subheaderDivider
-      >
-        <FlatList
-          numColumns={Math.ceil(Dimensions.get("window").width / 500)}
-          contentContainerStyle={{
-            marginHorizontal: 8,
-            paddingBottom: insets.bottom + theme.shapeScheme.small.family === "rounded" ? 56 : 68 + 32
-          }}
-          data={data}
-          keyExtractor={(item) => `${item.id}`}
-          renderItem={({ item }) => (
-            <Surface
-              category="medium"
-              style={{
-                flex: 1,
-                marginTop: 16,
-                marginHorizontal: 8,
-                backgroundColor:
-                  currentTheme === "default" && colorScheme === "dark" ? "#232323" : theme.colorScheme.background,
-                borderWidth: (currentTheme === "default" && colorScheme === "light") || currentTheme === "owl" ? 1 : 0,
-                borderColor: chroma(theme.colorScheme.onBackground).alpha(0.1).hex()
-              }}
-            >
-              <View style={{ margin: 16 }}>
-                <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onBackground }]}>{item.title}</Text>
-                <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onBackground }]}>
-                  {item.body}
-                </Text>
-
-                <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onBackground, marginTop: 12 }]}>
-                  status: waiting for 👍
-                </Text>
-
-                <TouchableOpacity
-                  style={{ marginTop: 12, alignSelf: "flex-start" }}
-                  onPress={() => {
-                    Linking.openURL(item.html_url);
-                  }}
-                >
-                  <Text
-                    style={[
-                      theme.typographyScheme.button,
-                      {
-                        color:
-                          currentTheme === "fortnightly"
-                            ? theme.colorScheme.secondary
-                            : currentTheme === "shrine"
-                              ? theme.colorScheme.onSurface
-                              : theme.colorScheme.primary
-                      }
-                    ]}
-                  >
-                    Upvote
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </Surface>
-          )}
+    <Backdrop
+      frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
+      revealed={backdropRevealed}
+      header={
+        <Appbar
+          style={{ marginTop: insets.top, elevation: 0 }}
+          title="Material UI"
+          leadingAction={
+            <TouchableOpacity onPress={() => setBackdropRevealed((p) => !p)}>
+              <MaterialIcons name={"tune"} size={24} color={theme.colorScheme.onPrimary} />
+            </TouchableOpacity>
+          }
         />
-      </Backdrop>
+      }
+      headerHeight={insets.top + 56}
+      backLayer={<BackdropHiddenSection />}
+      subheader="Components"
+      subheaderDivider
+    >
+      <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
+      <FlatList
+        numColumns={Math.ceil(Dimensions.get("window").width / 500)}
+        contentContainerStyle={{
+          marginHorizontal: 8,
+          paddingBottom: insets.bottom + theme.shapeScheme.small.family === "rounded" ? 56 : 68 + 32
+        }}
+        data={data}
+        keyExtractor={(item) => `${item.id}`}
+        renderItem={({ item }) => (
+          <Surface
+            category="medium"
+            style={{
+              flex: 1,
+              marginTop: 16,
+              marginHorizontal: 8,
+              backgroundColor:
+                currentTheme === "default" && colorScheme === "dark" ? "#232323" : theme.colorScheme.background,
+              borderWidth: (currentTheme === "default" && colorScheme === "light") || currentTheme === "owl" ? 1 : 0,
+              borderColor: chroma(theme.colorScheme.onBackground).alpha(0.1).hex()
+            }}
+          >
+            <View style={{ margin: 16 }}>
+              <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onBackground }]}>{item.title}</Text>
+              <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onBackground }]}>
+                {item.body}
+              </Text>
 
-      <Surface style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}>
+              <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onBackground, marginTop: 12 }]}>
+                status: waiting for 👍
+              </Text>
+
+              <TouchableOpacity
+                style={{ marginTop: 12, alignSelf: "flex-start" }}
+                onPress={() => {
+                  Linking.openURL(item.html_url);
+                }}
+              >
+                <Text
+                  style={[
+                    theme.typographyScheme.button,
+                    {
+                      color:
+                        currentTheme === "fortnightly"
+                          ? theme.colorScheme.secondary
+                          : currentTheme === "shrine"
+                            ? theme.colorScheme.onSurface
+                            : theme.colorScheme.primary
+                    }
+                  ]}
+                >
+                  Upvote
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Surface>
+        )}
+      />
+      <Surface style={styles.fab}>
         <TouchableOpacity
           onPress={() => {
             Linking.openURL("https://github.com/yamankatby/react-native-material");
@@ -331,7 +267,7 @@ const Home: React.FC = () => {
           <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary} />
         </TouchableOpacity>
       </Surface>
-    </>
+    </Backdrop>
   );
 };
 
