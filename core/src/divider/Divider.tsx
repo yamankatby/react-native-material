@@ -5,6 +5,8 @@ import { StyleProp, View, ViewStyle } from "react-native";
 export interface DividerProps {
   color?: string | undefined;
 
+  inset?: number | undefined;
+
   leadingInset?: number | undefined;
 
   trailingInset?: number | undefined
@@ -12,8 +14,8 @@ export interface DividerProps {
   style?: StyleProp<ViewStyle> | undefined
 }
 
-const Divider: React.FC<DividerProps> = ({ color, leadingInset, trailingInset, style }) => {
-  const styles = useDividerStyles({ color, leadingInset, trailingInset });
+const Divider: React.FC<DividerProps> = ({ color, inset, leadingInset, trailingInset, style }) => {
+  const styles = useDividerStyles({ color, inset, leadingInset, trailingInset });
   return <View style={[styles.divider, style]} />
 };
 

@@ -1,13 +1,11 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Backdrop, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
+import { Backdrop, Divider, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
-import * as Analytics from "expo-firebase-analytics";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
-  ActivityIndicator,
-  Animated, Button,
+  Animated,
   Dimensions,
   FlatList,
   Linking,
@@ -31,15 +29,6 @@ const BackdropHiddenSection: React.FC = () => {
 
   const styles = useStyleSheet(
     ({ colorScheme, shapeScheme, typographyScheme }) => ({
-      container: {},
-      divider: {
-        marginHorizontal: 16,
-        height: 1,
-        backgroundColor:
-          currentTheme === "default"
-            ? chroma(colorScheme.onPrimary).alpha(0.2).hex()
-            : colorScheme.primaryVariant
-      },
       title: {
         marginTop: 16,
         marginStart: 16,
@@ -122,8 +111,13 @@ const BackdropHiddenSection: React.FC = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.divider} />
+    <View>
+      <Divider
+        inset={16}
+        color={
+          currentTheme === "default" ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex() : theme.colorScheme.primaryVariant
+        }
+      />
       <Text style={styles.title}>Material Studies</Text>
       <View style={styles.section}>
         <ScrollView
@@ -159,7 +153,13 @@ const BackdropHiddenSection: React.FC = () => {
         </ScrollView>
       </View>
 
-      <View style={styles.divider} />
+      <Divider
+        inset={16}
+        color={
+          currentTheme === "default" ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex() : theme.colorScheme.primaryVariant
+        }
+      />
+
       <Text style={styles.title}>Theming</Text>
       <View style={styles.section}>
         {schemes.map((scheme) => (
@@ -190,12 +190,6 @@ const BackdropHiddenSection: React.FC = () => {
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Home: React.FC = () => {
-  useEffect(() => {
-    Analytics.setCurrentScreen("Main", "Main");
-  }, []);
-
-  const navigation = useNavigation()
-
   const insets = useSafeAreaInsets();
 
   const theme = useTheme();
@@ -221,11 +215,6 @@ const Home: React.FC = () => {
         start: 56,
         color: colorScheme.onPrimary,
         ...typographyScheme.h6
-      },
-      backLayerDivider: {
-        height: 1,
-        marginHorizontal: 16,
-        backgroundColor: chroma(colorScheme.onPrimary).alpha(0.1).hex()
       },
       backLayerSectionTitle: {
         marginVertical: 8,
@@ -294,7 +283,7 @@ const Home: React.FC = () => {
       <Backdrop
         frontLayerStyle={{
           borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
-          borderTopEndRadius: currentTheme === "default" ? 16 : undefined,
+          borderTopEndRadius: currentTheme === "default" ? 16 : undefined
         }}
         revealed={isBackdropOpened}
         header={<View style={styles.appBar}>
@@ -320,7 +309,7 @@ const Home: React.FC = () => {
           </Animated.Text>
         </View>}
         backLayer={<BackdropHiddenSection />}
-        subheader='Components'
+        subheader="Components"
         subheaderDivider
       >
         <FlatList

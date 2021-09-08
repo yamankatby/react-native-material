@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Animated, StyleProp, View, ViewStyle } from "react-native";
 import { Surface } from "../surface";
 import Subheader, { SubheaderProps } from "./Subheader";
-import { useBackdropStyles } from "./styles";
 import { Divider } from "../divider";
+import { useBackdropStyles } from "./styles";
 
 export interface BackdropProps {
   header?: React.ReactElement | undefined;
@@ -98,9 +98,7 @@ const Backdrop: React.FC<BackdropProps> & { Subheader: React.FC<SubheaderProps> 
         }, frontLayerStyle]}
       >
         {typeof subheader === 'string' ? <Subheader title={subheader} /> : subheader}
-        {typeof subheaderDivider === "boolean"
-          ? subheaderDivider && <Divider leadingInset={16} trailingInset={16} />
-          : subheaderDivider}
+        {typeof subheaderDivider === "boolean" ? subheaderDivider && <Divider inset={16} /> : subheaderDivider}
         {children}
       </Surface>
     </View>
