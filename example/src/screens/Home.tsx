@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Backdrop, Divider, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
+import { Appbar, Backdrop, Divider, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
 import { StatusBar } from "expo-status-bar";
@@ -197,31 +197,7 @@ const Home: React.FC = () => {
   const currentTheme = useAppSelector((state) => state.theme);
 
   const styles = useStyleSheet(
-    ({ colorScheme, shapeScheme, typographyScheme }) => ({
-      appBar: {
-        marginTop: insets.top,
-        marginHorizontal: 16,
-        height: 56,
-        flexDirection: "row",
-        alignItems: "center"
-      },
-      appBarTitle: {
-        marginStart: 32,
-        color: colorScheme.onPrimary,
-        ...typographyScheme.h6
-      },
-      backLayerTitle: {
-        position: "absolute",
-        start: 56,
-        color: colorScheme.onPrimary,
-        ...typographyScheme.h6
-      },
-      backLayerSectionTitle: {
-        marginVertical: 8,
-        marginStart: 16,
-        ...typographyScheme.subtitle1,
-        color: colorScheme.onPrimary
-      },
+    ({ colorScheme, shapeScheme }) => ({
       fab: {
         position: "absolute",
         end: 16,
@@ -238,16 +214,6 @@ const Home: React.FC = () => {
   const [isBackdropOpened, setIsBackdropOpened] = useState(false);
 
   const backdropAnimation = useRef(new Animated.Value(0)).current;
-
-  const appBarTitleOpacity = backdropAnimation.interpolate({
-    inputRange: [0, 0.6],
-    outputRange: [1, 0]
-  });
-
-  const backLayerTitleOpacity = backdropAnimation.interpolate({
-    inputRange: [0.4, 1],
-    outputRange: [0, 1]
-  });
 
   const fabScale = backdropAnimation.interpolate({
     inputRange: [0, 0.5, 1],
@@ -277,14 +243,17 @@ const Home: React.FC = () => {
         frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
         revealed={isBackdropOpened}
         header={
-          <View style={styles.appBar}>
-            <TouchableOpacity onPress={handleToggleBackdrop}>
-              <MaterialIcons name="tune" size={24} color={theme.colorScheme.onPrimary} />
-            </TouchableOpacity>
-            <Animated.Text style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}>Material UI</Animated.Text>
-            <Animated.Text style={[styles.backLayerTitle, { opacity: backLayerTitleOpacity }]}>Theming</Animated.Text>
-          </View>
+          <Appbar
+            style={{ marginTop: insets.top, elevation: 0 }}
+            title="Material UI"
+            leadingAction={
+              <TouchableOpacity onPress={handleToggleBackdrop}>
+                <MaterialIcons name={"tune"} size={24} color={theme.colorScheme.onPrimary} />
+              </TouchableOpacity>
+            }
+          />
         }
+        headerHeight={insets.top + 56}
         backLayer={<BackdropHiddenSection />}
         subheader="Components"
         subheaderDivider
@@ -311,12 +280,12 @@ const Home: React.FC = () => {
               }}
             >
               <View style={{ margin: 16 }}>
-                <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onSurface }]}>{item.title}</Text>
-                <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onSurface }]}>
+                <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onBackground }]}>{item.title}</Text>
+                <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onBackground }]}>
                   {item.body}
                 </Text>
 
-                <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onSurface, marginTop: 12 }]}>
+                <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onBackground, marginTop: 12 }]}>
                   status: waiting for 👍
                 </Text>
 
