@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleProp, Text, TextStyle, View, ViewStyle } from "react-native";
+import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import { Typography } from '../typography';
 import { useSubheaderStyles } from "./styles";
 
 export interface SubheaderProps {
@@ -31,7 +32,7 @@ const Subheader: React.FC<SubheaderProps> = ({
   return (
     <View style={[styles.container, style]}>
       {leading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{leading}</View>}
-      <Text style={[styles.title, titleStyle]}>{title}</Text>
+      <Typography variant="subtitle1" color="onSurface" style={[styles.title, titleStyle]}>{title}</Typography>
       {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
     </View>
   )

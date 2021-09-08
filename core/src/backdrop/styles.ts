@@ -25,12 +25,10 @@ export const useSubheaderStyles = () => useStyleSheet(({ colorScheme, typography
     paddingHorizontal: 16
   },
   title: {
-    flex: 1,
-    color: colorScheme.onSurface,
-    ...typographyScheme.subtitle1
+    flex: 1
   },
   leadingContainer: {
-    marginEnd: 12,
+    marginEnd: 12
   },
   trailingContainer: {
     marginStart: 12

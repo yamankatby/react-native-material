@@ -1,16 +1,26 @@
 import chroma from "chroma-js";
 import { useStyleSheet } from "../base";
 
-export const useDividerStyles = (props: {
+export interface DividerStylesProps {
   color?: string | undefined;
+
   inset?: number | undefined;
+
   leadingInset?: number | undefined;
+
   trailingInset?: number | undefined;
-}) => useStyleSheet(({ colorScheme }) => ({
+}
+
+export const useDividerStyles = ({
+  color,
+  inset,
+  leadingInset,
+  trailingInset
+}: DividerStylesProps) => useStyleSheet(({ colorScheme }) => ({
   divider: {
     height: 1,
-    backgroundColor: props.color ?? chroma(colorScheme.onSurface).alpha(0.15).hex(),
-    marginStart: props.inset ?? props.leadingInset,
-    marginEnd: props.inset ?? props.trailingInset
+    backgroundColor: color ?? chroma(colorScheme.onSurface).alpha(0.15).hex(),
+    marginStart: inset ?? leadingInset,
+    marginEnd: inset ?? trailingInset
   }
-}))
+}), [color, inset, leadingInset, trailingInset])

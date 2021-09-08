@@ -272,42 +272,19 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <StatusBar
-        style={
-          chroma.contrast(theme.colorScheme.primary, "white") > 4.5
-            ? "light"
-            : "dark"
-        }
-        translucent
-      />
+      <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
       <Backdrop
-        frontLayerStyle={{
-          borderTopStartRadius: currentTheme === "default" ? 16 : undefined,
-          borderTopEndRadius: currentTheme === "default" ? 16 : undefined
-        }}
+        frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
         revealed={isBackdropOpened}
-        header={<View style={styles.appBar}>
-          <TouchableOpacity onPress={handleToggleBackdrop}>
-            <MaterialIcons
-              name="tune"
-              size={24}
-              color={theme.colorScheme.onPrimary}
-            />
-          </TouchableOpacity>
-          <Animated.Text
-            style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}
-          >
-            Material UI
-          </Animated.Text>
-          <Animated.Text
-            style={[
-              styles.backLayerTitle,
-              { opacity: backLayerTitleOpacity }
-            ]}
-          >
-            Theming
-          </Animated.Text>
-        </View>}
+        header={
+          <View style={styles.appBar}>
+            <TouchableOpacity onPress={handleToggleBackdrop}>
+              <MaterialIcons name="tune" size={24} color={theme.colorScheme.onPrimary} />
+            </TouchableOpacity>
+            <Animated.Text style={[styles.appBarTitle, { opacity: appBarTitleOpacity }]}>Material UI</Animated.Text>
+            <Animated.Text style={[styles.backLayerTitle, { opacity: backLayerTitleOpacity }]}>Theming</Animated.Text>
+          </View>
+        }
         backLayer={<BackdropHiddenSection />}
         subheader="Components"
         subheaderDivider
@@ -316,10 +293,7 @@ const Home: React.FC = () => {
           numColumns={Math.ceil(Dimensions.get("window").width / 500)}
           contentContainerStyle={{
             marginHorizontal: 8,
-            paddingBottom:
-              insets.bottom + theme.shapeScheme.small.family === "rounded"
-                ? 56
-                : 68 + 32
+            paddingBottom: insets.bottom + theme.shapeScheme.small.family === "rounded" ? 56 : 68 + 32
           }}
           data={data}
           keyExtractor={(item) => `${item.id}`}
@@ -331,43 +305,18 @@ const Home: React.FC = () => {
                 marginTop: 16,
                 marginHorizontal: 8,
                 backgroundColor:
-                  currentTheme === "default" && colorScheme === "dark"
-                    ? "#232323"
-                    : theme.colorScheme.background,
-                borderWidth:
-                  (currentTheme === "default" && colorScheme === "light") ||
-                  currentTheme === "owl"
-                    ? 1
-                    : 0,
-                borderColor: chroma(theme.colorScheme.onBackground)
-                  .alpha(0.1)
-                  .hex()
+                  currentTheme === "default" && colorScheme === "dark" ? "#232323" : theme.colorScheme.background,
+                borderWidth: (currentTheme === "default" && colorScheme === "light") || currentTheme === "owl" ? 1 : 0,
+                borderColor: chroma(theme.colorScheme.onBackground).alpha(0.1).hex()
               }}
             >
               <View style={{ margin: 16 }}>
-                <Text
-                  style={[
-                    theme.typographyScheme.h5,
-                    { color: theme.colorScheme.onSurface }
-                  ]}
-                >
-                  {item.title}
-                </Text>
-                <Text
-                  style={[
-                    theme.typographyScheme.body2,
-                    { marginTop: 12, color: theme.colorScheme.onSurface }
-                  ]}
-                >
+                <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onSurface }]}>{item.title}</Text>
+                <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onSurface }]}>
                   {item.body}
                 </Text>
 
-                <Text
-                  style={[
-                    theme.typographyScheme.body2,
-                    { color: theme.colorScheme.onSurface, marginTop: 12 }
-                  ]}
-                >
+                <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onSurface, marginTop: 12 }]}>
                   status: waiting for 👍
                 </Text>
 
@@ -399,14 +348,10 @@ const Home: React.FC = () => {
         />
       </Backdrop>
 
-      <Surface
-        style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}
-      >
+      <Surface style={[styles.fab, { transform: [{ scale: fabScale }] as any }]}>
         <TouchableOpacity
           onPress={() => {
-            Linking.openURL(
-              "https://github.com/yamankatby/react-native-material"
-            );
+            Linking.openURL("https://github.com/yamankatby/react-native-material");
           }}
           style={{
             flex: 1,
@@ -414,11 +359,7 @@ const Home: React.FC = () => {
             alignItems: "center"
           }}
         >
-          <MaterialIcons
-            name="star"
-            size={24}
-            color={theme.colorScheme.onSecondary}
-          />
+          <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary} />
         </TouchableOpacity>
       </Surface>
     </>
