@@ -7,7 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
-  Animated,
+  Animated, Button,
   Dimensions,
   FlatList,
   Linking,
@@ -194,6 +194,8 @@ const Home: React.FC = () => {
     Analytics.setCurrentScreen("Main", "Main");
   }, []);
 
+  const navigation = useNavigation()
+
   const insets = useSafeAreaInsets();
 
   const theme = useTheme();
@@ -319,6 +321,7 @@ const Home: React.FC = () => {
         </View>}
         backLayer={<BackdropHiddenSection />}
         subheader='Components'
+        subheaderDivider
       >
         <FlatList
           numColumns={Math.ceil(Dimensions.get("window").width / 500)}

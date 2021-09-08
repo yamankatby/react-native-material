@@ -29,6 +29,7 @@ const BackdropExample: React.FC = () => {
       backLayer={backLayer}
       revealed={expanded}
       subheader={<Backdrop.Subheader title={"Components"} />}
+      subheaderDivider={true}
     >
       <Text>Hi</Text>
     </Backdrop>
