@@ -1,6 +1,15 @@
 import React, { useMemo, useState } from "react";
-import { Dimensions, FlatList, Linking, ScrollView, Text, TouchableOpacity, useColorScheme, View } from "react-native";
-import { Appbar, Backdrop, Divider, Surface, useStyleSheet, useTheme } from "@react-native-material/core";
+import { Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
+import {
+  Appbar,
+  Backdrop,
+  Divider,
+  Surface,
+  TouchableCustomFeedback,
+  Typography,
+  useStyleSheet,
+  useTheme
+} from "@react-native-material/core";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
@@ -18,12 +27,10 @@ const BackdropHiddenSection: React.FC = () => {
   const navigation = useNavigation();
 
   const styles = useStyleSheet(
-    ({ colorScheme, shapeScheme, typographyScheme }) => ({
+    ({ colorScheme, shapeScheme }) => ({
       title: {
         marginTop: 16,
-        marginStart: 16,
-        color: colorScheme.onPrimary,
-        ...typographyScheme.subtitle1
+        marginStart: 16
       },
       section: {
         marginTop: 12,
@@ -40,9 +47,7 @@ const BackdropHiddenSection: React.FC = () => {
       },
       chipTitle: {
         marginHorizontal: 16,
-        color: colorScheme.onPrimary,
-        textTransform: currentTheme === "fortnightly" ? "uppercase" : "capitalize",
-        ...typographyScheme.body2
+        textTransform: currentTheme === "fortnightly" ? "uppercase" : "capitalize"
       },
       selectedChip: {
         backgroundColor: colorScheme.onPrimary
@@ -64,9 +69,7 @@ const BackdropHiddenSection: React.FC = () => {
           currentTheme === "default" ? chroma(colorScheme.onPrimary).alpha(0.2).hex() : colorScheme.primaryVariant
       },
       schemeTitle: {
-        marginStart: 16,
-        color: colorScheme.onPrimary,
-        ...typographyScheme.body2
+        marginStart: 16
       }
     }),
     [currentTheme]
@@ -94,7 +97,9 @@ const BackdropHiddenSection: React.FC = () => {
             : theme.colorScheme.primaryVariant
         }
       />
-      <Text style={styles.title}>Material Studies</Text>
+      <Typography variant="subtitle1" color="onPrimary" style={styles.title}>
+        Material Studies
+      </Typography>
       <View style={styles.section}>
         <ScrollView
           horizontal
@@ -102,16 +107,20 @@ const BackdropHiddenSection: React.FC = () => {
           contentContainerStyle={{ paddingStart: 16, paddingEnd: 8 }}
         >
           {themes.map((theme) => (
-            <TouchableOpacity key={theme} onPress={() => dispatch(changeTheme(theme as any))}>
+            <TouchableCustomFeedback key={theme} onPress={() => dispatch(changeTheme(theme as any))}>
               <Surface style={[styles.chip, theme === currentTheme && styles.selectedChip]}>
                 <View>
-                  <Text style={[styles.chipTitle, theme === currentTheme && styles.selectedChipTitle]}>
+                  <Typography
+                    variant="body2"
+                    color="onPrimary"
+                    style={[styles.chipTitle, theme === currentTheme && styles.selectedChipTitle]}
+                  >
                     {currentTheme === "fortnightly" && "#"}
                     {theme}
-                  </Text>
+                  </Typography>
                 </View>
               </Surface>
-            </TouchableOpacity>
+            </TouchableCustomFeedback>
           ))}
         </ScrollView>
       </View>
@@ -125,18 +134,25 @@ const BackdropHiddenSection: React.FC = () => {
         }
       />
 
-      <Text style={styles.title}>Theming</Text>
+      <Typography variant="subtitle1" color="onPrimary" style={styles.title}>
+        Theming
+      </Typography>
       <View style={styles.section}>
         {schemes.map((scheme) => (
           <View key={scheme.title} style={styles.schemeContainer}>
             <MaterialIcons name={scheme.icon as any} size={24} color={theme.colorScheme.onPrimary} />
-            <TouchableOpacity style={{ flex: 1, height: 38 }} onPress={() => navigation.navigate(scheme.screen as any)}>
+            <TouchableCustomFeedback
+              style={{ flex: 1, height: 38 }}
+              onPress={() => navigation.navigate(scheme.screen as any)}
+            >
               <Surface style={styles.scheme}>
                 <View>
-                  <Text style={styles.schemeTitle}>{scheme.title}</Text>
+                  <Typography variant="body2" color="onPrimary" style={styles.schemeTitle}>
+                    {scheme.title}
+                  </Typography>
                 </View>
               </Surface>
-            </TouchableOpacity>
+            </TouchableCustomFeedback>
           </View>
         ))}
       </View>
@@ -184,9 +200,9 @@ const Home: React.FC = () => {
           style={{ marginTop: insets.top, elevation: 0 }}
           title="Material UI"
           leadingAction={
-            <TouchableOpacity onPress={() => setBackdropRevealed((p) => !p)}>
+            <TouchableCustomFeedback onPress={() => setBackdropRevealed((p) => !p)}>
               <MaterialIcons name={"tune"} size={24} color={theme.colorScheme.onPrimary} />
-            </TouchableOpacity>
+            </TouchableCustomFeedback>
           }
         />
       }
@@ -218,43 +234,41 @@ const Home: React.FC = () => {
             }}
           >
             <View style={{ margin: 16 }}>
-              <Text style={[theme.typographyScheme.h5, { color: theme.colorScheme.onBackground }]}>{item.title}</Text>
-              <Text style={[theme.typographyScheme.body2, { marginTop: 12, color: theme.colorScheme.onBackground }]}>
+              <Typography variant="h5" color="onBackground">
+                {item.title}
+              </Typography>
+              <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
                 {item.body}
-              </Text>
-
-              <Text style={[theme.typographyScheme.body2, { color: theme.colorScheme.onBackground, marginTop: 12 }]}>
+              </Typography>
+              <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
                 status: waiting for 👍
-              </Text>
+              </Typography>
 
-              <TouchableOpacity
+              <TouchableCustomFeedback
                 style={{ marginTop: 12, alignSelf: "flex-start" }}
                 onPress={() => {
                   Linking.openURL(item.html_url);
                 }}
               >
-                <Text
-                  style={[
-                    theme.typographyScheme.button,
-                    {
-                      color:
-                        currentTheme === "fortnightly"
-                          ? theme.colorScheme.secondary
-                          : currentTheme === "shrine"
-                            ? theme.colorScheme.onSurface
-                            : theme.colorScheme.primary
-                    }
-                  ]}
+                <Typography
+                  variant="button"
+                  color={
+                    currentTheme === "fortnightly"
+                      ? "secondary"
+                      : currentTheme === "shrine"
+                        ? "onBackground"
+                        : "primary"
+                  }
                 >
                   Upvote
-                </Text>
-              </TouchableOpacity>
+                </Typography>
+              </TouchableCustomFeedback>
             </View>
           </Surface>
         )}
       />
       <Surface style={styles.fab}>
-        <TouchableOpacity
+        <TouchableCustomFeedback
           onPress={() => {
             Linking.openURL("https://github.com/yamankatby/react-native-material");
           }}
@@ -265,7 +279,7 @@ const Home: React.FC = () => {
           }}
         >
           <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary} />
-        </TouchableOpacity>
+        </TouchableCustomFeedback>
       </Surface>
     </Backdrop>
   );
