@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
+import { Button, Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
 import {
   Appbar,
   Backdrop,
@@ -191,6 +191,8 @@ const Home: React.FC = () => {
 
   const colorScheme = useColorScheme();
 
+  const navigation = useNavigation()
+
   return (
     <Backdrop
       frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
@@ -201,7 +203,7 @@ const Home: React.FC = () => {
           title="Material UI"
           leadingAction={
             <TouchableCustomFeedback onPress={() => setBackdropRevealed((p) => !p)}>
-              <MaterialIcons name={"tune"} size={24} color={theme.colorScheme.onPrimary} />
+              <MaterialIcons name="tune" size={24} color={theme.colorScheme.onPrimary} />
             </TouchableCustomFeedback>
           }
         />
@@ -212,6 +214,7 @@ const Home: React.FC = () => {
       subheaderDivider
     >
       <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
+      <Button title={'ButtonExample'} onPress={() => navigation.navigate('ButtonExample')} />
       <FlatList
         numColumns={Math.ceil(Dimensions.get("window").width / 500)}
         contentContainerStyle={{
