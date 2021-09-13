@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
-import { Animated, StyleSheet, ViewProps, ViewStyle } from "react-native";
-import { ShapeCategory, useTheme } from "../base";
+import { Animated, StyleSheet, ViewStyle } from "react-native";
+import { useTheme } from "../base";
 import TouchableRoundedSurface from "./TouchableRoundedSurface";
+import { SurfaceProps } from "./Surface";
 
-export interface RoundedSurfaceProps extends Animated.AnimatedProps<ViewProps> {
-  category?: ShapeCategory | undefined;
-}
+export type RoundedSurfaceProps = Omit<SurfaceProps, 'family'>
 
 const RoundedSurface: React.FC<RoundedSurfaceProps> & { Touchable: typeof TouchableRoundedSurface } = ({
   category,

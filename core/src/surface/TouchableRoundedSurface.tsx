@@ -1,21 +1,10 @@
 import React, { useMemo } from "react";
-import { Animated, StyleProp, StyleSheet, View, ViewProps, ViewStyle } from "react-native";
-import { ShapeCategory, useTheme } from "../base";
-import { TouchableCustomFeedback, TouchableCustomFeedbackProps } from "../touchable";
+import { Animated, StyleSheet, View, ViewStyle } from "react-native";
+import { useTheme } from "../base";
+import { TouchableCustomFeedback } from "../touchable";
+import { TouchableSurfaceProps } from "./TouchableSurface";
 
-export interface TouchableRoundedSurfaceProps extends Omit<TouchableCustomFeedbackProps, "style"> {
-  category?: ShapeCategory | undefined;
-
-  absoluteSize?: boolean | undefined;
-
-  style?: Animated.AnimatedProps<ViewProps>["style"] | undefined;
-
-  containerStyle?: StyleProp<ViewStyle> | undefined;
-
-  touchableStyle?: StyleProp<ViewStyle> | undefined;
-
-  innerStyle?: StyleProp<ViewStyle> | undefined;
-}
+export type TouchableRoundedSurfaceProps = Omit<TouchableSurfaceProps, 'family'>
 
 const TouchableRoundedSurface: React.FC<TouchableRoundedSurfaceProps> = ({
   category,

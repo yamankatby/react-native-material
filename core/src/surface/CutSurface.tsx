@@ -1,13 +1,19 @@
 import React, { useMemo, useState } from "react";
-import { Animated, StyleSheet, ViewProps, ViewStyle } from "react-native";
+import { Animated, StyleSheet, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import { ShapeCategory, useTheme } from "../base";
+import { useTheme } from "../base";
+import { SurfaceProps } from "./Surface";
+import TouchableCutSurface from "./TouchableCutSurface";
 
-export interface CutSurfaceProps extends Animated.AnimatedProps<ViewProps> {
-  category?: ShapeCategory | undefined;
-}
+export type CutSurfaceProps = Omit<SurfaceProps, 'family'>
 
-const CutSurface: React.FC<CutSurfaceProps> = ({ category, onLayout, style, children, ...rest }) => {
+const CutSurface: React.FC<CutSurfaceProps> & { Touchable: typeof TouchableCutSurface } = ({
+  category,
+  onLayout,
+  style,
+  children,
+  ...rest
+}) => {
   const {
     borderTopStartRadius,
     borderTopEndRadius,
@@ -82,5 +88,7 @@ const CutSurface: React.FC<CutSurfaceProps> = ({ category, onLayout, style, chil
 CutSurface.defaultProps = {
   category: "small"
 };
+
+CutSurface.Touchable = TouchableCutSurface
 
 export default CutSurface;

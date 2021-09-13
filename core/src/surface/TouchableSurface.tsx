@@ -10,7 +10,11 @@ export interface TouchableSurfaceProps extends Omit<TouchableCustomFeedbackProps
 
   family?: ShapeFamily | undefined;
 
+  absoluteSize?: boolean | undefined;
+
   style?: Animated.AnimatedProps<ViewProps>["style"] | undefined;
+
+  containerStyle?: StyleProp<ViewStyle> | undefined;
 
   touchableStyle?: StyleProp<ViewStyle> | undefined;
 

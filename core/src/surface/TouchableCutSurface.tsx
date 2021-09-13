@@ -1,22 +1,11 @@
 import React, { useMemo, useState } from "react";
-import { Animated, StyleProp, StyleSheet, View, ViewProps, ViewStyle } from "react-native";
+import { Animated, StyleSheet, View, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import { ShapeCategory, useTheme } from "../base";
-import { TouchableCustomFeedback, TouchableCustomFeedbackProps } from "../touchable";
+import { useTheme } from "../base";
+import { TouchableCustomFeedback } from "../touchable";
+import { TouchableSurfaceProps } from "./TouchableSurface";
 
-export interface TouchableCutSurfaceProps extends Omit<TouchableCustomFeedbackProps, "style"> {
-  category?: ShapeCategory | undefined;
-
-  absoluteSize?: boolean | undefined;
-
-  style?: Animated.AnimatedProps<ViewProps>["style"] | undefined;
-
-  containerStyle?: StyleProp<ViewStyle> | undefined;
-
-  touchableStyle?: StyleProp<ViewStyle> | undefined;
-
-  innerStyle?: StyleProp<ViewStyle> | undefined;
-}
+export type TouchableCutSurfaceProps = Omit<TouchableSurfaceProps, 'family'>
 
 const TouchableCutSurface: React.FC<TouchableCutSurfaceProps> = ({
   category,
