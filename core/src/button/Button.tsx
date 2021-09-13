@@ -3,9 +3,9 @@ import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from "react-
 import { ColorName, useTheme } from "../base";
 import { Typography } from "../typography";
 import { useButtonStyles } from "./styles";
-import { Surface } from "../surface";
+import { Surface, TouchableSurfaceProps } from "../surface";
 
-export interface ButtonProps {
+export interface ButtonProps extends TouchableSurfaceProps {
   title: string;
 
   variant?: "contained" | "outlined" | "text" | undefined;
@@ -28,10 +28,6 @@ export interface ButtonProps {
 
   trailing?: React.ReactElement | undefined;
 
-  style?: StyleProp<ViewStyle> | undefined;
-
-  contentContainerStyle?: StyleProp<ViewStyle> | undefined;
-
   titleStyle?: StyleProp<TextStyle> | undefined;
 
   leadingContainerStyle?: StyleProp<ViewStyle> | undefined;
@@ -51,11 +47,10 @@ const Button: React.FC<ButtonProps> = ({
   indicatorSize,
   leading,
   trailing,
-  style,
-  contentContainerStyle,
   titleStyle,
   leadingContainerStyle,
-  trailingContainerStyle
+  trailingContainerStyle,
+  ...rest
 }) => {
   const theme = useTheme();
   const styles = useButtonStyles({
@@ -66,8 +61,7 @@ const Button: React.FC<ButtonProps> = ({
     disableElevation: disableElevation!
   });
   return (
-    <Surface style={[styles.container, style]}>
-      <View style={[styles.contentContainer, contentContainerStyle]}>
+    <Surface.Touchable {...rest} innerStyle={styles.inner}>
         {(loading || leading) && (
           <View style={[styles.leadingContainer, leadingContainerStyle]}>
             {loading && (
@@ -87,8 +81,7 @@ const Button: React.FC<ButtonProps> = ({
           {title}
         </Typography>
         {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
-      </View>
-    </Surface>
+    </Surface.Touchable>
   );
 };
 

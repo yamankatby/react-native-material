@@ -16,20 +16,25 @@ export const useButtonStyles = ({
   disableElevation
 }: ButtonStylesProps) => useStyleSheet(({ colorScheme }) => ({
   container: {
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // elevation: variant === 'contained' && !disableElevation ? 2 : 0
+  },
+  inner: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    minWidth: 64,
-    height: 36,
     paddingHorizontal: variant === 'text' ? 8 : 16,
     backgroundColor: variant === 'contained' ? colorScheme[color] : 'transparent',
     borderWidth: variant === 'outlined' ? 1 : 0,
     borderColor: colorScheme[color],
-    elevation: variant === 'contained' && !disableElevation ? 2 : 0
+    minWidth: 64,
+    height: 36,
   },
   contentContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    // flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   title: {
     textTransform: uppercase ? 'uppercase' : 'none'

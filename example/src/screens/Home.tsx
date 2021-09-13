@@ -2,8 +2,8 @@ import React, { useMemo, useState } from "react";
 import { Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
 import {
   Appbar,
-  Backdrop,
-  Divider,
+  Backdrop, Button,
+  Divider, IconButton,
   Surface,
   TouchableCustomFeedback,
   Typography,
@@ -289,6 +289,53 @@ const Home: React.FC = () => {
       subheaderDivider
     >
       <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
+
+      <View style={{padding: 16}}>
+      <Button
+        title="Button"
+        leading={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
+        trailing={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
+      />
+      <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+      <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+
+      <Button title="Button" variant="outlined" loading style={{ marginTop: 12, alignSelf: "flex-start" }} />
+      <Button title="Button" variant="outlined" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+
+      <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+      <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+
+      <Button
+        title="Button"
+        variant="contained"
+        color="secondary"
+        tintColor="onSecondary"
+        loading
+        style={{ marginTop: 12, alignSelf: "flex-start" }}
+      />
+      <Button
+        title="Button"
+        variant="outlined"
+        color="secondary"
+        tintColor="onSecondary"
+        style={{ marginTop: 12, alignSelf: "flex-start" }}
+      />
+      <Button
+        title="Button"
+        variant="text"
+        color="secondary"
+        loading
+        tintColor="onSecondary"
+        style={{ marginTop: 12, alignSelf: "flex-start" }}
+      />
+
+      <IconButton
+        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
+      <IconButton
+        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
+      <IconButton
+        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
+      </View>
       {fab}
     </Backdrop>
   );

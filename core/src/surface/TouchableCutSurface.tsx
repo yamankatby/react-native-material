@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, StyleSheet, View, ViewStyle } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
 import { TouchableCustomFeedback } from "../touchable";
 import { TouchableSurfaceProps } from "./TouchableSurface";
@@ -18,7 +18,8 @@ const TouchableCutSurface: React.FC<TouchableCutSurfaceProps> = ({
   children,
   ...rest
 }) => {
-  const [borders, { backgroundColor, ...restStyle }] = useSurfaceBorderRadius(style, category!);
+  const [borders, restStyles] = useSurfaceBorderRadius(style, category!);
+  const {backgroundColor, ...restInnerStyles} = StyleSheet.flatten(innerStyle ?? {}) as ViewStyle
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -36,17 +37,19 @@ const TouchableCutSurface: React.FC<TouchableCutSurfaceProps> = ({
 
   return (
     <Animated.View
-      style={restStyle}
+      style={[restStyles]}
       onLayout={(e) => {
         setWidth(e.nativeEvent.layout.width);
         setHeight(e.nativeEvent.layout.height);
         onLayout && onLayout(e)
       }}
     >
-      <View style={[absoluteSize && StyleSheet.absoluteFill, containerStyle]}>
-        <TouchableCustomFeedback style={[absoluteSize && StyleSheet.absoluteFill, touchableStyle]} {...rest}>
-          <View style={[absoluteSize && StyleSheet.absoluteFill, innerStyle, { backgroundColor: 'transparent' }]}>
-            <Svg style={[StyleSheet.absoluteFill, { width, height }]}>
+      <View
+        style={[absoluteSize && StyleSheet.absoluteFillObject, { overflow: "hidden" }, containerStyle]}
+      >
+        <TouchableCustomFeedback style={[absoluteSize && StyleSheet.absoluteFillObject, touchableStyle]} {...rest}>
+          <View style={[absoluteSize && StyleSheet.absoluteFillObject, restInnerStyles]}>
+            <Svg style={[StyleSheet.absoluteFillObject, { width, height }]}>
               <Polygon points={points} fill={backgroundColor?.toString()} />
             </Svg>
             {children}
