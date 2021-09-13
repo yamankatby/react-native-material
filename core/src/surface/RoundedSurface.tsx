@@ -1,55 +1,29 @@
 import React, { useMemo } from "react";
-import { Animated, StyleSheet, ViewStyle } from "react-native";
-import { useTheme } from "../base";
+import { Animated } from "react-native";
 import TouchableRoundedSurface from "./TouchableRoundedSurface";
 import { SurfaceProps } from "./Surface";
+import { useSurfaceBorderRadius } from "./use-surface-border-radius";
 
-export type RoundedSurfaceProps = Omit<SurfaceProps, 'family'>
+export type RoundedSurfaceProps = Omit<SurfaceProps, "family">;
 
 const RoundedSurface: React.FC<RoundedSurfaceProps> & { Touchable: typeof TouchableRoundedSurface } = ({
   category,
   style,
   ...rest
 }) => {
-  const {
-    borderTopStartRadius,
-    borderTopEndRadius,
-    borderBottomStartRadius,
-    borderBottomEndRadius,
-    borderTopLeftRadius,
-    borderTopRightRadius,
-    borderBottomLeftRadius,
-    borderBottomRightRadius,
-    borderRadius,
-    ...restStyle
-  } = StyleSheet.flatten(style ?? {}) as ViewStyle;
+  const [borders, { ...restStyle }] = useSurfaceBorderRadius(style, category!);
 
-  const theme = useTheme();
-
-  const radius = useMemo(() => theme.shapeScheme[category!].borderRadius, [theme.shapeScheme, category]);
-
-  const borders = useMemo(
+  const borderRadius = useMemo(
     () => ({
-      borderTopStartRadius: borderTopStartRadius ?? borderTopLeftRadius ?? borderRadius ?? radius.topStart,
-      borderTopEndRadius: borderTopEndRadius ?? borderTopRightRadius ?? borderRadius ?? radius.topEnd,
-      borderBottomStartRadius: borderBottomStartRadius ?? borderBottomLeftRadius ?? borderRadius ?? radius.bottomStart,
-      borderBottomEndRadius: borderBottomEndRadius ?? borderBottomRightRadius ?? borderRadius ?? radius.bottomEnd
+      borderTopStartRadius: borders.topStart,
+      borderTopEndRadius: borders.topEnd,
+      borderBottomStartRadius: borders.bottomStart,
+      borderBottomEndRadius: borders.bottomEnd
     }),
-    [
-      borderTopStartRadius,
-      borderTopLeftRadius,
-      borderTopEndRadius,
-      borderTopRightRadius,
-      borderBottomStartRadius,
-      borderBottomLeftRadius,
-      borderBottomEndRadius,
-      borderBottomRightRadius,
-      borderRadius,
-      radius
-    ]
+    [borders]
   );
 
-  return <Animated.View style={[restStyle, borders]} {...rest} />;
+  return <Animated.View style={[restStyle, borderRadius]} {...rest} />;
 };
 
 RoundedSurface.defaultProps = {

@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from "react";
-import { Animated, StyleSheet, ViewStyle } from "react-native";
+import React, { useState } from "react";
+import { Animated, StyleSheet } from "react-native";
 import Svg, { Polygon } from "react-native-svg";
-import { useTheme } from "../base";
 import { SurfaceProps } from "./Surface";
 import TouchableCutSurface from "./TouchableCutSurface";
+import { useSurfaceBorderRadius } from "./use-surface-border-radius";
 
-export type CutSurfaceProps = Omit<SurfaceProps, 'family'>
+export type CutSurfaceProps = Omit<SurfaceProps, "family">;
 
 const CutSurface: React.FC<CutSurfaceProps> & { Touchable: typeof TouchableCutSurface } = ({
   category,
@@ -14,57 +14,20 @@ const CutSurface: React.FC<CutSurfaceProps> & { Touchable: typeof TouchableCutSu
   children,
   ...rest
 }) => {
-  const {
-    borderTopStartRadius,
-    borderTopEndRadius,
-    borderBottomStartRadius,
-    borderBottomEndRadius,
-    borderTopLeftRadius,
-    borderTopRightRadius,
-    borderBottomLeftRadius,
-    borderBottomRightRadius,
-    borderRadius,
-    backgroundColor,
-    ...restStyle
-  } = StyleSheet.flatten(style ?? {}) as ViewStyle;
+  const [borders, { backgroundColor, ...restStyle }] = useSurfaceBorderRadius(style, category!);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const theme = useTheme();
-
-  const radius = useMemo(() => theme.shapeScheme[category!].borderRadius, [theme.shapeScheme, category]);
-
-  const borders = useMemo(
-    () => ({
-      borderTopStartRadius: borderTopStartRadius ?? borderTopLeftRadius ?? borderRadius ?? radius.topStart,
-      borderTopEndRadius: borderTopEndRadius ?? borderTopRightRadius ?? borderRadius ?? radius.topEnd,
-      borderBottomStartRadius: borderBottomStartRadius ?? borderBottomLeftRadius ?? borderRadius ?? radius.bottomStart,
-      borderBottomEndRadius: borderBottomEndRadius ?? borderBottomRightRadius ?? borderRadius ?? radius.bottomEnd
-    }),
-    [
-      borderTopStartRadius,
-      borderTopLeftRadius,
-      borderTopEndRadius,
-      borderTopRightRadius,
-      borderBottomStartRadius,
-      borderBottomLeftRadius,
-      borderBottomEndRadius,
-      borderBottomRightRadius,
-      borderRadius,
-      radius
-    ]
-  );
-
   const points = [
-    [0, borders.borderTopStartRadius],
-    [borders.borderTopStartRadius, 0],
-    [width - borders.borderTopEndRadius, 0],
-    [width, borders.borderTopEndRadius],
-    [width, height - borders.borderBottomEndRadius],
-    [width - borders.borderBottomEndRadius, height],
-    [borders.borderBottomStartRadius, height],
-    [0, height - borders.borderBottomStartRadius]
+    [0, borders.topStart],
+    [borders.topStart, 0],
+    [width - borders.topEnd, 0],
+    [width, borders.topEnd],
+    [width, height - borders.bottomEnd],
+    [width - borders.bottomEnd, height],
+    [borders.bottomStart, height],
+    [0, height - borders.bottomStart],
   ].reduce((p, c) => `${p} ${c}`, "");
 
   return (
@@ -73,7 +36,7 @@ const CutSurface: React.FC<CutSurfaceProps> & { Touchable: typeof TouchableCutSu
       onLayout={(e) => {
         setWidth(e.nativeEvent.layout.width);
         setHeight(e.nativeEvent.layout.height);
-        onLayout && onLayout(e)
+        onLayout && onLayout(e);
       }}
       {...rest}
     >
@@ -82,13 +45,13 @@ const CutSurface: React.FC<CutSurfaceProps> & { Touchable: typeof TouchableCutSu
       </Svg>
       {children}
     </Animated.View>
-  )
+  );
 };
 
 CutSurface.defaultProps = {
-  category: "small"
+  category: "small",
 };
 
-CutSurface.Touchable = TouchableCutSurface
+CutSurface.Touchable = TouchableCutSurface;
 
 export default CutSurface;

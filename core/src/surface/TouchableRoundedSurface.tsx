@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
-import { Animated, StyleSheet, View, ViewStyle } from "react-native";
-import { useTheme } from "../base";
+import { Animated, StyleSheet, View } from "react-native";
 import { TouchableCustomFeedback } from "../touchable";
 import { TouchableSurfaceProps } from "./TouchableSurface";
+import { useSurfaceBorderRadius } from "./use-surface-border-radius";
 
-export type TouchableRoundedSurfaceProps = Omit<TouchableSurfaceProps, 'family'>
+export type TouchableRoundedSurfaceProps = Omit<TouchableSurfaceProps, "family">;
 
 const TouchableRoundedSurface: React.FC<TouchableRoundedSurfaceProps> = ({
   category,
@@ -16,47 +16,23 @@ const TouchableRoundedSurface: React.FC<TouchableRoundedSurfaceProps> = ({
   children,
   ...rest
 }) => {
-  const {
-    borderTopStartRadius,
-    borderTopEndRadius,
-    borderBottomStartRadius,
-    borderBottomEndRadius,
-    borderTopLeftRadius,
-    borderTopRightRadius,
-    borderBottomLeftRadius,
-    borderBottomRightRadius,
-    borderRadius,
-    ...restStyle
-  } = StyleSheet.flatten(style ?? {}) as ViewStyle;
+  const [borders, { ...restStyle }] = useSurfaceBorderRadius(style, category!);
 
-  const theme = useTheme();
-
-  const radius = useMemo(() => theme.shapeScheme[category!].borderRadius, [theme.shapeScheme, category]);
-
-  const borders = useMemo(
+  const borderRadius = useMemo(
     () => ({
-      borderTopStartRadius: borderTopStartRadius ?? borderTopLeftRadius ?? borderRadius ?? radius.topStart,
-      borderTopEndRadius: borderTopEndRadius ?? borderTopRightRadius ?? borderRadius ?? radius.topEnd,
-      borderBottomStartRadius: borderBottomStartRadius ?? borderBottomLeftRadius ?? borderRadius ?? radius.bottomStart,
-      borderBottomEndRadius: borderBottomEndRadius ?? borderBottomRightRadius ?? borderRadius ?? radius.bottomEnd
+      borderTopStartRadius: borders.topStart,
+      borderTopEndRadius: borders.topEnd,
+      borderBottomStartRadius: borders.bottomStart,
+      borderBottomEndRadius: borders.bottomEnd,
     }),
-    [
-      borderTopStartRadius,
-      borderTopLeftRadius,
-      borderTopEndRadius,
-      borderTopRightRadius,
-      borderBottomStartRadius,
-      borderBottomLeftRadius,
-      borderBottomEndRadius,
-      borderBottomRightRadius,
-      borderRadius,
-      radius
-    ]
+    [borders]
   );
 
   return (
-    <Animated.View style={[restStyle, borders]}>
-      <View style={[absoluteSize && StyleSheet.absoluteFillObject, borders, { overflow: "hidden" }, containerStyle]}>
+    <Animated.View style={[restStyle, borderRadius]}>
+      <View
+        style={[absoluteSize && StyleSheet.absoluteFillObject, borderRadius, { overflow: "hidden" }, containerStyle]}
+      >
         <TouchableCustomFeedback style={[absoluteSize && StyleSheet.absoluteFillObject, touchableStyle]} {...rest}>
           <View style={[absoluteSize && StyleSheet.absoluteFillObject, innerStyle]}>{children}</View>
         </TouchableCustomFeedback>
@@ -66,7 +42,7 @@ const TouchableRoundedSurface: React.FC<TouchableRoundedSurfaceProps> = ({
 };
 
 TouchableRoundedSurface.defaultProps = {
-  category: "small"
+  category: "small",
 };
 
 export default TouchableRoundedSurface;
