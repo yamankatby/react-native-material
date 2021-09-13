@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Button, Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
+import { Dimensions, FlatList, Linking, ScrollView, useColorScheme, View } from "react-native";
 import {
   Appbar,
   Backdrop,
@@ -13,10 +13,10 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import chroma from "chroma-js";
-import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useSWR from "swr";
 import { changeTheme, useAppDispatch, useAppSelector } from "../config/store";
+import { StatusBar } from "expo-status-bar";
 
 const BackdropHiddenSection: React.FC = () => {
   const theme = useTheme();
@@ -27,7 +27,7 @@ const BackdropHiddenSection: React.FC = () => {
   const navigation = useNavigation();
 
   const styles = useStyleSheet(
-    ({ colorScheme, shapeScheme }) => ({
+    ({ colorScheme }) => ({
       title: {
         marginTop: 16,
         marginStart: 16
@@ -35,15 +35,6 @@ const BackdropHiddenSection: React.FC = () => {
       section: {
         marginTop: 12,
         marginBottom: 16
-      },
-      chip: {
-        justifyContent: "center",
-        alignItems: "center",
-        height: 30,
-        marginEnd: 6,
-        backgroundColor:
-          currentTheme === "default" ? chroma(colorScheme.onPrimary).alpha(0.2).hex() : colorScheme.primaryVariant,
-        borderRadius: shapeScheme.small.family === "rounded" ? 15 : undefined
       },
       chipTitle: {
         marginHorizontal: 16,
@@ -100,27 +91,38 @@ const BackdropHiddenSection: React.FC = () => {
       <Typography variant="subtitle1" color="onPrimary" style={styles.title}>
         Material Studies
       </Typography>
+
       <View style={styles.section}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingStart: 16, paddingEnd: 8 }}
         >
-          {themes.map((theme) => (
-            <TouchableCustomFeedback key={theme} onPress={() => dispatch(changeTheme(theme as any))}>
-              <Surface style={[styles.chip, theme === currentTheme && styles.selectedChip]}>
-                <View>
-                  <Typography
-                    variant="body2"
-                    color="onPrimary"
-                    style={[styles.chipTitle, theme === currentTheme && styles.selectedChipTitle]}
-                  >
-                    {currentTheme === "fortnightly" && "#"}
-                    {theme}
-                  </Typography>
-                </View>
-              </Surface>
-            </TouchableCustomFeedback>
+          {themes.map((t) => (
+            <Surface.Touchable
+              key={t}
+              onPress={() => dispatch(changeTheme(t as any))}
+              style={{
+                marginEnd: 6,
+                borderRadius: theme.shapeScheme.small.family === "rounded" ? 15 : undefined
+              }}
+              innerStyle={{
+                paddingVertical: 4,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor:
+                  currentTheme === "default" ? chroma(theme.colorScheme.onPrimary).alpha(0.2).hex() : theme.colorScheme.primaryVariant
+              }}
+            >
+              <Typography
+                variant="body2"
+                color="onPrimary"
+                style={[styles.chipTitle, t === currentTheme && styles.selectedChipTitle]}
+              >
+                {currentTheme === "fortnightly" && "#"}
+                {t}
+              </Typography>
+            </Surface.Touchable>
           ))}
         </ScrollView>
       </View>
@@ -193,6 +195,79 @@ const Home: React.FC = () => {
 
   const navigation = useNavigation()
 
+  const flatlist = (
+    <FlatList
+      numColumns={Math.ceil(Dimensions.get("window").width / 500)}
+      contentContainerStyle={{
+        marginHorizontal: 8,
+        paddingBottom: insets.bottom + theme.shapeScheme.small.family === "rounded" ? 56 : 68 + 32
+      }}
+      data={data}
+      keyExtractor={(item) => `${item.id}`}
+      renderItem={({ item }) => (
+        <Surface
+          category="medium"
+          style={{
+            flex: 1,
+            marginTop: 16,
+            marginHorizontal: 8,
+            backgroundColor:
+              currentTheme === "default" && colorScheme === "dark" ? "#232323" : theme.colorScheme.background,
+            borderWidth: (currentTheme === "default" && colorScheme === "light") || currentTheme === "owl" ? 1 : 0,
+            borderColor: chroma(theme.colorScheme.onBackground).alpha(0.1).hex()
+          }}
+        >
+          <View style={{ margin: 16 }}>
+            <Typography variant="h5" color="onBackground">
+              {item.title}
+            </Typography>
+            <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
+              {item.body}
+            </Typography>
+            <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
+              status: waiting for 👍
+            </Typography>
+
+            <TouchableCustomFeedback
+              style={{ marginTop: 12, alignSelf: "flex-start" }}
+              onPress={() => {
+                Linking.openURL(item.html_url);
+              }}
+            >
+              <Typography
+                variant="button"
+                color={
+                  currentTheme === "fortnightly"
+                    ? "secondary"
+                    : currentTheme === "shrine"
+                      ? "onBackground"
+                      : "primary"
+                }
+              >
+                Upvote
+              </Typography>
+            </TouchableCustomFeedback>
+          </View>
+        </Surface>
+      )}
+    />
+  )
+
+  const onFABPress = () => {
+    Linking.openURL("https://github.com/yamankatby/react-native-material");
+  }
+
+  const fab = (
+    <Surface.Touchable
+      style={styles.fab}
+      innerStyle={{ backgroundColor: theme.colorScheme.secondary, justifyContent: 'center', alignItems: 'center' }}
+      absoluteSize
+      onPress={onFABPress}
+    >
+      <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary} />
+    </Surface.Touchable>
+  )
+
   return (
     <Backdrop
       frontLayerStyle={currentTheme === "default" && { borderTopStartRadius: 16, borderTopEndRadius: 16 }}
@@ -214,76 +289,7 @@ const Home: React.FC = () => {
       subheaderDivider
     >
       <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
-      <Button title={'ButtonExample'} onPress={() => navigation.navigate('ButtonExample')} />
-      <FlatList
-        numColumns={Math.ceil(Dimensions.get("window").width / 500)}
-        contentContainerStyle={{
-          marginHorizontal: 8,
-          paddingBottom: insets.bottom + theme.shapeScheme.small.family === "rounded" ? 56 : 68 + 32
-        }}
-        data={data}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item }) => (
-          <Surface
-            category="medium"
-            style={{
-              flex: 1,
-              marginTop: 16,
-              marginHorizontal: 8,
-              backgroundColor:
-                currentTheme === "default" && colorScheme === "dark" ? "#232323" : theme.colorScheme.background,
-              borderWidth: (currentTheme === "default" && colorScheme === "light") || currentTheme === "owl" ? 1 : 0,
-              borderColor: chroma(theme.colorScheme.onBackground).alpha(0.1).hex()
-            }}
-          >
-            <View style={{ margin: 16 }}>
-              <Typography variant="h5" color="onBackground">
-                {item.title}
-              </Typography>
-              <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
-                {item.body}
-              </Typography>
-              <Typography variant="body2" color="onBackground" style={{ marginTop: 12 }}>
-                status: waiting for 👍
-              </Typography>
-
-              <TouchableCustomFeedback
-                style={{ marginTop: 12, alignSelf: "flex-start" }}
-                onPress={() => {
-                  Linking.openURL(item.html_url);
-                }}
-              >
-                <Typography
-                  variant="button"
-                  color={
-                    currentTheme === "fortnightly"
-                      ? "secondary"
-                      : currentTheme === "shrine"
-                        ? "onBackground"
-                        : "primary"
-                  }
-                >
-                  Upvote
-                </Typography>
-              </TouchableCustomFeedback>
-            </View>
-          </Surface>
-        )}
-      />
-      <Surface style={styles.fab}>
-        <TouchableCustomFeedback
-          onPress={() => {
-            Linking.openURL("https://github.com/yamankatby/react-native-material");
-          }}
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <MaterialIcons name="star" size={24} color={theme.colorScheme.onSecondary} />
-        </TouchableCustomFeedback>
-      </Surface>
+      {fab}
     </Backdrop>
   );
 };

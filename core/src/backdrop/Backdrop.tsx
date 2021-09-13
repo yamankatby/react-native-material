@@ -94,7 +94,7 @@ const Backdrop: React.FC<BackdropProps> & { Subheader: React.FC<SubheaderProps> 
         category="large"
         style={[styles.frontLayer, {
           top: frontLayerTop,
-          transform: [{ translateY: frontLayerTranslateYAnimated as any }]
+          transform: [{ translateY: frontLayerTranslateYAnimated }]
         }, frontLayerStyle]}
       >
         {typeof subheader === 'string' ? <Subheader title={subheader} /> : subheader}

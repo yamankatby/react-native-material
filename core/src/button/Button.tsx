@@ -1,9 +1,9 @@
 import React from "react";
 import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import { ColorName, useTheme } from "../base";
-import { Surface } from "../surface";
 import { Typography } from "../typography";
 import { useButtonStyles } from "./styles";
+import { Surface } from "../surface";
 
 export interface ButtonProps {
   title: string;

@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import { Animated, StyleSheet, ViewProps } from "react-native";
-import Svg, { Polygon } from "react-native-svg";
-import { ShapeBorderRadius, ShapeCategory, ShapeFamily, useTheme } from "../base";
+import React from "react";
+import { Animated, ViewProps } from "react-native";
+import { ShapeCategory, ShapeFamily, useTheme } from "../base";
+import TouchableSurface from "./TouchableSurface";
+import RoundedSurface from "./RoundedSurface";
+import CutSurface from "./CutSurface";
 
-export interface SurfaceProps extends ViewProps {
-  category?: ShapeCategory;
+export interface SurfaceProps extends Animated.AnimatedProps<ViewProps> {
+  category?: ShapeCategory | undefined;
 
-  family?: ShapeFamily;
+  family?: ShapeFamily | undefined;
 }
 
-const Surface: React.FC<SurfaceProps> = ({ family, ...rest }) => {
+const Surface: React.FC<SurfaceProps> & { Touchable: typeof TouchableSurface } = ({ category, family, ...rest }) => {
   const theme = useTheme();
-
-  return (family ?? theme.shapeScheme[rest.category!].family) === "rounded" ? (
-    <RoundedSurface {...rest} />
+  return (family ?? theme.shapeScheme[category!].family) === "rounded" ? (
+    <RoundedSurface category={category} {...rest} />
   ) : (
-    <CutSurface {...rest} />
+    <CutSurface category={category} {...rest} />
   );
 };
 
@@ -23,136 +24,6 @@ Surface.defaultProps = {
   category: "small"
 };
 
-export interface RoundedSurfaceProps extends ViewProps {
-  category?: ShapeCategory;
-}
-
-export const RoundedSurface: React.FC<RoundedSurfaceProps> = ({
-  category,
-  style,
-  ...rest
-}) => {
-  const styles = StyleSheet.flatten(style ?? {});
-
-  const theme = useTheme();
-
-  const radius = theme.shapeScheme[category!].borderRadius;
-
-  const borderRadius: ShapeBorderRadius = {
-    topStart:
-      styles.borderTopStartRadius ??
-      styles.borderTopLeftRadius ??
-      styles.borderRadius ??
-      radius.topStart,
-    topEnd:
-      styles.borderTopEndRadius ??
-      styles.borderTopRightRadius ??
-      styles.borderRadius ??
-      radius.topEnd,
-    bottomStart:
-      styles.borderBottomStartRadius ??
-      styles.borderBottomRightRadius ??
-      styles.borderRadius ??
-      radius.bottomStart,
-    bottomEnd:
-      styles.borderBottomEndRadius ??
-      styles.borderBottomRightRadius ??
-      styles.borderRadius ??
-      radius.bottomEnd
-  };
-
-  return (
-    <Animated.View
-      style={[
-        style,
-        {
-          borderTopStartRadius: borderRadius.topStart,
-          borderTopEndRadius: borderRadius.topEnd,
-          borderBottomStartRadius: borderRadius.bottomStart,
-          borderBottomEndRadius: borderRadius.bottomEnd
-        }
-      ]}
-      {...rest}
-    />
-  );
-};
-
-RoundedSurface.defaultProps = {
-  category: "small"
-};
-
-export interface CutSurfaceProps extends ViewProps {
-  category?: ShapeCategory;
-}
-
-export const CutSurface: React.FC<CutSurfaceProps> = ({
-  category,
-  style,
-  children,
-  ...rest
-}) => {
-  const { backgroundColor, ...styles } = StyleSheet.flatten(style ?? {});
-
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
-  const theme = useTheme();
-
-  const radius = theme.shapeScheme[category!].borderRadius;
-
-  const borderRadius: ShapeBorderRadius = {
-    topStart:
-      styles.borderTopStartRadius ??
-      styles.borderTopLeftRadius ??
-      styles.borderRadius ??
-      radius.topStart,
-    topEnd:
-      styles.borderTopEndRadius ??
-      styles.borderTopRightRadius ??
-      styles.borderRadius ??
-      radius.topEnd,
-    bottomStart:
-      styles.borderBottomStartRadius ??
-      styles.borderBottomRightRadius ??
-      styles.borderRadius ??
-      radius.bottomStart,
-    bottomEnd:
-      styles.borderBottomEndRadius ??
-      styles.borderBottomRightRadius ??
-      styles.borderRadius ??
-      radius.bottomEnd
-  };
-
-  const points = [
-    [0, borderRadius.topStart],
-    [borderRadius.topStart, 0],
-    [width - borderRadius.topEnd, 0],
-    [width, borderRadius.topEnd],
-    [width, height - borderRadius.bottomEnd],
-    [width - borderRadius.bottomEnd, height],
-    [borderRadius.bottomStart, height],
-    [0, height - borderRadius.bottomStart]
-  ].reduce((p, c) => `${p} ${c}`, "");
-
-  return (
-    <Animated.View
-      style={styles}
-      onLayout={(e) => {
-        setWidth(e.nativeEvent.layout.width);
-        setHeight(e.nativeEvent.layout.height);
-      }}
-      {...rest}
-    >
-      <Svg style={[StyleSheet.absoluteFill, { width, height }]}>
-        <Polygon points={points} fill={backgroundColor?.toString()} />
-      </Svg>
-      {children}
-    </Animated.View>
-  );
-};
-
-CutSurface.defaultProps = {
-  category: "small"
-};
+Surface.Touchable = TouchableSurface;
 
 export default Surface;

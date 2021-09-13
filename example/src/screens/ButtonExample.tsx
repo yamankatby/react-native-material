@@ -7,9 +7,6 @@ const ButtonExample = () => {
           <View style={{ flex: 1, margin: 16 }}>
                   <Button
                     title="Button"
-                    style={{ alignSelf: "flex-start" }}
-                    // loading
-                    // disableElevation
                     leading={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
                     trailing={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
                   />
@@ -41,6 +38,7 @@ const ButtonExample = () => {
                     title="Button"
                     variant="text"
                     color="secondary"
+                    loading
                     tintColor="onSecondary"
                     style={{ marginTop: 12, alignSelf: "flex-start" }}
                   />
