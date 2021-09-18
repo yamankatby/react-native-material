@@ -1,6 +1,6 @@
-import { ColorScheme } from "../color-scheme";
-import { ShapeScheme } from "../shape-scheme";
-import { TypographyScheme } from "../typography-scheme";
+import { ColorScheme } from "./color-scheme";
+import { ShapeScheme } from "./shape-scheme";
+import { TypographyScheme } from "./typography-scheme";
 
 export type Mode = "light" | "dark";
 

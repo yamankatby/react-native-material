@@ -1,6 +1,6 @@
+import { useMemo } from "react";
 import { Animated, StyleProp, StyleSheet, ViewProps, ViewStyle } from "react-native";
 import { ShapeBorderRadius, ShapeCategory, useTheme } from "../base";
-import { useMemo } from "react";
 
 export const useSurfaceBorderRadius = (
   style: StyleProp<ViewStyle> | Animated.AnimatedProps<ViewProps>["style"] | undefined,

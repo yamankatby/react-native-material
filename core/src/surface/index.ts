@@ -1,12 +1,4 @@
 export { default as Surface } from "./Surface";
 export { default as TouchableSurface } from "./TouchableSurface";
-export { default as RoundedSurface } from "./RoundedSurface";
-export { default as TouchableRoundedSurface } from "./TouchableRoundedSurface";
-export { default as CutSurface } from "./CutSurface";
-export { default as TouchableCutSurface } from "./TouchableCutSurface";
 export * from "./Surface";
 export * from "./TouchableSurface";
-export * from "./RoundedSurface";
-export * from "./TouchableRoundedSurface";
-export * from "./CutSurface";
-export * from "./TouchableCutSurface";

@@ -60,6 +60,4 @@ const Appbar: React.FC<AppbarProps> = ({
   )
 }
 
-Appbar.defaultProps = {}
-
 export default Appbar

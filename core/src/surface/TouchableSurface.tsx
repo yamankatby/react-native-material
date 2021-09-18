@@ -1,14 +1,11 @@
-import React from "react";
-import { Animated, StyleProp, ViewProps, ViewStyle } from "react-native";
-import { ShapeCategory, ShapeFamily, useTheme } from "../base";
-import { TouchableCustomFeedbackProps } from "../touchable";
-import TouchableRoundedSurface from "./TouchableRoundedSurface";
-import TouchableCutSurface from "./TouchableCutSurface";
+import React, { useMemo } from "react";
+import { Animated, StyleProp, StyleSheet, View, ViewProps, ViewStyle } from "react-native";
+import { ShapeCategory } from "../base";
+import { TouchableCustomFeedback, TouchableCustomFeedbackProps } from "../touchable";
+import { useSurfaceBorderRadius } from "./use-surface-border-radius";
 
 export interface TouchableSurfaceProps extends Omit<TouchableCustomFeedbackProps, "style"> {
   category?: ShapeCategory | undefined;
-
-  family?: ShapeFamily | undefined;
 
   absoluteSize?: boolean | undefined;
 
@@ -21,12 +18,38 @@ export interface TouchableSurfaceProps extends Omit<TouchableCustomFeedbackProps
   innerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
-const TouchableSurface: React.FC<TouchableSurfaceProps> = ({ category, family, ...rest }) => {
-  const theme = useTheme();
-  return (family ?? theme.shapeScheme[category!].family) === "rounded" ? (
-    <TouchableRoundedSurface category={category} {...rest} />
-  ) : (
-    <TouchableCutSurface category={category} {...rest} />
+const TouchableSurface: React.FC<TouchableSurfaceProps> = ({
+  category,
+  absoluteSize,
+  style,
+  containerStyle,
+  touchableStyle,
+  innerStyle,
+  children,
+  ...rest
+}) => {
+  const [borders, { ...restStyle }] = useSurfaceBorderRadius(style, category!);
+
+  const borderRadius = useMemo(
+    () => ({
+      borderTopStartRadius: borders.topStart,
+      borderTopEndRadius: borders.topEnd,
+      borderBottomStartRadius: borders.bottomStart,
+      borderBottomEndRadius: borders.bottomEnd
+    }),
+    [borders]
+  );
+
+  return (
+    <Animated.View style={[restStyle, borderRadius]}>
+      <View
+        style={[absoluteSize && StyleSheet.absoluteFillObject, borderRadius, { overflow: "hidden" }, containerStyle]}
+      >
+        <TouchableCustomFeedback style={[absoluteSize && StyleSheet.absoluteFillObject, touchableStyle]} {...rest}>
+          <View style={[absoluteSize && StyleSheet.absoluteFillObject, innerStyle]}>{children}</View>
+        </TouchableCustomFeedback>
+      </View>
+    </Animated.View>
   );
 };
 

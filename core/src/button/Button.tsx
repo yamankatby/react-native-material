@@ -62,25 +62,25 @@ const Button: React.FC<ButtonProps> = ({
   });
   return (
     <Surface.Touchable {...rest} innerStyle={styles.inner}>
-        {(loading || leading) && (
-          <View style={[styles.leadingContainer, leadingContainerStyle]}>
-            {loading && (
-              <ActivityIndicator
-                color={indicatorColor ?? theme.colorScheme[variant === "contained" ? tintColor! : color!]}
-                size={indicatorSize}
-              />
-            )}
-            {!loading && leading}
-          </View>
-        )}
-        <Typography
-          variant="button"
-          color={variant === "contained" ? tintColor : color}
-          style={[styles.title, titleStyle]}
-        >
-          {title}
-        </Typography>
-        {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
+      {(loading || leading) && (
+        <View style={[styles.leadingContainer, leadingContainerStyle]}>
+          {loading && (
+            <ActivityIndicator
+              color={indicatorColor ?? theme.colorScheme[variant === "contained" ? tintColor! : color!]}
+              size={indicatorSize}
+            />
+          )}
+          {!loading && leading}
+        </View>
+      )}
+      <Typography
+        variant="button"
+        color={variant === "contained" ? tintColor : color}
+        style={[styles.title, titleStyle]}
+      >
+        {title}
+      </Typography>
+      {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
     </Surface.Touchable>
   );
 };
