@@ -1,11 +1,10 @@
 import React from "react";
 import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import { ColorName, useTheme } from "../base";
-import Typography from "../Typography";
-import { useButtonStyles } from "./styles";
-import { Surface, TouchableSurfaceProps } from "../surface";
+import { ColorName, useStyleSheet, useTheme } from "./base";
+import Typography from "./Typography";
+import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
 
-export interface ButtonProps extends TouchableSurfaceProps {
+export interface ButtonProps extends Omit<TouchableSurfaceProps, 'category'> {
   title: string;
 
   variant?: "contained" | "outlined" | "text" | undefined;
@@ -35,6 +34,53 @@ export interface ButtonProps extends TouchableSurfaceProps {
   trailingContainerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
+export interface ButtonStylesProps {
+  variant: 'contained' | 'outlined' | 'text';
+  color: ColorName;
+  tintColor: ColorName;
+  uppercase: boolean;
+  disableElevation: boolean;
+}
+
+export const useButtonStyles = ({
+  variant,
+  color,
+  tintColor,
+  uppercase,
+  disableElevation
+}: ButtonStylesProps) => useStyleSheet(({ colorScheme }) => ({
+  container: {
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // elevation: variant === 'contained' && !disableElevation ? 2 : 0
+  },
+  inner: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: variant === 'text' ? 8 : 16,
+    backgroundColor: variant === 'contained' ? colorScheme[color] : 'transparent',
+    borderWidth: variant === 'outlined' ? 1 : 0,
+    borderColor: colorScheme[color],
+    minWidth: 64,
+    height: 36
+  },
+  contentContainer: {
+    // flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+  title: {
+    textTransform: uppercase ? 'uppercase' : 'none'
+  },
+  leadingContainer: {
+    marginEnd: 8
+  },
+  trailingContainer: {
+    marginStart: 8
+  }
+}), [variant, color, tintColor, uppercase, disableElevation])
+
 const Button: React.FC<ButtonProps> = ({
   title,
   variant,
@@ -61,7 +107,7 @@ const Button: React.FC<ButtonProps> = ({
     disableElevation: disableElevation!
   });
   return (
-    <Surface.Touchable {...rest} innerStyle={styles.inner}>
+    <TouchableSurface {...rest} innerStyle={styles.inner}>
       {(loading || leading) && (
         <View style={[styles.leadingContainer, leadingContainerStyle]}>
           {loading && (
@@ -81,7 +127,7 @@ const Button: React.FC<ButtonProps> = ({
         {title}
       </Typography>
       {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
-    </Surface.Touchable>
+    </TouchableSurface>
   );
 };
 

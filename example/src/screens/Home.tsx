@@ -5,9 +5,8 @@ import {
   Backdrop,
   Button,
   Divider,
-  IconButton,
   Surface,
-  TouchableCustomFeedback,
+  Touchable,
   Typography,
   useStyleSheet,
   useTheme
@@ -145,7 +144,7 @@ const BackdropHiddenSection: React.FC = () => {
         {schemes.map((scheme) => (
           <View key={scheme.title} style={styles.schemeContainer}>
             <MaterialIcons name={scheme.icon as any} size={24} color={theme.colorScheme.onPrimary} />
-            <TouchableCustomFeedback
+            <Touchable
               style={{ flex: 1, height: 38 }}
               onPress={() => navigation.navigate(scheme.screen as any)}
             >
@@ -156,7 +155,7 @@ const BackdropHiddenSection: React.FC = () => {
                   </Typography>
                 </View>
               </Surface>
-            </TouchableCustomFeedback>
+            </Touchable>
           </View>
         ))}
       </View>
@@ -230,7 +229,7 @@ const Home: React.FC = () => {
               status: waiting for 👍
             </Typography>
 
-            <TouchableCustomFeedback
+            <Touchable
               style={{ marginTop: 12, alignSelf: "flex-start" }}
               onPress={() => {
                 Linking.openURL(item.html_url);
@@ -248,7 +247,7 @@ const Home: React.FC = () => {
               >
                 Upvote
               </Typography>
-            </TouchableCustomFeedback>
+            </Touchable>
           </View>
         </Surface>
       )}
@@ -279,9 +278,9 @@ const Home: React.FC = () => {
           style={{ marginTop: insets.top, elevation: 0 }}
           title="Material UI"
           leadingAction={
-            <TouchableCustomFeedback onPress={() => setBackdropRevealed((p) => !p)}>
+            <Touchable onPress={() => setBackdropRevealed((p) => !p)}>
               <MaterialIcons name="tune" size={24} color={theme.colorScheme.onPrimary} />
-            </TouchableCustomFeedback>
+            </Touchable>
           }
         />
       }
@@ -292,51 +291,44 @@ const Home: React.FC = () => {
     >
       <StatusBar style={chroma.contrast(theme.colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
 
-      <View style={{padding: 16}}>
-      <Button
-        title="Button"
-        leading={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
-        trailing={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
-      />
-      <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
-      <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+      <View style={{ padding: 16 }}>
+        <Button
+          title="Button"
+          leading={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
+          trailing={<View style={{ width: 18, height: 18, backgroundColor: "white" }} />}
+        />
+        <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+        <Button title="Button" style={{ marginTop: 12, alignSelf: "flex-start" }} />
 
-      <Button title="Button" variant="outlined" loading style={{ marginTop: 12, alignSelf: "flex-start" }} />
-      <Button title="Button" variant="outlined" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+        <Button title="Button" variant="outlined" loading style={{ marginTop: 12, alignSelf: "flex-start" }} />
+        <Button title="Button" variant="outlined" style={{ marginTop: 12, alignSelf: "flex-start" }} />
 
-      <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
-      <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+        <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
+        <Button title="Button" variant="text" style={{ marginTop: 12, alignSelf: "flex-start" }} />
 
-      <Button
-        title="Button"
-        variant="contained"
-        color="secondary"
-        tintColor="onSecondary"
-        loading
-        style={{ marginTop: 12, alignSelf: "flex-start" }}
-      />
-      <Button
-        title="Button"
-        variant="outlined"
-        color="secondary"
-        tintColor="onSecondary"
-        style={{ marginTop: 12, alignSelf: "flex-start" }}
-      />
-      <Button
-        title="Button"
-        variant="text"
-        color="secondary"
-        loading
-        tintColor="onSecondary"
-        style={{ marginTop: 12, alignSelf: "flex-start" }}
-      />
-
-      <IconButton
-        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
-      <IconButton
-        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
-      <IconButton
-        icon={<View style={{ width: 24, height: 24, marginTop: 12, backgroundColor: "white" }} />} />
+        <Button
+          title="Button"
+          variant="contained"
+          color="secondary"
+          tintColor="onSecondary"
+          loading
+          style={{ marginTop: 12, alignSelf: "flex-start" }}
+        />
+        <Button
+          title="Button"
+          variant="outlined"
+          color="secondary"
+          tintColor="onSecondary"
+          style={{ marginTop: 12, alignSelf: "flex-start" }}
+        />
+        <Button
+          title="Button"
+          variant="text"
+          color="secondary"
+          loading
+          tintColor="onSecondary"
+          style={{ marginTop: 12, alignSelf: "flex-start" }}
+        />
       </View>
       {fab}
     </Backdrop>

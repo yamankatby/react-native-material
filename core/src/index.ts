@@ -1,11 +1,19 @@
 export * from "./base";
-export * from "./surface";
-export * from "./backdrop";
+export { default as Surface } from './Surface'
+export * from './Surface'
+export { default as TouchableSurface } from './TouchableSurface'
+export * from './TouchableSurface'
+export { default as Backdrop } from "./Backdrop";
+export * from "./Backdrop";
+export { default as BackdropSubheader } from "./BackdropSubheader";
+export * from "./BackdropSubheader";
 export { default as Divider } from './Divider'
 export * from "./Divider";
 export { default as Typography } from './Typography'
 export * from "./Typography";
-export * from "./appbar";
+export * from "./Appbar";
+export { default as Appbar } from "./Appbar";
 export { default as Touchable } from './Touchable'
 export * from "./Touchable";
-export * from "./button";
+export * from "./Button";
+export { default as Button } from "./Button";

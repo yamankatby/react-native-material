@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import { Surface } from "../surface";
-import Typography from "../Typography";
-import { useAppbarStyles } from "./styles";
+import { Platform, StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import Surface from "./Surface";
+import Typography from "./Typography";
+import { useStyleSheet } from "./base";
 
 export interface AppbarProps {
   title?: string | undefined;
@@ -23,6 +23,55 @@ export interface AppbarProps {
 
   trailingActionsContainerStyle?: StyleProp<ViewStyle> | undefined;
 }
+
+export interface AppbarStylesProps {
+  hasLeadingAction: boolean;
+}
+
+export const useAppbarStyles = ({ hasLeadingAction }: AppbarStylesProps) => useStyleSheet(({ colorScheme }) => ({
+  container: {
+    backgroundColor: colorScheme.primary,
+    borderRadius: 0,
+    elevation: 4
+  },
+  contentContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 56,
+    marginHorizontal: 16
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 24
+  },
+  title: {
+    ...Platform.select({
+      ios: {
+        textAlign: 'center'
+      }
+    })
+  },
+  leadingActionContainer: {
+    ...Platform.select({
+      ios: {
+        flex: 1
+      },
+      default: {
+        paddingEnd: hasLeadingAction ? 32 : 0
+      }
+    })
+  },
+  trailingActionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    ...Platform.select({
+      ios: {
+        flex: 1
+      }
+    })
+  }
+}), [hasLeadingAction])
 
 const Appbar: React.FC<AppbarProps> = ({
   title,

@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import Typography from "../Typography";
-import { useSubheaderStyles } from "./styles";
+import Typography from "./Typography";
+import { useStyleSheet } from "./base";
 
-export interface SubheaderProps {
+export interface BackdropSubheaderProps {
   title?: string | undefined;
 
   leading?: React.ReactElement | undefined;
@@ -19,7 +19,25 @@ export interface SubheaderProps {
   trailingContainerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
-const Subheader: React.FC<SubheaderProps> = ({
+export const useBackdropSubheaderStyles = () => useStyleSheet(() => ({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 16
+  },
+  title: {
+    flex: 1
+  },
+  leadingContainer: {
+    marginEnd: 12
+  },
+  trailingContainer: {
+    marginStart: 12
+  }
+}))
+
+const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
   title,
   leading,
   trailing,
@@ -28,7 +46,7 @@ const Subheader: React.FC<SubheaderProps> = ({
   leadingContainerStyle,
   trailingContainerStyle
 }) => {
-  const styles = useSubheaderStyles()
+  const styles = useBackdropSubheaderStyles()
   return (
     <View style={[styles.container, style]}>
       {leading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{leading}</View>}
@@ -38,4 +56,4 @@ const Subheader: React.FC<SubheaderProps> = ({
   )
 }
 
-export default Subheader
+export default BackdropSubheader

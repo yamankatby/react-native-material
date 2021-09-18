@@ -1,9 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, StyleProp, View, ViewStyle } from "react-native";
-import { Surface } from "../surface";
-import Subheader, { SubheaderProps } from "./Subheader";
-import Divider from "../Divider";
-import { useBackdropStyles } from "./styles";
+import Surface from "./Surface";
+import Divider from "./Divider";
+import BackdropSubheader from "./BackdropSubheader";
+import { useStyleSheet } from "./base";
+
+export const useBackdropStyles = () => useStyleSheet(({ colorScheme }) => ({
+  container: {
+    flex: 1,
+    backgroundColor: colorScheme.primary,
+    overflow: 'hidden'
+  },
+  frontLayer: {
+    position: 'absolute',
+    start: 0,
+    end: 0,
+    bottom: 0,
+    backgroundColor: colorScheme.surface,
+    borderBottomStartRadius: 0,
+    borderBottomEndRadius: 0,
+    elevation: 1
+  }
+}))
 
 export interface BackdropProps {
   header?: React.ReactElement | undefined;
@@ -31,7 +49,7 @@ export interface BackdropProps {
   frontLayerStyle?: StyleProp<ViewStyle> | undefined;
 }
 
-const Backdrop: React.FC<BackdropProps> & { Subheader: React.FC<SubheaderProps> } = ({
+const Backdrop: React.FC<BackdropProps> = ({
   header,
   backLayer,
   backLayerHeight,
@@ -97,7 +115,7 @@ const Backdrop: React.FC<BackdropProps> & { Subheader: React.FC<SubheaderProps> 
           transform: [{ translateY: frontLayerTranslateYAnimated }]
         }, frontLayerStyle]}
       >
-        {typeof subheader === 'string' ? <Subheader title={subheader} /> : subheader}
+        {typeof subheader === 'string' ? <BackdropSubheader title={subheader} /> : subheader}
         {typeof subheaderDivider === "boolean" ? subheaderDivider && <Divider inset={16} /> : subheaderDivider}
         {children}
       </Surface>
@@ -108,7 +126,5 @@ const Backdrop: React.FC<BackdropProps> & { Subheader: React.FC<SubheaderProps> 
 Backdrop.defaultProps = {
   revealed: false
 }
-
-Backdrop.Subheader = Subheader
 
 export default Backdrop
