@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "React Native Material",
-    "slug": "react-native-material",
+    "name": "example",
+    "slug": "example",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,35 +19,16 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.swazer.material",
-      "buildNumber": "1.0.0",
-      "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.swazer.material",
-      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "googleServicesFile": "./google-services.json"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "config": {
-        "firebase": {
-          "apiKey": "AIzaSyDbPMEN1gYhnTs-4Yqs_vmrtP32a7TQGTo",
-          "authDomain": "react-native-material.firebaseapp.com",
-          "projectId": "react-native-material",
-          "storageBucket": "react-native-material.appspot.com",
-          "messagingSenderId": "93597947415",
-          "appId": "1:93597947415:web:3a1e475b5cbdd2581e6e52",
-          "measurementId": "G-8T0B67RLW3"
-        }
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
       }
     },
-    "description": "Modular and customizable Material Design UI components for React Native",
-    "githubUrl": "https://github.com/yamankatby/react-native-material"
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    }
   }
 }
