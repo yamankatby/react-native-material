@@ -12,23 +12,15 @@ import {
   TouchableWithoutFeedbackProps
 } from "react-native";
 
-export type TouchableType = "highlight" | "native-feedback" | "opacity" | "without-feedback";
+export type TouchableVariant = "highlight" | "native-feedback" | "opacity" | "without-feedback";
 
-export type TouchableCustomFeedbackProps = Partial<Record<PlatformOSType, TouchableType>> &
+export type TouchableProps = Partial<Record<PlatformOSType, TouchableVariant>> &
   TouchableHighlightProps &
   TouchableNativeFeedbackProps &
   TouchableOpacityProps &
   TouchableWithoutFeedbackProps;
 
-const TouchableCustomFeedback: React.FC<TouchableCustomFeedbackProps> = ({
-  android,
-  ios,
-  macos,
-  native,
-  web,
-  windows,
-  ...rest
-}) => {
+const Touchable: React.FC<TouchableProps> = ({ android, ios, macos, native, web, windows, ...rest }) => {
   switch (
     Platform.select({
       android: android!,
@@ -50,13 +42,13 @@ const TouchableCustomFeedback: React.FC<TouchableCustomFeedbackProps> = ({
   }
 };
 
-TouchableCustomFeedback.defaultProps = {
+Touchable.defaultProps = {
   android: "native-feedback",
-  ios: "opacity",
+  ios: "highlight",
   macos: "opacity",
-  native: "native-feedback",
+  native: "opacity",
   web: "opacity",
-  windows: "native-feedback"
+  windows: "opacity"
 };
 
-export default TouchableCustomFeedback;
+export default Touchable;

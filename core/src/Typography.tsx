@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, TextProps } from "react-native";
-import { ColorName, TypographyVariant, useTheme } from "../base";
+import { ColorName, TypographyVariant, useTheme } from "./base";
 
 export interface TypographyProps extends TextProps {
   variant?: TypographyVariant | undefined;
