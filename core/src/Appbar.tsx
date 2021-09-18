@@ -1,5 +1,5 @@
-import React from "react";
-import { Platform, StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import React, { useMemo } from "react";
+import { Platform, StyleProp, TextStyle, useWindowDimensions, View, ViewStyle } from "react-native";
 import { useStyleSheet } from "./base";
 import Surface from "./Surface";
 import Typography from "./Typography";
@@ -35,6 +35,9 @@ const Appbar: React.FC<AppbarProps> = ({
   leadingContainerStyle,
   trailingContainerStyle,
 }) => {
+  const dimensions = useWindowDimensions();
+  const defaultSize = useMemo(() => dimensions.width < 600, [dimensions.width])
+
   const styles = useStyleSheet(({ colorScheme }) => ({
     container: {
       backgroundColor: colorScheme.primary,
@@ -53,10 +56,18 @@ const Appbar: React.FC<AppbarProps> = ({
     innerContainer: {
       flexDirection: "row",
       alignItems: "center",
-      height: 56,
+      height: Platform.select({ ios: 44, default: defaultSize ? 56 : 64 }),
     },
     titleContainer: {
-      flex: Platform.OS === 'ios' ? 2 : 1,
+      ...Platform.select({
+        ios: {
+          flex: 2,
+        },
+        default: {
+          flex: 1,
+          marginStart: defaultSize ? 16 : 24,
+        },
+      }),
       justifyContent: "center",
       height: 24,
     },
@@ -71,7 +82,7 @@ const Appbar: React.FC<AppbarProps> = ({
       flexDirection: "row",
       justifyContent: "flex-end",
     },
-  }));
+  }), [defaultSize]);
 
   return (
     <Surface style={[styles.container, style]}>
