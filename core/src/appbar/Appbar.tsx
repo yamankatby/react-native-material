@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import { Surface } from "../surface";
-import { Typography } from "../typography";
+import Typography from "../Typography";
 import { useAppbarStyles } from "./styles";
 
 export interface AppbarProps {

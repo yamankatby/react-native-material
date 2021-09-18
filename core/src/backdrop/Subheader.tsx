@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import { Typography } from '../typography';
+import Typography from "../Typography";
 import { useSubheaderStyles } from "./styles";
 
 export interface SubheaderProps {

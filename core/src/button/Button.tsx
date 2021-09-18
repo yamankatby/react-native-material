@@ -1,7 +1,7 @@
 import React from "react";
 import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import { ColorName, useTheme } from "../base";
-import { Typography } from "../typography";
+import Typography from "../Typography";
 import { useButtonStyles } from "./styles";
 import { Surface, TouchableSurfaceProps } from "../surface";
 

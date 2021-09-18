@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Animated, StyleProp, View, ViewStyle } from "react-native";
 import { Surface } from "../surface";
 import Subheader, { SubheaderProps } from "./Subheader";
-import { Divider } from "../divider";
+import Divider from "../Divider";
 import { useBackdropStyles } from "./styles";
 
 export interface BackdropProps {
