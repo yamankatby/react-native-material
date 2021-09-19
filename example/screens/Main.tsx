@@ -8,23 +8,41 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Main = () => {
   const insets = useSafeAreaInsets();
-  const { colorScheme } = useTheme()
-
-  const x = <View style={{ width: 24, height: 24, backgroundColor: 'white' }} />
+  const { colorScheme } = useTheme();
 
   return (
     <View style={{ flex: 1, backgroundColor: colorScheme.background }}>
       <Appbar
         title="Material UI"
-        color="background"
-        tintColor="onBackground"
+        centerTitle={false}
         leading={
-          <IconButton icon={<MaterialCommunityIcons name={'menu'} size={24} color={colorScheme.onBackground} />}
-                      onPress={() => undefined} />
+          <IconButton
+            icon={<MaterialCommunityIcons name={"menu"} size={24} color={colorScheme.onPrimary} />}
+            onPress={() => undefined}
+          />
+        }
+        trailing={
+          [
+            <IconButton
+              key={0}
+              icon={<MaterialCommunityIcons name={"heart"} size={24} color={colorScheme.onPrimary} />}
+              onPress={() => undefined}
+            />,
+            <IconButton
+              key={1}
+              icon={<MaterialCommunityIcons name={"magnify"} size={24} color={colorScheme.onPrimary} />}
+              onPress={() => undefined}
+            />,
+            <IconButton
+              key={2}
+              icon={<MaterialCommunityIcons name={"dots-vertical"} size={24} color={colorScheme.onPrimary} />}
+              onPress={() => undefined}
+            />,
+          ]
         }
         style={{ paddingTop: insets.top }}
       />
-      <StatusBar style={chroma.contrast(colorScheme.background, "white") > 4.5 ? "light" : "dark"} translucent />
+      <StatusBar style={chroma.contrast(colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
     </View>
   );
 };

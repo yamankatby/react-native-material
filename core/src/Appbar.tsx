@@ -15,6 +15,8 @@ export interface AppbarProps {
 
   tintColor?: ColorName | undefined;
 
+  centerTitle?: boolean | undefined;
+
   style?: StyleProp<ViewStyle> | undefined;
 
   innerContainerStyle?: StyleProp<ViewStyle> | undefined;
@@ -34,6 +36,7 @@ const Appbar: React.FC<AppbarProps> = ({
   trailing,
   color,
   tintColor,
+  centerTitle,
   style,
   innerContainerStyle,
   titleContainerStyle,
@@ -43,6 +46,7 @@ const Appbar: React.FC<AppbarProps> = ({
 }) => {
   const dimensions = useWindowDimensions();
   const defaultSize = useMemo(() => dimensions.width < 600, [dimensions.width]);
+  const hasLeading = useMemo(() => !!leading, [leading])
 
   const styles = useStyleSheet(({ colorScheme }) => ({
     container: {
@@ -52,47 +56,31 @@ const Appbar: React.FC<AppbarProps> = ({
     },
     innerContainer: {
       flexDirection: "row",
+      justifyContent: 'space-between',
       alignItems: "center",
       height: Platform.select({ ios: 44, default: defaultSize ? 56 : 64 }),
+      marginHorizontal: defaultSize ? 4 : 12,
     },
     titleContainer: {
-      ...Platform.select({
-        ios: {
-          flex: 2,
-        },
-        default: {
-          flex: 1,
-          marginStart: defaultSize ? 16 : 24,
-        },
-      }),
+      position: 'absolute',
+      start: 12,
+      end: 12,
       justifyContent: "center",
       height: 24,
+      paddingHorizontal: hasLeading ? 52 : 0,
     },
     title: {
-      ...Platform.select({ ios: { textAlign: "center" } }),
-    },
-    leadingContainer: {
-      ...Platform.select({
-        ios: { flex: 1 },
-        default: { marginEnd: 12 },
-      }),
-      marginStart: 12,
+      textAlign: centerTitle === true ? 'center' : undefined,
     },
     trailingContainer: {
-      ...Platform.select({
-        ios: { flex: 1 },
-        default: { marginStart: 12 },
-      }),
       flexDirection: "row",
       justifyContent: "flex-end",
-      marginEnd: 12,
     },
-  }), [color, defaultSize]);
+  }), [color, defaultSize, hasLeading, centerTitle]);
 
   return (
     <Surface style={[styles.container, style]}>
       <View style={[styles.innerContainer, innerContainerStyle]}>
-        <View style={[styles.leadingContainer, leadingContainerStyle]}>{leading}</View>
         {typeof title === "string" ? (
           <View style={[styles.titleContainer, titleContainerStyle]}>
             <Typography variant="h6" color={tintColor} style={[styles.title, titleStyle]}>
@@ -102,16 +90,8 @@ const Appbar: React.FC<AppbarProps> = ({
         ) : (
           title
         )}
-        <View style={[styles.trailingContainer, trailingContainerStyle]}>
-          {Array.isArray(trailing)
-            ? trailing.map((element, index) => (
-              <React.Fragment key={index}>
-                {element}
-                {index < trailing.length - 1 && <View style={{ width: 24 }} />}
-              </React.Fragment>
-            ))
-            : trailing}
-        </View>
+        {leading && <View style={leadingContainerStyle}>{leading}</View>}
+        {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
       </View>
     </Surface>
   );
@@ -120,6 +100,7 @@ const Appbar: React.FC<AppbarProps> = ({
 Appbar.defaultProps = {
   color: "primary",
   tintColor: "onPrimary",
+  centerTitle: Platform.OS === 'ios',
 };
 
 export default Appbar;
