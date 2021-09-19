@@ -15,8 +15,8 @@ const Main = () => {
     <View style={{ flex: 1, backgroundColor: colorScheme.background }}>
       <Appbar
         title="Main"
-        leading={x}
-        trailing={[x, x]}
+        color="background"
+        tintColor="onBackground"
         style={{ paddingTop: insets.top }}
       />
       <StatusBar style={chroma.contrast(colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Platform, StyleProp, TextStyle, useWindowDimensions, View, ViewStyle } from "react-native";
-import { useStyleSheet } from "./base";
+import { ColorName, useStyleSheet } from "./base";
 import Surface from "./Surface";
 import Typography from "./Typography";
 
@@ -10,6 +10,10 @@ export interface AppbarProps {
   leading?: React.ReactElement | undefined;
 
   trailing?: React.ReactElement | React.ReactElement[] | undefined;
+
+  color?: ColorName | undefined;
+
+  tintColor?: ColorName | undefined;
 
   style?: StyleProp<ViewStyle> | undefined;
 
@@ -28,6 +32,8 @@ const Appbar: React.FC<AppbarProps> = ({
   title,
   leading,
   trailing,
+  color,
+  tintColor,
   style,
   innerContainerStyle,
   titleContainerStyle,
@@ -40,7 +46,7 @@ const Appbar: React.FC<AppbarProps> = ({
 
   const styles = useStyleSheet(({ colorScheme }) => ({
     container: {
-      backgroundColor: colorScheme.primary,
+      backgroundColor: colorScheme[color!],
       borderRadius: 0,
 
       shadowColor: "#000",
@@ -82,7 +88,7 @@ const Appbar: React.FC<AppbarProps> = ({
       flexDirection: "row",
       justifyContent: "flex-end",
     },
-  }), [defaultSize]);
+  }), [color, defaultSize]);
 
   return (
     <Surface style={[styles.container, style]}>
@@ -90,7 +96,7 @@ const Appbar: React.FC<AppbarProps> = ({
         <View style={[styles.leadingContainer, leadingContainerStyle]}>{leading}</View>
         {typeof title === "string" ? (
           <View style={[styles.titleContainer, titleContainerStyle]}>
-            <Typography variant="h6" color="onPrimary" style={[styles.title, titleStyle]}>
+            <Typography variant="h6" color={tintColor} style={[styles.title, titleStyle]}>
               {title}
             </Typography>
           </View>
@@ -111,5 +117,10 @@ const Appbar: React.FC<AppbarProps> = ({
     </Surface>
   );
 };
+
+Appbar.defaultProps = {
+  color: 'primary',
+  tintColor: 'onPrimary',
+}
 
 export default Appbar;
