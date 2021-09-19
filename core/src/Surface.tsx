@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Animated, StyleSheet, ViewProps, ViewStyle } from "react-native";
-import { ShapeCategory, useTheme } from "./base";
+import { Elevation, ShapeCategory, useTheme } from "./base";
 
 export interface SurfaceProps extends Animated.AnimatedProps<ViewProps> {
   category?: ShapeCategory | undefined;
@@ -17,10 +17,11 @@ const Surface: React.FC<SurfaceProps> = ({ category, style, ...rest }) => {
     borderBottomLeftRadius,
     borderBottomRightRadius,
     borderRadius,
+    elevation,
     ...restStyles
   } = StyleSheet.flatten(style ?? {}) as ViewStyle
 
-  const { shapeScheme } = useTheme()
+  const { elevationScheme, shapeScheme } = useTheme()
 
   const radius = useMemo(() => shapeScheme[category!].borderRadius, [category, shapeScheme])
 
@@ -28,7 +29,7 @@ const Surface: React.FC<SurfaceProps> = ({ category, style, ...rest }) => {
     borderTopStartRadius: borderTopStartRadius ?? borderTopLeftRadius ?? borderRadius ?? radius.topStart,
     borderTopEndRadius: borderTopEndRadius ?? borderTopRightRadius ?? borderRadius ?? radius.topEnd,
     borderBottomStartRadius: borderBottomStartRadius ?? borderBottomLeftRadius ?? borderRadius ?? radius.bottomStart,
-    borderBottomEndRadius: borderBottomEndRadius ?? borderBottomRightRadius ?? borderRadius ?? radius.bottomEnd
+    borderBottomEndRadius: borderBottomEndRadius ?? borderBottomRightRadius ?? borderRadius ?? radius.bottomEnd,
   }), [
     radius,
     borderTopStartRadius,
@@ -39,14 +40,14 @@ const Surface: React.FC<SurfaceProps> = ({ category, style, ...rest }) => {
     borderTopRightRadius,
     borderBottomLeftRadius,
     borderBottomRightRadius,
-    borderRadius
+    borderRadius,
   ])
 
-  return <Animated.View style={[restStyles, shapeBorderRadius]} {...rest} />;
+  return <Animated.View style={[restStyles, elevationScheme[elevation as Elevation], shapeBorderRadius]} {...rest} />;
 };
 
 Surface.defaultProps = {
-  category: "small"
+  category: "small",
 };
 
 export default Surface;
