@@ -17,3 +17,5 @@ export { default as Touchable } from './Touchable'
 export * from "./Touchable";
 export * from "./Button";
 export { default as Button } from "./Button";
+export { default as IconButton } from './IconButton'
+export * from './IconButton'

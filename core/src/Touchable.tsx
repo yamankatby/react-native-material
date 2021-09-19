@@ -47,7 +47,7 @@ Touchable.defaultProps = {
   ios: "highlight",
   macos: "opacity",
   native: "opacity",
-  web: "opacity",
+  web: "highlight",
   windows: "opacity"
 };
 

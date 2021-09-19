@@ -42,7 +42,7 @@ const Appbar: React.FC<AppbarProps> = ({
   trailingContainerStyle,
 }) => {
   const dimensions = useWindowDimensions();
-  const defaultSize = useMemo(() => dimensions.width < 600, [dimensions.width])
+  const defaultSize = useMemo(() => dimensions.width < 600, [dimensions.width]);
 
   const styles = useStyleSheet(({ colorScheme }) => ({
     container: {
@@ -81,12 +81,20 @@ const Appbar: React.FC<AppbarProps> = ({
       ...Platform.select({ ios: { textAlign: "center" } }),
     },
     leadingContainer: {
-      ...Platform.select({ ios: { flex: 1 } }),
+      ...Platform.select({
+        ios: { flex: 1 },
+        default: { marginEnd: 12 },
+      }),
+      marginStart: 12,
     },
     trailingContainer: {
-      ...Platform.select({ ios: { flex: 1 } }),
+      ...Platform.select({
+        ios: { flex: 1 },
+        default: { marginStart: 12 },
+      }),
       flexDirection: "row",
       justifyContent: "flex-end",
+      marginEnd: 12,
     },
   }), [color, defaultSize]);
 
@@ -119,8 +127,8 @@ const Appbar: React.FC<AppbarProps> = ({
 };
 
 Appbar.defaultProps = {
-  color: 'primary',
-  tintColor: 'onPrimary',
-}
+  color: "primary",
+  tintColor: "onPrimary",
+};
 
 export default Appbar;
