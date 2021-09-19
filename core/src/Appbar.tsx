@@ -56,7 +56,7 @@ const Appbar: React.FC<AppbarProps> = ({
     },
     innerContainer: {
       flexDirection: "row",
-      justifyContent: 'space-between',
+      justifyContent: hasLeading ? 'space-between' : 'flex-end',
       alignItems: "center",
       height: Platform.select({ ios: 44, default: defaultSize ? 56 : 64 }),
       marginHorizontal: defaultSize ? 4 : 12,

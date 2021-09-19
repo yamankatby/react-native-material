@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Platform,
   PlatformOSType,
@@ -9,18 +9,23 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps
+  TouchableWithoutFeedbackProps,
 } from "react-native";
+import chroma from "chroma-js";
 
 export type TouchableVariant = "highlight" | "native-feedback" | "opacity" | "without-feedback";
 
-export type TouchableProps = Partial<Record<PlatformOSType, TouchableVariant>> &
-  TouchableHighlightProps &
-  TouchableNativeFeedbackProps &
-  TouchableOpacityProps &
-  TouchableWithoutFeedbackProps;
+export interface TouchableProps
+  extends Partial<Record<PlatformOSType, TouchableVariant>>,
+    TouchableHighlightProps,
+    TouchableNativeFeedbackProps,
+    TouchableOpacityProps,
+    TouchableWithoutFeedbackProps {
+  overlayColor?: string | undefined;
+}
 
-const Touchable: React.FC<TouchableProps> = ({ android, ios, macos, native, web, windows, ...rest }) => {
+const Touchable: React.FC<TouchableProps> = ({ android, ios, macos, native, web, windows, overlayColor, ...rest }) => {
+  const color = useMemo(() => chroma(overlayColor!).alpha(0.2).hex(), [overlayColor]);
   switch (
     Platform.select({
       android: android!,
@@ -28,13 +33,13 @@ const Touchable: React.FC<TouchableProps> = ({ android, ios, macos, native, web,
       macos: macos!,
       native: native!,
       web: web!,
-      windows: windows!
+      windows: windows!,
     })
     ) {
     case "highlight":
-      return <TouchableHighlight {...rest} />;
+      return <TouchableHighlight underlayColor={color} {...rest} />;
     case "native-feedback":
-      return <TouchableNativeFeedback {...rest} />;
+      return <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(color, false)} {...rest} />;
     case "opacity":
       return <TouchableOpacity {...rest} />;
     case "without-feedback":
@@ -48,7 +53,8 @@ Touchable.defaultProps = {
   macos: "opacity",
   native: "opacity",
   web: "highlight",
-  windows: "opacity"
+  windows: "opacity",
+  overlayColor: 'black',
 };
 
 export default Touchable;
