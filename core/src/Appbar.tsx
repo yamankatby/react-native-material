@@ -4,155 +4,177 @@ import {
   Platform,
   StyleProp,
   StyleSheet,
-  TextStyle,
+  TextProps,
   useWindowDimensions,
   View,
+  ViewProps,
   ViewStyle,
 } from "react-native";
-import { ColorName, useStyleSheet, useTheme } from "./base";
-import Surface from "./Surface";
+import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
+import Surface, { SurfaceProps } from "./Surface";
 
-export interface AppbarProps {
-  title?: string | React.ReactElement | undefined;
+export interface AppbarProps extends SurfaceProps {
+  title?: string | React.ReactElement;
 
-  variant?: 'regular' | 'prominent' | undefined;
+  variant?: "regular" | "prominent";
 
-  leading?: React.ReactElement | undefined;
+  color?: PaletteColor;
 
-  trailing?: React.ReactElement | React.ReactElement[] | undefined;
+  tintColor?: PaletteColor;
 
-  color?: ColorName | undefined;
+  centerTitle?: boolean;
 
-  tintColor?: ColorName | undefined;
+  image?: React.ReactElement;
 
-  centerTitle?: boolean | undefined;
+  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement);
 
-  style?: StyleProp<ViewStyle> | undefined;
+  trailing?:
+    | React.ReactElement
+    | React.ReactElement[]
+    | ((props: { color: string; size: number }) => React.ReactElement | React.ReactElement[]);
 
-  innerContainerStyle?: StyleProp<ViewStyle> | undefined;
+  imageContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
-  titleContainerStyle?: StyleProp<ViewStyle> | undefined;
+  contentContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
-  titleStyle?: StyleProp<TextStyle> | undefined;
+  titleContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
-  leadingContainerStyle?: StyleProp<ViewStyle> | undefined;
+  titleStyle?: Animated.AnimatedProps<TextProps>["style"];
 
-  trailingContainerStyle?: StyleProp<ViewStyle> | undefined;
+  leadingContainerStyle?: StyleProp<ViewStyle>;
+
+  trailingContainerStyle?: StyleProp<ViewStyle>;
 }
 
 const Appbar: React.FC<AppbarProps> = ({
   title,
-  variant,
+  variant = "regular",
+  color = "primary",
+  tintColor,
+  centerTitle = Platform.OS === "ios",
+  image,
   leading,
   trailing,
-  color,
-  tintColor,
-  centerTitle,
   style,
-  innerContainerStyle,
+  imageContainerStyle,
+  contentContainerStyle,
   titleContainerStyle,
   titleStyle,
   leadingContainerStyle,
   trailingContainerStyle,
+  ...rest
 }) => {
+  const theme = useTheme();
+
+  const palette = usePalette(color, tintColor);
+
+  const hasLeading = useMemo(() => !!leading, [leading]);
+
   const dimensions = useWindowDimensions();
-  const defaultSize = useMemo(() => dimensions.width < 600, [dimensions.width]);
-  const hasLeading = useMemo(() => !!leading, [leading])
 
-  const animated = useRef(new Animated.Value(variant === 'regular' ? 0 : 1)).current
+  const isTablet = useMemo(() => dimensions.width > 600, [dimensions.width]);
 
-  const regularHeight = Platform.OS === 'ios' ? 44 : defaultSize ? 56 : 64
-  const prominentHeight = 128
+  const regularHeight = useMemo(() => Platform.select({ ios: 44, default: isTablet ? 64 : 56 }), [isTablet]);
 
-  const theme = useTheme()
+  const prominentHeight = useMemo(() => 128, []);
+
+  const animated = useRef(new Animated.Value(variant === "regular" ? 0 : 1)).current;
 
   useEffect(() => {
     Animated.timing(animated, {
-      toValue: variant === 'regular' ? 0 : 1,
+      toValue: variant === "regular" ? 0 : 1,
       duration: 200,
       useNativeDriver: false,
-    }).start()
-  }, [variant])
-
-  const height = animated.interpolate({
-    inputRange: [0, 1],
-    outputRange: [regularHeight, prominentHeight],
-  })
-
-  const scale = animated.interpolate({
-    inputRange: [0, 1],
-    outputRange: [theme.typographyScheme.h6.fontSize!, theme.typographyScheme.h5.fontSize!],
-  })
-
-  const bottom = animated.interpolate({
-    inputRange: [0, 1],
-    outputRange: [(regularHeight - 24) / 2, 28],
-  })
+    }).start();
+  }, [animated, variant]);
 
   const opacity = animated.interpolate({
     inputRange: [0, 1],
     outputRange: [0, 1],
-  })
+  });
 
-  const styles = useStyleSheet(({ colorScheme, elevationScheme, typographyScheme }) => ({
+  const height = animated.interpolate({
+    inputRange: [0, 1],
+    outputRange: [regularHeight, prominentHeight],
+  });
+
+  const bottom = animated.interpolate({
+    inputRange: [0, 1],
+    outputRange: [(regularHeight - 24) / 2, 28],
+  });
+
+  const fontSize = animated.interpolate({
+    inputRange: [0, 1],
+    outputRange: [theme.typographyScheme.h6.fontSize!, theme.typographyScheme.h5.fontSize!],
+  });
+
+  const styles = useStyleSheet(({ typographyScheme }) => ({
     container: {
-      backgroundColor: colorScheme[color!],
-      elevation: 4,
+      backgroundColor: palette.main,
       borderRadius: 0,
+      elevation: 4,
     },
-    innerContainer: {},
-    toolbar: {
-      flexDirection: "row",
-      justifyContent: hasLeading ? 'space-between' : 'flex-end',
-      alignItems: 'center',
-      paddingHorizontal: defaultSize ? 4 : 12,
-      height: regularHeight,
+    imageContainer: {
+      backgroundColor: "red",
     },
     titleContainer: {
-      position: 'absolute',
-      start: 16,
-      end: 16,
-      justifyContent: 'center',
-      height: 24,
-      paddingHorizontal: hasLeading ? 56 : 0,
+      position: "absolute",
+      start: 0,
+      end: 0,
+      marginHorizontal: (isTablet ? 24 : 16) + (hasLeading ? 48 : 0),
+      justifyContent: "center",
     },
     title: {
       ...typographyScheme.h6,
-      color: 'white',
-      textAlign: centerTitle === true ? 'center' : undefined,
+      color: palette.on,
+      textAlign: centerTitle ? "center" : "auto",
+    },
+    toolbar: {
+      flexDirection: "row",
+      justifyContent: hasLeading ? "space-between" : "flex-end",
+      alignItems: "center",
+      height: regularHeight,
+      paddingHorizontal: isTablet ? 8 : 4,
     },
     trailingContainer: {
       flexDirection: "row",
-      justifyContent: "flex-end",
     },
-  }), [color, defaultSize, hasLeading, regularHeight, centerTitle]);
+  }), [palette, hasLeading, isTablet, centerTitle, regularHeight]);
+
+  const leadingElement = leading && (
+    <View style={[leadingContainerStyle]}>
+      {typeof leading === "function" ? leading({ color: palette.on, size: 48 }) : leading}
+    </View>
+  );
+
+  const trailingElement = trailing && (
+    <View style={[styles.trailingContainer, trailingContainerStyle]}>
+      {typeof trailing === "function" ? trailing({ color: palette.on, size: 48 }) : trailing}
+    </View>
+  );
 
   return (
-    <Surface style={[styles.container, style]}>
-      <Animated.Image
-        style={[StyleSheet.absoluteFillObject, { opacity }]}
-        source={{
-          uri: 'https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png',
-        }}
-      />
-      <Animated.View style={[styles.innerContainer, { height }]}>
-        <Animated.View style={[styles.titleContainer, { bottom }]}>
-          <Animated.Text style={[styles.title, { fontSize: scale }]}>{title}</Animated.Text>
-        </Animated.View>
-        <View style={[styles.toolbar]}>
-          {leading && <View style={leadingContainerStyle}>{leading}</View>}
-          {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
-        </View>
+    <Surface style={[styles.container, style]} {...rest}>
+      {image && (
+        <Animated.View style={[StyleSheet.absoluteFillObject, { opacity }, imageContainerStyle]}>{image}</Animated.View>
+      )}
+      <Animated.View style={[{ height }, contentContainerStyle]}>
+        {typeof title === "string" ? (
+          <Animated.View style={[styles.titleContainer, { bottom }, titleContainerStyle]}>
+            <Animated.Text style={[styles.title, { fontSize }, titleStyle]}>{title}</Animated.Text>
+          </Animated.View>
+        ) : (
+          title
+        )}
+        {(leading || trailing) && (
+          <View style={[styles.toolbar]}>
+            {leadingElement}
+            {trailingElement}
+          </View>
+        )}
       </Animated.View>
     </Surface>
   );
-};
-
-Appbar.defaultProps = {
-  variant: 'regular',
-  color: "primary",
-  tintColor: "onPrimary",
-  centerTitle: Platform.OS === 'ios',
 };
 
 export default Appbar;

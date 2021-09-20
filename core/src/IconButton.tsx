@@ -1,17 +1,17 @@
 import React from "react";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
-import { ColorName, useStyleSheet, useTheme } from "./base";
+import { ColorName, usePalette, useStyleSheet } from "./base";
 
 export interface IconButtonProps extends TouchableSurfaceProps {
   icon?: React.ReactElement | undefined;
 
-  color?: ColorName | undefined;
+  color?: ColorName | string | undefined;
 
   size?: "small" | "medium" | "large" | undefined;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({ icon, color, size, ...rest }) => {
-  const theme = useTheme();
+  const palette = usePalette(color!)
 
   const styles = useStyleSheet(() => ({
     container: {
@@ -29,7 +29,7 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, color, size, ...rest }) =
     <TouchableSurface
       style={styles.container}
       innerStyle={styles.innerContainer}
-      overlayColor={theme.colorScheme[color!]}
+      overlayColor={palette.main}
       absoluteSize
       {...rest}
     >
