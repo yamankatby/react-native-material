@@ -1,34 +1,39 @@
-import React from "react";
-import { View } from "react-native";
-import { Appbar, IconButton } from "@react-native-material/core";
+import React, { useState } from "react";
+import { Appbar, Backdrop, FAB, IconButton } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View } from "react-native";
 
 const Main = () => {
-  const insets = useSafeAreaInsets();
+  const insets = useSafeAreaInsets()
+  const [revealed, setRevealed] = useState(false)
   return (
-    <View style={{ flex: 1 }}>
-      <Appbar
-        color="transparent"
-        tintColor="#666666"
-        leading={({ color }) => [
-          <IconButton
-            key={0}
-            color={color}
-            icon={<MaterialCommunityIcons name={"menu"} size={24} color={color} />}
-            onPress={() => undefined}
-          />,
-          <IconButton
-            key={1}
-            color={color}
-            icon={<MaterialCommunityIcons name={"menu"} size={24} color={color} />}
-            onPress={() => undefined}
-          />,
-        ]}
-        style={{ paddingBottom: insets.bottom, position: "absolute", bottom: 0, start: 0, end: 0 }}
-      />
-    </View>
-  );
+    <Backdrop
+      revealed={revealed}
+      header={
+        <Appbar
+          title="Material UI"
+          color="transparent"
+          tintColor="onPrimary"
+          leading={props =>
+            <IconButton
+              icon={<MaterialCommunityIcons name="menu" color={props.color} size={24} />}
+              color={props.color}
+              onPress={() => setRevealed(prev => !prev)}
+            />
+          }
+          style={{ paddingTop: insets.top }}
+        />
+      }
+      backLayer={
+        <View>
+          <FAB variant="extended" label="Add" />
+        </View>
+      }
+    >
+
+    </Backdrop>
+  )
 };
 
 export default Main;

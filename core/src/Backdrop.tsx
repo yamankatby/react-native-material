@@ -1,27 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, StyleProp, View, ViewStyle } from "react-native";
+import { useStyleSheet } from "./base";
 import Surface from "./Surface";
 import Divider from "./Divider";
 import BackdropSubheader from "./BackdropSubheader";
-import { useStyleSheet } from "./base";
-
-export const useBackdropStyles = () => useStyleSheet(({ colorScheme }) => ({
-  container: {
-    flex: 1,
-    backgroundColor: colorScheme.primary,
-    overflow: 'hidden'
-  },
-  frontLayer: {
-    position: 'absolute',
-    start: 0,
-    end: 0,
-    bottom: 0,
-    backgroundColor: colorScheme.surface,
-    borderBottomStartRadius: 0,
-    borderBottomEndRadius: 0,
-    elevation: 1
-  }
-}))
 
 export interface BackdropProps {
   header?: React.ReactElement | undefined;
@@ -56,32 +38,48 @@ const Backdrop: React.FC<BackdropProps> = ({
   subheader,
   subheaderDivider,
   headerHeight,
-  revealed,
+  revealed = false,
   style,
   backLayerContainerStyle,
   headerStyle,
   backLayerStyle,
   frontLayerStyle,
-  children
+  children,
 }) => {
-  const styles = useBackdropStyles()
+  const styles = useStyleSheet(({ colorScheme }) => ({
+    container: {
+      flex: 1,
+      backgroundColor: colorScheme.primary,
+      overflow: 'hidden',
+    },
+    frontLayer: {
+      position: 'absolute',
+      start: 0,
+      end: 0,
+      bottom: 0,
+      backgroundColor: colorScheme.surface,
+      borderBottomStartRadius: 0,
+      borderBottomEndRadius: 0,
+      elevation: 1,
+    },
+  }))
 
   const [frontLayerTop, setFrontLayerTop] = useState<number | undefined>(headerHeight)
   const [frontLayerTranslateY, setFrontLayerTranslateY] = useState<number | undefined>(backLayerHeight)
 
-  const animatedValue = useRef(new Animated.Value(revealed! ? 1 : 0)).current
+  const animatedValue = useRef(new Animated.Value(revealed ? 1 : 0)).current
 
   useEffect(() => {
     Animated.timing(animatedValue, {
       toValue: revealed ? 1 : 0,
       duration: 300,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start()
   }, [revealed])
 
   const frontLayerTranslateYAnimated = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, frontLayerTranslateY ?? 0]
+    outputRange: [0, frontLayerTranslateY ?? 0],
   })
 
   return (
@@ -112,7 +110,7 @@ const Backdrop: React.FC<BackdropProps> = ({
         category="large"
         style={[styles.frontLayer, {
           top: frontLayerTop,
-          transform: [{ translateY: frontLayerTranslateYAnimated }]
+          transform: [{ translateY: frontLayerTranslateYAnimated }],
         }, frontLayerStyle]}
       >
         {typeof subheader === 'string' ? <BackdropSubheader title={subheader} /> : subheader}
@@ -121,10 +119,6 @@ const Backdrop: React.FC<BackdropProps> = ({
       </Surface>
     </View>
   )
-}
-
-Backdrop.defaultProps = {
-  revealed: false
 }
 
 export default Backdrop
