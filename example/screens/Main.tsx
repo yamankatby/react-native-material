@@ -1,56 +1,95 @@
 import React, { useState } from "react";
 import { Button, View } from "react-native";
-import { Appbar, useTheme } from "@react-native-material/core";
+import { FAB } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import chroma from "chroma-js";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Main = () => {
-  const insets = useSafeAreaInsets();
-  const { colorScheme } = useTheme();
+    const insets = useSafeAreaInsets();
+    const [visible, setVisible] = useState(true)
+    return (
+      <View style={{ flex: 1, paddingTop: insets.top + 16, paddingHorizontal: 16 }}>
+          <FAB
+            style={{ alignSelf: "flex-start" }}
+            icon={props => <MaterialCommunityIcons name="plus" {...props} />}
+            color="onBackground"
+            visible={visible}
+            disabled
+            onPress={() => undefined}
+          />
+          <FAB
+            style={{ alignSelf: "flex-start", marginTop: 16 }}
+            icon={props => <MaterialCommunityIcons name="plus" {...props} />}
+            color="onBackground"
+            size="mini"
+            visible={visible}
+            onPress={() => undefined}
+          />
+          <FAB
+            style={{ alignSelf: "flex-start", marginTop: 16 }}
+            icon={props => <MaterialCommunityIcons name="plus" {...props} />}
+            color="onBackground"
+            label="Button"
+            visible={visible}
+            variant="extended"
+            onPress={() => undefined}
+          />
+          <FAB
+            style={{ alignSelf: "flex-start", marginTop: 16 }}
+            icon={props => <MaterialCommunityIcons name="plus" {...props} />}
+            color="onBackground"
+            label="Button"
+            visible={visible}
+            variant="extended"
+            size="mini"
+            onPress={() => undefined}
+          />
+          <FAB
+            style={{ alignSelf: "flex-start", marginTop: 16 }}
+            color="onBackground"
+            label="Button"
+            visible={visible}
+            variant="extended"
+            onPress={() => undefined}
+          />
+          <FAB
+            style={{ alignSelf: "flex-start", marginTop: 16 }}
+            color="onBackground"
+            label="Button"
+            visible={visible}
+            variant="extended"
+            size="mini"
+            onPress={() => undefined}
+          />
 
-  const [x, setX] = useState(false)
+          <FAB
+            icon={props => <MaterialCommunityIcons name="lifebuoy" {...props} />}
+            label="need Help"
+            color="primaryVariant"
+            visible={visible}
+            style={{ position: "absolute", end: 16, bottom: insets.bottom + 16 }}
+            onPress={() => undefined}
+          />
+          <FAB
+            icon={props => <MaterialCommunityIcons name="plus" {...props} />}
+            size="mini"
+            color="primary"
+            visible={visible}
+            style={{ position: "absolute", end: 16 + 8, bottom: insets.bottom + 88 }}
+            onPress={() => undefined}
+          />
+          <FAB
+            icon={props => <MaterialCommunityIcons name="eye" {...props} />}
+            size="mini"
+            color="primary"
+            visible={visible}
+            style={{ position: "absolute", end: 24, bottom: insets.bottom + 144 }}
+            onPress={() => undefined}
+          />
 
-  return (
-    <View style={{ flex: 1, backgroundColor: colorScheme.background }}>
-      <Appbar
-        // title="Material UI"
-        // centerTitle={false}
-        variant={x ? 'prominent' : "regular"}
-        // image={
-        //   <Image source={{ uri: 'https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png' }}
-        //          style={StyleSheet.absoluteFillObject} />
-        // }
-        // leading={({ color }) => (
-        //   <IconButton
-        //     color={color}
-        //     icon={<MaterialCommunityIcons name={"menu"} size={24} color={color} />}
-        //     onPress={() => undefined}
-        //   />
-        // )}
-        // // trailing={({ color }) => [
-        // //   <IconButton
-        // //     key={0}
-        // //     color={color}
-        // //     icon={<MaterialCommunityIcons name={"magnify"} size={24} color={color} />}
-        // //     onPress={() => undefined}
-        // //   />,
-        // //   <IconButton
-        // //     key={1}
-        // //     color={color}
-        // //     icon={<MaterialCommunityIcons name={Platform.select({ ios: 'dots-horizontal', default: 'dots-vertical' })}
-        // //                                   size={24} color={color} />}
-        // //     onPress={() => undefined}
-        // //   />,
-        // // ]}
-        style={{ paddingTop: insets.top }}
-      />
-      <StatusBar style={chroma.contrast(colorScheme.primary, "white") > 4.5 ? "light" : "dark"} translucent />
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Button title={'toggle'} onPress={() => setX(p => !p)} />
+          <Button title={'toggle'} onPress={() => setVisible(e => !e)} />
       </View>
-    </View>
-  );
+    );
 };
 
 export default Main;
