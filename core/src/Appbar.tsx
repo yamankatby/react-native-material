@@ -18,6 +18,8 @@ export interface AppbarProps extends SurfaceProps {
 
   variant?: "regular" | "prominent";
 
+  position?: "top" | "bottom";
+
   color?: PaletteColor;
 
   tintColor?: PaletteColor;
@@ -26,15 +28,17 @@ export interface AppbarProps extends SurfaceProps {
 
   image?: React.ReactElement;
 
-  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
+  leading?:
+    | React.ReactElement
+    | React.ReactElement[]
+    | ((props: { color: string; size: number }) => React.ReactElement | React.ReactElement[] | null)
+    | null;
 
   trailing?:
     | React.ReactElement
     | React.ReactElement[]
     | ((props: { color: string; size: number }) => React.ReactElement | React.ReactElement[] | null)
     | null;
-
-  fab?: React.ReactElement | null;
 
   imageContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
@@ -52,13 +56,13 @@ export interface AppbarProps extends SurfaceProps {
 const Appbar: React.FC<AppbarProps> = ({
   title,
   variant = "regular",
+  position = "top",
   color = "primary",
   tintColor,
   centerTitle = Platform.OS === "ios",
   image,
   leading,
   trailing,
-  fab,
   style,
   imageContainerStyle,
   contentContainerStyle,
@@ -66,6 +70,7 @@ const Appbar: React.FC<AppbarProps> = ({
   titleStyle,
   leadingContainerStyle,
   trailingContainerStyle,
+  children,
   ...rest
 }) => {
   const theme = useTheme();
@@ -116,7 +121,7 @@ const Appbar: React.FC<AppbarProps> = ({
     container: {
       backgroundColor: palette.main,
       borderRadius: 0,
-      elevation: 4,
+      elevation: palette.main === 'transparent' ? 0 : position === "top" ? 4 : 8,
     },
     imageContainer: {
       backgroundColor: "red",
@@ -140,19 +145,19 @@ const Appbar: React.FC<AppbarProps> = ({
       height: regularHeight,
       paddingHorizontal: isTablet ? 8 : 4,
     },
-    trailingContainer: {
+    actionsContainer: {
       flexDirection: "row",
     },
-  }), [palette, hasLeading, isTablet, centerTitle, regularHeight]);
+  }), [position, palette, hasLeading, isTablet, centerTitle, regularHeight]);
 
   const leadingElement = leading && (
-    <View style={[leadingContainerStyle]}>
+    <View style={[styles.actionsContainer, leadingContainerStyle]}>
       {typeof leading === "function" ? leading({ color: palette.on, size: 48 }) : leading}
     </View>
   );
 
   const trailingElement = trailing && (
-    <View style={[styles.trailingContainer, trailingContainerStyle]}>
+    <View style={[styles.actionsContainer, trailingContainerStyle]}>
       {typeof trailing === "function" ? trailing({ color: palette.on, size: 48 }) : trailing}
     </View>
   );
@@ -177,7 +182,7 @@ const Appbar: React.FC<AppbarProps> = ({
           </View>
         )}
       </Animated.View>
-      {!!fab && fab}
+      {children}
     </Surface>
   );
 };
