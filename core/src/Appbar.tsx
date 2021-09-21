@@ -14,7 +14,7 @@ import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 
 export interface AppbarProps extends SurfaceProps {
-  title?: string | React.ReactElement;
+  title?: string | React.ReactElement | null;
 
   variant?: "regular" | "prominent";
 
@@ -26,12 +26,15 @@ export interface AppbarProps extends SurfaceProps {
 
   image?: React.ReactElement;
 
-  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement);
+  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   trailing?:
     | React.ReactElement
     | React.ReactElement[]
-    | ((props: { color: string; size: number }) => React.ReactElement | React.ReactElement[]);
+    | ((props: { color: string; size: number }) => React.ReactElement | React.ReactElement[] | null)
+    | null;
+
+  fab?: React.ReactElement | null;
 
   imageContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
@@ -55,6 +58,7 @@ const Appbar: React.FC<AppbarProps> = ({
   image,
   leading,
   trailing,
+  fab,
   style,
   imageContainerStyle,
   contentContainerStyle,
@@ -173,6 +177,7 @@ const Appbar: React.FC<AppbarProps> = ({
           </View>
         )}
       </Animated.View>
+      {!!fab && fab}
     </Surface>
   );
 };

@@ -25,6 +25,8 @@ export interface FABProps extends TouchableSurfaceProps {
 
   visible?: boolean;
 
+  position?: "fixed" | "appbar-leading" | "appbar-trailing";
+
   contentContainerStyle?: StyleProp<ViewStyle>;
 
   iconContainerStyle?: StyleProp<ViewStyle>;
@@ -47,6 +49,7 @@ const FAB: React.FC<FABProps> = ({
   loadingIndicator,
   loadingIndicatorPosition = "icon",
   visible = true,
+  position,
   style,
   contentContainerStyle,
   iconContainerStyle,
@@ -86,6 +89,21 @@ const FAB: React.FC<FABProps> = ({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: palette.main,
+    },
+    fixed: {
+      position: 'absolute',
+      bottom: 16,
+      end: 16,
+    },
+    appbarLeading: {
+      position: 'absolute',
+      start: variant === "standard" ? (size === 'default' ? 16 : 8) : size === "default" ? 8 : 10,
+      bottom: size === 'default' ? -28 : -20,
+    },
+    appbarTrailing: {
+      position: 'absolute',
+      end: variant === "standard" ? 16 : size === "default" ? 8 : 10,
+      bottom: size === 'default' ? -28 : -20,
     },
   }), [variant, size, palette, hasIcon]);
 
@@ -127,9 +145,20 @@ const FAB: React.FC<FABProps> = ({
     }
   }
 
+  const getPositionStyle = () => {
+    switch (position) {
+      case "fixed":
+        return styles.fixed
+      case "appbar-leading":
+        return styles.appbarLeading;
+      case "appbar-trailing":
+        return styles.appbarTrailing
+    }
+  }
+
   return (
     <TouchableSurface
-      style={[styles.container, { transform: [{ scale: animated }] }, style]}
+      style={[styles.container, { transform: [{ scale: animated }] }, getPositionStyle(), style]}
       innerStyle={[styles.contentContainer, contentContainerStyle]}
       overlayColor={palette.on}
       {...rest}
