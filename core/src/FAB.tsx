@@ -5,9 +5,9 @@ import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
 import Typography from "./Typography";
 
 export interface FABProps extends TouchableSurfaceProps {
-  icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement);
+  icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement);
+  label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
   variant?: "standard" | "extended";
 
@@ -19,9 +19,9 @@ export interface FABProps extends TouchableSurfaceProps {
 
   loading?: boolean;
 
-  loadingIndicator?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement);
+  loadingIndicator?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
-  loadingIndicatorPosition?: 'icon' | 'overlay';
+  loadingIndicatorPosition?: "icon" | "overlay";
 
   visible?: boolean;
 
@@ -45,7 +45,7 @@ const FAB: React.FC<FABProps> = ({
   tintColor,
   loading = false,
   loadingIndicator,
-  loadingIndicatorPosition = 'icon',
+  loadingIndicatorPosition = "icon",
   visible = true,
   style,
   contentContainerStyle,
@@ -137,8 +137,9 @@ const FAB: React.FC<FABProps> = ({
       {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}
       {variant === "extended" && <View style={[styles.labelContainer, labelContainerStyle]}>{getLabel()}</View>}
 
-      {loading && loadingIndicatorPosition === "overlay" &&
-      <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>}
+      {loading && loadingIndicatorPosition === "overlay" && (
+        <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
+      )}
     </TouchableSurface>
   );
 };
