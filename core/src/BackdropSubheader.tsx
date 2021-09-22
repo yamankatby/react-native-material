@@ -1,59 +1,71 @@
-import React from 'react'
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import React from "react";
+import { StyleProp, View, ViewStyle } from "react-native";
+import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Typography from "./Typography";
-import { useStyleSheet } from "./base";
+import Divider from "./Divider";
 
 export interface BackdropSubheaderProps {
-  title?: string | undefined;
+  title?: string | React.ReactElement;
 
-  leading?: React.ReactElement | undefined;
+  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  trailing?: React.ReactElement | undefined;
+  trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  style?: StyleProp<ViewStyle> | undefined;
+  divider?: boolean | React.ReactElement;
 
-  titleStyle?: StyleProp<TextStyle> | undefined;
+  color?: PaletteColor;
 
-  leadingContainerStyle?: StyleProp<ViewStyle> | undefined;
+  style?: StyleProp<ViewStyle>;
 
-  trailingContainerStyle?: StyleProp<ViewStyle> | undefined;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+
+  titleContainerStyle?: StyleProp<ViewStyle>;
 }
-
-export const useBackdropSubheaderStyles = () => useStyleSheet(() => ({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16
-  },
-  title: {
-    flex: 1
-  },
-  leadingContainer: {
-    marginEnd: 12
-  },
-  trailingContainer: {
-    marginStart: 12
-  }
-}))
 
 const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
   title,
   leading,
   trailing,
+  divider = true,
+  color = "onSurface",
   style,
-  titleStyle,
-  leadingContainerStyle,
-  trailingContainerStyle
+  contentContainerStyle,
+  titleContainerStyle,
 }) => {
-  const styles = useBackdropSubheaderStyles()
+  const palette = usePalette(color);
+
+  const styles = useStyleSheet(() => ({
+    container: {
+      marginHorizontal: 16,
+    },
+    contentContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      paddingVertical: 12,
+    },
+    titleContainer: {
+      flex: 1,
+    },
+  }));
+
   return (
     <View style={[styles.container, style]}>
-      {leading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{leading}</View>}
-      <Typography variant="subtitle1" color="onSurface" style={[styles.title, titleStyle]}>{title}</Typography>
-      {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
+      <View style={[styles.contentContainer, contentContainerStyle]}>
+        {!!leading && typeof leading === "function" ? leading({ color: palette.main, size: 24 }) : leading}
+        <View style={[styles.titleContainer, titleContainerStyle]}>
+          {typeof title === "string" ? (
+            <Typography variant="subtitle1" color={palette.main}>
+              {title}
+            </Typography>
+          ) : (
+            title
+          )}
+        </View>
+        {!!trailing && typeof trailing === "function" ? trailing({ color: palette.main, size: 24 }) : trailing}
+      </View>
+      {typeof divider === "boolean" ? divider && <Divider /> : divider}
     </View>
-  )
-}
+  );
+};
 
-export default BackdropSubheader
+export default BackdropSubheader;

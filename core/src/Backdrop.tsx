@@ -78,11 +78,16 @@ const Backdrop: React.FC<BackdropProps> = ({
     }).start();
   }, [revealed]);
 
-  const dimensions = useWindowDimensions()
+  const dimensions = useWindowDimensions();
 
   const translateY = animated.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, dimensions.height < currentHeaderHeight + currentBackLayerHeight ? dimensions.height - currentHeaderHeight - currentSubheaderHeight : currentBackLayerHeight],
+    outputRange: [
+      0,
+      dimensions.height < currentHeaderHeight + currentBackLayerHeight
+        ? dimensions.height - currentHeaderHeight - currentSubheaderHeight
+        : currentBackLayerHeight,
+    ],
   });
 
   return (

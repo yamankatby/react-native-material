@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Appbar, Backdrop, FAB, IconButton } from "@react-native-material/core";
+import { Appbar, Backdrop, BackdropSubheader, FAB, IconButton } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
@@ -25,6 +25,7 @@ const Main = () => {
           style={{ paddingTop: insets.top }}
         />
       }
+      subheader={<BackdropSubheader title="Material UI" />}
       backLayer={
         <View>
           <FAB variant="extended" label="Add" />
