@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Appbar, Backdrop, BackdropSubheader, FAB, IconButton } from "@react-native-material/core";
+import { Appbar, Backdrop, Button, FAB, IconButton } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
@@ -25,17 +25,44 @@ const Main = () => {
           style={{ paddingTop: insets.top }}
         />
       }
-      subheader={<BackdropSubheader title="Subheader"
-                                    // leading={props => <MaterialCommunityIcons name={'chevron-down'} {...props} />}
-      />
-      }
       backLayer={
         <View>
           <FAB variant="extended" label="Add" />
         </View>
       }
+      frontLayerContainerStyle={{ padding: 16 }}
     >
-
+      <Button
+        title={'Button'}
+        style={{ alignSelf: 'flex-start', marginTop: 12 }}
+        loading
+        color="error"
+        onPress={() => undefined}
+        loadingIndicatorPosition='overlay'
+        // leading={props => <MaterialCommunityIcons name={'plus'} {...props} />}
+        // trailing={props => <MaterialCommunityIcons name={'plus'} {...props} />}
+      />
+      <Button
+        title={'Button'}
+        variant="outlined"
+        trailing={props => <MaterialCommunityIcons name={'plus'} {...props} />}
+        loading
+        color="error"
+        loadingIndicatorPosition='overlay'
+        onPress={() => undefined}
+        style={{ alignSelf: 'flex-start', marginTop: 12 }}
+      />
+      <Button
+        title={'Button'}
+        variant="text"
+        color="error"
+        loading
+        onPress={() => undefined}
+        loadingIndicator="Loading..."
+        loadingIndicatorPosition='overlay'
+        style={{ alignSelf: 'flex-start', marginTop: 12 }}
+        trailing={props => <MaterialCommunityIcons name={'plus'} {...props} />}
+      />
     </Backdrop>
   )
 };

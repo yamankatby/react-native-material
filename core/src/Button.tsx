@@ -1,142 +1,173 @@
-import React from "react";
-import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import { ColorName, useStyleSheet, useTheme } from "./base";
-import Typography from "./Typography";
+import React, { useMemo } from "react";
+import { ActivityIndicator, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import chroma from "chroma-js";
+import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
+import Typography from "./Typography";
 
-export interface ButtonProps extends Omit<TouchableSurfaceProps, 'category'> {
-  title: string;
+export interface ButtonProps extends TouchableSurfaceProps {
+  title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
-  variant?: "contained" | "outlined" | "text" | undefined;
+  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  color?: ColorName;
+  trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  tintColor?: ColorName;
+  variant?: "contained" | "outlined" | "text";
+
+  color?: PaletteColor;
+
+  tintColor?: PaletteColor;
 
   uppercase?: boolean;
+
+  compact?: boolean;
 
   disableElevation?: boolean;
 
   loading?: boolean;
 
-  indicatorColor?: string;
+  loadingIndicator?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
-  indicatorSize?: number | "small" | "large" | undefined;
+  loadingIndicatorPosition?: "leading" | "trailing" | "overlay";
 
-  leading?: React.ReactElement | undefined;
+  titleStyle?: StyleProp<TextStyle>;
+  
+  leadingContainerStyle?: StyleProp<ViewStyle>;
 
-  trailing?: React.ReactElement | undefined;
+  trailingContainerStyle?: StyleProp<ViewStyle>;
 
-  titleStyle?: StyleProp<TextStyle> | undefined;
-
-  leadingContainerStyle?: StyleProp<ViewStyle> | undefined;
-
-  trailingContainerStyle?: StyleProp<ViewStyle> | undefined;
+  loadingOverlayContainerStyle?: StyleProp<ViewStyle>;
 }
-
-export interface ButtonStylesProps {
-  variant: 'contained' | 'outlined' | 'text';
-  color: ColorName;
-  tintColor: ColorName;
-  uppercase: boolean;
-  disableElevation: boolean;
-}
-
-export const useButtonStyles = ({
-  variant,
-  color,
-  tintColor,
-  uppercase,
-  disableElevation
-}: ButtonStylesProps) => useStyleSheet(({ colorScheme }) => ({
-  container: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // elevation: variant === 'contained' && !disableElevation ? 2 : 0
-  },
-  inner: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: variant === 'text' ? 8 : 16,
-    backgroundColor: variant === 'contained' ? colorScheme[color] : 'transparent',
-    borderWidth: variant === 'outlined' ? 1 : 0,
-    borderColor: colorScheme[color],
-    minWidth: 64,
-    height: 36
-  },
-  contentContainer: {
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
-  title: {
-    textTransform: uppercase ? 'uppercase' : 'none'
-  },
-  leadingContainer: {
-    marginEnd: 8
-  },
-  trailingContainer: {
-    marginStart: 8
-  }
-}), [variant, color, tintColor, uppercase, disableElevation])
 
 const Button: React.FC<ButtonProps> = ({
   title,
-  variant,
-  color,
-  tintColor,
-  uppercase,
-  disableElevation,
-  loading,
-  indicatorColor,
-  indicatorSize,
   leading,
   trailing,
+  variant = "contained",
+  color = "primary",
+  tintColor,
+  uppercase = true,
+  compact = false,
+  disableElevation = false,
+  loading = false,
+  loadingIndicator,
+  loadingIndicatorPosition = "leading",
+  style,
+  innerStyle,
   titleStyle,
   leadingContainerStyle,
   trailingContainerStyle,
+  loadingOverlayContainerStyle,
   ...rest
 }) => {
-  const theme = useTheme();
-  const styles = useButtonStyles({
-    variant: variant!,
-    color: color!,
-    tintColor: tintColor!,
-    uppercase: uppercase!,
-    disableElevation: disableElevation!
-  });
+  const palette = usePalette(color, tintColor);
+  const contentColor = useMemo(() => (variant === "contained" ? palette.on : palette.main), [variant, palette]);
+
+  const hasLeading = useMemo(
+    () => !!leading || (loading && loadingIndicatorPosition === "leading"),
+    [leading, loading, loadingIndicatorPosition],
+  );
+
+  const hasTrailing = useMemo(
+    () => !!trailing || (loading && loadingIndicatorPosition === "trailing"),
+    [trailing, loading, loadingIndicatorPosition],
+  );
+
+  const styles = useStyleSheet(
+    ({ colorScheme }) => ({
+      container: {
+        borderWidth: variant === "outlined" ? 1 : 0,
+        borderColor: chroma(colorScheme.onSurface).alpha(0.12).hex(),
+        elevation: variant === "contained" && !disableElevation ? 2 : 0,
+      },
+      contentContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        minWidth: 64,
+        height: 36,
+        paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
+        paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
+        backgroundColor: variant === "contained" ? palette.main : "transparent",
+      },
+      titleStyle: {
+        textTransform: uppercase ? "uppercase" : "none",
+        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+      },
+      leadingContainer: {
+        marginEnd: compact ? 6 : 8,
+        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+      },
+      trailingContainer: {
+        marginStart: compact ? 6 : 8,
+        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+      },
+      loadingOverlayContainer: {
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    }),
+    [variant, uppercase, compact, disableElevation, loading, loadingIndicatorPosition, palette, hasLeading, hasTrailing],
+  );
+
+  const getTitle = () => {
+    switch (typeof title) {
+      case "string":
+        return (
+          <Typography variant="button" color={contentColor} style={[styles.titleStyle, titleStyle]}>
+            {title}
+          </Typography>
+        );
+      case "function":
+        return title({ color: contentColor });
+      default:
+        return title;
+    }
+  };
+
+  const getLoadingIndicator = () => {
+    if (!loadingIndicator) return <ActivityIndicator color={contentColor} />;
+    switch (typeof loadingIndicator) {
+      case "string":
+        return (
+          <Typography variant="button" color={contentColor}>
+            {loadingIndicator}
+          </Typography>
+        );
+      case "function":
+        return loadingIndicator({ color: contentColor });
+      default:
+        return loadingIndicator;
+    }
+  };
+
+  const getLeading = () => {
+    if (loading && loadingIndicatorPosition === "leading") return getLoadingIndicator();
+    return typeof leading === "function" ? leading({ color: contentColor, size: 18 }) : leading;
+  };
+
+  const getTrailing = () => {
+    if (loading && loadingIndicatorPosition === "trailing") return getLoadingIndicator();
+    return typeof trailing === "function" ? trailing({ color: contentColor, size: 18 }) : trailing;
+  };
+
   return (
-    <TouchableSurface {...rest} innerStyle={styles.inner}>
-      {(loading || leading) && (
-        <View style={[styles.leadingContainer, leadingContainerStyle]}>
-          {loading && (
-            <ActivityIndicator
-              color={indicatorColor ?? theme.colorScheme[variant === "contained" ? tintColor! : color!]}
-              size={indicatorSize}
-            />
-          )}
-          {!loading && leading}
-        </View>
+    <TouchableSurface
+      style={[styles.container, style]}
+      innerStyle={[styles.contentContainer, innerStyle]}
+      overlayColor={contentColor}
+      {...rest}
+    >
+      {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
+      {getTitle()}
+      {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}
+
+      {loading && loadingIndicatorPosition === "overlay" && (
+        <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
       )}
-      <Typography
-        variant="button"
-        color={variant === "contained" ? tintColor : color}
-        style={[styles.title, titleStyle]}
-      >
-        {title}
-      </Typography>
-      {trailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailing}</View>}
     </TouchableSurface>
   );
-};
-
-Button.defaultProps = {
-  variant: "contained",
-  color: "primary",
-  tintColor: "onPrimary",
-  uppercase: true,
-  disableElevation: false
 };
 
 export default Button;
