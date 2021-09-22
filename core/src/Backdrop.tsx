@@ -1,124 +1,128 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Animated, StyleProp, View, ViewStyle } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Animated, StyleProp, useWindowDimensions, View, ViewProps, ViewStyle } from "react-native";
 import { useStyleSheet } from "./base";
 import Surface from "./Surface";
-import Divider from "./Divider";
-import BackdropSubheader from "./BackdropSubheader";
 
 export interface BackdropProps {
-  header?: React.ReactElement | undefined;
+  revealed?: boolean;
 
-  headerHeight?: number | undefined;
+  header?: React.ReactElement | null;
 
-  backLayer?: React.ReactElement | undefined;
+  headerHeight?: number;
 
-  backLayerHeight?: number | undefined;
+  backLayer?: React.ReactElement | null;
 
-  subheader?: string | React.ReactElement | undefined;
+  backLayerHeight?: number;
 
-  subheaderDivider?: boolean | React.ReactElement | undefined;
+  subheader?: React.ReactElement | null;
 
-  revealed?: boolean | undefined;
+  subheaderHeight?: number;
 
-  style?: StyleProp<ViewStyle> | undefined;
+  style?: StyleProp<ViewStyle>;
 
-  backLayerContainerStyle?: StyleProp<ViewStyle> | undefined;
+  headerContainerStyle?: StyleProp<ViewStyle>;
 
-  headerStyle?: StyleProp<ViewStyle> | undefined;
+  backLayerContainerStyle?: StyleProp<ViewStyle>;
 
-  backLayerStyle?: StyleProp<ViewStyle> | undefined;
+  frontLayerContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
 
-  frontLayerStyle?: StyleProp<ViewStyle> | undefined;
+  subheaderContainerStyle?: StyleProp<ViewStyle>;
 }
 
 const Backdrop: React.FC<BackdropProps> = ({
+  revealed = false,
   header,
+  headerHeight,
   backLayer,
   backLayerHeight,
   subheader,
-  subheaderDivider,
-  headerHeight,
-  revealed = false,
+  subheaderHeight,
   style,
+  headerContainerStyle,
   backLayerContainerStyle,
-  headerStyle,
-  backLayerStyle,
-  frontLayerStyle,
+  frontLayerContainerStyle,
+  subheaderContainerStyle,
   children,
 }) => {
+  const [currentHeaderHeight, setCurrentHeaderHeight] = useState(headerHeight ?? 0);
+  const [currentBackLayerHeight, setCurrentBackLayerHeight] = useState(backLayerHeight ?? 0);
+  const [currentSubheaderHeight, setCurrentSubheaderHeight] = useState(subheaderHeight ?? 0);
+
   const styles = useStyleSheet(({ colorScheme }) => ({
     container: {
       flex: 1,
       backgroundColor: colorScheme.primary,
-      overflow: 'hidden',
+      overflow: "hidden",
     },
     frontLayer: {
-      position: 'absolute',
+      position: "absolute",
       start: 0,
       end: 0,
       bottom: 0,
       backgroundColor: colorScheme.surface,
+      borderTopStartRadius: 16,
+      borderTopEndRadius: 16,
       borderBottomStartRadius: 0,
       borderBottomEndRadius: 0,
       elevation: 1,
     },
-  }))
+  }));
 
-  const [frontLayerTop, setFrontLayerTop] = useState<number | undefined>(headerHeight)
-  const [frontLayerTranslateY, setFrontLayerTranslateY] = useState<number | undefined>(backLayerHeight)
-
-  const animatedValue = useRef(new Animated.Value(revealed ? 1 : 0)).current
+  const animated = useRef(new Animated.Value(revealed ? 1 : 0)).current;
 
   useEffect(() => {
-    Animated.timing(animatedValue, {
+    Animated.timing(animated, {
       toValue: revealed ? 1 : 0,
       duration: 300,
       useNativeDriver: true,
-    }).start()
-  }, [revealed])
+    }).start();
+  }, [revealed]);
 
-  const frontLayerTranslateYAnimated = animatedValue.interpolate({
+  const dimensions = useWindowDimensions()
+
+  const translateY = animated.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, frontLayerTranslateY ?? 0],
-  })
+    outputRange: [0, dimensions.height < currentHeaderHeight + currentBackLayerHeight ? dimensions.height - currentHeaderHeight - currentSubheaderHeight : currentBackLayerHeight],
+  });
 
   return (
     <View style={[styles.container, style]}>
-      <View style={backLayerContainerStyle}>
-        <View
-          style={headerStyle}
-          onLayout={e => {
-            if (frontLayerTop === undefined) {
-              setFrontLayerTop(e.nativeEvent.layout.height)
-            }
-          }}
-        >
-          {header}
-        </View>
-        <View
-          style={backLayerStyle}
-          onLayout={e => {
-            if (frontLayerTranslateY === undefined) {
-              setFrontLayerTranslateY(e.nativeEvent.layout.height)
-            }
-          }}
-        >
-          {backLayer}
-        </View>
-      </View>
-      <Surface
-        category="large"
-        style={[styles.frontLayer, {
-          top: frontLayerTop,
-          transform: [{ translateY: frontLayerTranslateYAnimated }],
-        }, frontLayerStyle]}
+      <View
+        style={[headerContainerStyle, { height: headerHeight }]}
+        onLayout={(e) => {
+          if (!headerHeight) setCurrentHeaderHeight(e.nativeEvent.layout.height);
+        }}
       >
-        {typeof subheader === 'string' ? <BackdropSubheader title={subheader} /> : subheader}
-        {typeof subheaderDivider === "boolean" ? subheaderDivider && <Divider inset={16} /> : subheaderDivider}
+        {header}
+      </View>
+
+      <View
+        style={[backLayerContainerStyle, { height: backLayerHeight }]}
+        onLayout={(e) => {
+          if (!backLayerHeight) setCurrentBackLayerHeight(e.nativeEvent.layout.height);
+        }}
+      >
+        {backLayer}
+      </View>
+
+      <Surface
+        style={[styles.frontLayer, { top: currentHeaderHeight, transform: [{ translateY }] }, frontLayerContainerStyle]}
+      >
+        {subheader && (
+          <View
+            style={[subheaderContainerStyle, { height: subheaderHeight }]}
+            onLayout={(e) => {
+              if (!subheaderHeight) setCurrentSubheaderHeight(e.nativeEvent.layout.height);
+            }}
+          >
+            {subheader}
+          </View>
+        )}
+
         {children}
       </Surface>
     </View>
-  )
-}
+  );
+};
 
-export default Backdrop
+export default Backdrop;
