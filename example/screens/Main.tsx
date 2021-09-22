@@ -25,7 +25,10 @@ const Main = () => {
           style={{ paddingTop: insets.top }}
         />
       }
-      subheader={<BackdropSubheader title="Material UI" />}
+      subheader={<BackdropSubheader title="Subheader"
+                                    // leading={props => <MaterialCommunityIcons name={'chevron-down'} {...props} />}
+      />
+      }
       backLayer={
         <View>
           <FAB variant="extended" label="Add" />

@@ -20,6 +20,10 @@ export interface BackdropSubheaderProps {
   contentContainerStyle?: StyleProp<ViewStyle>;
 
   titleContainerStyle?: StyleProp<ViewStyle>;
+
+  leadingContainerStyle?: StyleProp<ViewStyle>;
+
+  trailingContainerStyle?: StyleProp<ViewStyle>;
 }
 
 const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
@@ -31,6 +35,8 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
   style,
   contentContainerStyle,
   titleContainerStyle,
+  leadingContainerStyle,
+  trailingContainerStyle,
 }) => {
   const palette = usePalette(color);
 
@@ -46,12 +52,22 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
     titleContainer: {
       flex: 1,
     },
+    leadingContainer: {
+      marginEnd: 16,
+    },
+    trailingContainer: {
+      marginStart: 16,
+    },
   }));
 
   return (
     <View style={[styles.container, style]}>
       <View style={[styles.contentContainer, contentContainerStyle]}>
-        {!!leading && typeof leading === "function" ? leading({ color: palette.main, size: 24 }) : leading}
+        {!!leading &&
+        <View style={[styles.leadingContainer, leadingContainerStyle]}>
+          {typeof leading === "function" ? leading({ color: palette.main, size: 24 }) : leading}
+        </View>
+        }
         <View style={[styles.titleContainer, titleContainerStyle]}>
           {typeof title === "string" ? (
             <Typography variant="subtitle1" color={palette.main}>
@@ -61,7 +77,11 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
             title
           )}
         </View>
-        {!!trailing && typeof trailing === "function" ? trailing({ color: palette.main, size: 24 }) : trailing}
+        {!!trailing &&
+        <View style={[styles.trailingContainer, trailingContainerStyle]}>
+          {typeof trailing === "function" ? trailing({ color: palette.main, size: 24 }) : trailing}
+        </View>
+        }
       </View>
       {typeof divider === "boolean" ? divider && <Divider /> : divider}
     </View>
