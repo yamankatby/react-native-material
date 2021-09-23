@@ -31,7 +31,7 @@ export interface ButtonProps extends TouchableSurfaceProps {
   loadingIndicatorPosition?: "leading" | "trailing" | "overlay";
 
   titleStyle?: StyleProp<TextStyle>;
-  
+
   leadingContainerStyle?: StyleProp<ViewStyle>;
 
   trailingContainerStyle?: StyleProp<ViewStyle>;

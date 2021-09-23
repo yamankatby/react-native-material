@@ -26,7 +26,7 @@ export interface AppbarProps extends SurfaceProps {
 
   centerTitle?: boolean;
 
-  image?: React.ReactElement;
+  image?: React.ReactElement | null;
 
   leading?:
     | React.ReactElement

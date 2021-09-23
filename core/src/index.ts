@@ -1,5 +1,6 @@
 export * from "./base";
 export { default as Appbar, AppbarProps } from "./Appbar";
+export { default as Avatar, AvatarProps } from "./Avatar";
 export { default as Backdrop, BackdropProps } from "./Backdrop";
 export { default as BackdropSubheader, BackdropSubheaderProps } from "./BackdropSubheader";
 export { default as Button, ButtonProps } from "./Button";

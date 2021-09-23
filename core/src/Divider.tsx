@@ -15,18 +15,24 @@ export interface DividerProps {
   style?: StyleProp<ViewStyle> | undefined;
 }
 
-const Divider: React.FC<DividerProps> = ({ color, inset, leadingInset, trailingInset, style }) => {
+const Divider: React.FC<DividerProps> = ({
+  color,
+  inset,
+  leadingInset,
+  trailingInset,
+  style,
+}) => {
   const { colorScheme } = useTheme();
   return (
     <View
       style={[
         {
           height: 1,
-          backgroundColor: color ?? chroma(colorScheme.onSurface).alpha(0.15).hex(),
+          backgroundColor: color ?? chroma(colorScheme.onSurface).alpha(0.08).hex(),
           marginStart: inset ?? leadingInset,
-          marginEnd: inset ?? trailingInset
+          marginEnd: inset ?? trailingInset,
         },
-        style
+        style,
       ]}
     />
   );
