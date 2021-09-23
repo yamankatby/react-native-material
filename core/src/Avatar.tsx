@@ -25,6 +25,12 @@ export interface AvatarProps {
 
   tintColor?: PaletteColor;
 
+  initials?: boolean;
+
+  uppercase?: boolean;
+
+  autoColor?: boolean;
+
   style?: StyleProp<ViewStyle>;
 
   contentContainerStyle?: StyleProp<ViewStyle>;
@@ -41,69 +47,99 @@ const Avatar: React.FC<AvatarProps> = ({
   image,
   icon,
   size = 56,
-  color = 'secondary',
+  color = "secondary",
   tintColor,
+  initials = true,
+  uppercase = true,
+  autoColor = false,
   style,
   contentContainerStyle,
   imageOverlayStyle,
   labelStyle,
   imageStyle,
 }) => {
-  const palette = usePalette(color, tintColor)
+  const palette = usePalette(autoColor ? getColor(typeof label === "string" ? label : "") : color, tintColor);
 
-  const styles = useStyleSheet(() => ({
-    container: {
-      width: size,
-      height: size,
-      backgroundColor: palette.main,
-      borderRadius: size / 2,
-    },
-    contentContainer: {
-      ...StyleSheet.absoluteFillObject,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    label: {
-      fontSize: size / 2,
-    },
-    image: {
-      width: size,
-      height: size,
-      borderRadius: size / 2,
-    },
-  }), [size, palette])
+  const styles = useStyleSheet(
+    () => ({
+      container: {
+        width: size,
+        height: size,
+        backgroundColor: palette.main,
+        borderRadius: size / 2,
+      },
+      contentContainer: {
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      label: {
+        fontSize: size / 2,
+        textTransform: uppercase ? "uppercase" : "none",
+      },
+      image: {
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+      },
+    }),
+    [size, uppercase, palette],
+  );
 
   const getLabel = () => {
     switch (typeof label) {
       case "string":
-        return <Typography variant="h6" color={palette.on} style={[styles.label, labelStyle]}>{label}</Typography>
+        return (
+          <Typography variant="h6" color={palette.on} style={[styles.label, labelStyle]}>
+            {initials ? getInitials(label) : label}
+          </Typography>
+        );
       case "function":
-        return label({ color: palette.on })
+        return label({ color: palette.on });
       default:
-        return label
+        return label;
     }
-  }
+  };
 
   const getImage = () => {
-    if (!image || React.isValidElement(image)) return image
-    if (typeof image === 'function') return image({ size })
-    return <Image source={image} style={[styles.image, imageStyle]} />
-  }
+    if (!image || React.isValidElement(image)) return image;
+    if (typeof image === "function") return image({ size });
+    return <Image source={image} style={[styles.image, imageStyle]} />;
+  };
 
   const getIcon = () => {
-    if (typeof icon === "function") return icon({ color: palette.on, size: size / 2 })
-    return icon
-  }
+    if (typeof icon === "function") return icon({ color: palette.on, size: size / 2 });
+    return icon;
+  };
 
   return (
     <View style={[styles.container, style]}>
       <View style={[styles.contentContainer, contentContainerStyle]}>
-        {!!label ? getLabel() : !!icon && getIcon()}
+        {icon ? getIcon() : label && getLabel()}
       </View>
-      {!!image &&
-      <View style={[StyleSheet.absoluteFillObject, imageOverlayStyle]}>{getImage()}</View>}
+      {image && <View style={[StyleSheet.absoluteFillObject, imageOverlayStyle]}>{getImage()}</View>}
     </View>
-  )
+  );
 };
+
+function getColor(label: string) {
+  let hash = 0;
+  let i;
+  for (i = 0; i < label.length; i += 1) {
+    hash = label.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  let color = "#";
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.substr(-2);
+  }
+  return color;
+}
+
+function getInitials(label: string) {
+  const namesArray = label.trim().split(" ");
+  if (namesArray.length === 1) return `${namesArray[0].charAt(0)}`;
+  else return `${namesArray[0].charAt(0)}${namesArray[namesArray.length - 1].charAt(0)}`;
+}
 
 export default Avatar;
