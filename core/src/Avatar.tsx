@@ -35,7 +35,7 @@ export interface AvatarProps {
 
   contentContainerStyle?: StyleProp<ViewStyle>;
 
-  imageOverlayStyle?: StyleProp<ViewStyle>;
+  imageContainerStyle?: StyleProp<ViewStyle>;
 
   labelStyle?: StyleProp<TextStyle>;
 
@@ -54,7 +54,7 @@ const Avatar: React.FC<AvatarProps> = ({
   autoColor = false,
   style,
   contentContainerStyle,
-  imageOverlayStyle,
+  imageContainerStyle,
   labelStyle,
   imageStyle,
 }) => {
@@ -114,10 +114,10 @@ const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <View style={[styles.container, style]}>
-      <View style={[styles.contentContainer, contentContainerStyle]}>
-        {icon ? getIcon() : label && getLabel()}
-      </View>
-      {image && <View style={[StyleSheet.absoluteFillObject, imageOverlayStyle]}>{getImage()}</View>}
+      {(label || icon) && (
+        <View style={[styles.contentContainer, contentContainerStyle]}>{icon ? getIcon() : label && getLabel()}</View>
+      )}
+      {image && <View style={[StyleSheet.absoluteFillObject, imageContainerStyle]}>{getImage()}</View>}
     </View>
   );
 };
