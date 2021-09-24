@@ -1,5 +1,4 @@
 import React from "react";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import {
   Image,
   ImageSourcePropType,
@@ -10,6 +9,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Typography from "./Typography";
 
 export interface AvatarProps {
