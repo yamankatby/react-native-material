@@ -3,10 +3,15 @@ import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
 import marked from "marked";
+import Head from "next/head";
 
 export default function post({ meta, md, listItems }) {
   return (
     <Layout components={listItems}>
+      <Head>
+        <title>{meta.title} | React Native Material</title>
+        <meta name="description" content={meta.description} />
+      </Head>
       <div dangerouslySetInnerHTML={{ __html: marked(md) }} />
     </Layout>
   );

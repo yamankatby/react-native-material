@@ -2,6 +2,7 @@ import { Box, Button, Chip, Container, CssBaseline, Stack, Typography } from "@m
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Head from "next/head";
 
 const w = 227;
 
@@ -9,6 +10,10 @@ export default function Index() {
   const [currentTheme, setCurrentTheme] = useState("default");
   return (
     <>
+      <Head>
+        <title>React Native Material</title>
+        <meta name="description" content="Modular and customizable Material Design UI components for React Native" />
+      </Head>
       <CssBaseline />
       <Box mb={5} style={{ backgroundColor: "#212121" }}>
         <Container>
