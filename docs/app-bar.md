@@ -1,3 +1,21 @@
+# App Bar
+
+The app bar displays information and actions relating to the current screen.
+
+The top app bar provides content and actions related to the current screen. It’s used for branding, screen titles, navigation, and actions.
+
+It can transform into a contextual action bar.
+
+## Import
+
+```js
+import { Appbar } from "@react-native-material/core";
+// or
+import Appbar from "@react-native-material/core/Appbar";
+```
+
+## Props
+
 | Name | Type | Default | Description |
 |---|---|---|---|
 | title | string \| React.ReactElement |  |  |
