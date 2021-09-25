@@ -24,31 +24,25 @@ documentation.
 
 ### Component API
 
-[`<Appbar />` Component API](docs/appbar.md)
+[`<Appbar />`](docs/app-bar.md)
 
-[`<Avatar />` Component API](docs/avatar.md)
+[`<Avatar />`](docs/avatar.md)
 
-[`<Backdrop />` Component API](docs/backdrop.md)
+[`<Backdrop />`](docs/backdrop.md)
 
-[`<BackdropSubheader />` Component API](docs/backdrop-subheader.md)
+[`<BackdropSubheader />`](docs/backdrop-subheader.md)
 
-[`<Badge />` Component API](docs/badge.md)
+[`<Badge />`](docs/badge.md)
 
-[`<Banner />` Component API](docs/banner.md)
+[`<Banner />`](docs/banner.md)
 
-[`<Divider />` Component API](docs/divider.md)
+[`<Divider />`](docs/divider.md)
 
-[`<FAB />` Component API](docs/fab.md)
+[`<FAB />`](docs/fab.md)
 
-[`<IconButton />` Component API](docs/icon-button.md)
+[`<IconButton />`](docs/icon-button.md)
 
-[`<Surface />` Component API](docs/surface.md)
-
-[`<TouchableSurface />` Component API](docs/touchable-surface.md)
-
-[`<Touchable />` Component API](docs/touchable.md)
-
-[`<Typography />` Component API](docs/typography.md)
+[`<Typography />`](docs/typography.md)
 
 ## Community
 
