@@ -22,6 +22,34 @@ action. The source code is located under the `/example` folder.
 Visit [our website](https://react-native-material.vercel.app/getting-started/installation/) to view the full
 documentation.
 
+### Component API
+
+[`<Appbar />` Component API](docs/appbar.md)
+
+[`<Avatar />` Component API](docs/avatar.md)
+
+[`<Backdrop />` Component API](docs/backdrop.md)
+
+[`<BackdropSubheader />` Component API](docs/backdrop-subheader.md)
+
+[`<Badge />` Component API](docs/badge.md)
+
+[`<Banner />` Component API](docs/banner.md)
+
+[`<Divider />` Component API](docs/divider.md)
+
+[`<FAB />` Component API](docs/fab.md)
+
+[`<IconButton />` Component API](docs/icon-button.md)
+
+[`<Surface />` Component API](docs/surface.md)
+
+[`<TouchableSurface />` Component API](docs/touchable-surface.md)
+
+[`<Touchable />` Component API](docs/touchable.md)
+
+[`<Typography />` Component API](docs/typography.md)
+
 ## Community
 
 The community is your first stop for questions and advice about the framework. Welcome to the community!
