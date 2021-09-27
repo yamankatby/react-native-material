@@ -2,8 +2,25 @@ import { Layout } from "@components/layout";
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
-import marked from "marked";
 import Head from "next/head";
+import ReactMarkdown from 'react-markdown'
+
+const Code = (props) => {
+  return (
+    <div
+      data-snack-code={props.children}
+      data-snack-platform="web"
+      data-snack-dependencies="@react-native-material/core"
+      data-snack-preview="true"
+      data-snack-theme="light"
+      style={{
+        height: "505px",
+        width: "100%"
+      }}
+    />
+  );
+};
+
 
 export default function post({ meta, md, listItems }) {
   return (
@@ -12,7 +29,11 @@ export default function post({ meta, md, listItems }) {
         <title>{meta.title} | React Native Material</title>
         <meta name="description" content={meta.description} />
       </Head>
-      <div dangerouslySetInnerHTML={{ __html: marked(md) }} />
+      <div style={{ maxWidth: 820 }}>
+        <ReactMarkdown components={{ code: Code }}>
+          {md}
+        </ReactMarkdown>
+      </div>
     </Layout>
   );
 }

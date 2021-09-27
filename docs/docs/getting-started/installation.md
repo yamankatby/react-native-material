@@ -3,34 +3,53 @@ title: "Installation"
 description: "Get started with React Native Material."
 ---
 
+# Getting Started
+
 ## Installation
 
 Open a Terminal in your project's folder and run:
 
-```sh
-npm install @react-native-material/core
-# or
-yarn add @react-native-material/core
-```
+[comment]: <> (```sh)
 
-## Usage
+[comment]: <> (npm install @react-native-material/core)
+
+[comment]: <> (# or)
+
+[comment]: <> (yarn add @react-native-material/core)
+
+[comment]: <> (```)
+
+## Quick start
 
 ```js
-import * as React from "react";
-import { AppRegistry } from "react-native";
-import { ThemeProvder } from "@react-native-material/core";
-import { name as appName } from "./app.json";
-import App from "./src/App";
+import React from "react";
+import { View } from "react-native";
+import { Button } from "@react-native-material/core";
 
-export default function Main() {
+export default function App() {
   return (
-    <ThemeProvder>
-      <App/>
-    </ThemeProvder>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Button title="Button" onPress={() => alert("button clicked")}/>
+    </View>
   );
 }
+```
 
-AppRegistry.registerComponent(appName, () => Main);
+```js
+import React from "react";
+import { Appbar } from "@react-native-material/core";
+
+export default function App() {
+  return (
+    <Appbar title="Material UI" color="transparent"/>
+  );
+}
 ```
 
 ## Community

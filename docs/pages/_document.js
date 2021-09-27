@@ -20,6 +20,7 @@ class MyDocument extends Document {
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-5L00H23VKJ"
           />
+          <script async src="https://snack.expo.dev/embed.js" />
           {process.env.NODE_ENV === "production" && (
             <script
               dangerouslySetInnerHTML={{
