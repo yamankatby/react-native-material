@@ -33,7 +33,7 @@ export default function Main() {
 AppRegistry.registerComponent(appName, () => Main);
 ```
 
-## Support
+## Community
 
 The community is your first stop for questions and advice about the framework. Welcome to the community!
 
@@ -48,9 +48,24 @@ been [reported or fixed](https://github.com/yamankatby/react-native-material/iss
 
 ### Stack Overflow
 
-For crowdsources technical questions from expert **react-native-material** devs in our community. Also frequented by
+For crowdsources technical questions from expert **@react-native-material** devs in our community. Also frequented by
 the **@react-native-material** core team.
 
 [Post a question](https://stackoverflow.com/questions/tagged/react-native-material)
 
 ## Contributing
+
+Please see our [CONTRIBUTING.md](https://github.com/yamankatby/react-native-material/blob/main/CONTRIBUTING.md)
+
+### Where to start
+
+Please take a look at [Kanban](https://github.com/yamankatby/react-native-material/projects/1) where we have a roadmap
+for React Native Material community. Also, we have a list
+of [good first issues](https://github.com/yamankatby/react-native-material/labels/good%20first%20issue) that contain
+bugs that have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with
+our contribution process.
+
+## License
+
+This library is licensed under the MIT License - see
+the [LICENSE](https://github.com/yamankatby/react-native-material/blob/main/LICENSE) file for details.
