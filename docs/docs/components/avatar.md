@@ -16,7 +16,7 @@ import { Avatar } from "@react-native-material/core";
 
 export default function App() {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Avatar
         label="Remy Sharp"
         image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
@@ -24,10 +24,12 @@ export default function App() {
       <Avatar
         label="Travis Howard"
         image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }}
+        style={{ marginTop: 16 }}
       />
       <Avatar
         label="Cindy Baker"
         image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }}
+        style={{ marginTop: 16 }}
       />
     </View>
   );
@@ -43,10 +45,10 @@ import { Avatar } from "@react-native-material/core";
 
 export default function App() {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Avatar label="Remy Sharp"/>
-      <Avatar label="Travis Howard" color="primary"/>
-      <Avatar label="Cindy Baker" color="#342315"/>
+      <Avatar label="Travis Howard" color="primary" style={{ marginTop: 16 }}/>
+      <Avatar label="Cindy Baker" color="#cddc39" style={{ marginTop: 16 }}/>
     </View>
   );
 }
@@ -62,10 +64,10 @@ import { Avatar } from "@react-native-material/core";
 
 export default function App() {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Avatar label="Remy Sharp" autoColor/>
-      <Avatar label="Travis Howard" autoColor/>
-      <Avatar label="Cindy Baker" autoColor/>
+      <Avatar label="Travis Howard" autoColor style={{ marginTop: 16 }}/>
+      <Avatar label="Cindy Baker" autoColor style={{ marginTop: 16 }}/>
     </View>
   );
 }
@@ -82,7 +84,7 @@ import { Avatar } from "@react-native-material/core";
 
 export default function App() {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Avatar
         label="Remy Sharp"
         image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
@@ -91,11 +93,13 @@ export default function App() {
       <Avatar
         label="Remy Sharp"
         image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
+        style={{ marginTop: 16 }}
       />
       <Avatar
         label="Remy Sharp"
         image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
-        size={72}
+        size={78}
+        style={{ marginTop: 16 }}
       />
     </View>
   );
