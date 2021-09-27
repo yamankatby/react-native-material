@@ -80,7 +80,7 @@ const Layout = ({ window, components, children }) => {
     <div>
       <Toolbar />
       <Divider />
-      <List subheader={<ListSubheader>Getting Started</ListSubheader>}>
+      <List>
         <Link
           href={{
             pathname: "/[folder]/[slug]",
@@ -90,39 +90,6 @@ const Layout = ({ window, components, children }) => {
         >
           <ListItem button component="a">
             <ListItemText primary="Installation" />
-          </ListItem>
-        </Link>
-        <Link
-          href={{
-            pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "hello-world" }
-          }}
-          passHref
-        >
-          <ListItem button component="a">
-            <ListItemText primary="Hello world!" />
-          </ListItem>
-        </Link>
-        <Link
-          href={{
-            pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "support" }
-          }}
-          passHref
-        >
-          <ListItem button component="a">
-            <ListItemText primary="Support" />
-          </ListItem>
-        </Link>
-        <Link
-          href={{
-            pathname: "/[folder]/[slug]",
-            query: { folder: "getting-started", slug: "contributing" }
-          }}
-          passHref
-        >
-          <ListItem button component="a">
-            <ListItemText primary="Contributing" />
           </ListItem>
         </Link>
       </List>
