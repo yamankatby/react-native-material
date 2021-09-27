@@ -1,6 +1,0 @@
----
-title: "Banner"
-description: ""
----
-
-# Banner

@@ -1,6 +1,0 @@
----
-title: "Badge"
-description: ""
----
-
-# Badge

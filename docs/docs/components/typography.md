@@ -1,6 +1,0 @@
----
-title: "Typography"
-description: ""
----
-
-# Typography
