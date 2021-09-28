@@ -7,7 +7,7 @@ import React from "react";
 import { FAB } from "@react-native-material/core";
 
 export default function App() {
-  return <FAB/>;
+  return <FAB variant="extended" label="Button"/>;
 }
 ```
 
