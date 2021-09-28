@@ -13,11 +13,10 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
-    "@react-native-material/core": "^1.0.0",
+    "@react-native-material/core": "^1.1.0",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
-    "chroma-js": "^2.1.2",
     "expo": "~42.0.1",
     "expo-asset": "~8.3.2",
     "expo-constants": "~11.0.1",
@@ -37,7 +36,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@types/chroma-js": "^2.1.3",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "jest-expo": "~41.0.0-beta.0",

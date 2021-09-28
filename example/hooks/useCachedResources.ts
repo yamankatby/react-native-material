@@ -1,4 +1,4 @@
-import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
@@ -14,8 +14,10 @@ export default function useCachedResources() {
 
         // Load fonts
         await Font.loadAsync({
-          ...FontAwesome.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          ...MaterialCommunityIcons.font,
+          'roboto-light': require('../assets/fonts/Roboto-Light.ttf'),
+          'roboto': require('../assets/fonts/Roboto-Regular.ttf'),
+          'roboto-medium': require('../assets/fonts/Roboto-Medium.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
