@@ -6,9 +6,3 @@ The top App Bar provides content and actions related to the current screen. It's
 navigation, and actions.
 
 It can transform into a contextual action bar or be used as a navbar.
-
-## Basic App Bar
-
-## Prominent
-
-## Bottom App Bar
