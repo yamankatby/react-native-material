@@ -11,6 +11,7 @@ export type RootStackParamList = {
   AppBar: undefined;
   Avatar: undefined;
   Button: undefined;
+  Divider: undefined;
   FAB: undefined;
   NotFound: undefined;
 };

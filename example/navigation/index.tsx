@@ -10,6 +10,7 @@ import { useTheme } from "@react-native-material/core";
 import Button from "../screens/Button";
 import Avatar from "../screens/Avatar";
 import AppBar from "../screens/AppBar";
+import Divider from "../screens/Divider";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,6 +35,7 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
         <Stack.Screen name="Avatar" component={Avatar} />
         <Stack.Screen name="Button" component={Button} />
         <Stack.Screen name="FAB" component={FAB} />
+        <Stack.Screen name="Divider" component={Divider} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       </Stack.Navigator>
     </NavigationContainer>

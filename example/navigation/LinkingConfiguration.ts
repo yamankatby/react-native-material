@@ -10,6 +10,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       AppBar: '/components/app-bar',
       Avatar: '/components/avatar',
       Button: '/components/button',
+      Divider: '/components/divider',
       FAB: "/components/fab",
       NotFound: "*",
     },
