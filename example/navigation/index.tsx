@@ -11,6 +11,7 @@ import Button from "../screens/Button";
 import Avatar from "../screens/Avatar";
 import AppBar from "../screens/AppBar";
 import Divider from "../screens/Divider";
+import Surface from "../screens/Surface";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,6 +37,7 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
         <Stack.Screen name="Button" component={Button} />
         <Stack.Screen name="FAB" component={FAB} />
         <Stack.Screen name="Divider" component={Divider} />
+        <Stack.Screen name="Surface" component={Surface} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       </Stack.Navigator>
     </NavigationContainer>
