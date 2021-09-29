@@ -1,4 +1,4 @@
-import Example from '../../components/Example'
+import Example from "../../components/Example";
 
 # Floating action button
 
@@ -17,26 +17,176 @@ Only use a FAB if it is the most suitable way to present a screen's primary acti
 
 ## Variants
 
+### Regular
+
 <Example component="fab" section="standard" />
+
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB icon={props => <Icon name="star" {...props} />} color="primary" />
+```
+
+### Extended
 
 <Example component="fab" section="extended" />
 
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB variant="extended" label="Button" color="primary" />
+<FAB
+  variant="extended"
+  icon={props => <Icon name="star" {...props} />}
+  label="Button"
+  color="primary"
+/>
+```
+
 ## Sizing
 
-<Example component="fab" section="standard-size" />
+<Example component="fab" section="regular-size" />
+
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB icon={props => <Icon name="account" {...props} />} />
+<FAB icon={props => <Icon name="account" {...props} />} size="mini" />
+```
 
 <Example component="fab" section="extended-size" />
+
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB variant="extended" icon={props => <Icon name="heart" {...props} />} label="Button" />
+<FAB
+  variant="extended"
+  icon={props => <Icon name="heart" {...props} />}
+  label="Button"
+  size="mini"
+/>
+```
 
 ## Coloring
 
 <Example component="fab" section="color" />
 
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB icon={props => <Icon name="lock" {...props} />} />
+<FAB
+  variant="extended"
+  icon={props => <Icon name="lock" {...props} />}
+  label="Button"
+  tintColor="red"
+/>
+<FAB icon={props => <Icon name="lock" {...props} />} color="onPrimary" />
+<FAB icon={props => <Icon name="lock" {...props} />} color="#FDCAE4" />
+<FAB icon={props => <Icon name="lock" {...props} />} color="#FDCAE4" tintColor="yellow" />
+```
+
 ## Loading
 
 <Example component="fab" section="loading" />
 
-<Example component="fab" section="custom-loading" />
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB icon={props => <Icon name="plus" {...props} />} color="primary" loading />
+<FAB
+  variant="extended"
+  icon={props => <Icon name="plus" {...props} />}
+  label="Button"
+  color="primary"
+  loading
+/>
+<FAB
+  variant="extended"
+  icon={props => <Icon name="plus" {...props} />}
+  label="Button"
+  color="primary"
+  loading
+  loadingIndicatorPosition="overlay"
+/>
+<FAB icon={props => <Icon name="plus" {...props} />} size="mini" color="primary" loading />
+```
+
+### Custom Loading Indicator
+
+<Example component="fab" section="custom-loading-indicator" />
+
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB
+  icon={props => <Icon name="plus" {...props} />}
+  color="error"
+  loading
+  loadingIndicator="⏳"
+/>
+<FAB
+  variant="extended"
+  icon={props => <Icon name="plus" {...props} />}
+  label="Button"
+  color="onError"
+  loading
+  loadingIndicator={props => (
+    <Text
+      style={{
+        width: 24,
+        height: 24,
+        backgroundColor: props.color,
+        color: "white",
+        borderRadius: 12,
+        textAlign: "center",
+      }}
+    >
+      ...
+    </Text>
+  )}
+/>
+<FAB
+  variant="extended"
+  icon={props => <Icon name="plus" {...props} />}
+  label="Button"
+  color="onError"
+  loading
+  loadingIndicator="Loading..."
+  loadingIndicatorPosition="overlay"
+/>
+<FAB
+  icon={props => <Icon name="plus" {...props} />}
+  size="mini"
+  color="onError"
+  loading
+  loadingIndicator="⏰"
+/>
+```
 
 ## Visibility
 
 <Example component="fab" section="visible" />
+
+```js
+import { FAB } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<FAB icon={props => <Icon name="plus" {...props} />} visible={false} />
+<FAB size="mini" icon={props => <Icon name="plus" {...props} />} visible={false} />
+<FAB
+  variant="extended"
+  icon={props => <Icon name="navigation" {...props} />}
+  label="Navigate"
+  color="primary"
+  visible={false}
+/>
+```
