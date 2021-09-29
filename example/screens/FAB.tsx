@@ -9,7 +9,7 @@ export const Section: React.FC<{ name: string; title: string }> = ({ name, title
   if (params?.section && params?.section !== name) return null;
   else if (params?.section === name) {
     return (
-      <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>{children}</View>
+      <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center", margin: 24 }}>{children}</View>
     );
   }
   return (

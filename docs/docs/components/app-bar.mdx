@@ -1,0 +1,254 @@
+import Example from "../../components/Example";
+
+# App Bar
+
+The App Bar displays information and actions relating to the current screen.
+
+<Example component="app-bar" section="overview" />
+
+The top App Bar provides content and actions related to the current screen. It's used for branding, screen titles,
+navigation, and actions.
+
+It can transform into a contextual action bar or be used as a navbar.
+
+[`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Appbar)
+[`🎨 Material Design`](https://material.io/components/app-bars-top)
+
+## Variants
+
+### Regular
+
+<Example component="app-bar" section="regular" />
+
+```js
+import { Appbar } from "@react-native-material/core";
+
+<Appbar title="Page title" />
+```
+
+<Example component="app-bar" section="regular-buttons" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  title="Page title"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="heart" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+/>
+```
+
+### Prominent
+
+<Example component="app-bar" section="prominent" />
+
+```js
+import { Appbar } from "@react-native-material/core";
+
+<Appbar variant="prominent" title="Page title" />
+```
+
+
+<Example component="app-bar" section="prominent-buttons" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  variant="prominent"
+  title="Page title"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="heart" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+/>
+```
+
+## Image
+
+<Example component="app-bar" section="prominent-image" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  variant="prominent"
+  title="Page title"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="heart" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+  image={
+    <Image
+      source={{
+        uri: "https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png",
+      }}
+      style={{ position: "absolute", top: 0, start: 0, end: 0, bottom: 0 }}
+    />
+  }
+/>
+```
+
+## FAB
+
+<Example component="app-bar" section="prominent-fab" />
+
+<Example component="app-bar" section="prominent-fab-2" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  variant="prominent"
+  title="Page title"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="heart" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+>
+  <FAB
+    icon={props => <Icon name="plus" {...props} />}
+    style={{ position: "absolute", end: 16, bottom: -28 }}
+  />
+</Appbar>
+```
+
+## Coloring
+
+<Example component="app-bar" section="color" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  title="Page title"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="heart" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+  color="yellow"
+  tintColor="#1976d2"
+/>
+```
+
+## Bottom App Bar
+
+<Example component="app-bar" section="bottom" />
+
+```js
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+<Appbar
+  position="bottom"
+  leading={props => (
+    <IconButton
+      color={props.color}
+      icon={<Icon name="menu" size={24} color={props.color} />}
+    />
+  )}
+  trailing={props => [
+    <IconButton
+      color={props.color}
+      icon={<Icon name="magnify" size={24} color={props.color} />}
+    />,
+    <IconButton
+      color={props.color}
+      icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+    />,
+  ]}
+>
+  <FAB
+    icon={props => <Icon name="plus" {...props} />}
+    style={{ alignSelf: "center", position: "absolute", top: -28 }}
+  />
+</Appbar>
+
+```

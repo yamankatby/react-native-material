@@ -8,6 +8,7 @@ declare global {
 }
 
 export type RootStackParamList = {
+  AppBar: undefined;
   Avatar: undefined;
   Button: undefined;
   FAB: undefined;
