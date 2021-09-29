@@ -8,6 +8,7 @@ declare global {
 }
 
 export type RootStackParamList = {
+  Button: undefined;
   FAB: undefined;
   NotFound: undefined;
 };

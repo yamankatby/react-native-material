@@ -7,6 +7,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
+      Button: '/components/button',
       FAB: "/components/fab",
       NotFound: "*",
     },

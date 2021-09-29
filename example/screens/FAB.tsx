@@ -4,7 +4,7 @@ import { useRoute } from "@react-navigation/native";
 import { BackdropSubheader, FAB, useTheme } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
-const Section: React.FC<{ name: string; title: string }> = ({ name, title, children }) => {
+export const Section: React.FC<{ name: string; title: string }> = ({ name, title, children }) => {
   const params = useRoute().params as any;
   if (params?.section && params?.section !== name) return null;
   else if (params?.section === name) {

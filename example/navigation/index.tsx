@@ -5,8 +5,9 @@ import { ColorSchemeName } from "react-native";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
-import FAB from "../screens/fab/FAB";
+import FAB from "../screens/FAB";
 import { useTheme } from "@react-native-material/core";
+import Button from "../screens/Button";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -27,6 +28,7 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
         },
       }}>
       <Stack.Navigator>
+        <Stack.Screen name="Button" component={Button} />
         <Stack.Screen name="FAB" component={FAB} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       </Stack.Navigator>
