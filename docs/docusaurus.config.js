@@ -27,19 +27,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]
           ]
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/yamankatby/react-native-material/edit/main/docs/blog/'
-        },
+        blog: false,
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   editUrl:
+        //     'https://github.com/yamankatby/react-native-material/edit/main/docs/blog/'
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
       })
     ]
   ],
-
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -56,7 +56,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'left',
             label: 'Docs'
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/yamankatby/react-native-material',
             label: 'GitHub',

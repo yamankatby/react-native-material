@@ -53,12 +53,6 @@ been [reported or fixed](https://github.com/yamankatby/react-native-material/iss
 
 [Open an issue](https://github.com/yamankatby/react-native-material/issues/new/choose)
 
-### Blog
-
-Stay up to date with the development of the library by following the blog.
-
-[Read the latest posts](/blog)
-
 ## Contributing
 
 Please take a look at [Kanban](https://github.com/yamankatby/react-native-material/projects/1) where we have a roadmap
