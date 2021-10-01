@@ -8,9 +8,8 @@ Modular and customizable Material Design UI components for React Native
 
 Take a look at our example app:
 
-- [iOS](https://)
 - [Android](https://play.google.com/store/apps/details?id=com.swazer.material)
-- [Web](https://react-native-material-example.vercel.app/)
+- [Web](https://example.react-native-material.com/)
 
 ### Run the Example app locally
 
@@ -19,30 +18,8 @@ action. The source code is located under the `/example` folder.
 
 ## Documentation
 
-Visit [our website](https://react-native-material.vercel.app/getting-started/installation/) to view the full
+Visit [our website](https://react-native-material.com/docs/getting-started/) to view the full
 documentation.
-
-### Component API
-
-[`<Appbar />`](docs/app-bar.md)
-
-[`<Avatar />`](docs/avatar.md)
-
-[`<Backdrop />`](docs/backdrop.md)
-
-[`<BackdropSubheader />`](docs/backdrop-subheader.md)
-
-[`<Badge />`](docs/badge.md)
-
-[`<Banner />`](docs/banner.md)
-
-[`<Divider />`](docs/divider.md)
-
-[`<FAB />`](docs/fab.md)
-
-[`<IconButton />`](docs/icon-button.md)
-
-[`<Typography />`](docs/typography.md)
 
 ## Community
 
