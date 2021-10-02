@@ -16,6 +16,7 @@ import Backdrop from "../screens/Backdrop";
 import Banner from "../screens/Banner";
 import Badge from "../screens/Badge";
 import Typography from "../screens/Typography";
+import Overview from "../screens/Overview";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,6 +37,7 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
         },
       }}>
       <Stack.Navigator>
+        <Stack.Screen name="Overview" component={Overview} options={{ headerShown: false }} />
         <Stack.Screen name="AppBar" component={AppBar} />
         <Stack.Screen name="Avatar" component={Avatar} />
         <Stack.Screen name="Backdrop" component={Backdrop} />

@@ -1,6 +1,6 @@
 import React from "react";
 
-const path = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://localhost:19006' : 'https://react-native-material-example.vercel.app'
+export const path = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://localhost:19006' : 'https://react-native-material-example.vercel.app'
 
 const Example = ({ component, section }) => {
   return (

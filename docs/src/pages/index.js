@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Head from "@docusaurus/core/lib/client/exports/Head";
 import Link from "@docusaurus/core/lib/client/exports/Link";
 import useDocusaurusContext from "@docusaurus/core/lib/client/exports/useDocusaurusContext";
-import "../../static/output.css";
+import { path } from "../../components/Example";
 
 const Button = ({ to, primary, children }) => (
   <Link
@@ -19,7 +19,13 @@ const Button = ({ to, primary, children }) => (
 const Nav = () => {
   const { siteConfig } = useDocusaurusContext();
 
-  const [activeTab, setActiveTab] = useState(localStorage.getItem("docusaurus.tab.npm2yarn") ?? "npm");
+  const [activeTab, setActiveTab] = useState('npm');
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setActiveTab(localStorage?.getItem("docusaurus.tab.npm2yarn") ?? "npm")
+    }
+  }, [])
 
   const [isMessageShown, setIsMessageShown] = useState(false);
 
@@ -33,7 +39,7 @@ const Nav = () => {
         }, 3000);
       });
 
-    localStorage.setItem("docusaurus.tab.npm2yarn", tab);
+    localStorage?.setItem("docusaurus.tab.npm2yarn", tab);
     setActiveTab(tab);
   }, []);
 
@@ -43,16 +49,16 @@ const Nav = () => {
         <Link className="text-2xl font-serif">@react-native-material</Link>
         <ul className="flex items-center">
           <li>
-            <Button to="/blog">Blog</Button>
+            <Button to="/docs/getting-started">Blog</Button>
           </li>
           <li className="ml-10">
-            <Button to="/templates">Templates</Button>
+            <Button to="/docs/getting-started">Templates</Button>
           </li>
           <li className="ml-10">
             <Button to={siteConfig.themeConfig.navbar.items.find((x) => x.label === "GitHub").href}>GitHub</Button>
           </li>
           <li className="ml-10">
-            <Button to="/docs" primary>
+            <Button to="docs/getting-started" primary>
               Get Started
             </Button>
           </li>
@@ -100,10 +106,10 @@ const Header = () => (
       </p>
       <ul className="mt-14 flex">
         <li>
-          <Button to="/docs" primary>Get Started</Button>
+          <Button to="docs/getting-started" primary>Get Started</Button>
         </li>
         <li className="ml-6">
-          <Button to="/docs">Docs</Button>
+          <Button to="docs/getting-started">Docs</Button>
         </li>
       </ul>
 
@@ -117,7 +123,9 @@ const Header = () => (
         <br /> library by giving it a star 🌟 on GitHub.
       </p>
     </div>
-    <div className="bg-gray-100 rounded"></div>
+    <div className="bg-gray-100 border rounded overflow-hidden">
+      <iframe src={path} className="w-full h-full" />
+    </div>
   </header>
 )
 
@@ -137,13 +145,13 @@ const Footer = () => {
       <div className="flex items-center justify-between mt-14 -mx-2">
         <ul className="flex">
           <li>
-            <Button to="/blog">Blog</Button>
+            <Button to="/docs/getting-started">Blog</Button>
           </li>
           <li className="ml-6">
-            <Button to="/templates">Templates</Button>
+            <Button to="/docs/getting-started">Templates</Button>
           </li>
           <li className="ml-6 text-primary">
-            <Button to="/docs">Get Started</Button>
+            <Button to="docs/getting-started">Get Started</Button>
           </li>
         </ul>
         <ul className="flex">
@@ -151,7 +159,7 @@ const Footer = () => {
             <Button to={siteConfig.themeConfig.navbar.items.find((x) => x.label === "GitHub").href}>GitHub</Button>
           </li>
           <li className="ml-6">
-            <Button to="/blog">StackOverflow</Button>
+            <Button to="/docs/getting-started">StackOverflow</Button>
           </li>
         </ul>
       </div>
@@ -160,10 +168,10 @@ const Footer = () => {
 };
 
 const Home = () => {
-  useEffect(() => {
-    const links = document.getElementsByTagName("link");
-    links[0]?.parentElement.removeChild(links[0]);
-  }, []);
+  // useEffect(() => {
+  //   const links = document.getElementsByTagName("link");
+  //   links[0]?.parentElement.removeChild(links[0]);
+  // }, []);
   return (
     <>
       <Head>

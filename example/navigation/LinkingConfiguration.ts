@@ -7,6 +7,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
+      Overview: '/',
       AppBar: '/components/app-bar',
       Avatar: '/components/avatar',
       Backdrop: '/components/backdrop',
