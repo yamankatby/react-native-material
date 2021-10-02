@@ -175,7 +175,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="/static/output.css" />
+        <link rel="stylesheet" href="/output.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet" />
