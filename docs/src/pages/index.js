@@ -87,6 +87,40 @@ const Nav = () => {
   );
 };
 
+const Header = () => (
+  <header className="px-6 md:px-8 lg:px-10 xl:px-14 2xl:container 2xl:mx-auto grid grid-cols-2 gap-14">
+    <div className="py-14">
+      <h1 className="text-5xl font-serif font-bold">
+        Material UI for React Native.
+      </h1>
+      <p className="mt-6 text-2xl text-primary font-serif">#react-native #material-design</p>
+      <p className="mt-14 text-2xl">
+        React Native Material is a set of pre-built, cross-platform, highly customizable UI components that follow
+        Material Design principles.
+      </p>
+      <ul className="mt-14 flex">
+        <li>
+          <Button to="/docs" primary>Get Started</Button>
+        </li>
+        <li className="ml-6">
+          <Button to="/docs">Docs</Button>
+        </li>
+      </ul>
+
+      <div className="w-14 h-0.5 my-14 bg-gray-100" />
+
+      <iframe src="https://ghbtns.com/github-btn.html?user=yamankatby&repo=react-native-material&type=star&count=true"
+              frameBorder="0" scrolling="0" width="170" height="30" title="GitHub" />
+
+      <p className="mt-2 text-secondary-variant">
+        We're just getting started 🚀, please consider supporting the
+        <br /> library by giving it a star 🌟 on GitHub.
+      </p>
+    </div>
+    <div className="bg-gray-100 rounded"></div>
+  </header>
+)
+
 const Footer = () => {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -95,7 +129,7 @@ const Footer = () => {
       <Link to="/" title="React Native Material" className="mt-14 text-xl font-serif">
         @react-native-material
       </Link>
-      <p className="mt-5 text-lg text-gray-500">
+      <p className="mt-4 text-lg text-gray-500">
         Modular and customizable Material Design UI
         <br />
         components for React Native.
@@ -140,6 +174,9 @@ const Home = () => {
       </Head>
       <div className="min-h-screen flex flex-col justify-between">
         <Nav />
+        <div className="flex-1">
+          <Header />
+        </div>
         <Footer />
       </div>
     </>
