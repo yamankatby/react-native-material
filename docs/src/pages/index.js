@@ -168,10 +168,6 @@ const Footer = () => {
 };
 
 const Home = () => {
-  // useEffect(() => {
-  //   const links = document.getElementsByTagName("link");
-  //   links[0]?.parentElement.removeChild(links[0]);
-  // }, []);
   return (
     <>
       <Head>

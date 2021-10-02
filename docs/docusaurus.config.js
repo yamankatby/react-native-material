@@ -43,6 +43,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      googleAnalytics: {
+        trackingID: 'G-5L00H23VKJ'
+      },
       navbar: {
         title: 'React Native Material',
         // logo: {
