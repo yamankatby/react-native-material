@@ -6,14 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'React Native Material',
   tagline: 'Modular and customizable Material Design UI components for React Native',
-  url: 'https://react-native-material.vercel.app/',
+  url: 'https://react-native-material.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
-
+  plugins: ['docusaurus-plugin-react-native-web'],
   presets: [
     [
       '@docusaurus/preset-classic',
