@@ -13,7 +13,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.ico',
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
-  plugins: ['docusaurus-plugin-react-native-web'],
+  plugins: ['docusaurus-plugin-react-native-web', '@docusaurus/plugin-google-analytics'],
   presets: [
     [
       '@docusaurus/preset-classic',
