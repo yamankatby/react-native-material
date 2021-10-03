@@ -13,7 +13,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.ico',
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
-  plugins: ['docusaurus-plugin-react-native-web', '@docusaurus/plugin-google-analytics'],
+  plugins: [],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -44,7 +44,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       googleAnalytics: {
-        trackingID: 'G-5L00H23VKJ'
+        trackingID: 'G-5L00H23VKJ',
+        anonymizeIP: true
       },
       navbar: {
         title: 'React Native Material',

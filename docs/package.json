@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.6",
-    "@docusaurus/plugin-google-analytics": "^2.0.0-beta.6",
     "@docusaurus/preset-classic": "2.0.0-beta.6",
     "@docusaurus/remark-plugin-npm2yarn": "^2.0.0-beta.6",
     "@mdx-js/react": "^1.6.21",
@@ -25,7 +24,6 @@
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "clsx": "^1.1.1",
-    "docusaurus-plugin-react-native-web": "^1.0.0",
     "file-loader": "^6.2.0",
     "postcss": "^8.3.8",
     "prism-react-renderer": "^1.2.1",
