@@ -1,4 +1,4 @@
-# Material UI components for React Native ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Ftext%3D%2523reactnativematerial%2520is%2520a%2520set%2520of%2520pre-built%2C%2520cross-platform%2C%2520highly%2520customizable%2520UI%2520components%2520that%2520follow%2520%2520%2523material%2520principles.%250Ahttps%3A%2F%2Fwww.react-native-material.com)
+# Material UI components for React Native [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com)](https://twitter.com/intent/tweet?text=%23reactnativematerial%20is%20a%20set%20of%20pre-built,%20cross-platform,%20highly%20customizable%20UI%20components%20that%20follow%20%20%23material%20principles.%0Ahttps://www.react-native-material.com)
 
 > React Native Material is a set of pre-built, cross-platform, highly customizable UI components that follow Material Design principles.
 
