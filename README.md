@@ -7,6 +7,8 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material/issues)
 [![Used Languages](https://img.shields.io/github/languages/top/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material)
 
+![App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/hero.png)
+
 Loved the project? Please share it with your friends and give it a ⭐️
 
 ## ☘️️ Try it out
