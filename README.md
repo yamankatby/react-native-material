@@ -54,11 +54,19 @@ export default function App() {
 
 The App bars displays information and actions relating to the current screen.
 
+![App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/app-bar.png)
+
+![Prominent App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/prominent-app-bar.png)
+
+![Bottom App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/bottom-app-bar.png)
+
 ### `<Avatar />`
 
 [Try it out](https://www.react-native-material.com/docs/components/avatar)
 
 Avatars are found throughout material design with uses in everything from tables to dialog menus.
+
+![Avatar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/avatar.png)
 
 ### `<Backdrop />`
 
@@ -66,11 +74,15 @@ Avatars are found throughout material design with uses in everything from tables
 
 A backdrop appears behind all other surfaces in an app, displaying contextual and actionable content.
 
+![Backdrop](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/backdrop.png)
+
 ### `<Badge />`
 
 [Try it out](https://www.react-native-material.com/docs/components/badge)
 
 A Badge represents dynamic information such as a number of pending requests in a Bottom Navigation or Tab Bar.
+
+![Badge](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/badge.png)
 
 ### `<Banner />`
 
@@ -78,11 +90,15 @@ A Badge represents dynamic information such as a number of pending requests in a
 
 A banner displays a prominent message and related optional actions.
 
+![Banner](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/banner.png)
+
 ### `<Button />`
 
 [Try it out](https://www.react-native-material.com/docs/components/button)
 
 Buttons allow users to take actions, and make choices, with a single tap.
+
+![Button](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/button.png)
 
 ### `<Divider />`
 
@@ -96,6 +112,8 @@ A divider is a thin line that groups content in lists and layouts.
 
 A floating action button (FAB) represents the primary action of a screen.
 
+![Floating Action Button](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/fab.png)
+
 ### `<Surface />`
 
 [Try it out](https://www.react-native-material.com/docs/components/surface)
@@ -103,11 +121,15 @@ A floating action button (FAB) represents the primary action of a screen.
 Material surfaces can be displayed in different shapes. Shapes direct attention, identify components, communicate state,
 and express brand.
 
+![Surface](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/surface.png)
+
 ### `<Typography />`
 
 [Try it out](https://www.react-native-material.com/docs/components/typography)
 
 Use typography to present your design and content as clearly and efficiently as possible.
+
+![Typography](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/typography.png)
 
 ## 👍 Community
 
