@@ -14,6 +14,10 @@ import {
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
+const paper = {
+  width: 100, height: 100, backgroundColor: 'white', marginStart: 60,
+}
+
 const Overview = () => {
   const [revealed, setRevealed] = useState(false)
   return (
@@ -47,7 +51,8 @@ const Overview = () => {
           ]}
           style={{ width: 360 }}
         />
-        <FAB style={{ marginStart: 24 }} icon={(props) => <Icon name="plus" {...props} />} onPress={() => undefined} />
+        <FAB style={{ marginStart: 24 }} icon={(props) => <Icon name="plus" {...props} />}
+             onPress={() => undefined} />
         <FAB icon={(props) => <Icon name="pencil" {...props} />} loading color="primary" onPress={() => undefined}
              style={{ marginStart: 24 }} />
         <FAB
@@ -117,17 +122,44 @@ const Overview = () => {
             <BackdropSubheader title="Subheader" />
           </Backdrop>
         </View>
-        <Surface style={{ width: 100, height: 100, elevation: 2, backgroundColor: 'white', marginStart: 24 }} />
-        <Surface style={{ width: 100, height: 100, elevation: 4, backgroundColor: 'white', marginStart: 24 }} />
-        <Surface style={{ width: 100, height: 100, elevation: 6, backgroundColor: 'white', marginStart: 24 }} />
+        <Surface style={[paper, { elevation: 0 }]} />
+        <Surface style={[paper, { elevation: 1 }]} />
+        <Surface style={[paper, { elevation: 2 }]} />
+        <Surface style={[paper, { elevation: 3 }]} />
+        <Surface style={[paper, { elevation: 4 }]} />
+        <Surface style={[paper, { elevation: 6 }]} />
+        <Surface style={[paper, { elevation: 8 }]} />
+        <Surface style={[paper, { elevation: 12 }]} />
+        <Surface style={[paper, { elevation: 16 }]} />
+        <Surface style={[paper, { elevation: 24 }]} />
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginTop: 24 }}>
-        <View>
-          <Typography variant="h2">h2. Heading</Typography>
-          <Typography style={{ marginTop: 12 }} variant="h3">h3. Heading</Typography>
-          <Typography variant="subtitle1" style={{ maxWidth: 360, marginTop: 12 }}>subtitle1. Lorem ipsum dolor sit
-            amet, consectetur
-            adipisicing elit.</Typography>
+        <View style={{ maxWidth: 500 }}>
+          <Typography variant="h1">h1. Heading</Typography>
+          <Typography variant="h2" style={{ marginTop: 12 }}>h2. Heading</Typography>
+          <Typography variant="h3" style={{ marginTop: 12 }}>h3. Heading</Typography>
+          <Typography variant="h4" style={{ marginTop: 12 }}>h4. Heading</Typography>
+          <Typography variant="h5" style={{ marginTop: 12 }}>h5. Heading</Typography>
+          <Typography variant="h6" style={{ marginTop: 12 }}>h6. Heading</Typography>
+          <Typography variant="subtitle1" style={{ marginTop: 12 }}>
+            subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+          </Typography>
+          <Typography variant="subtitle2" style={{ marginTop: 12 }}>
+            subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+          </Typography>
+          <Typography variant="body1" style={{ marginTop: 12 }}>
+            body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
+            beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
+            Eum quasi quidem quibusdam.
+          </Typography>
+          <Typography variant="body2" style={{ marginTop: 12 }}>
+            body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
+            beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
+            Eum quasi quidem quibusdam.
+          </Typography>
+          <Typography variant="button" style={{ marginTop: 12 }}>Button text</Typography>
+          <Typography variant="caption" style={{ marginTop: 12 }}>caption text</Typography>
+          <Typography variant="overline" style={{ marginTop: 12 }}>overline text</Typography>
         </View>
         <Appbar
           variant="prominent"
