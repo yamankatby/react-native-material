@@ -10,7 +10,7 @@ import {
   FAB,
   IconButton,
   Surface,
-  Typography,
+  Text,
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
@@ -115,7 +115,7 @@ const Overview = () => {
             )} title="Page title" />}
             backLayer={
               <View style={{ height: 94, padding: 16 }}>
-                <Typography variant="h4" color="onPrimary">Hi</Typography>
+                <Text variant="h4" color="onPrimary">Hi</Text>
               </View>
             }
           >
@@ -135,31 +135,31 @@ const Overview = () => {
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginTop: 24 }}>
         <View style={{ maxWidth: 500 }}>
-          <Typography variant="h1">h1. Heading</Typography>
-          <Typography variant="h2" style={{ marginTop: 12 }}>h2. Heading</Typography>
-          <Typography variant="h3" style={{ marginTop: 12 }}>h3. Heading</Typography>
-          <Typography variant="h4" style={{ marginTop: 12 }}>h4. Heading</Typography>
-          <Typography variant="h5" style={{ marginTop: 12 }}>h5. Heading</Typography>
-          <Typography variant="h6" style={{ marginTop: 12 }}>h6. Heading</Typography>
-          <Typography variant="subtitle1" style={{ marginTop: 12 }}>
+          <Text variant="h1">h1. Heading</Text>
+          <Text variant="h2" style={{ marginTop: 12 }}>h2. Heading</Text>
+          <Text variant="h3" style={{ marginTop: 12 }}>h3. Heading</Text>
+          <Text variant="h4" style={{ marginTop: 12 }}>h4. Heading</Text>
+          <Text variant="h5" style={{ marginTop: 12 }}>h5. Heading</Text>
+          <Text variant="h6" style={{ marginTop: 12 }}>h6. Heading</Text>
+          <Text variant="subtitle1" style={{ marginTop: 12 }}>
             subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-          </Typography>
-          <Typography variant="subtitle2" style={{ marginTop: 12 }}>
+          </Text>
+          <Text variant="subtitle2" style={{ marginTop: 12 }}>
             subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-          </Typography>
-          <Typography variant="body1" style={{ marginTop: 12 }}>
+          </Text>
+          <Text variant="body1" style={{ marginTop: 12 }}>
             body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
             beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
             Eum quasi quidem quibusdam.
-          </Typography>
-          <Typography variant="body2" style={{ marginTop: 12 }}>
+          </Text>
+          <Text variant="body2" style={{ marginTop: 12 }}>
             body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
             beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
             Eum quasi quidem quibusdam.
-          </Typography>
-          <Typography variant="button" style={{ marginTop: 12 }}>Button text</Typography>
-          <Typography variant="caption" style={{ marginTop: 12 }}>caption text</Typography>
-          <Typography variant="overline" style={{ marginTop: 12 }}>overline text</Typography>
+          </Text>
+          <Text variant="button" style={{ marginTop: 12 }}>Button text</Text>
+          <Text variant="caption" style={{ marginTop: 12 }}>caption text</Text>
+          <Text variant="overline" style={{ marginTop: 12 }}>overline text</Text>
         </View>
         <Appbar
           variant="prominent"

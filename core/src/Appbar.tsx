@@ -114,10 +114,10 @@ const Appbar: React.FC<AppbarProps> = ({
 
   const fontSize = animated.interpolate({
     inputRange: [0, 1],
-    outputRange: [theme.typographyScheme.h6.fontSize!, theme.typographyScheme.h5.fontSize!],
+    outputRange: [theme.typography.h6.fontSize!, theme.typography.h5.fontSize!],
   });
 
-  const styles = useStyleSheet(({ typographyScheme }) => ({
+  const styles = useStyleSheet(({ typography }) => ({
     container: {
       backgroundColor: palette.color,
       borderRadius: 0,
@@ -134,7 +134,7 @@ const Appbar: React.FC<AppbarProps> = ({
       justifyContent: "center",
     },
     title: {
-      ...typographyScheme.h6,
+      ...typography.h6,
       color: palette.tintColor,
       textAlign: centerTitle ? "center" : "auto",
     },

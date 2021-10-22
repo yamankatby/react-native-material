@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import { ActivityIndicator, Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
-import Typography from "./Typography";
+import Text from "./Text";
 
 export interface FABProps extends TouchableSurfaceProps {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -103,7 +103,7 @@ const FAB: React.FC<FABProps> = ({
     if (!loadingIndicator) return <ActivityIndicator color={palette.tintColor} />
     switch (typeof loadingIndicator) {
       case "string":
-        return <Typography variant="button" color={palette.tintColor}>{loadingIndicator}</Typography>
+        return <Text variant="button" style={{ color: palette.tintColor }}>{loadingIndicator}</Text>
       case "function":
         return loadingIndicator({ color: palette.tintColor });
       default:
@@ -119,7 +119,7 @@ const FAB: React.FC<FABProps> = ({
   const getLabel = () => {
     switch (typeof label) {
       case "string":
-        return <Typography variant="button" color={palette.tintColor} style={labelStyle}>{label}</Typography>
+        return <Text variant="button" style={[{ color: palette.tintColor }, labelStyle]}>{label}</Text>
       case "function":
         return label({ color: palette.tintColor });
       default:

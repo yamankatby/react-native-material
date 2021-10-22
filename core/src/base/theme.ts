@@ -53,7 +53,7 @@ export type TypographyVariant =
   | "caption"
   | "overline";
 
-export type TypographyScheme = Record<TypographyVariant, TextStyle>;
+export type Typography = Record<TypographyVariant, TextStyle>;
 
 export type Elevation =
   | 0
@@ -91,7 +91,7 @@ export interface Theme {
   palette: Palette;
   elevations: Elevations;
   shapeScheme: ShapeScheme;
-  typographyScheme: TypographyScheme;
+  typography: Typography;
 }
 
 export const defaultTheme: Theme = {
@@ -594,7 +594,7 @@ export const defaultTheme: Theme = {
       },
     },
   },
-  typographyScheme: {
+  typography: {
     h1: {
       fontWeight: "300",
       fontSize: 96,

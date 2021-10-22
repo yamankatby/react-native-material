@@ -1,7 +1,7 @@
 import React from "react";
 import { useStyleSheet } from "./base";
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
-import Typography from "./Typography";
+import Text from "./Text";
 import Divider from "./Divider";
 
 export interface BannerProps {
@@ -51,6 +51,9 @@ const Banner: React.FC<BannerProps> = ({
     textContainer: {
       flex: 1,
     },
+    text: {
+      color: palette.onSurface,
+    },
     actionsContainer: {
       flexDirection: "row",
       justifyContent: "flex-end",
@@ -69,9 +72,9 @@ const Banner: React.FC<BannerProps> = ({
         )}
         <View style={[styles.textContainer, textContainerStyle]}>
           {typeof text === "string" ? (
-            <Typography variant="body2" color="onSurface" style={textStyle}>
+            <Text variant="body2" style={[styles.text, textStyle]}>
               {text}
-            </Typography>
+            </Text>
           ) : (
             text
           )}

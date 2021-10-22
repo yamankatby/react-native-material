@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import Typography from "./Typography";
+import Text from "./Text";
 
 export interface AvatarProps {
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -75,6 +75,7 @@ const Avatar: React.FC<AvatarProps> = ({
       },
       label: {
         fontSize: size / 2,
+        color: palette.tintColor,
         textTransform: uppercase ? "uppercase" : "none",
       },
       image: {
@@ -90,9 +91,9 @@ const Avatar: React.FC<AvatarProps> = ({
     switch (typeof label) {
       case "string":
         return (
-          <Typography variant="h6" color={palette.tintColor} style={[styles.label, labelStyle]}>
+          <Text variant="h6" style={[styles.label, labelStyle]}>
             {initials ? getInitials(label) : label}
-          </Typography>
+          </Text>
         );
       case "function":
         return label({ color: palette.tintColor });

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { Animated, StyleProp, TextStyle, ViewProps } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import Typography from "./Typography";
+import Text from "./Text";
 
 export interface BadgeProps {
   label?: number | string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -63,9 +63,9 @@ const Badge: React.FC<BadgeProps> = ({
       case "number":
       case "string":
         return (
-          <Typography variant="body2" color={palette.tintColor} style={[labelStyle]}>
+          <Text variant="body2" style={[{ color: palette.tintColor }, labelStyle]}>
             {typeof label === "number" && label > max ? `${max}+` : label}
-          </Typography>
+          </Text>
         );
       case "function":
         return label({ color: palette.tintColor });

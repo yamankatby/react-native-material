@@ -3,7 +3,7 @@ import { ActivityIndicator, StyleProp, StyleSheet, TextStyle, View, ViewStyle } 
 import chroma from "chroma-js";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
-import Typography from "./Typography";
+import Text from "./Text";
 
 export interface ButtonProps extends TouchableSurfaceProps {
   title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -115,9 +115,9 @@ const Button: React.FC<ButtonProps> = ({
     switch (typeof title) {
       case "string":
         return (
-          <Typography variant="button" color={contentColor} style={[styles.titleStyle, titleStyle]}>
+          <Text variant="button" style={[{ color: contentColor }, styles.titleStyle, titleStyle]}>
             {title}
-          </Typography>
+          </Text>
         );
       case "function":
         return title({ color: contentColor });
@@ -131,9 +131,9 @@ const Button: React.FC<ButtonProps> = ({
     switch (typeof loadingIndicator) {
       case "string":
         return (
-          <Typography variant="button" color={contentColor}>
+          <Text variant="button" style={{ color: contentColor }}>
             {loadingIndicator}
-          </Typography>
+          </Text>
         );
       case "function":
         return loadingIndicator({ color: contentColor });

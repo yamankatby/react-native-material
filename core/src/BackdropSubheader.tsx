@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import Typography from "./Typography";
+import Text from "./Text";
 import Divider from "./Divider";
 
 export interface BackdropSubheaderProps {
@@ -70,9 +70,9 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
         }
         <View style={[styles.titleContainer, titleContainerStyle]}>
           {typeof title === "string" ? (
-            <Typography variant="subtitle1" color={palette.color}>
+            <Text variant="subtitle1" style={{ color: palette.color }}>
               {title}
-            </Typography>
+            </Text>
           ) : (
             title
           )}
