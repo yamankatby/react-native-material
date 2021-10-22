@@ -61,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const p = usePalette(color, tintColor);
-  const contentColor = useMemo(() => (variant === "contained" ? p.on : p.main), [variant, p]);
+  const contentColor = useMemo(() => (variant === "contained" ? p.tintColor : p.color), [variant, p]);
 
   const hasLeading = useMemo(
     () => !!leading || (loading && loadingIndicatorPosition === "leading"),
@@ -88,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
         height: 36,
         paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
         paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
-        backgroundColor: variant === "contained" ? p.main : "transparent",
+        backgroundColor: variant === "contained" ? p.color : "transparent",
       },
       titleStyle: {
         textTransform: uppercase ? "uppercase" : "none",

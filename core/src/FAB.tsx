@@ -70,7 +70,7 @@ const FAB: React.FC<FABProps> = ({
       paddingStart: variant === "extended" ? (hasIcon ? (size === "default" ? 12 : 6) : size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingEnd: variant === "extended" ? (size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingVertical: size === "default" ? 16 : 8,
-      backgroundColor: palette.main,
+      backgroundColor: palette.color,
     },
     iconContainer: {
       justifyContent: "center",
@@ -85,7 +85,7 @@ const FAB: React.FC<FABProps> = ({
       ...StyleSheet.absoluteFillObject,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: palette.main,
+      backgroundColor: palette.color,
     },
   }), [variant, size, palette, hasIcon]);
 
@@ -100,12 +100,12 @@ const FAB: React.FC<FABProps> = ({
   }, [visible])
 
   const getLoadingIndicator = () => {
-    if (!loadingIndicator) return <ActivityIndicator color={palette.on} />
+    if (!loadingIndicator) return <ActivityIndicator color={palette.tintColor} />
     switch (typeof loadingIndicator) {
       case "string":
-        return <Typography variant="button" color={palette.on}>{loadingIndicator}</Typography>
+        return <Typography variant="button" color={palette.tintColor}>{loadingIndicator}</Typography>
       case "function":
-        return loadingIndicator({ color: palette.on });
+        return loadingIndicator({ color: palette.tintColor });
       default:
         return loadingIndicator;
     }
@@ -113,15 +113,15 @@ const FAB: React.FC<FABProps> = ({
 
   const getIcon = () => {
     if (loading && loadingIndicatorPosition === "icon") return getLoadingIndicator()
-    return typeof icon === "function" ? icon({ color: palette.on, size: 24 }) : icon;
+    return typeof icon === "function" ? icon({ color: palette.tintColor, size: 24 }) : icon;
   };
 
   const getLabel = () => {
     switch (typeof label) {
       case "string":
-        return <Typography variant="button" color={palette.on} style={labelStyle}>{label}</Typography>
+        return <Typography variant="button" color={palette.tintColor} style={labelStyle}>{label}</Typography>
       case "function":
-        return label({ color: palette.on });
+        return label({ color: palette.tintColor });
       default:
         return label;
     }
@@ -131,7 +131,7 @@ const FAB: React.FC<FABProps> = ({
     <TouchableSurface
       style={[styles.container, { transform: [{ scale: animated }] }, style]}
       innerStyle={[styles.contentContainer, contentContainerStyle]}
-      overlayColor={palette.on}
+      overlayColor={palette.tintColor}
       {...rest}
     >
       {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}

@@ -65,12 +65,12 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
       <View style={[styles.contentContainer, contentContainerStyle]}>
         {!!leading &&
         <View style={[styles.leadingContainer, leadingContainerStyle]}>
-          {typeof leading === "function" ? leading({ color: palette.main, size: 24 }) : leading}
+          {typeof leading === "function" ? leading({ color: palette.color, size: 24 }) : leading}
         </View>
         }
         <View style={[styles.titleContainer, titleContainerStyle]}>
           {typeof title === "string" ? (
-            <Typography variant="subtitle1" color={palette.main}>
+            <Typography variant="subtitle1" color={palette.color}>
               {title}
             </Typography>
           ) : (
@@ -79,7 +79,7 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
         </View>
         {!!trailing &&
         <View style={[styles.trailingContainer, trailingContainerStyle]}>
-          {typeof trailing === "function" ? trailing({ color: palette.main, size: 24 }) : trailing}
+          {typeof trailing === "function" ? trailing({ color: palette.color, size: 24 }) : trailing}
         </View>
         }
       </View>

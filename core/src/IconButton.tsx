@@ -29,7 +29,7 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, color, size, ...rest }) =
     <TouchableSurface
       style={styles.container}
       innerStyle={styles.innerContainer}
-      overlayColor={palette.main}
+      overlayColor={palette.color}
       absoluteSize
       {...rest}
     >

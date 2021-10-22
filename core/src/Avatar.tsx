@@ -65,7 +65,7 @@ const Avatar: React.FC<AvatarProps> = ({
       container: {
         width: size,
         height: size,
-        backgroundColor: palette.main,
+        backgroundColor: palette.color,
         borderRadius: size / 2,
       },
       contentContainer: {
@@ -90,12 +90,12 @@ const Avatar: React.FC<AvatarProps> = ({
     switch (typeof label) {
       case "string":
         return (
-          <Typography variant="h6" color={palette.on} style={[styles.label, labelStyle]}>
+          <Typography variant="h6" color={palette.tintColor} style={[styles.label, labelStyle]}>
             {initials ? getInitials(label) : label}
           </Typography>
         );
       case "function":
-        return label({ color: palette.on });
+        return label({ color: palette.tintColor });
       default:
         return label;
     }
@@ -108,7 +108,7 @@ const Avatar: React.FC<AvatarProps> = ({
   };
 
   const getIcon = () => {
-    if (typeof icon === "function") return icon({ color: palette.on, size: size / 2 });
+    if (typeof icon === "function") return icon({ color: palette.tintColor, size: size / 2 });
     return icon;
   };
 

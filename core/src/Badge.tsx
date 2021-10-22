@@ -41,7 +41,7 @@ const Badge: React.FC<BadgeProps> = ({
       justifyContent: "center",
       alignItems: "center",
       paddingHorizontal: 6,
-      backgroundColor: palette.main,
+      backgroundColor: palette.color,
       borderRadius: 10,
     },
   }), [palette]);
@@ -63,12 +63,12 @@ const Badge: React.FC<BadgeProps> = ({
       case "number":
       case "string":
         return (
-          <Typography variant="body2" color={palette.on} style={[labelStyle]}>
+          <Typography variant="body2" color={palette.tintColor} style={[labelStyle]}>
             {typeof label === "number" && label > max ? `${max}+` : label}
           </Typography>
         );
       case "function":
-        return label({ color: palette.on });
+        return label({ color: palette.tintColor });
       default:
         return label;
     }

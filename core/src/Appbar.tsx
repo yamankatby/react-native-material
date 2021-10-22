@@ -119,9 +119,9 @@ const Appbar: React.FC<AppbarProps> = ({
 
   const styles = useStyleSheet(({ typographyScheme }) => ({
     container: {
-      backgroundColor: palette.main,
+      backgroundColor: palette.color,
       borderRadius: 0,
-      elevation: palette.main === 'transparent' ? 0 : position === "top" ? 4 : 8,
+      elevation: palette.color === 'transparent' ? 0 : position === "top" ? 4 : 8,
     },
     imageContainer: {
       backgroundColor: "red",
@@ -135,7 +135,7 @@ const Appbar: React.FC<AppbarProps> = ({
     },
     title: {
       ...typographyScheme.h6,
-      color: palette.on,
+      color: palette.tintColor,
       textAlign: centerTitle ? "center" : "auto",
     },
     toolbar: {
@@ -152,13 +152,13 @@ const Appbar: React.FC<AppbarProps> = ({
 
   const leadingElement = leading && (
     <View style={[styles.actionsContainer, leadingContainerStyle]}>
-      {typeof leading === "function" ? leading({ color: palette.on, size: 48 }) : leading}
+      {typeof leading === "function" ? leading({ color: palette.tintColor, size: 48 }) : leading}
     </View>
   );
 
   const trailingElement = trailing && (
     <View style={[styles.actionsContainer, trailingContainerStyle]}>
-      {typeof trailing === "function" ? trailing({ color: palette.on, size: 48 }) : trailing}
+      {typeof trailing === "function" ? trailing({ color: palette.tintColor, size: 48 }) : trailing}
     </View>
   );
 

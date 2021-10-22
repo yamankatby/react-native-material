@@ -16,7 +16,7 @@ const Typography: React.FC<TypographyProps> = ({
 }) => {
   const { typographyScheme } = useTheme();
   const palette = usePalette(color);
-  return <Text style={[typographyScheme[variant], { color: palette.main }, style]} {...rest} />;
+  return <Text style={[typographyScheme[variant], { color: palette.color }, style]} {...rest} />;
 };
 
 export default Typography;
