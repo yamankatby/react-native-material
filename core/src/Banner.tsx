@@ -35,9 +35,9 @@ const Banner: React.FC<BannerProps> = ({
   textStyle,
   actionsContainerStyle,
 }) => {
-  const styles = useStyleSheet(({ colorScheme }) => ({
+  const styles = useStyleSheet(({ palette }) => ({
     container: {
-      backgroundColor: colorScheme.surface,
+      backgroundColor: palette.surface,
     },
     contentContainer: {
       flexDirection: "row",

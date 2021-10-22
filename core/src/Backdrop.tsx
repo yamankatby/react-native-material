@@ -48,10 +48,10 @@ const Backdrop: React.FC<BackdropProps> = ({
   const [currentBackLayerHeight, setCurrentBackLayerHeight] = useState(backLayerHeight ?? 0);
   const [currentSubheaderHeight, setCurrentSubheaderHeight] = useState(subheaderHeight ?? 0);
 
-  const styles = useStyleSheet(({ colorScheme }) => ({
+  const styles = useStyleSheet(({ palette }) => ({
     container: {
       flex: 1,
-      backgroundColor: colorScheme.primary,
+      backgroundColor: palette.primary,
       overflow: "hidden",
     },
     frontLayer: {
@@ -59,7 +59,7 @@ const Backdrop: React.FC<BackdropProps> = ({
       start: 0,
       end: 0,
       bottom: 0,
-      backgroundColor: colorScheme.surface,
+      backgroundColor: palette.surface,
       borderTopStartRadius: 16,
       borderTopEndRadius: 16,
       borderBottomStartRadius: 0,

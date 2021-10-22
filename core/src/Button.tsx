@@ -60,8 +60,8 @@ const Button: React.FC<ButtonProps> = ({
   loadingOverlayContainerStyle,
   ...rest
 }) => {
-  const palette = usePalette(color, tintColor);
-  const contentColor = useMemo(() => (variant === "contained" ? palette.on : palette.main), [variant, palette]);
+  const p = usePalette(color, tintColor);
+  const contentColor = useMemo(() => (variant === "contained" ? p.on : p.main), [variant, p]);
 
   const hasLeading = useMemo(
     () => !!leading || (loading && loadingIndicatorPosition === "leading"),
@@ -74,10 +74,10 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   const styles = useStyleSheet(
-    ({ colorScheme }) => ({
+    ({ palette }) => ({
       container: {
         borderWidth: variant === "outlined" ? 1 : 0,
-        borderColor: chroma(colorScheme.onSurface).alpha(0.12).hex(),
+        borderColor: chroma(palette.onSurface).alpha(0.12).hex(),
         elevation: variant === "contained" && !disableElevation ? 2 : 0,
       },
       contentContainer: {
@@ -88,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
         height: 36,
         paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
         paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
-        backgroundColor: variant === "contained" ? palette.main : "transparent",
+        backgroundColor: variant === "contained" ? p.main : "transparent",
       },
       titleStyle: {
         textTransform: uppercase ? "uppercase" : "none",
@@ -108,7 +108,7 @@ const Button: React.FC<ButtonProps> = ({
         alignItems: "center",
       },
     }),
-    [variant, uppercase, compact, disableElevation, loading, loadingIndicatorPosition, palette, hasLeading, hasTrailing],
+    [variant, uppercase, compact, disableElevation, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing],
   );
 
   const getTitle = () => {

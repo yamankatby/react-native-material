@@ -1,7 +1,6 @@
 import React, { createContext, DependencyList, useContext, useMemo } from "react";
-import { defaultTheme, Theme } from "./theme";
+import { defaultTheme, PaletteColorName, Theme } from "./theme";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { ColorName } from "./color-scheme";
 import chroma from "chroma-js";
 
 export const ThemeContext = createContext<Theme>(defaultTheme);
@@ -26,102 +25,94 @@ export const useStyleSheet = <T extends NamedStyles<T> | NamedStyles<any>>(
   return useMemo(() => factory(theme), [theme, deps]);
 };
 
-export interface Palette {
+interface Palette {
   main: string;
   on: string;
 }
 
-export type PaletteColor = ColorName | string;
+export type PaletteColor = PaletteColorName | string;
 
-export const usePalette = (main: ColorName | string, on?: ColorName | string | undefined): Palette => {
-  const { colorScheme } = useTheme();
+export const usePalette = (main: PaletteColorName | string, on?: PaletteColorName | string | undefined): Palette => {
+  const { palette } = useTheme();
   const _main = useMemo(() => {
     switch (main) {
       case "primary":
-        return colorScheme.primary;
-      case "primaryVariant":
-        return colorScheme.primaryVariant;
+        return palette.primary;
       case "secondary":
-        return colorScheme.secondary;
-      case "secondaryVariant":
-        return colorScheme.secondaryVariant;
+        return palette.secondary;
       case "background":
-        return colorScheme.background;
+        return palette.background;
       case "surface":
-        return colorScheme.surface;
+        return palette.surface;
       case "error":
-        return colorScheme.error;
+        return palette.error;
       case "onPrimary":
-        return colorScheme.onPrimary;
+        return palette.onPrimary
       case "onSecondary":
-        return colorScheme.onSecondary;
+        return palette.onSecondary
       case "onBackground":
-        return colorScheme.onBackground;
+        return palette.onBackground
       case "onSurface":
-        return colorScheme.onSurface;
+        return palette.onSurface
       case "onError":
-        return colorScheme.onError;
+        return palette.onError
       default:
         return main;
     }
-  }, [main, colorScheme]);
+  }, [main, palette]);
 
   const _on = useMemo(() => {
     if (on) {
       switch (on) {
         case "primary":
-          return colorScheme.primary;
-        case "primaryVariant":
-          return colorScheme.primaryVariant;
+          return palette.primary;
         case "secondary":
-          return colorScheme.secondary;
-        case "secondaryVariant":
-          return colorScheme.secondaryVariant;
+          return palette.secondary;
         case "background":
-          return colorScheme.background;
+          return palette.background;
         case "surface":
-          return colorScheme.surface;
+          return palette.surface;
         case "error":
-          return colorScheme.error;
+          return palette.error;
         case "onPrimary":
-          return colorScheme.onPrimary;
+          return palette.onPrimary
         case "onSecondary":
-          return colorScheme.onSecondary;
+          return palette.onSecondary
         case "onBackground":
-          return colorScheme.onBackground;
+          return palette.onBackground
         case "onSurface":
-          return colorScheme.onSurface;
+          return palette.onSurface
         case "onError":
-          return colorScheme.onError;
+          return palette.onError
         default:
           return on;
       }
     }
     switch (main) {
       case "primary":
-        return colorScheme.onPrimary;
+        return palette.onPrimary
       case "secondary":
-        return colorScheme.onSecondary;
+        return palette.onSecondary
       case "background":
-        return colorScheme.onBackground;
+        return palette.onBackground
       case "surface":
-        return colorScheme.onSurface;
+        return palette.onSurface
       case "error":
-        return colorScheme.onError;
+        return palette.onError
       case "onPrimary":
-        return colorScheme.primary;
+        return palette.primary;
       case "onSecondary":
-        return colorScheme.secondary;
+        return palette.secondary;
       case "onBackground":
-        return colorScheme.background;
+        return palette.background;
       case "onSurface":
-        return colorScheme.surface;
+        return palette.surface;
       case "onError":
-        return colorScheme.error;
+        return palette.error;
       default:
         return chroma.contrast(_main, "white") > 4.5 ? "#FFFFFF" : "#000000";
     }
-  }, [main, on, colorScheme, _main]);
+  }, [main, on, palette, _main]);
 
   return { main: _main, on: _on };
 };

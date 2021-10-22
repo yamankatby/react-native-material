@@ -1,11 +1,11 @@
 import React from "react";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
-import { ColorName, usePalette, useStyleSheet } from "./base";
+import { PaletteColorName, usePalette, useStyleSheet } from "./base";
 
 export interface IconButtonProps extends TouchableSurfaceProps {
   icon?: React.ReactElement | undefined;
 
-  color?: ColorName | string | undefined;
+  color?: PaletteColorName | string | undefined;
 
   size?: "small" | "medium" | "large" | undefined;
 }

@@ -22,13 +22,13 @@ const Divider: React.FC<DividerProps> = ({
   trailingInset,
   style,
 }) => {
-  const { colorScheme } = useTheme();
+  const { palette } = useTheme();
   return (
     <View
       style={[
         {
           height: 1,
-          backgroundColor: color ?? chroma(colorScheme.onSurface).alpha(0.08).hex(),
+          backgroundColor: color ?? chroma(palette.onSurface).alpha(0.08).hex(),
           marginStart: inset ?? leadingInset,
           marginEnd: inset ?? trailingInset,
         },

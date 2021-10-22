@@ -1,20 +1,24 @@
 import { ImageStyle, Platform, TextStyle, ViewStyle } from "react-native";
 
-export type ColorName =
+export type PaletteColorName =
   | "primary"
-  | "primaryVariant"
   | "secondary"
-  | "secondaryVariant"
   | "background"
   | "surface"
+  | "success"
+  | "info"
+  | "warning"
   | "error"
   | "onPrimary"
   | "onSecondary"
   | "onBackground"
   | "onSurface"
+  | "onSuccess"
+  | "onInfo"
+  | "onWarning"
   | "onError";
 
-export type ColorScheme = Record<ColorName, string>;
+export type Palette = Record<PaletteColorName, string>;
 
 export type ShapeCategory = "small" | "medium" | "large";
 
@@ -61,7 +65,7 @@ export type Mode = "light" | "dark";
 
 export interface Theme {
   mode: Mode;
-  colorScheme: ColorScheme;
+  palette: Palette;
   elevationScheme: ElevationScheme;
   shapeScheme: ShapeScheme;
   typographyScheme: TypographyScheme;
@@ -69,18 +73,22 @@ export interface Theme {
 
 export const defaultTheme: Theme = {
   mode: "light",
-  colorScheme: {
+  palette: {
     primary: "#6200EE",
-    primaryVariant: "#3700B3",
     secondary: "#03DAC6",
-    secondaryVariant: "#018786",
     background: "#FFFFFF",
     surface: "#FFFFFF",
+    success: "#4CAF50",
+    info: "#2196F3",
+    warning: "#FF9800",
     error: "#B00020",
     onPrimary: "#FFFFFF",
     onSecondary: "#000000",
     onBackground: "#000000",
     onSurface: "#000000",
+    onSuccess: "#000000",
+    onInfo: "#000000",
+    onWarning: "#000000",
     onError: "#FFFFFF",
   },
   elevationScheme: {
@@ -320,18 +328,22 @@ export const defaultTheme: Theme = {
 export const darkTheme: Theme = {
   ...defaultTheme,
   mode: "dark",
-  colorScheme: {
+  palette: {
     primary: "#BB86FC",
-    primaryVariant: "#3700B3",
     secondary: "#03DAC6",
-    secondaryVariant: "#03DAC6",
     background: "#121212",
     surface: "#121212",
+    success: "#80E27E",
+    info: "#6EC6FF",
+    warning: "#FFC947",
     error: "#CF6679",
     onPrimary: "#000000",
     onSecondary: "#000000",
     onBackground: "#FFFFFF",
     onSurface: "#FFFFFF",
+    onSuccess: "#000000",
+    onInfo: "#000000",
+    onWarning: "#000000",
     onError: "#000000",
   },
 };
