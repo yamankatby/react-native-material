@@ -21,7 +21,7 @@ const Surface: React.FC<SurfaceProps> = ({ category, style, ...rest }) => {
     ...restStyles
   } = StyleSheet.flatten(style ?? {}) as ViewStyle
 
-  const { elevationScheme, shapeScheme } = useTheme()
+  const { elevations, shapeScheme } = useTheme()
 
   const radius = useMemo(() => shapeScheme[category!].borderRadius, [category, shapeScheme])
 
@@ -43,7 +43,7 @@ const Surface: React.FC<SurfaceProps> = ({ category, style, ...rest }) => {
     borderRadius,
   ])
 
-  return <Animated.View style={[restStyles, elevationScheme[elevation as Elevation], shapeBorderRadius]} {...rest} />;
+  return <Animated.View style={[restStyles, elevations[elevation as Elevation], shapeBorderRadius]} {...rest} />;
 };
 
 Surface.defaultProps = {

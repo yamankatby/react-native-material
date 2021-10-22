@@ -28,10 +28,10 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
       theme={{
         dark: theme.mode === 'dark',
         colors: {
-          primary: theme.colorScheme.primary,
-          background: theme.colorScheme.background,
-          card: theme.colorScheme.background,
-          text: theme.colorScheme.onBackground,
+          primary: theme.palette.primary,
+          background: theme.palette.background,
+          card: theme.palette.background,
+          text: theme.palette.onBackground,
           border: 'rgba(0,0,0,0.12)',
           notification: 'red',
         },

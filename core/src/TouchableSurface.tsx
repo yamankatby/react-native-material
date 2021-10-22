@@ -41,7 +41,7 @@ const TouchableSurface: React.FC<TouchableSurfaceProps> = ({
     ...restStyles
   } = StyleSheet.flatten(style ?? {}) as ViewStyle
 
-  const { elevationScheme, shapeScheme } = useTheme()
+  const { elevations, shapeScheme } = useTheme()
 
   const radius = useMemo(() => shapeScheme[category!].borderRadius, [category, shapeScheme])
 
@@ -64,7 +64,7 @@ const TouchableSurface: React.FC<TouchableSurfaceProps> = ({
   ])
 
   return (
-    <Animated.View style={[restStyles, elevationScheme[elevation as Elevation], shapeBorderRadius]}>
+    <Animated.View style={[restStyles, elevations[elevation as Elevation], shapeBorderRadius]}>
       <View
         style={[absoluteSize && StyleSheet.absoluteFillObject, shapeBorderRadius, { overflow: "hidden" }, containerStyle]}
       >
