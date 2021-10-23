@@ -18,7 +18,7 @@ export default function App() {
       <SafeAreaProvider>
         <ThemeProvider theme={{
           ...defaultTheme,
-          typographyScheme: {
+          typography: {
             h1: {
               fontFamily: 'roboto-light',
               fontSize: 96,

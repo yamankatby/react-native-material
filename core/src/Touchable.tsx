@@ -4,10 +4,13 @@ import {
   Easing,
   GestureResponderEvent,
   LayoutChangeEvent,
+  Platform,
   Pressable as NativePressable,
   PressableProps,
+  StyleProp,
   StyleSheet,
   View,
+  ViewStyle,
 } from "react-native";
 
 const Pressable = Animated.createAnimatedComponent(NativePressable);
@@ -21,11 +24,15 @@ export interface TouchableProps extends PressableProps {
 
   rippleSize?: number;
 
+  rippleContainerBorderRadius?: number;
+
   rippleCentered?: boolean;
 
   rippleDuration?: number;
 
   style?: any;
+
+  rippleContainerStyle?: StyleProp<ViewStyle>;
 }
 
 interface RippleProps {
@@ -58,10 +65,13 @@ const Touchable: React.FC<TouchableProps> = ({
   ripple = true,
   rippleOpacity = 0.3,
   rippleSize,
+  rippleContainerBorderRadius,
   rippleCentered = false,
   rippleDuration = 400,
   onPressIn,
   onLayout,
+  style,
+  rippleContainerStyle,
   children,
   ...rest
 }) => {
@@ -123,11 +133,16 @@ const Touchable: React.FC<TouchableProps> = ({
       android_ripple={!ripple ? { color: underlayColor } : undefined}
       onPressIn={ripple ? handleOnPressIn : onPressIn}
       onLayout={ripple ? handleOnLayout : onLayout}
+      style={[Platform.select({ web: { cursor: 'pointer' } }), style]}
       {...rest}
     >
       {children}
       {ripple && ripples.length > 0 && (
-        <View style={styles.container}>
+        <View style={[
+          styles.container,
+          rippleContainerStyle,
+          rippleContainerBorderRadius ? { borderRadius: rippleContainerBorderRadius } : undefined,
+        ]}>
           {ripples.map((ripple) => (
             <Animated.View key={ripple.key} style={[styles.ripple, ripple.style, { backgroundColor: underlayColor }]} />
           ))}

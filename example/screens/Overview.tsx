@@ -166,16 +166,16 @@ const Overview = () => {
             <BackdropSubheader title="Subheader" />
           </Backdrop>
         </View>
-        <Surface style={[paper, { elevation: 0 }]} />
-        <Surface style={[paper, { elevation: 1 }]} />
-        <Surface style={[paper, { elevation: 2 }]} />
-        <Surface style={[paper, { elevation: 3 }]} />
-        <Surface style={[paper, { elevation: 4 }]} />
-        <Surface style={[paper, { elevation: 6 }]} />
-        <Surface style={[paper, { elevation: 8 }]} />
-        <Surface style={[paper, { elevation: 12 }]} />
-        <Surface style={[paper, { elevation: 16 }]} />
-        <Surface style={[paper, { elevation: 24 }]} />
+        <Surface style={paper} elevation={0} />
+        <Surface style={paper} elevation={1} />
+        <Surface style={paper} elevation={2} />
+        <Surface style={paper} elevation={3} />
+        <Surface style={paper} elevation={4} />
+        <Surface style={paper} elevation={6} />
+        <Surface style={paper} elevation={8} />
+        <Surface style={paper} elevation={12} />
+        <Surface style={paper} elevation={16} />
+        <Surface style={paper} elevation={24} />
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginTop: 24 }}>
         <View style={{ maxWidth: 500 }}>

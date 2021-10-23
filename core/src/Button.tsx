@@ -73,20 +73,18 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   const styles = useStyleSheet(
-    ({ palette, elevations }) => ({
+    ({ palette }) => ({
       container: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         minWidth: 64,
         height: 36,
-        borderRadius: 20,
         paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
         paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
         backgroundColor: variant === "contained" ? p.color : "transparent",
         borderWidth: variant === "outlined" ? 1 : 0,
         borderColor: chroma(palette.onSurface).alpha(0.12).hex(),
-        ...elevations[variant === "contained" && !disableElevation ? 2 : 0],
       },
       titleStyle: {
         textTransform: uppercase ? "uppercase" : "none",
@@ -106,7 +104,7 @@ const Button: React.FC<ButtonProps> = ({
         alignItems: "center",
       },
     }),
-    [variant, uppercase, compact, disableElevation, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing],
+    [variant, uppercase, compact, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing],
   );
 
   const getTitle = () => {
@@ -151,7 +149,8 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableSurface style={[styles.container, style]} underlayColor={contentColor} {...rest}>
+    <TouchableSurface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]}
+                      underlayColor={contentColor} {...rest}>
       {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
       {getTitle()}
       {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}

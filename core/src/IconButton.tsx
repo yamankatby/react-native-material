@@ -26,7 +26,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 }) => {
   const palette = usePalette(color)
   return (
-    <Touchable style={styles.container} underlayColor={palette.color} {...rest}>
+    <Touchable style={styles.container} underlayColor={palette.color} rippleContainerBorderRadius={24} {...rest}>
       {icon}
     </Touchable>
   );

@@ -22,21 +22,19 @@ export type Palette = Record<PaletteColorName, string>;
 
 export type ShapeCategory = "small" | "medium" | "large";
 
-export type ShapeFamily = "rounded" | "cut";
-
 export interface ShapeBorderRadius {
-  topStart: number;
-  topEnd: number;
-  bottomStart: number;
-  bottomEnd: number;
+  borderBottomEndRadius?: number | undefined;
+  borderBottomLeftRadius?: number | undefined;
+  borderBottomRightRadius?: number | undefined;
+  borderBottomStartRadius?: number | undefined;
+  borderRadius?: number | undefined;
+  borderTopEndRadius?: number | undefined;
+  borderTopLeftRadius?: number | undefined;
+  borderTopRightRadius?: number | undefined;
+  borderTopStartRadius?: number | undefined;
 }
 
-export interface ShapeValues {
-  family: ShapeFamily;
-  borderRadius: ShapeBorderRadius;
-}
-
-export type ShapeScheme = Record<ShapeCategory, ShapeValues>;
+export type Shapes = Record<ShapeCategory, ShapeBorderRadius>;
 
 export type TypographyVariant =
   | "h1"
@@ -90,7 +88,7 @@ export interface Theme {
   mode: Mode;
   palette: Palette;
   elevations: Elevations;
-  shapeScheme: ShapeScheme;
+  shapes: Shapes;
   typography: Typography;
 }
 
@@ -565,34 +563,10 @@ export const defaultTheme: Theme = {
       },
     }),
   },
-  shapeScheme: {
-    small: {
-      family: "rounded",
-      borderRadius: {
-        topStart: 4,
-        topEnd: 4,
-        bottomStart: 4,
-        bottomEnd: 4,
-      },
-    },
-    medium: {
-      family: "rounded",
-      borderRadius: {
-        topStart: 4,
-        topEnd: 4,
-        bottomStart: 4,
-        bottomEnd: 4,
-      },
-    },
-    large: {
-      family: "rounded",
-      borderRadius: {
-        topStart: 0,
-        topEnd: 0,
-        bottomStart: 0,
-        bottomEnd: 0,
-      },
-    },
+  shapes: {
+    small: { borderRadius: 4 },
+    medium: { borderRadius: 4 },
+    large: { borderRadius: 0 },
   },
   typography: {
     h1: {

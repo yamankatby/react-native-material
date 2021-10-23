@@ -68,7 +68,6 @@ const FAB: React.FC<FABProps> = ({
       paddingVertical: size === "default" ? 16 : 8,
       backgroundColor: palette.color,
       borderRadius: size === 'default' ? 28 : 20,
-      ...elevations["8"],
     },
     iconContainer: {
       justifyContent: "center",
@@ -127,8 +126,10 @@ const FAB: React.FC<FABProps> = ({
 
   return (
     <TouchableSurface
-      style={[styles.container, { transform: [{ scale: animated }] }, style, contentContainerStyle]}
+      elevation={8}
       underlayColor={palette.tintColor}
+      rippleContainerBorderRadius={size === 'default' ? 28 : 20}
+      style={[styles.container, { transform: [{ scale: animated }] }, style, contentContainerStyle]}
       {...rest}
     >
       {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}
