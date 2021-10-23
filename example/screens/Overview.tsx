@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Image, View } from "react-native";
+import React, { useEffect, useRef, useState } from 'react'
+import { Animated, Image, Pressable, View } from "react-native";
 import {
   Appbar,
   Avatar,
@@ -11,17 +11,53 @@ import {
   IconButton,
   Surface,
   Text,
+  useTheme,
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Ripple from "@react-native-material/core/lib/Touchable";
+import createAnimatedComponent = Animated.createAnimatedComponent;
 
 const paper = {
   width: 100, height: 100, backgroundColor: 'white', marginStart: 60,
 }
 
+const P = createAnimatedComponent(Pressable)
+
 const Overview = () => {
   const [revealed, setRevealed] = useState(false)
+  const theme = useTheme()
+
+  const a = useRef(new Animated.Value(0)).current
+
+  const [xxx, setXXX] = useState(false)
+
+  useEffect(() => {
+    Animated.timing(a, {
+      toValue: xxx ? 1 : 0,
+      duration: 100,
+      useNativeDriver: true,
+    }).start()
+  }, [xxx])
+
   return (
-    <View style={{ flex: 1, padding: 24, backgroundColor: '#F5F5F5', overflow: 'hidden' }}>
+    <View style={{ flex: 1, padding: 56, backgroundColor: '#F5F5F5', overflow: 'hidden' }}>
+      <P style={{
+        backgroundColor: 'red',
+        // ...theme.elevations[xxx ? "24" : "9"],
+        elevation: a.interpolate({ inputRange: [0, 1], outputRange: [2, 8] }),
+        borderRadius: 50,
+        width: 50,
+        height: 120,
+      }} onPressIn={() => setXXX(true)} onPressOut={() => setXXX(false)}>
+        <Text>Hi</Text>
+      </P>
+
+
+      <Ripple style={{ backgroundColor: 'red', width: 120, height: 120, borderRadius: 60 }}>
+        <Ripple style={{ width: 60, height: 60, background: 'blue' }}>
+          <Text>HI</Text>
+        </Ripple>
+      </Ripple>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Appbar
           title="Page title"
@@ -34,16 +70,19 @@ const Overview = () => {
           )}
           trailing={(props) => [
             <IconButton
+              key={1}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="heart" size={24} color={props.color} />}
             />,
             <IconButton
+              key={2}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="magnify" size={24} color={props.color} />}
             />,
             <IconButton
+              key={3}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="dots-vertical" size={24} color={props.color} />}
@@ -173,16 +212,19 @@ const Overview = () => {
           )}
           trailing={(props) => [
             <IconButton
+              key={1}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="heart" size={24} color={props.color} />}
             />,
             <IconButton
+              key={2}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="magnify" size={24} color={props.color} />}
             />,
             <IconButton
+              key={3}
               color={props.color}
               onPress={() => undefined}
               icon={<Icon name="dots-vertical" size={24} color={props.color} />}

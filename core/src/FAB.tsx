@@ -129,8 +129,7 @@ const FAB: React.FC<FABProps> = ({
 
   return (
     <TouchableSurface
-      style={[styles.container, { transform: [{ scale: animated }] }, style]}
-      innerStyle={[styles.contentContainer, contentContainerStyle]}
+      style={[styles.container, { transform: [{ scale: animated }] }, style, styles.contentContainer, contentContainerStyle]}
       overlayColor={palette.tintColor}
       {...rest}
     >

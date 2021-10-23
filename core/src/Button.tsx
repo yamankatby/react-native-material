@@ -154,8 +154,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableSurface
-      style={[styles.container, style]}
-      innerStyle={[styles.contentContainer, innerStyle]}
+      style={[styles.container, style, styles.contentContainer, innerStyle]}
       overlayColor={contentColor}
       {...rest}
     >
