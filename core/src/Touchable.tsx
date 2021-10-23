@@ -10,10 +10,12 @@ import {
   View,
 } from "react-native";
 
-export interface TouchableProps extends PressableProps {
-  ripple?: boolean;
+const Pressable = Animated.createAnimatedComponent(NativePressable);
 
-  rippleColor?: string;
+export interface TouchableProps extends PressableProps {
+  underlayColor?: string;
+
+  ripple?: boolean;
 
   rippleOpacity?: number;
 
@@ -22,6 +24,8 @@ export interface TouchableProps extends PressableProps {
   rippleCentered?: boolean;
 
   rippleDuration?: number;
+
+  style?: any;
 }
 
 interface RippleProps {
@@ -29,8 +33,6 @@ interface RippleProps {
 
   style: any;
 }
-
-const Pressable = Animated.createAnimatedComponent(NativePressable);
 
 const styles = StyleSheet.create({
   container: {
@@ -52,8 +54,8 @@ const styles = StyleSheet.create({
 let key = 0;
 
 const Touchable: React.FC<TouchableProps> = ({
+  underlayColor = "black",
   ripple = true,
-  rippleColor = "black",
   rippleOpacity = 0.3,
   rippleSize,
   rippleCentered = false,
@@ -117,12 +119,17 @@ const Touchable: React.FC<TouchableProps> = ({
   }, [onPressIn, rippleSize, rippleCentered, rippleDuration, size]);
 
   return (
-    <Pressable onPressIn={ripple ? handleOnPressIn : onPressIn} onLayout={ripple ? handleOnLayout : onLayout} {...rest}>
+    <Pressable
+      android_ripple={!ripple ? { color: underlayColor } : undefined}
+      onPressIn={ripple ? handleOnPressIn : onPressIn}
+      onLayout={ripple ? handleOnLayout : onLayout}
+      {...rest}
+    >
       {children}
       {ripple && ripples.length > 0 && (
         <View style={styles.container}>
           {ripples.map((ripple) => (
-            <Animated.View key={ripple.key} style={[styles.ripple, ripple.style, { backgroundColor: rippleColor }]} />
+            <Animated.View key={ripple.key} style={[styles.ripple, ripple.style, { backgroundColor: underlayColor }]} />
           ))}
         </View>
       )}

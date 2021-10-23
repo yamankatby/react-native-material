@@ -59,18 +59,16 @@ const FAB: React.FC<FABProps> = ({
 
   const hasIcon = useMemo(() => icon || (loading && loadingIndicatorPosition === 'icon'), [icon, loading, loadingIndicatorPosition]);
 
-  const styles = useStyleSheet(() => ({
+  const styles = useStyleSheet(({ elevations }) => ({
     container: {
-      borderRadius: size === 'default' ? 28 : 20,
-      elevation: 8,
-    },
-    contentContainer: {
       flexDirection: "row",
       alignItems: "center",
       paddingStart: variant === "extended" ? (hasIcon ? (size === "default" ? 12 : 6) : size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingEnd: variant === "extended" ? (size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingVertical: size === "default" ? 16 : 8,
       backgroundColor: palette.color,
+      borderRadius: size === 'default' ? 28 : 20,
+      ...elevations["8"],
     },
     iconContainer: {
       justifyContent: "center",
@@ -129,8 +127,8 @@ const FAB: React.FC<FABProps> = ({
 
   return (
     <TouchableSurface
-      style={[styles.container, { transform: [{ scale: animated }] }, style, styles.contentContainer, contentContainerStyle]}
-      overlayColor={palette.tintColor}
+      style={[styles.container, { transform: [{ scale: animated }] }, style, contentContainerStyle]}
+      underlayColor={palette.tintColor}
       {...rest}
     >
       {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}

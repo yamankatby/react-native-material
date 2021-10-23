@@ -1,46 +1,35 @@
 import React from "react";
-import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
-import { PaletteColorName, usePalette, useStyleSheet } from "./base";
+import { StyleSheet } from "react-native";
+import { PaletteColor, usePalette } from "./base";
+import Touchable, { TouchableProps } from "./Touchable";
 
-export interface IconButtonProps extends TouchableSurfaceProps {
-  icon?: React.ReactElement | undefined;
+export interface IconButtonProps extends TouchableProps {
+  icon?: React.ReactElement;
 
-  color?: PaletteColorName | string | undefined;
-
-  size?: "small" | "medium" | "large" | undefined;
+  color?: PaletteColor;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({ icon, color, size, ...rest }) => {
-  const palette = usePalette(color!)
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
+  },
+})
 
-  const styles = useStyleSheet(() => ({
-    container: {
-      width: 48,
-      height: 48,
-      borderRadius: 48 / 2,
-    },
-    innerContainer: {
-      justifyContent: "center",
-      alignItems: "center",
-    },
-  }));
-
+const IconButton: React.FC<IconButtonProps> = ({
+  icon,
+  color = "onBackground",
+  ...rest
+}) => {
+  const palette = usePalette(color)
   return (
-    <TouchableSurface
-      style={styles.container}
-      innerStyle={styles.innerContainer}
-      overlayColor={palette.color}
-      absoluteSize
-      {...rest}
-    >
+    <Touchable style={styles.container} underlayColor={palette.color} {...rest}>
       {icon}
-    </TouchableSurface>
+    </Touchable>
   );
-};
-
-IconButton.defaultProps = {
-  color: "onBackground",
-  size: "medium",
 };
 
 export default IconButton;

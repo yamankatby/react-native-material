@@ -11,6 +11,7 @@ import {
   IconButton,
   Surface,
   Text,
+  Touchable,
   useTheme,
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
@@ -52,6 +53,10 @@ const Overview = () => {
         <Text>Hi</Text>
       </P>
 
+      <Touchable
+        style={{ width: 56, height: 56, backgroundColor: 'pink', elevation: 12 }}
+        rippleColor="red"
+      />
 
       <Ripple style={{ backgroundColor: 'red', width: 120, height: 120, borderRadius: 60 }}>
         <Ripple style={{ width: 60, height: 60, background: 'blue' }}>
