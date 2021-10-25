@@ -103,7 +103,7 @@ const FABExample = () => {
       </Section>
 
       <Section name="loading" title="Loading">
-        <Switch tintColor={theme.colorScheme.secondary} value={isLoading} onValueChange={(val) => setIsLoading(val)} />
+        <Switch tintColor={theme.palette.secondary} value={isLoading} onValueChange={(val) => setIsLoading(val)} />
         {separator}
         <FAB
           icon={(props) => <Icon name="plus" {...props} />}
@@ -141,7 +141,7 @@ const FABExample = () => {
       </Section>
 
       <Section name="custom-loading-indicator" title="Custom Loading Indicator">
-        <Switch tintColor={theme.colorScheme.error} value={isLoading} onValueChange={(val) => setIsLoading(val)} />
+        <Switch tintColor={theme.palette.error} value={isLoading} onValueChange={(val) => setIsLoading(val)} />
         {separator}
         <FAB
           icon={(props) => <Icon name="plus" {...props} />}
