@@ -17,16 +17,17 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 48 / 2,
   },
-})
+});
 
-const IconButton: React.FC<IconButtonProps> = ({
-  icon,
-  color = "onBackground",
-  ...rest
-}) => {
-  const palette = usePalette(color)
+const IconButton: React.FC<IconButtonProps> = ({ icon, color = "onBackground", style, ...rest }) => {
+  const palette = usePalette(color);
   return (
-    <Touchable style={styles.container} underlayColor={palette.color} rippleContainerBorderRadius={24} {...rest}>
+    <Touchable
+      style={[styles.container, style]}
+      underlayColor={palette.color}
+      rippleContainerBorderRadius={24}
+      {...rest}
+    >
       {icon}
     </Touchable>
   );

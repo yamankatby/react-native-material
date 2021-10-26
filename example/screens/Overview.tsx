@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Platform, Pressable, View } from "react-native";
-import { Button, useTheme } from "@react-native-material/core";
-import TextField from "@react-native-material/core/lib/TextField";
+import { Button, IconButton, useTheme } from "@react-native-material/core";
+import TextField from "@react-native-material/core/lib/TextInput";
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import createAnimatedComponent = Animated.createAnimatedComponent;
 
 const paper = {
@@ -39,24 +40,44 @@ const Overview = () => {
       flex: 1,
       paddingTop: 56,
       paddingHorizontal: 16,
-      backgroundColor: 'white',
+      backgroundColor: theme.palette.background,
       overflow: 'hidden',
     }}>
 
-      <TextField variant={"flat"} />
-
+      <TextField variant="flat"
+                 assistiveText="Lorem ipsum dolor sit amet." />
       <View style={{ height: 18 }} />
-
-      <TextField variant={"outlined"} style={{ marginTop: 16 }} />
-
+      <TextField variant="flat" label="Multiline Placeholder"
+                 trailing={<IconButton style={{ width: 40, height: 40 }}
+                                      icon={<MaterialCommunityIcons name="eye" size={24} />} />}
+                 assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, doloribus." color="red" />
       <View style={{ height: 18 }} />
-
+      <TextField variant="flat" label="Info" color="info" />
+      <View style={{ height: 18 }} />
+      <TextField variant="flat" label="Warning" color="warning" />
+      <View style={{ height: 18 }} />
+      <TextField variant="flat" label="Error" color="error" />
+      <View style={{ height: 18 }} />
+      <TextField variant="outlined" />
+      <View style={{ height: 18 }} />
+      <TextField variant="outlined" label="Multiline Placeholder"
+                 color={"red"}
+                 leading={<IconButton style={{ width: 40, height: 40 }}
+                                      icon={<MaterialCommunityIcons name="account" size={24} />} />}
+                 assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, doloribus." />
+      <View style={{ height: 18 }} />
+      <TextField variant="outlined" label="Info" color="info"
+                 assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, doloribus." />
+      <View style={{ height: 18 }} />
+      <TextField variant="outlined" label="Warning" color="warning" />
+      <View style={{ height: 18 }} />
+      <TextField variant="outlined" label="Error" color="error" />
+      <View style={{ height: 18 }} />
       <Button title={"Google"} />
       {/*<TextInput*/}
       {/*  style={{ borderWidth: 1, borderColor: 'gray', backgroundColor: 'yellow' }}*/}
       {/*  multiline*/}
       {/*/>*/}
-
       {/*<Ripple style={{ backgroundColor: 'red', width: 120, height: 120, borderRadius: 60 }}>*/}
       {/*  <Ripple style={{ width: 60, height: 60, background: 'blue' }}>*/}
       {/*    <Text>HI</Text>*/}
