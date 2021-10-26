@@ -102,11 +102,11 @@ const TextInput: React.FC<TextInputProps> = ({
 
   return (
     <View>
-      <View style={[shapes.medium, { flexDirection: 'row' }, variant === 'flat' && {
+      <View style={[shapes.medium, { flexDirection: 'row' }, variant === 'flat' ? {
         backgroundColor: surfaceScale(0.08).hex(),
         borderBottomStartRadius: 0,
         borderBottomEndRadius: 0,
-      }]}>
+      } : { backgroundColor: palette.surface }]}>
         {leading && <View style={{ width: 40, height: 40, marginTop: 8 }}>{leading}</View>}
         <NativeTextInput
           {...rest}

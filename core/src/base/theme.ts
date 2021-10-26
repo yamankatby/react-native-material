@@ -618,11 +618,11 @@ export const defaultTheme: Theme = {
       textTransform: "uppercase",
     },
     caption: {
-      fontSize: 10,
+      fontSize: 12,
       letterSpacing: 0.4,
     },
     overline: {
-      fontSize: 12,
+      fontSize: 10,
       letterSpacing: 1.5,
       textTransform: "uppercase",
     },
