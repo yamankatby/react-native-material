@@ -5,7 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
-import { darkTheme, defaultTheme, ThemeProvider } from "@react-native-material/core";
+import { defaultTheme, ThemeProvider } from "@react-native-material/core";
 import { Provider } from "react-native-paper";
 
 const t = {
@@ -72,10 +72,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <ThemeProvider theme={colorScheme === 'dark' ? { ...darkTheme, typography: t } : {
-          ...defaultTheme,
-          typography: t,
-        }}>
+        <ThemeProvider>
           <Provider>
             <Navigation colorScheme={colorScheme} />
             <StatusBar />
