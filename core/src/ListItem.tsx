@@ -48,7 +48,6 @@ const ListItem: React.FC<ListItemProps> = ({
             justifyContent: 'center',
             alignItems: 'center',
             marginStart: leadingMode === 'image' ? 0 : 16,
-            backgroundColor: 'gray',
           }}
         >{leading}</View>}
         <View style={{ flex: 1, marginHorizontal: 16 }}>

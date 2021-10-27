@@ -9,8 +9,13 @@ export interface SurfaceProps extends Animated.AnimatedProps<ViewProps> {
 }
 
 const Surface: React.FC<SurfaceProps> = ({ category = "small", elevation = 0, style, ...rest }) => {
-  const { elevations, shapes } = useTheme();
-  return <Animated.View style={[shapes[category], elevations[elevation], style]} {...rest} />;
+  const { elevations, shapes, palette } = useTheme();
+  return (
+    <Animated.View
+      style={[shapes[category], elevations[elevation], { backgroundColor: palette.surface }, style]}
+      {...rest}
+    />
+  );
 };
 
 export default Surface;
