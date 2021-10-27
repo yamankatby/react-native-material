@@ -121,7 +121,6 @@ const Appbar: React.FC<AppbarProps> = ({
     container: {
       backgroundColor: palette.color,
       borderRadius: 0,
-      elevation: palette.color === 'transparent' ? 0 : position === "top" ? 4 : 8,
     },
     imageContainer: {
       backgroundColor: "red",
@@ -163,7 +162,8 @@ const Appbar: React.FC<AppbarProps> = ({
   );
 
   return (
-    <Surface style={[styles.container, style]} {...rest}>
+    <Surface elevation={palette.color === 'transparent' ? 0 : position === "top" ? 4 : 8}
+             style={[styles.container, style]} {...rest}>
       {image && (
         <Animated.View style={[StyleSheet.absoluteFillObject, { opacity }, imageContainerStyle]}>{image}</Animated.View>
       )}
