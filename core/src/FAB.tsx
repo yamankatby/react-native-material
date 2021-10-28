@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef } from "react";
-import { ActivityIndicator, Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import { Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
 import Text from "./Text";
+import ActivityIndicator from "./ActivityIndicator";
 
 export interface FABProps extends TouchableSurfaceProps {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;

@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
-import { ActivityIndicator, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import chroma from "chroma-js";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
 import Text from "./Text";
+import ActivityIndicator from "./ActivityIndicator";
 
 export interface ButtonProps extends TouchableSurfaceProps {
   title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
