@@ -11,9 +11,20 @@ export interface DialogProps extends SurfaceProps {
   actions?: React.ReactElement[];
 
   fullScreen?: boolean;
+
+  dividers?: boolean;
 }
 
-const Dialog: React.FC<DialogProps> = ({ title, message, actions, style, children, ...rest }) => {
+const Dialog: React.FC<DialogProps> = ({
+  title,
+  message,
+  actions,
+  fullScreen,
+  dividers,
+  style,
+  children,
+  ...rest
+}) => {
   return (
     <Surface elevation={24} style={[style, { padding: 16 }]} {...rest}>
       {title && <Text variant="h6">{title}</Text>}
