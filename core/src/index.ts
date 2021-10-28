@@ -1,4 +1,5 @@
 export * from "./base";
+export { default as ActivityIndicator, ActivityIndicatorProps } from "./ActivityIndicator";
 export { default as Appbar, AppbarProps } from "./Appbar";
 export { default as Avatar, AvatarProps } from "./Avatar";
 export { default as Backdrop, BackdropProps } from "./Backdrop";
@@ -16,6 +17,7 @@ export { default as Menu, MenuProps } from "./Menu";
 export { default as MenuItem, MenuItemProps } from "./MenuItem";
 export { default as Snackbar, SnackbarProps } from "./Snackbar";
 export { default as Surface, SurfaceProps } from "./Surface";
+export { default as Switch, SwitchProps } from "./Switch";
 export { default as Text, TextProps } from "./Text";
 export { default as TextInput, TextInputProps } from "./TextInput";
 export { default as Touchable, TouchableProps } from "./Touchable";
