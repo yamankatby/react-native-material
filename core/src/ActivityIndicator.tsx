@@ -10,10 +10,8 @@ export interface ActivityIndicatorProps extends NativeActivityIndicatorProps {
 }
 
 const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ color = "primary", ...rest }) => {
-  const palette = usePalette(color)
-  return (
-    <NativeActivityIndicator color={palette.color} {...rest} />
-  )
+  const palette = usePalette(color);
+  return <NativeActivityIndicator color={palette.color} {...rest} />;
 };
 
 export default ActivityIndicator;

@@ -268,7 +268,12 @@ function App() {
           <TextInput label="Label" style={{ marginTop: 24, width: 360 }} />
           <TextInput label="Label" color="error" style={{ marginTop: 24 }} />
           <TextInput label="Label" leading={<Icon name="link" size={24} />} style={{ marginTop: 24 }} />
-          <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24 }} secureTextEntry />
+          <TextInput
+            label="Label"
+            trailing={<Icon name="link" size={24} />}
+            style={{ marginTop: 24 }}
+            secureTextEntry
+          />
           <TextInput
             label="Label"
             leading={<IconButton icon={<Icon name="link" size={24} />} />}
@@ -816,9 +821,6 @@ function App() {
           <TouchableSurface elevation={24} style={{ width: 80, height: 80, margin: 12 }} />
         </View>
       </View>
-
-      <Divider />
-
       <StatusBar style="auto" />
     </View>
   );
