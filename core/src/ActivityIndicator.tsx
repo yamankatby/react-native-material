@@ -3,16 +3,16 @@ import {
   ActivityIndicator as NativeActivityIndicator,
   ActivityIndicatorProps as NativeActivityIndicatorProps,
 } from "react-native";
-import { useTheme } from "./base";
+import { PaletteColor, usePalette } from "./base";
 
 export interface ActivityIndicatorProps extends NativeActivityIndicatorProps {
-
+  color?: PaletteColor;
 }
 
-const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ ...rest }) => {
-  const { palette } = useTheme()
+const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ color = "primary", ...rest }) => {
+  const palette = usePalette(color)
   return (
-    <NativeActivityIndicator color={palette.primary} {...rest} />
+    <NativeActivityIndicator color={palette.color} {...rest} />
   )
 };
 
