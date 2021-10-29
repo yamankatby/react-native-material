@@ -36,6 +36,7 @@ const TextInput: React.FC<TextInputProps> = ({
   trailing,
   onFocus,
   onBlur,
+  style,
   onChangeText,
   ...rest
 }) => {
@@ -101,7 +102,7 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 
   return (
-    <View>
+    <View style={style}>
       <View style={[shapes.medium, { flexDirection: 'row' }, variant === 'flat' ? {
         backgroundColor: surfaceScale(0.08).hex(),
         borderBottomStartRadius: 0,

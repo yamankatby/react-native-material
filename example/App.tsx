@@ -10,11 +10,17 @@ import {
   Badge,
   Banner,
   Button,
+  Divider,
   FAB,
   IconButton,
+  ListItem,
+  Snackbar,
+  Surface,
   Switch,
   Text,
+  TextInput,
   ThemeProvider,
+  TouchableSurface,
   useTheme,
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
@@ -546,6 +552,242 @@ function App() {
           style={{ margin: 12 }}
         />
       </View>
+
+      <View style={{ marginTop: 24, width: 360 }}>
+        <ListItem
+          title="Lorem ipsum."
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+          overline="Overline"
+          meta="Meta"
+        />
+        <ListItem
+          title="Lorem ipsum."
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+          overline="Overline"
+          meta="Meta"
+          leading={<Icon name="phone" size={24} />}
+        />
+        <ListItem
+          title="Lorem ipsum."
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+          overline="Overline"
+          meta="Meta"
+          trailing={<Icon name="link" size={24} />}
+        />
+        <ListItem
+          title="Lorem ipsum."
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
+          leadingMode="avatar"
+          leading={<Avatar label="Yaman KATBY" />}
+          trailing={<IconButton icon={<Icon name="map" size={24} />} />}
+        />
+        <ListItem
+          title="Lorem ipsum."
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
+          leadingMode="image"
+          leading={<View style={{ width: 100, height: 56, backgroundColor: "gray" }} />}
+        />
+      </View>
+
+      <View style={{ marginTop: 24, width: 360 }}>
+        <Snackbar message="Lorem ipsum dolor sit." />
+        <Snackbar
+          style={{ marginTop: 24 }}
+          message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
+        />
+        <Snackbar
+          style={{ marginTop: 24 }}
+          message="Lorem ipsum dolor sit."
+          action={<Button variant="text" compact title="Button" />}
+        />
+        <Snackbar
+          style={{ marginTop: 24 }}
+          message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
+          action={<Button variant="text" compact title="Button" />}
+        />
+      </View>
+
+      <View style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", marginTop: 24 }}>
+        <Surface elevation={1} style={{ width: 80, height: 80 }} />
+        <Surface elevation={2} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={3} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={4} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={5} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={6} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={7} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={8} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={9} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={10} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={11} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={12} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={13} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={14} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={15} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={16} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={17} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={18} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={19} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={20} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={21} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={22} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={23} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <Surface elevation={24} style={{ width: 80, height: 80, marginStart: 24 }} />
+      </View>
+
+      <View style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", marginTop: 24 }}>
+        <TouchableSurface elevation={1} style={{ width: 80, height: 80 }} />
+        <TouchableSurface elevation={2} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={3} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={4} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={5} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={6} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={7} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={8} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={9} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={10} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={11} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={12} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={13} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={14} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={15} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={16} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={17} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={18} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={19} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={20} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={21} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={22} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={23} style={{ width: 80, height: 80, marginStart: 24 }} />
+        <TouchableSurface elevation={24} style={{ width: 80, height: 80, marginStart: 24 }} />
+      </View>
+
+      <View style={{ flexDirection: "row", marginTop: 24 }}>
+        <Switch />
+        <Switch value={true} style={{ marginStart: 24 }} />
+      </View>
+
+      <Text variant="h1" style={{ marginTop: 24 }}>
+        h1. Heading
+      </Text>
+      <Text variant="h2" style={{ marginTop: 24 }}>
+        h2. Heading
+      </Text>
+      <Text variant="h3" style={{ marginTop: 24 }}>
+        h3. Heading
+      </Text>
+      <Text variant="h4" style={{ marginTop: 24 }}>
+        h4. Heading
+      </Text>
+      <Text variant="h5" style={{ marginTop: 24 }}>
+        h5. Heading
+      </Text>
+      <Text variant="h6" style={{ marginTop: 24 }}>
+        h6. Heading
+      </Text>
+      <Text variant="subtitle1" style={{ marginTop: 24 }}>
+        subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+      </Text>
+      <Text variant="subtitle2" style={{ marginTop: 24 }}>
+        subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+      </Text>
+      <Text variant="body1" style={{ marginTop: 24 }}>
+        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
+        beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
+        quasi quidem quibusdam.
+      </Text>
+      <Text variant="body2" style={{ marginTop: 24 }}>
+        body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
+        beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
+        quasi quidem quibusdam.
+      </Text>
+      <Text variant="button" style={{ marginTop: 24 }}>
+        BUTTON TEXT
+      </Text>
+      <Text variant="caption" style={{ marginTop: 24 }}>
+        Caption text
+      </Text>
+      <Text variant="overline" style={{ marginTop: 24 }}>
+        Overline text
+      </Text>
+
+      <TextInput style={{ marginTop: 24, width: 360 }} />
+      <TextInput label="Label" style={{ marginTop: 24, width: 360 }} />
+      <TextInput label="Label" color="error" style={{ marginTop: 24, width: 360 }} />
+      <TextInput label="Label" leading={<Icon name="link" size={24} />} style={{ marginTop: 24, width: 360 }} />
+      <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24, width: 360 }} />
+      <TextInput
+        label="Label"
+        leading={<IconButton icon={<Icon name="link" size={24} />} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        label="Label"
+        trailing={<IconButton icon={<Icon name="link" size={24} />} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        label="Label"
+        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        label="Label"
+        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+        color="warning"
+        style={{ marginTop: 24, width: 360 }}
+      />
+
+      <TextInput variant="outlined" style={{ marginTop: 24, width: 360 }} />
+      <TextInput variant="outlined" label="Label" style={{ marginTop: 24, width: 360 }} />
+      <TextInput variant="outlined" label="Label" color="error" style={{ marginTop: 24, width: 360 }} />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        leading={<Icon name="link" size={24} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        trailing={<Icon name="link" size={24} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        leading={<IconButton icon={<Icon name="link" size={24} />} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        trailing={<IconButton icon={<Icon name="link" size={24} />} />}
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+        style={{ marginTop: 24, width: 360 }}
+      />
+      <TextInput
+        variant="outlined"
+        label="Label"
+        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+        color="warning"
+        style={{ marginTop: 24, width: 360 }}
+      />
+
+      <View style={{ flexDirection: "row", marginTop: 24 }}>
+        <IconButton icon={<Icon name={"function"} size={24} />} />
+        <IconButton icon={<Icon name={"link"} size={24} />} color="secondary" style={{ marginStart: 24 }} />
+        <IconButton icon={<Icon name={"head"} size={24} />} color="error" style={{ marginStart: 24 }} />
+        <IconButton icon={<Icon name={"key"} size={24} />} color="warning" style={{ marginStart: 24 }} />
+        <IconButton icon={<Icon name={"timer"} size={24} />} color="info" style={{ marginStart: 24 }} />
+        <IconButton icon={<Icon name={"script"} size={24} />} color="success" style={{ marginStart: 24 }} />
+      </View>
+
+      <Divider />
 
       <StatusBar style="auto" />
     </View>
