@@ -73,7 +73,7 @@ const ListItem: React.FC<ListItemProps> = ({
           {trailing}
         </View>}
       </View>
-      <Divider />
+      <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
     </Touchable>
   )
 };

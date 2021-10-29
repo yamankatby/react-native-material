@@ -60,11 +60,9 @@ function App() {
                 onPress={() => undefined}
                 icon={<Icon name="magnify" size={24} color={props.color} />}
               />,
-              <IconButton
-                {...props}
-                onPress={() => undefined}
-                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-              />,
+              <View style={{ width: 48, height: 48, justifyContent: "center", alignItems: "center" }}>
+                <ActivityIndicator color="onPrimary" />
+              </View>,
             ]}
             style={{ marginTop: 24 }}
           />
@@ -240,7 +238,12 @@ function App() {
             title="Lorem ipsum."
             secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
             leadingMode="image"
-            leading={<View style={{ width: 100, height: 56, backgroundColor: "gray" }} />}
+            leading={
+              <Image
+                source={{ uri: "https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png" }}
+                style={{ position: "absolute", top: 0, start: 0, end: 0, bottom: 0 }}
+              />
+            }
           />
         </View>
         <View style={{ margin: 24, width: 360 }}>
@@ -265,7 +268,7 @@ function App() {
           <TextInput label="Label" style={{ marginTop: 24, width: 360 }} />
           <TextInput label="Label" color="error" style={{ marginTop: 24 }} />
           <TextInput label="Label" leading={<Icon name="link" size={24} />} style={{ marginTop: 24 }} />
-          <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24 }} />
+          <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24 }} secureTextEntry />
           <TextInput
             label="Label"
             leading={<IconButton icon={<Icon name="link" size={24} />} />}
@@ -717,47 +720,47 @@ function App() {
           />
         </View>
         <View style={{ margin: 24, width: 1080 }}>
-          <Text variant="h1" style={{ marginTop: 24 }}>
+          <Text variant="h1" style={{ marginTop: 24, color: palette.onBackground }}>
             h1. Heading
           </Text>
-          <Text variant="h2" style={{ marginTop: 24 }}>
+          <Text variant="h2" style={{ marginTop: 24, color: palette.onBackground }}>
             h2. Heading
           </Text>
-          <Text variant="h3" style={{ marginTop: 24 }}>
+          <Text variant="h3" style={{ marginTop: 24, color: palette.onBackground }}>
             h3. Heading
           </Text>
-          <Text variant="h4" style={{ marginTop: 24 }}>
+          <Text variant="h4" style={{ marginTop: 24, color: palette.onBackground }}>
             h4. Heading
           </Text>
-          <Text variant="h5" style={{ marginTop: 24 }}>
+          <Text variant="h5" style={{ marginTop: 24, color: palette.onBackground }}>
             h5. Heading
           </Text>
-          <Text variant="h6" style={{ marginTop: 24 }}>
+          <Text variant="h6" style={{ marginTop: 24, color: palette.onBackground }}>
             h6. Heading
           </Text>
-          <Text variant="subtitle1" style={{ marginTop: 24 }}>
+          <Text variant="subtitle1" style={{ marginTop: 24, color: palette.onBackground }}>
             subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
           </Text>
-          <Text variant="subtitle2" style={{ marginTop: 24 }}>
+          <Text variant="subtitle2" style={{ marginTop: 24, color: palette.onBackground }}>
             subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
           </Text>
-          <Text variant="body1" style={{ marginTop: 24 }}>
+          <Text variant="body1" style={{ marginTop: 24, color: palette.onBackground }}>
             body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
             beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
             Eum quasi quidem quibusdam.
           </Text>
-          <Text variant="body2" style={{ marginTop: 24 }}>
+          <Text variant="body2" style={{ marginTop: 24, color: palette.onBackground }}>
             body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam
             beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti?
             Eum quasi quidem quibusdam.
           </Text>
-          <Text variant="button" style={{ marginTop: 24 }}>
+          <Text variant="button" style={{ marginTop: 24, color: palette.onBackground }}>
             BUTTON TEXT
           </Text>
-          <Text variant="caption" style={{ marginTop: 24 }}>
+          <Text variant="caption" style={{ marginTop: 24, color: palette.onBackground }}>
             Caption text
           </Text>
-          <Text variant="overline" style={{ marginTop: 24 }}>
+          <Text variant="overline" style={{ marginTop: 24, color: palette.onBackground }}>
             Overline text
           </Text>
         </View>

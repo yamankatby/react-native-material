@@ -108,7 +108,13 @@ const TextInput: React.FC<TextInputProps> = ({
         borderBottomStartRadius: 0,
         borderBottomEndRadius: 0,
       } : { backgroundColor: palette.surface }]}>
-        {leading && <View style={{ width: 40, height: 40, marginTop: 8 }}>{leading}</View>}
+        {leading && <View style={{
+          width: 48,
+          height: 48,
+          marginTop: 4,
+          alignItems: "center",
+          justifyContent: "center",
+        }}>{leading}</View>}
         <NativeTextInput
           {...rest}
           onFocus={handleOnFocus}
@@ -116,12 +122,18 @@ const TextInput: React.FC<TextInputProps> = ({
           onChangeText={handleOnChangeText}
           style={[
             typography.subtitle1,
-            { flex: 1, minHeight: 56, paddingHorizontal: 16, color: palette.onSurface },
+            { flex: 1, minHeight: 56, paddingHorizontal: leading ? 8 : 16, color: palette.onSurface },
             shapes.medium,
             variant === "flat" && { paddingTop: label ? 14 : 0 },
           ]}
         />
-        {trailing && <View style={{ width: 40, height: 40, marginTop: 8 }}>{trailing}</View>}
+        {trailing && <View style={{
+          width: 48,
+          height: 48,
+          marginTop: 4,
+          alignItems: "center",
+          justifyContent: "center",
+        }}>{trailing}</View>}
         {variant === "flat" && (
           <>
             <View
