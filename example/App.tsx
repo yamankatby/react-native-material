@@ -33,225 +33,391 @@ function App() {
   const { palette } = useTheme();
 
   return (
-    <View style={{ padding: 24, backgroundColor: palette.background }}>
-      <View style={{ flexDirection: "row" }}>
-        <ActivityIndicator />
-        <ActivityIndicator color="secondary" style={{ marginStart: 24 }} />
-        <ActivityIndicator color="error" size="large" style={{ marginStart: 24 }} />
-      </View>
+    <View style={{ backgroundColor: palette.background }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+        <View style={{ margin: 24, width: 360 }}>
+          <Appbar title="Page title" />
 
-      <Appbar title="Page title" style={{ width: 360, marginTop: 24 }} />
+          <Appbar title="Page title" centerTitle color="secondary" style={{ marginTop: 24 }} />
 
-      <Appbar title="Page title" centerTitle color="secondary" style={{ width: 360, marginTop: 24 }} />
-
-      <Appbar
-        title="Page title"
-        leading={props => (
-          <IconButton {...props} onPress={() => undefined} icon={<Icon name="menu" size={24} color={props.color} />} />
-        )}
-        trailing={props => [
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="heart" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-          />,
-        ]}
-        style={{ width: 360, marginTop: 24 }}
-      />
-
-      <Appbar
-        variant="prominent"
-        title="Page title"
-        leading={props => (
-          <IconButton {...props} onPress={() => undefined} icon={<Icon name="menu" size={24} color={props.color} />} />
-        )}
-        trailing={props => [
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="heart" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-          />,
-        ]}
-        style={{ width: 360, marginTop: 24 }}
-      />
-
-      <Appbar
-        variant="prominent"
-        title="Page title"
-        leading={props => (
-          <IconButton {...props} onPress={() => undefined} icon={<Icon name="menu" size={24} color={props.color} />} />
-        )}
-        trailing={props => [
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="heart" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-          />,
-        ]}
-        image={
-          <Image
-            source={{ uri: "https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png" }}
-            style={{ position: "absolute", top: 0, start: 0, end: 0, bottom: 0 }}
-          />
-        }
-        style={{ width: 360, marginTop: 24 }}
-      >
-        <FAB
-          icon={props => <Icon name="plus" {...props} />}
-          onPress={() => undefined}
-          style={{ position: "absolute", end: 16, bottom: -28 }}
-        />
-      </Appbar>
-
-      <Appbar
-        variant="prominent"
-        title="Page title"
-        leading={props => (
-          <IconButton {...props} onPress={() => undefined} icon={<Icon name="menu" size={24} color={props.color} />} />
-        )}
-        trailing={props => [
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="heart" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-          />,
-        ]}
-        style={{ width: 360, marginTop: 24 + 28 }}
-      >
-        <FAB
-          size="mini"
-          icon={props => <Icon name="plus" {...props} />}
-          onPress={() => undefined}
-          style={{ position: "absolute", start: 16, bottom: -20 }}
-        />
-      </Appbar>
-
-      <Appbar
-        position="bottom"
-        leading={props => (
-          <IconButton {...props} onPress={() => undefined} icon={<Icon name="menu" size={24} color={props.color} />} />
-        )}
-        trailing={props => [
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
-          />,
-          <IconButton
-            {...props}
-            onPress={() => undefined}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
-          />,
-        ]}
-        style={{ width: 360, marginTop: 24 + 28 }}
-      >
-        <FAB
-          icon={props => <Icon name="plus" {...props} />}
-          onPress={() => undefined}
-          style={{ position: "absolute", top: -28, alignSelf: "center" }}
-        />
-      </Appbar>
-
-      <View style={{ flexDirection: "row", marginTop: 24 }}>
-        <Avatar label="Kent Dodds" />
-        <Avatar style={{ marginStart: 24 }} label="UN" initials={false} />
-        <Avatar style={{ marginStart: 24 }} label="Jed Watson" autoColor />
-        <Avatar style={{ marginStart: 24 }} label="Tim Neutkens" autoColor />
-        <Avatar style={{ marginStart: 24 }} icon={props => <Icon name="account" {...props} />} />
-        <Avatar
-          style={{ marginStart: 24 }}
-          icon={props => <Icon name="account" {...props} />}
-          label="Jed Watson"
-          autoColor
-        />
-        <Avatar
-          style={{ marginStart: 24 }}
-          icon={props => <Icon name="calendar" {...props} />}
-          label="Tim Neutkens"
-          autoColor
-        />
-        <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
-        <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }} />
-        <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }} />
-      </View>
-
-      <Backdrop
-        style={{ width: 360, minHeight: 200, marginTop: 24 }}
-        revealed={revealed}
-        header={
           <Appbar
             title="Page title"
-            elevation={0}
             leading={props => (
               <IconButton
-                color={props.color}
-                onPress={() => setRevealed(prev => !prev)}
+                {...props}
+                onPress={() => undefined}
                 icon={<Icon name="menu" size={24} color={props.color} />}
               />
             )}
+            trailing={props => [
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="heart" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="magnify" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+              />,
+            ]}
+            style={{ marginTop: 24 }}
           />
-        }
-        backLayer={
-          <View style={{ height: 94, padding: 16 }}>
-            <Text variant="h4">Hi</Text>
+
+          <Appbar
+            variant="prominent"
+            title="Page title"
+            leading={props => (
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="menu" size={24} color={props.color} />}
+              />
+            )}
+            trailing={props => [
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="heart" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="magnify" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+              />,
+            ]}
+            style={{ marginTop: 24 }}
+          />
+
+          <Appbar
+            variant="prominent"
+            title="Page title"
+            leading={props => (
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="menu" size={24} color={props.color} />}
+              />
+            )}
+            trailing={props => [
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="heart" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="magnify" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+              />,
+            ]}
+            image={
+              <Image
+                source={{ uri: "https://i.pinimg.com/originals/42/f2/14/42f214e4d180133b810b1d2b252cf389.png" }}
+                style={{ position: "absolute", top: 0, start: 0, end: 0, bottom: 0 }}
+              />
+            }
+            style={{ marginTop: 24 }}
+          >
+            <FAB
+              icon={props => <Icon name="plus" {...props} />}
+              onPress={() => undefined}
+              style={{ position: "absolute", end: 16, bottom: -28 }}
+            />
+          </Appbar>
+
+          <Appbar
+            variant="prominent"
+            title="Page title"
+            leading={props => (
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="menu" size={24} color={props.color} />}
+              />
+            )}
+            trailing={props => [
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="heart" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="magnify" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+              />,
+            ]}
+            style={{ marginTop: 24 + 28 }}
+          >
+            <FAB
+              size="mini"
+              icon={props => <Icon name="plus" {...props} />}
+              onPress={() => undefined}
+              style={{ position: "absolute", start: 16, bottom: -20 }}
+            />
+          </Appbar>
+
+          <Appbar
+            position="bottom"
+            leading={props => (
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="menu" size={24} color={props.color} />}
+              />
+            )}
+            trailing={props => [
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="magnify" size={24} color={props.color} />}
+              />,
+              <IconButton
+                {...props}
+                onPress={() => undefined}
+                icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+              />,
+            ]}
+            style={{ marginTop: 24 + 28 }}
+          >
+            <FAB
+              icon={props => <Icon name="plus" {...props} />}
+              onPress={() => undefined}
+              style={{ position: "absolute", top: -28, alignSelf: "center" }}
+            />
+          </Appbar>
+        </View>
+        <View style={{ margin: 24, width: 360 }}>
+          <ListItem
+            title="Lorem ipsum."
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+            overline="Overline"
+            meta="Meta"
+          />
+          <ListItem
+            title="Lorem ipsum."
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+            overline="Overline"
+            meta="Meta"
+            leading={<Icon name="phone" size={24} />}
+          />
+          <ListItem
+            title="Lorem ipsum."
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
+            overline="Overline"
+            meta="Meta"
+            trailing={<Icon name="link" size={24} />}
+          />
+          <ListItem
+            title="Lorem ipsum."
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
+            leadingMode="avatar"
+            leading={<Avatar label="Yaman KATBY" />}
+            trailing={<IconButton icon={<Icon name="map" size={24} />} />}
+          />
+          <ListItem
+            title="Lorem ipsum."
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
+            leadingMode="image"
+            leading={<View style={{ width: 100, height: 56, backgroundColor: "gray" }} />}
+          />
+        </View>
+        <View style={{ margin: 24, width: 360 }}>
+          <Snackbar message="Lorem ipsum dolor sit." />
+          <Snackbar
+            style={{ marginTop: 24 }}
+            message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
+          />
+          <Snackbar
+            style={{ marginTop: 24 }}
+            message="Lorem ipsum dolor sit."
+            action={<Button variant="text" compact title="Button" />}
+          />
+          <Snackbar
+            style={{ marginTop: 24 }}
+            message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
+            action={<Button variant="text" compact title="Button" />}
+          />
+        </View>
+        <View style={{ margin: 24, width: 360 }}>
+          <TextInput />
+          <TextInput label="Label" style={{ marginTop: 24, width: 360 }} />
+          <TextInput label="Label" color="error" style={{ marginTop: 24 }} />
+          <TextInput label="Label" leading={<Icon name="link" size={24} />} style={{ marginTop: 24 }} />
+          <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24 }} />
+          <TextInput
+            label="Label"
+            leading={<IconButton icon={<Icon name="link" size={24} />} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            label="Label"
+            trailing={<IconButton icon={<Icon name="link" size={24} />} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            label="Label"
+            assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            label="Label"
+            assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+            color="warning"
+            style={{ marginTop: 24 }}
+          />
+        </View>
+        <View style={{ margin: 24, width: 360 }}>
+          <TextInput variant="outlined" />
+          <TextInput variant="outlined" label="Label" style={{ marginTop: 24 }} />
+          <TextInput variant="outlined" label="Label" color="error" style={{ marginTop: 24 }} />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            leading={<Icon name="link" size={24} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            trailing={<Icon name="link" size={24} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            leading={<IconButton icon={<Icon name="link" size={24} />} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            trailing={<IconButton icon={<Icon name="link" size={24} />} />}
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+            style={{ marginTop: 24 }}
+          />
+          <TextInput
+            variant="outlined"
+            label="Label"
+            assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
+            color="warning"
+            style={{ marginTop: 24 }}
+          />
+        </View>
+        <View style={{ margin: 24, width: 360 }}>
+          <Backdrop
+            style={{ height: 200 }}
+            revealed={revealed}
+            header={
+              <Appbar
+                title="Page title"
+                elevation={0}
+                leading={props => (
+                  <IconButton
+                    color={props.color}
+                    onPress={() => setRevealed(prev => !prev)}
+                    icon={<Icon name="menu" size={24} color={props.color} />}
+                  />
+                )}
+              />
+            }
+            backLayer={
+              <View style={{ height: 94, padding: 16 }}>
+                <Text variant="h4">Hi</Text>
+              </View>
+            }
+          >
+            <BackdropSubheader title="Subheader" />
+          </Backdrop>
+
+          <Banner
+            style={{ marginTop: 24 }}
+            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, impedit, sint. Numquam, porro, voluptatem."
+            buttons={[
+              <Button title="Fix it" variant="text" compact />,
+              <Button title="Dismiss" variant="text" compact />,
+            ]}
+          />
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap", marginTop: 24 }}>
+            <ActivityIndicator />
+            <ActivityIndicator color="secondary" style={{ marginStart: 24 }} />
+            <ActivityIndicator color="error" size="large" style={{ marginStart: 24 }} />
           </View>
-        }
-      >
-        <BackdropSubheader title="Subheader" />
-      </Backdrop>
 
-      <View style={{ flexDirection: "row", marginTop: 24 }}>
-        <Badge label={4} />
-        <Badge style={{ marginStart: 24 }} label={23} />
-        <Badge style={{ marginStart: 24 }} label={100} color="primary" />
-        <Badge style={{ marginStart: 24 }} label="error" color="error" />
+          <View style={{ flexDirection: "row", flexWrap: "wrap", marginTop: 24 }}>
+            <Badge label={4} />
+            <Badge style={{ marginStart: 24 }} label={23} />
+            <Badge style={{ marginStart: 24 }} label={100} color="primary" />
+            <Badge style={{ marginStart: 24 }} label="error" color="error" />
+          </View>
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap", marginTop: 24 }}>
+            <Avatar label="Kent Dodds" />
+            <Avatar style={{ marginStart: 24 }} label="UN" initials={false} />
+            <Avatar style={{ marginStart: 24 }} label="Jed Watson" autoColor />
+            <Avatar style={{ marginStart: 24 }} label="Tim Neutkens" autoColor />
+            <Avatar style={{ marginStart: 24 }} icon={props => <Icon name="account" {...props} />} />
+            <Avatar
+              style={{ marginStart: 24 }}
+              icon={props => <Icon name="account" {...props} />}
+              label="Jed Watson"
+              autoColor
+            />
+            <Avatar
+              style={{ marginStart: 24 }}
+              icon={props => <Icon name="calendar" {...props} />}
+              label="Tim Neutkens"
+              autoColor
+            />
+            <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
+            <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }} />
+            <Avatar style={{ marginStart: 24 }} image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }} />
+          </View>
+
+          <Divider />
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap", marginTop: 24 }}>
+            <IconButton icon={<Icon name={"function"} size={24} />} />
+            <IconButton icon={<Icon name={"link"} size={24} />} color="secondary" style={{ marginStart: 24 }} />
+            <IconButton icon={<Icon name={"head"} size={24} />} color="error" style={{ marginStart: 24 }} />
+            <IconButton icon={<Icon name={"key"} size={24} />} color="warning" style={{ marginStart: 24 }} />
+            <IconButton icon={<Icon name={"timer"} size={24} />} color="info" style={{ marginStart: 24 }} />
+            <IconButton icon={<Icon name={"script"} size={24} />} color="success" style={{ marginStart: 24 }} />
+          </View>
+
+          <View style={{ flexDirection: "row", marginTop: 24 }}>
+            <Switch />
+            <Switch value={true} style={{ marginStart: 24 }} />
+          </View>
+        </View>
       </View>
-
-      <Banner
-        style={{ width: 360, marginTop: 24 }}
-        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, impedit, sint. Numquam, porro, voluptatem."
-        buttons={[<Button title="Fix it" variant="text" compact />, <Button title="Dismiss" variant="text" compact />]}
-      />
 
       <View style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", marginTop: 12 }}>
         <Button title="Contained" onPress={() => undefined} />
@@ -553,60 +719,6 @@ function App() {
         />
       </View>
 
-      <View style={{ marginTop: 24, width: 360 }}>
-        <ListItem
-          title="Lorem ipsum."
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
-          overline="Overline"
-          meta="Meta"
-        />
-        <ListItem
-          title="Lorem ipsum."
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
-          overline="Overline"
-          meta="Meta"
-          leading={<Icon name="phone" size={24} />}
-        />
-        <ListItem
-          title="Lorem ipsum."
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut corporis eaque illo natus veniam! Ullam, voluptate!"
-          overline="Overline"
-          meta="Meta"
-          trailing={<Icon name="link" size={24} />}
-        />
-        <ListItem
-          title="Lorem ipsum."
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
-          leadingMode="avatar"
-          leading={<Avatar label="Yaman KATBY" />}
-          trailing={<IconButton icon={<Icon name="map" size={24} />} />}
-        />
-        <ListItem
-          title="Lorem ipsum."
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipisicing."
-          leadingMode="image"
-          leading={<View style={{ width: 100, height: 56, backgroundColor: "gray" }} />}
-        />
-      </View>
-
-      <View style={{ marginTop: 24, width: 360 }}>
-        <Snackbar message="Lorem ipsum dolor sit." />
-        <Snackbar
-          style={{ marginTop: 24 }}
-          message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
-        />
-        <Snackbar
-          style={{ marginTop: 24 }}
-          message="Lorem ipsum dolor sit."
-          action={<Button variant="text" compact title="Button" />}
-        />
-        <Snackbar
-          style={{ marginTop: 24 }}
-          message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
-          action={<Button variant="text" compact title="Button" />}
-        />
-      </View>
-
       <View style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", marginTop: 24 }}>
         <Surface elevation={1} style={{ width: 80, height: 80 }} />
         <Surface elevation={2} style={{ width: 80, height: 80, marginStart: 24 }} />
@@ -661,11 +773,6 @@ function App() {
         <TouchableSurface elevation={24} style={{ width: 80, height: 80, marginStart: 24 }} />
       </View>
 
-      <View style={{ flexDirection: "row", marginTop: 24 }}>
-        <Switch />
-        <Switch value={true} style={{ marginStart: 24 }} />
-      </View>
-
       <Text variant="h1" style={{ marginTop: 24 }}>
         h1. Heading
       </Text>
@@ -709,83 +816,6 @@ function App() {
       <Text variant="overline" style={{ marginTop: 24 }}>
         Overline text
       </Text>
-
-      <TextInput style={{ marginTop: 24, width: 360 }} />
-      <TextInput label="Label" style={{ marginTop: 24, width: 360 }} />
-      <TextInput label="Label" color="error" style={{ marginTop: 24, width: 360 }} />
-      <TextInput label="Label" leading={<Icon name="link" size={24} />} style={{ marginTop: 24, width: 360 }} />
-      <TextInput label="Label" trailing={<Icon name="link" size={24} />} style={{ marginTop: 24, width: 360 }} />
-      <TextInput
-        label="Label"
-        leading={<IconButton icon={<Icon name="link" size={24} />} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        label="Label"
-        trailing={<IconButton icon={<Icon name="link" size={24} />} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        label="Label"
-        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        label="Label"
-        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
-        color="warning"
-        style={{ marginTop: 24, width: 360 }}
-      />
-
-      <TextInput variant="outlined" style={{ marginTop: 24, width: 360 }} />
-      <TextInput variant="outlined" label="Label" style={{ marginTop: 24, width: 360 }} />
-      <TextInput variant="outlined" label="Label" color="error" style={{ marginTop: 24, width: 360 }} />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        leading={<Icon name="link" size={24} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        trailing={<Icon name="link" size={24} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        leading={<IconButton icon={<Icon name="link" size={24} />} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        trailing={<IconButton icon={<Icon name="link" size={24} />} />}
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
-        style={{ marginTop: 24, width: 360 }}
-      />
-      <TextInput
-        variant="outlined"
-        label="Label"
-        assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolore enim error modi officiis."
-        color="warning"
-        style={{ marginTop: 24, width: 360 }}
-      />
-
-      <View style={{ flexDirection: "row", marginTop: 24 }}>
-        <IconButton icon={<Icon name={"function"} size={24} />} />
-        <IconButton icon={<Icon name={"link"} size={24} />} color="secondary" style={{ marginStart: 24 }} />
-        <IconButton icon={<Icon name={"head"} size={24} />} color="error" style={{ marginStart: 24 }} />
-        <IconButton icon={<Icon name={"key"} size={24} />} color="warning" style={{ marginStart: 24 }} />
-        <IconButton icon={<Icon name={"timer"} size={24} />} color="info" style={{ marginStart: 24 }} />
-        <IconButton icon={<Icon name={"script"} size={24} />} color="success" style={{ marginStart: 24 }} />
-      </View>
 
       <Divider />
 
