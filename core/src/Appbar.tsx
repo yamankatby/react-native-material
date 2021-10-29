@@ -1,15 +1,5 @@
-import React, { useEffect, useMemo, useRef } from "react";
-import {
-  Animated,
-  Platform,
-  StyleProp,
-  StyleSheet,
-  TextProps,
-  useWindowDimensions,
-  View,
-  ViewProps,
-  ViewStyle,
-} from "react-native";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Animated, Platform, StyleProp, StyleSheet, TextProps, View, ViewProps, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 
@@ -79,9 +69,9 @@ const Appbar: React.FC<AppbarProps> = ({
 
   const hasLeading = useMemo(() => !!leading, [leading]);
 
-  const dimensions = useWindowDimensions();
+  const [width, setWidth] = useState<number | undefined>();
 
-  const isTablet = useMemo(() => dimensions.width > 600, [dimensions.width]);
+  const isTablet = useMemo(() => width && width > 600, [width]);
 
   const regularHeight = useMemo(() => Platform.select({ ios: 44, default: isTablet ? 64 : 56 }), [isTablet]);
 
@@ -162,8 +152,12 @@ const Appbar: React.FC<AppbarProps> = ({
   );
 
   return (
-    <Surface elevation={palette.color === 'transparent' ? 0 : position === "top" ? 4 : 8}
-             style={[styles.container, style]} {...rest}>
+    <Surface
+      onLayout={e => setWidth(e.nativeEvent.layout.width)}
+      elevation={palette.color === "transparent" ? 0 : position === "top" ? 4 : 8}
+      style={[styles.container, style]}
+      {...rest}
+    >
       {image && (
         <Animated.View style={[StyleSheet.absoluteFillObject, { opacity }, imageContainerStyle]}>{image}</Animated.View>
       )}
