@@ -2,11 +2,11 @@ import React, { useMemo } from "react";
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import chroma from "chroma-js";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
+import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 
-export interface ButtonProps extends TouchableSurfaceProps {
+export interface ButtonProps extends SurfaceProps {
   title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
   leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -150,8 +150,8 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableSurface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]}
-                      underlayColor={contentColor} {...rest}>
+    <Surface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]}
+             underlayColor={contentColor} category="small" {...rest}>
       {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
       {getTitle()}
       {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}
@@ -159,7 +159,7 @@ const Button: React.FC<ButtonProps> = ({
       {loading && loadingIndicatorPosition === "overlay" && (
         <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
       )}
-    </TouchableSurface>
+    </Surface>
   );
 };
 

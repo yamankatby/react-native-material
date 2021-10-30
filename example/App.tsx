@@ -20,10 +20,10 @@ import {
   Text,
   TextInput,
   ThemeProvider,
-  TouchableSurface,
   useTheme,
 } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import { Provider } from "react-native-paper";
 
 function App() {
   const [revealed, setRevealed] = useState(false);
@@ -770,55 +770,27 @@ function App() {
           </Text>
         </View>
         <View style={{ margin: 12, width: 1080, flexDirection: "row", flexWrap: "wrap", alignItems: "center" }}>
-          <Surface elevation={1} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={2} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={3} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={4} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={5} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={6} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={7} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={8} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={9} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={10} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={11} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={12} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={13} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={14} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={15} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={16} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={17} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={18} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={19} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={20} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={21} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={22} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={23} style={{ width: 80, height: 80, margin: 12 }} />
-          <Surface elevation={24} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={0} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={1} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={2} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={3} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={4} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={6} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={8} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={12} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={16} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={24} style={{ width: 80, height: 80, margin: 12 }} />
 
-          <TouchableSurface elevation={1} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={2} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={3} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={4} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={5} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={6} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={7} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={8} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={9} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={10} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={11} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={12} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={13} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={14} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={15} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={16} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={17} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={18} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={19} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={20} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={21} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={22} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={23} style={{ width: 80, height: 80, margin: 12 }} />
-          <TouchableSurface elevation={24} style={{ width: 80, height: 80, margin: 12 }} />
+          <Surface category="small" elevation={0} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={1} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={2} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={3} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={4} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={6} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={8} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={12} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={16} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
+          <Surface category="small" elevation={24} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
         </View>
       </View>
       <StatusBar style="auto" />
@@ -829,7 +801,9 @@ function App() {
 export default function AppProvider() {
   return (
     <ThemeProvider>
-      <App />
+      <Provider>
+        <App />
+      </Provider>
     </ThemeProvider>
   );
 }

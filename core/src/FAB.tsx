@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import TouchableSurface, { TouchableSurfaceProps } from "./TouchableSurface";
+import Surface, { SurfaceProps } from './Surface'
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 
-export interface FABProps extends TouchableSurfaceProps {
+export interface FABProps extends SurfaceProps {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -126,7 +126,7 @@ const FAB: React.FC<FABProps> = ({
   }
 
   return (
-    <TouchableSurface
+    <Surface
       elevation={8}
       underlayColor={palette.tintColor}
       rippleContainerBorderRadius={size === 'default' ? 28 : 20}
@@ -139,7 +139,7 @@ const FAB: React.FC<FABProps> = ({
       {loading && loadingIndicatorPosition === "overlay" && (
         <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
       )}
-    </TouchableSurface>
+    </Surface>
   );
 };
 
