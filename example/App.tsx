@@ -255,12 +255,12 @@ function App() {
           <Snackbar
             style={{ marginTop: 24 }}
             message="Lorem ipsum dolor sit."
-            action={<Button variant="text" compact title="Button" />}
+            action={<Button variant="text" compact title="Button" onPress={() => undefined} />}
           />
           <Snackbar
             style={{ marginTop: 24 }}
             message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta illum laboriosam magni quasi sit."
-            action={<Button variant="text" compact title="Button" />}
+            action={<Button variant="text" compact title="Button" onPress={() => undefined} />}
           />
         </View>
         <View style={{ margin: 24, width: 360 }}>
@@ -368,8 +368,8 @@ function App() {
             style={{ marginTop: 24 }}
             text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, impedit, sint. Numquam, porro, voluptatem."
             buttons={[
-              <Button title="Fix it" variant="text" compact />,
-              <Button title="Dismiss" variant="text" compact />,
+              <Button title="Fix it" variant="text" compact onPress={() => undefined} />,
+              <Button title="Dismiss" variant="text" compact onPress={() => undefined}/>,
             ]}
           />
 
@@ -770,7 +770,6 @@ function App() {
           </Text>
         </View>
         <View style={{ margin: 12, width: 1080, flexDirection: "row", flexWrap: "wrap", alignItems: "center" }}>
-          <Surface category="small" elevation={0} style={{ width: 80, height: 80, margin: 12 }} />
           <Surface category="small" elevation={1} style={{ width: 80, height: 80, margin: 12 }} />
           <Surface category="small" elevation={2} style={{ width: 80, height: 80, margin: 12 }} />
           <Surface category="small" elevation={3} style={{ width: 80, height: 80, margin: 12 }} />
@@ -781,7 +780,6 @@ function App() {
           <Surface category="small" elevation={16} style={{ width: 80, height: 80, margin: 12 }} />
           <Surface category="small" elevation={24} style={{ width: 80, height: 80, margin: 12 }} />
 
-          <Surface category="small" elevation={0} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
           <Surface category="small" elevation={1} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
           <Surface category="small" elevation={2} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
           <Surface category="small" elevation={3} style={{ width: 80, height: 80, margin: 12 }} onPress={() => undefined} />
