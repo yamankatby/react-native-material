@@ -19,7 +19,7 @@ export interface ListItemProps extends SurfaceProps {
 
   leading?: React.ReactElement;
 
-  trailing?: React.ReactElement;
+  trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
@@ -70,7 +70,7 @@ const ListItem: React.FC<ListItemProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-          {trailing}
+          {typeof trailing === "function" ? trailing({ color: scale(0.87).hex(), size: 24 }) : trailing}
         </View>}
       </View>
       <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
