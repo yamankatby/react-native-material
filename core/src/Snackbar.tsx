@@ -16,7 +16,7 @@ const Snackbar: React.FC<SnackbarProps> = ({ message, action, style, ...rest }) 
   return (
     <Surface
       elevation={6}
-      category={"medium"}
+      category="medium"
       style={[
         {
           flexDirection: "row",
