@@ -6,6 +6,7 @@ import { Appbar, IconButton, ThemeProvider, useTheme } from "@react-native-mater
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Main from "./screens/Main";
 import Appbars from "./screens/Appbars";
+import Avatars from "./screens/Avatars";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,13 +37,14 @@ const App = () => {
                   />
                 )
               }
-              style={{ paddingTop: insets.top }}
+              style={{ paddingTop: insets.top, marginBottom: 8 }}
             />
           )
         }}
       >
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Appbars" component={Appbars} options={{ headerShown: false }} />
+        <Stack.Screen name="Avatars" component={Avatars} />
       </Stack.Navigator>
     </NavigationContainer>
   );

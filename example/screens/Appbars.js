@@ -12,7 +12,7 @@ const Appbars = () => {
   const insets = useSafeAreaInsets();
   const { palette } = useTheme();
   const navigation = useNavigation();
-  
+
   const [title, setTitle] = useState(true);
   const [subtitle, setSubtitle] = useState(false);
   const [variant, setVariant] = useState("top");
@@ -117,6 +117,7 @@ const Appbars = () => {
         title="Title"
         onPress={() => setTitle(prevState => !prevState)}
         trailing={props => title && <Icon name="check" {...props} />}
+        style={{ marginTop: 8 }}
       />
       <ListItem
         title="Subtitle"

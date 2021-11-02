@@ -8,11 +8,13 @@ import { useNavigation } from "@react-navigation/native";
 const data = [
   {
     title: "App bars",
-    subtitle: "The app bar provides content and actions related to the current screen."
+    subtitle: "The app bar provides content and actions related to the current screen.",
+    screen: 'Appbars'
   },
   {
     title: "Avatars",
-    subtitle: "Avatars are found throughout material design with uses in everything from tables to dialog menus."
+    subtitle: "Avatars are found throughout material design with uses in everything from tables to dialog menus.",
+    screen: 'Avatars'
   },
   {
     title: "Backdrop",
@@ -53,7 +55,7 @@ const Main = () => {
           leadingMode="image"
           leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
           trailing={props => <Icon name="chevron-right" {...props} />}
-          onPress={() => navigation.navigate('Appbars')}
+          onPress={item.screen && (() => navigation.navigate(item.screen))}
         />
       )}
       keyExtractor={item => item.title}
