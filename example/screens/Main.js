@@ -47,8 +47,6 @@ const Main = () => {
         <ListItem
           title={item.title}
           secondaryText={item.subtitle}
-          // leadingMode="image"
-          // leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
           trailing={props => <Icon name="chevron-right" {...props} />}
           onPress={() => navigation.navigate(item.title)}
         />

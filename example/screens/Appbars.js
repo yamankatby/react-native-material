@@ -102,7 +102,7 @@ const Appbars = () => {
           return buttons;
         }}
         style={
-          variant === "top"
+          [{ zIndex: 4 }, variant === "top"
             ? { paddingTop: insets.top }
             : {
               position: "absolute",
@@ -110,14 +110,13 @@ const Appbars = () => {
               end: 0,
               bottom: 0,
               paddingBottom: insets.bottom
-            }
+            }]
         }
       />
       <ListItem
         title="Title"
         onPress={() => setTitle(prevState => !prevState)}
         trailing={props => title && <Icon name="check" {...props} />}
-        style={{ marginTop: 8 }}
       />
       <ListItem
         title="Subtitle"

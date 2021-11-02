@@ -53,7 +53,7 @@ const App = () => {
                   />
                 )
               }
-              style={{ paddingTop: insets.top, marginBottom: 8 }}
+              style={{ paddingTop: insets.top, zIndex: 4 }}
             />
           )
         }}
