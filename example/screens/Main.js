@@ -1,25 +1,19 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import { ListItem, useTheme } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const data = [
-  {
-    title: "App bars",
-    subtitle: "The app bar provides content and actions related to the current screen.",
-    screen: 'Appbars'
-  },
+  { title: "App bars", subtitle: "The app bar provides content and actions related to the current screen." },
   {
     title: "Avatars",
-    subtitle: "Avatars are found throughout material design with uses in everything from tables to dialog menus.",
-    screen: 'Avatars'
+    subtitle: "Avatars are found throughout material design with uses in everything from tables to dialog menus."
   },
   {
     title: "Backdrop",
-    subtitle: "A backdrop appears behind all other surfaces in an app, displaying contextual and actionable content.",
-    screen: 'Backdrop'
+    subtitle: "A backdrop appears behind all other surfaces in an app, displaying contextual and actionable content."
   },
   { title: "Badges", subtitle: "Badge generates a small badge to the top-right of its child(ren)." },
   { title: "Banners", subtitle: "A banner displays a prominent message and related optional actions." },
@@ -35,14 +29,14 @@ const data = [
   },
   { title: "Switches", subtitle: "Switches toggle the state of a single item on or off." },
   { title: "Texts", subtitle: "Use text to present your design and content as clearly and efficiently as possible." },
-  { title: "Text fields", subtitle: "Text fields let users enter and edit text." },
+  { title: "Text inputs", subtitle: "Text inputs let users enter and edit text." },
   { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." }
 ];
 
 const Main = () => {
-  const { palette } = useTheme()
-  const insets = useSafeAreaInsets()
-  const navigation = useNavigation()
+  const { palette } = useTheme();
+  const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
 
   return (
     <FlatList
@@ -53,10 +47,10 @@ const Main = () => {
         <ListItem
           title={item.title}
           secondaryText={item.subtitle}
-          leadingMode="image"
-          leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
+          // leadingMode="image"
+          // leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
           trailing={props => <Icon name="chevron-right" {...props} />}
-          onPress={item.screen && (() => navigation.navigate(item.screen))}
+          onPress={() => navigation.navigate(item.title)}
         />
       )}
       keyExtractor={item => item.title}

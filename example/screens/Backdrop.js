@@ -49,7 +49,7 @@ const Backdrop = () => {
           style={{ paddingTop: insets.top }}
         />
       }
-      backLayer={<View style={{ height: 180 }}></View>}
+      backLayer={<View style={{ height: 180 }} />}
     >
       <BackdropSubheader title="Subheader" />
     </BackdropComponent>
