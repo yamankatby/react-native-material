@@ -1,20 +1,48 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
-import { Appbar, ThemeProvider } from "@react-native-material/core";
+import { Appbar, IconButton, ThemeProvider, useTheme } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Main from "./screens/Main";
+import Appbars from "./screens/Appbars";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const theme = useTheme();
   const insets = useSafeAreaInsets();
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: theme.palette.background
+        }
+      }}
+    >
       <Stack.Navigator
-        screenOptions={{ header: props => <Appbar title={props.route.name} style={{ paddingTop: insets.top }} /> }}
+        screenOptions={{
+          header: props => (
+            <Appbar
+              title={props.route.name}
+              leading={iconProps =>
+                props.back && (
+                  <IconButton
+                    icon={<Icon name="arrow-left" color={iconProps.color} size={iconProps.size / 2} />}
+                    onPress={() => props.navigation.goBack()}
+                    {...iconProps}
+                  />
+                )
+              }
+              style={{ paddingTop: insets.top }}
+            />
+          )
+        }}
       >
         <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Appbars" component={Appbars} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

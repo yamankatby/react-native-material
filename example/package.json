@@ -11,6 +11,7 @@
     "@react-native-material/core": "^1.1.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "chroma-js": "^2.1.2",
     "expo": "~43.0.0",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",

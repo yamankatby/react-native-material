@@ -1,7 +1,9 @@
 import React from "react";
 import { FlatList, View } from "react-native";
-import { ListItem } from "@react-native-material/core";
+import { ListItem, useTheme } from "@react-native-material/core";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const data = [
   {
@@ -34,21 +36,29 @@ const data = [
   { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." }
 ];
 
-const Main = () => (
-  <FlatList
-    style={{ flex: 1 }}
-    data={data}
-    renderItem={({ item }) => (
-      <ListItem
-        title={item.title}
-        secondaryText={item.subtitle}
-        leadingMode="image"
-        leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
-        trailing={props => <Icon name="chevron-right" {...props} />}
-      />
-    )}
-    keyExtractor={item => item.title}
-  />
-);
+const Main = () => {
+  const { palette } = useTheme()
+  const insets = useSafeAreaInsets()
+  const navigation = useNavigation()
+
+  return (
+    <FlatList
+      style={{ flex: 1, backgroundColor: palette.background }}
+      contentContainerStyle={{ paddingBottom: insets.bottom }}
+      data={data}
+      renderItem={({ item }) => (
+        <ListItem
+          title={item.title}
+          secondaryText={item.subtitle}
+          leadingMode="image"
+          leading={<View style={{ width: 100, height: 56, backgroundColor: "lightgray" }} />}
+          trailing={props => <Icon name="chevron-right" {...props} />}
+          onPress={() => navigation.navigate('Appbars')}
+        />
+      )}
+      keyExtractor={item => item.title}
+    />
+  );
+};
 
 export default Main;
