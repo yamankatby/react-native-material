@@ -27,7 +27,6 @@ const data = [
     title: "Surfaces",
     subtitle: "Surface is a basic container that can give depth to an element with elevation shadow."
   },
-  { title: "Switches", subtitle: "Switches toggle the state of a single item on or off." },
   { title: "Texts", subtitle: "Use text to present your design and content as clearly and efficiently as possible." },
   { title: "Text inputs", subtitle: "Text inputs let users enter and edit text." },
   { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." }
