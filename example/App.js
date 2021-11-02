@@ -7,6 +7,7 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Main from "./screens/Main";
 import Appbars from "./screens/Appbars";
 import Avatars from "./screens/Avatars";
+import Backdrop from "./screens/Backdrop";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,7 @@ const App = () => {
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Appbars" component={Appbars} options={{ headerShown: false }} />
         <Stack.Screen name="Avatars" component={Avatars} />
+        <Stack.Screen name="Backdrop" component={Backdrop} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
