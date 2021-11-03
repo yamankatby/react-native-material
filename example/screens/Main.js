@@ -17,7 +17,6 @@ const data = [
   },
   { title: "Badges", subtitle: "Badge generates a small badge to the top-right of its child(ren)." },
   { title: "Banners", subtitle: "A banner displays a prominent message and related optional actions." },
-  { title: "Chips", subtitle: "Chips are compact elements that represent an input, attribute, or action." },
   { title: "Dividers", subtitle: "A divider is a thin line that groups content in lists and layouts." },
   { title: "FAB", subtitle: "A floating action button (FAB) represents the primary action of a screen." },
   { title: "Icon buttons", subtitle: "Icon buttons are commonly found in app bars and toolbars." },

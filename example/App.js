@@ -11,7 +11,6 @@ import Avatars from "./screens/Avatars";
 import Backdrop from "./screens/Backdrop";
 import Badges from "./screens/Badges";
 import Banners from "./screens/Banners";
-import Chips from "./screens/Chips";
 import Dividers from "./screens/Dividers";
 import FAB from "./screens/FAB";
 import IconButtons from "./screens/IconButtons";
@@ -43,15 +42,21 @@ const App = () => {
           header: props => (
             <Appbar
               title={props.route.name}
-              leading={iconProps =>
-                props.back && (
+              leading={
+                props.back &&
+                (iconProps => (
                   <IconButton
-                    icon={<Icon name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"} color={iconProps.color}
-                                size={iconProps.size / 2} />}
+                    icon={
+                      <Icon
+                        name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"}
+                        color={iconProps.color}
+                        size={iconProps.size / 2}
+                      />
+                    }
                     onPress={() => props.navigation.goBack()}
                     {...iconProps}
                   />
-                )
+                ))
               }
               style={{ paddingTop: insets.top, zIndex: 4 }}
             />
@@ -64,7 +69,6 @@ const App = () => {
         <Stack.Screen name="Backdrop" component={Backdrop} options={{ headerShown: false }} />
         <Stack.Screen name="Badges" component={Badges} />
         <Stack.Screen name="Banners" component={Banners} />
-        <Stack.Screen name="Chips" component={Chips} />
         <Stack.Screen name="Dividers" component={Dividers} />
         <Stack.Screen name="FAB" component={FAB} />
         <Stack.Screen name="Icon buttons" component={IconButtons} />

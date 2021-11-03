@@ -7,7 +7,6 @@ export { default as BackdropSubheader, BackdropSubheaderProps } from "./Backdrop
 export { default as Badge, BadgeProps } from "./Badge";
 export { default as Banner, BannerProps } from "./Banner";
 export { default as Button, ButtonProps } from "./Button";
-export { default as Chip, ChipProps } from "./Chip";
 export { default as Divider, DividerProps } from "./Divider";
 export { default as FAB, FABProps } from "./FAB";
 export { default as IconButton, IconButtonProps } from "./IconButton";
