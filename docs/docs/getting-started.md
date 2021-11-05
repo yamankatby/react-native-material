@@ -23,13 +23,13 @@ import React from "react";
 import { Button } from "@react-native-material/core";
 
 export default function App() {
-  return <Button title="Click Me" onPress={() => alert("🎉🎉🎉")} />;
+  return <Button title="Click Me" onPress={() => alert("🎉🎉🎉")}/>;
 }
 ```
 
 Yes, this really is all you need to get started, as you can see in this live and interactive demo:
 
-```js with-preview
+```js with-preview name: Quick start; description: A simple example of the button component
 import React from "react";
 import { Button } from "@react-native-material/core";
 
@@ -59,8 +59,8 @@ frequented, from time to time, by the maintainers of **react-native-material**.
 
 **react-native-material** uses GitHub issues as a bug and feature request tracker. If you think you have found a bug, or
 have a new feature idea, please start by making sure it hasn't already
-been [reported or fixed](https://github.com/yamankatby/react-native-material/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aclosed).
-You can search through existing issues and pull requests to see if someone has reported one similar to yours.
+been [reported or fixed](https://github.com/yamankatby/react-native-material/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aclosed)
+. You can search through existing issues and pull requests to see if someone has reported one similar to yours.
 
 [Open an issue](https://github.com/yamankatby/react-native-material/issues/new/choose)
 
