@@ -49,11 +49,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         anonymizeIP: true
       },
       navbar: {
-        title: 'React Native Material',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg'
-        // },
+        title: 'react-native-material',
         items: [
           {
             type: 'doc',
@@ -61,7 +57,22 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'left',
             label: 'Docs'
           },
-          // { to: '/blog', label: 'Blog', position: 'left' },
+          {
+            type: 'dropdown',
+            label: 'v1.2.0',
+            items: [
+              { label: 'v1.2.0', to: '/docs/getting-started' },
+              {
+                label: 'v1.1.0',
+                href: 'https://react-native-material-38lpom7xc-yamankatby.vercel.app/docs/getting-started'
+              },
+              {
+                label: 'v1.0.0',
+                href: 'https://react-native-material-buf67gwtw-yamankatby.vercel.app/getting-started/installation'
+              }
+            ],
+            position: 'right'
+          },
           {
             href: 'https://github.com/yamankatby/react-native-material',
             label: 'GitHub',
