@@ -14,6 +14,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
   plugins: [],
+  scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
   presets: [
     [
       '@docusaurus/preset-classic',
