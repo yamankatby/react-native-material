@@ -3,7 +3,7 @@ module.exports = () => {
     if (node.type === "code" && node.meta === "with-preview") {
       return [{
         type: 'html',
-        value: `<div data-snack-code="${encodeURIComponent(node.value)}" data-snack-dependencies="@react-native-material/core@1.2.0" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light"></div>`
+        value: `<div class="snack-player" data-snack-name="Example" data-snack-description="text code" data-snack-code="${encodeURIComponent(node.value)}" data-snack-dependencies="@react-native-material/core@1.2.0" data-snack-loading="eager" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light"></div>`
       }]
     }
     if (Array.isArray(node.children)) {

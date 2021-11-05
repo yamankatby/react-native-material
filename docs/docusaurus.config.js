@@ -14,6 +14,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
   plugins: [],
+  clientModules: [require.resolve('./snackPlayerInitializer.js')],
   scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
   presets: [
     [
@@ -50,7 +51,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         anonymizeIP: true
       },
       navbar: {
-        title: 'react-native-material',
+        title: '@react-native-material',
         items: [
           {
             type: 'doc',
@@ -62,7 +63,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             type: 'dropdown',
             label: 'v1.2.0',
             items: [
-              { label: 'v1.2.0', to: '/docs/getting-started' },
+              { label: 'v1.2.0', to: '/' },
               {
                 label: 'v1.1.0',
                 href: 'https://react-native-material-38lpom7xc-yamankatby.vercel.app/docs/getting-started'
