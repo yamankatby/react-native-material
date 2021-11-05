@@ -10,9 +10,9 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Avatar label="Kent Dodds" autoColor />
-    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} style={{ marginTop: 16 }} />
-    <Avatar icon={props => <Icon name="account" {...props} />} style={{ marginTop: 16 }} />
+    <Avatar label="Kent Dodds" autoColor/>
+    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} style={{ marginTop: 16 }}/>
+    <Avatar icon={props => <Icon name="account" {...props} />} style={{ marginTop: 16 }}/>
   </View>
 );
 
@@ -32,10 +32,10 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar label="Kent Dodds" />
-      <Avatar label="UN" initials={false} style={{ marginTop: 16 }} />
-      <Avatar label="Jed Watson" autoColor style={{ marginTop: 16 }} />
-      <Avatar label="Tim Neutkens" autoColor style={{ marginTop: 16 }} />
+      <Avatar label="Kent Dodds"/>
+      <Avatar label="UN" initials={false} style={{ marginTop: 16 }}/>
+      <Avatar label="Jed Watson" autoColor style={{ marginTop: 16 }}/>
+      <Avatar label="Tim Neutkens" autoColor style={{ marginTop: 16 }}/>
     </View>
   );
 }
@@ -51,7 +51,7 @@ import { Avatar } from "@react-native-material/core";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
+      <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}/>
       <Avatar
         image={
           <Image
@@ -85,7 +85,7 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar icon={props => <Icon name="account" {...props} />} />
+      <Avatar icon={props => <Icon name="account" {...props} />}/>
       <Avatar
         icon={props => <Icon name="account" {...props} />}
         label="Jed Watson"
@@ -113,9 +113,9 @@ import { Avatar } from "@react-native-material/core";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar label="Jed Watson" size={32} />
-      <Avatar label="Jed Watson" style={{ marginTop: 16 }} />
-      <Avatar label="Jed Watson" size={72} style={{ marginTop: 16 }} />
+      <Avatar label="Jed Watson" size={32}/>
+      <Avatar label="Jed Watson" style={{ marginTop: 16 }}/>
+      <Avatar label="Jed Watson" size={72} style={{ marginTop: 16 }}/>
     </View>
   );
 }
@@ -132,8 +132,8 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar label="Kent Dodds" />
-      <Avatar icon={props => <Icon name="account" {...props} />} color="primary" style={{ marginTop: 16 }} />
+      <Avatar label="Kent Dodds"/>
+      <Avatar icon={props => <Icon name="account" {...props} />} color="primary" style={{ marginTop: 16 }}/>
       <Avatar
         icon={props => <Icon name="account" {...props} />}
         color="primary"
@@ -162,8 +162,8 @@ import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Avatar label="Jed Watson" />
-      <Avatar label="Jed Watson" icon={props => <Icon name="account" {...props} />} style={{ marginTop: 16 }} />
+      <Avatar label="Jed Watson"/>
+      <Avatar label="Jed Watson" icon={props => <Icon name="account" {...props} />} style={{ marginTop: 16 }}/>
       <Avatar
         label="Jed Watson"
         icon={props => <Icon name="account" {...props} />}
@@ -173,5 +173,4 @@ export default function App() {
     </View>
   );
 }
-
 ```

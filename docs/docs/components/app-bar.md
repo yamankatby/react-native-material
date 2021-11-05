@@ -4,7 +4,7 @@ The App Bar displays information and actions relating to the current screen.
 
 ```js with-preview
 import React from "react";
-import {Appbar} from "@react-native-material/core";
+import { Appbar } from "@react-native-material/core";
 
 export default function App() {
   return <Appbar title="Screen title"/>
@@ -35,19 +35,19 @@ export default function App() {
       leading={props => (
         <IconButton
           color={props.color}
-          icon={<Icon name="menu" size={24} color={props.color} />}
+          icon={<Icon name="menu" size={24} color={props.color}/>}
         />
       )}
       trailing={props => [
         <IconButton
           key="magnify"
           color={props.color}
-          icon={<Icon name="magnify" size={24} color={props.color} />}
+          icon={<Icon name="magnify" size={24} color={props.color}/>}
         />,
         <IconButton
           key="dots"
           color={props.color}
-          icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+          icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
         />
       ]}
     />
@@ -71,19 +71,19 @@ export default function App() {
         leading={props => (
           <IconButton
             color={props.color}
-            icon={<Icon name="menu" size={24} color={props.color} />}
+            icon={<Icon name="menu" size={24} color={props.color}/>}
           />
         )}
         trailing={props => [
           <IconButton
             key="magnify"
             color={props.color}
-            icon={<Icon name="magnify" size={24} color={props.color} />}
+            icon={<Icon name="magnify" size={24} color={props.color}/>}
           />,
           <IconButton
             key="dots"
             color={props.color}
-            icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+            icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
           />,
         ]}
         style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
@@ -109,19 +109,19 @@ export default function App() {
       leading={props => (
         <IconButton
           color={props.color}
-          icon={<Icon name="menu" size={24} color={props.color} />}
+          icon={<Icon name="menu" size={24} color={props.color}/>}
         />
       )}
       trailing={props => [
         <IconButton
           key="magnify"
           color={props.color}
-          icon={<Icon name="magnify" size={24} color={props.color} />}
+          icon={<Icon name="magnify" size={24} color={props.color}/>}
         />,
         <IconButton
           key="dots"
           color={props.color}
-          icon={<Icon name="dots-vertical" size={24} color={props.color} />}
+          icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
         />,
       ]}
     />

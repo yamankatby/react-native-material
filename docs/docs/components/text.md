@@ -58,7 +58,9 @@ export default function App() {
 }
 ```
 
-Too many type sizes and styles at once can spoil any layout. A [typographic scale](https://material.io/design/typography/the-type-system.html#type-scale) has a limited set of type sizes that work well together along with the layout grid.
+Too many type sizes and styles at once can spoil any layout.
+A [typographic scale](https://material.io/design/typography/the-type-system.html#type-scale) has a limited set of type
+sizes that work well together along with the layout grid.
 
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Text)
 [`🎨 Material Design`](https://material.io/design/typography/the-type-system.html)
