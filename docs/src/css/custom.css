@@ -33,6 +33,6 @@ div[data-snack-name] {
   background: #f9f9f9;
   border: 1px solid var(--color-border);
   border-radius: 4px;
-  height: 380px;
+  height: 400px;
   width: 100%;
 }
