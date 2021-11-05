@@ -28,7 +28,7 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-div[data-snack-name] {
+div[data-snack-code] {
   overflow: hidden;
   background: #f9f9f9;
   border: 1px solid var(--color-border);

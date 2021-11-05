@@ -29,12 +29,20 @@ export default function App() {
 
 Yes, this really is all you need to get started, as you can see in this live and interactive demo:
 
-<div
-  data-snack-code={"import React from \"react\";\nimport { Button } from \"@react-native-material/core\";\n\nexport default function App() {\n  return (\n    <Button\n      title=\"Click Me\"\n      style={{ alignSelf: \"center\", marginTop: 40 }}\n      onPress={() => alert(\"\uD83C\uDF89\uD83C\uDF89\uD83C\uDF89\")}\n    />\n  );\n}"}
-  data-snack-dependencies="@react-native-material/core@1.2.0"
-  data-snack-name="Quick start"
-  data-snack-description="A simple example of the button component"
-/>
+```js with-preview
+import React from "react";
+import { Button } from "@react-native-material/core";
+
+export default function App() {
+  return (
+    <Button
+      title="Click Me"
+      style={{ alignSelf: "center", marginTop: 40 }}
+      onPress={() => alert("🎉🎉🎉")}
+    />
+  );
+}
+```
 
 ## Community help
 

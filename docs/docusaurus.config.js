@@ -25,7 +25,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // Please change this to your repo.
           editUrl: 'https://github.com/yamankatby/react-native-material/edit/main/docs/',
           remarkPlugins: [
-            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+            require('./preview')
           ]
         },
         blog: false,
