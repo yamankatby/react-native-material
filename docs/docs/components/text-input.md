@@ -17,6 +17,9 @@ const App = () => (
 export default App;
 ```
 
+[`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20TextInput)
+[`🎨 Material Design`](https://material.io/components/text-fields)
+
 ## Usage
 
 Text inputs allow users to enter text into a UI. They typically appear in forms and dialogs.
