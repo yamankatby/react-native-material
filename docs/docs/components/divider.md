@@ -1,15 +1,14 @@
-import Example from "../../components/Example";
-
 # Divider
 
 A divider is a thin line that groups content in lists and layouts.
 
-<Example component="divider" section="overview"/>
-
-```js
+```js with-preview
+import React from "react";
 import { Divider } from "@react-native-material/core";
 
-<Divider />
+const App = () => <Divider style={{ marginTop: 60 }} leadingInset={16}/>;
+
+export default App;
 ```
 
 Dividers separate content into clear groups.
@@ -19,20 +18,26 @@ Dividers separate content into clear groups.
 
 ## Coloring
 
-<Example component="divider" section="color"/>
-
-```js
+```js with-preview
+import React from "react";
 import { Divider } from "@react-native-material/core";
 
-<Divider color="pink" />
+const App = () => (
+  <Divider style={{ marginTop: 60 }} leadingInset={16} color="pink"/>
+);
+
+export default App;
 ```
 
 ## Insets
 
-<Example component="divider" section="insets"/>
-
-```js
+```js with-preview
+import React from "react";
 import { Divider } from "@react-native-material/core";
 
-<Divider leadingInset={16} trailingInset={16} />
+const App = () => (
+  <Divider style={{ marginTop: 60 }} leadingInset={32} trailingInset={32}/>
+);
+
+export default App;
 ```
