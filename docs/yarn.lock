@@ -2435,10 +2435,10 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.20.tgz"
   integrity sha512-88p7+M0QGxKpmnkfXjS4V26AnoC/eiqZutE8GLdaI5X12NY75bXSdTY9NkmYb2Xyk1O+MmkuO6Frmsj84V6I8Q==
 
-"@react-native-material/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.1.0.tgz#57e6eb117beff4bced40b0b2b8858f24781419d5"
-  integrity sha512-6wD5///r5U1wv4te6WnSAj97DaZcmB2MnVqKa6EBFiMeAjQ9MMJSDoVQcwovboAnigR0jPCz+kbLHITNJ4AGHA==
+"@react-native-material/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.2.0.tgz#e63a0cd25d069e932a9b0952ef36ce7959a35356"
+  integrity sha512-5BWyTHDNs6HYMrXRSEGggvI2tFoPZiO1P+4WZ+r6zHdv7W/A+AOOyI4kMPsm/appVHHik2cRuziLWiFxoCVLrQ==
   dependencies:
     chroma-js "^2.1.2"
 
@@ -4486,11 +4486,6 @@ decompress-response@^3.3.0:
   integrity sha1-gKTdMjdIOEv6JICDYirt7Jgq3/M=
   dependencies:
     mimic-response "^1.0.0"
-
-dedent@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
-  integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
 
 deep-equal@^1.0.1:
   version "1.1.1"
@@ -8795,15 +8790,6 @@ remark-parse@8.0.3:
     vfile-location "^3.0.0"
     xtend "^4.0.1"
 
-remark-snackplayer@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/remark-snackplayer/-/remark-snackplayer-0.0.3.tgz#d2e7a9878f93303fb7b754d7180446c1639c15c3"
-  integrity sha512-TbjmBCpSGTNiQdzZn2nCvzAiaoSioWLrus3U7bdXCSJZjUwXetM+iYjsLc2J1wFHj/uEerNPTuzkQmR0TJnwuQ==
-  dependencies:
-    dedent "^0.7.0"
-    unist-builder "^2.0.3"
-    unist-util-visit-parents "^3.1.0"
-
 remark-squeeze-paragraphs@4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/remark-squeeze-paragraphs/-/remark-squeeze-paragraphs-4.0.0.tgz"
@@ -9922,7 +9908,7 @@ unique-string@^2.0.0:
   dependencies:
     crypto-random-string "^2.0.0"
 
-unist-builder@2.0.3, unist-builder@^2.0.0, unist-builder@^2.0.3:
+unist-builder@2.0.3, unist-builder@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/unist-builder/-/unist-builder-2.0.3.tgz"
   integrity sha512-f98yt5pnlMWlzP539tPc4grGMsFaQQlP/vM396b00jngsiINumNmsY8rkXjfoi1c6QaM8nQ3vaGDuoKWbe/1Uw==
@@ -9970,7 +9956,7 @@ unist-util-stringify-position@^2.0.0:
   dependencies:
     "@types/unist" "^2.0.2"
 
-unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.1.0:
+unist-util-visit-parents@^3.0.0:
   version "3.1.1"
   resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-3.1.1.tgz"
   integrity sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==
