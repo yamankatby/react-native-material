@@ -113,8 +113,8 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { Switch, View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { View } from "react-native";
+import { Button, Switch } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => {
@@ -155,8 +155,8 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { Switch, View } from "react-native";
-import { Button, Text } from "@react-native-material/core";
+import { View } from "react-native";
+import { Button, Text, Switch } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => {

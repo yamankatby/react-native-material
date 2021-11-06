@@ -207,8 +207,8 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { ScrollView, Switch } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { ScrollView } from "react-native";
+import { FAB, Switch } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => {
@@ -264,8 +264,8 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { ScrollView, Switch } from "react-native";
-import { FAB, Text } from "@react-native-material/core";
+import { ScrollView } from "react-native";
+import { FAB, Text, Switch } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => {
@@ -338,8 +338,8 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { Switch, View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { View } from "react-native";
+import { FAB, Switch } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 const App = () => {
