@@ -6,9 +6,9 @@ The App Bar displays information and actions relating to the current screen.
 import React from "react";
 import { Appbar } from "@react-native-material/core";
 
-export default function App() {
-  return <Appbar title="Screen title"/>
-}
+const App = () => <Appbar title="Screen title"/>;
+
+export default App;
 ```
 
 The top App Bar provides content and actions related to the current screen. It's used for branding, screen titles,
@@ -28,10 +28,45 @@ import React from "react";
 import { Appbar, IconButton } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
-export default function App() {
-  return (
+const App = () => (
+  <Appbar
+    title="Title"
+    leading={props => (
+      <IconButton
+        color={props.color}
+        icon={<Icon name="menu" size={24} color={props.color}/>}
+      />
+    )}
+    trailing={props => [
+      <IconButton
+        key="magnify"
+        color={props.color}
+        icon={<Icon name="magnify" size={24} color={props.color}/>}
+      />,
+      <IconButton
+        key="dots"
+        color={props.color}
+        icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
+      />
+    ]}
+  />
+);
+
+export default App;
+```
+
+### Bottom
+
+```js with-preview
+import React from "react";
+import { View } from "react-native";
+import { Appbar, IconButton } from "@react-native-material/core";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+
+const App = () => (
+  <View style={{ flex: 1 }}>
     <Appbar
-      title="Title"
+      variant="bottom"
       leading={props => (
         <IconButton
           color={props.color}
@@ -50,47 +85,12 @@ export default function App() {
           icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
         />
       ]}
+      style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
     />
-  );
-}
-```
+  </View>
+);
 
-### Bottom
-
-```js with-preivew
-import React from "react";
-import { View } from "react-native";
-import { Appbar, FAB, IconButton } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
-
-export default function App() {
-  return (
-    <View style={{ flex: 1 }}>
-      <Appbar
-        variant="bottom"
-        leading={props => (
-          <IconButton
-            color={props.color}
-            icon={<Icon name="menu" size={24} color={props.color}/>}
-          />
-        )}
-        trailing={props => [
-          <IconButton
-            key="magnify"
-            color={props.color}
-            icon={<Icon name="magnify" size={24} color={props.color}/>}
-          />,
-          <IconButton
-            key="dots"
-            color={props.color}
-            icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
-          />,
-        ]}
-        style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
-      />
-    </View>
-  );
-}
+export default App;
 ```
 
 ## Coloring
@@ -100,31 +100,31 @@ import React from "react";
 import { Appbar, IconButton } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
-export default function App() {
-  return (
-    <Appbar
-      title="Title"
-      color="pink"
-      tintColor="red"
-      leading={props => (
-        <IconButton
-          color={props.color}
-          icon={<Icon name="menu" size={24} color={props.color}/>}
-        />
-      )}
-      trailing={props => [
-        <IconButton
-          key="magnify"
-          color={props.color}
-          icon={<Icon name="magnify" size={24} color={props.color}/>}
-        />,
-        <IconButton
-          key="dots"
-          color={props.color}
-          icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
-        />,
-      ]}
-    />
-  );
-}
+const App = () => (
+  <Appbar
+    title="Title"
+    color="pink"
+    tintColor="red"
+    leading={props => (
+      <IconButton
+        color={props.color}
+        icon={<Icon name="menu" size={24} color={props.color}/>}
+      />
+    )}
+    trailing={props => [
+      <IconButton
+        key="magnify"
+        color={props.color}
+        icon={<Icon name="magnify" size={24} color={props.color}/>}
+      />,
+      <IconButton
+        key="dots"
+        color={props.color}
+        icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
+      />,
+    ]}
+  />
+);
+
+export default App;
 ```
