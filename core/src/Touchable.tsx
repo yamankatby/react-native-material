@@ -43,11 +43,6 @@ interface RippleProps {
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
     overflow: "hidden",
   },
   ripple: {
@@ -133,21 +128,20 @@ const Touchable: React.FC<TouchableProps> = ({
       android_ripple={!ripple ? { color: underlayColor } : undefined}
       onPressIn={ripple ? handleOnPressIn : onPressIn}
       onLayout={ripple ? handleOnLayout : onLayout}
-      style={[Platform.select({ web: { cursor: 'pointer' } }), style]}
+      style={[Platform.OS === 'web' && { cursor: 'pointer' }, style]}
       {...rest}
     >
       {children}
-      {ripple && ripples.length > 0 && (
-        <View style={[
-          styles.container,
-          rippleContainerStyle,
-          rippleContainerBorderRadius ? { borderRadius: rippleContainerBorderRadius } : undefined,
-        ]}>
-          {ripples.map((ripple) => (
-            <Animated.View key={ripple.key} style={[styles.ripple, ripple.style, { backgroundColor: underlayColor }]} />
-          ))}
-        </View>
-      )}
+      <View style={[
+        styles.container,
+        StyleSheet.absoluteFill,
+        rippleContainerStyle,
+        rippleContainerBorderRadius ? { borderRadius: rippleContainerBorderRadius } : undefined,
+      ]}>
+        {ripples.map((ripple) => (
+          <Animated.View key={ripple.key} style={[styles.ripple, ripple.style, { backgroundColor: underlayColor }]} />
+        ))}
+      </View>
     </Pressable>
   );
 };
