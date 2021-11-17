@@ -63,7 +63,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             type: 'dropdown',
             label: 'v1.2.0',
             items: [
-              { label: 'v1.2.0', to: '/' },
+              { label: 'v1.2.1', to: '/' },
               {
                 label: 'v1.1.0',
                 href: 'https://react-native-material-38lpom7xc-yamankatby.vercel.app/docs/getting-started'
