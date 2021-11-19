@@ -50,6 +50,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         trackingID: 'G-5L00H23VKJ',
         anonymizeIP: true
       },
+      algolia: {
+        appId: 'BH4D9OD16A',
+        apiKey: 'b2cfa75a49a88ef384aa3bd4a7977043',
+        indexName: 'react-native-material',
+        contextualSearch: true,
+        searchParameters: {},
+      },
       navbar: {
         title: '@react-native-material',
         items: [
@@ -79,7 +86,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             href: 'https://github.com/yamankatby/react-native-material',
             label: 'GitHub',
             position: 'right'
-          }
+          },
+          {
+            href: "https://www.npmjs.com/package/@react-native-material/core",
+            label: 'npm',
+            position: 'right',
+          },
         ]
       },
       // footer: {
