@@ -39,10 +39,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         // },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
-        },
-        googleAnalytics: {
-          trackingID: 'G-5L00H23VKJ',
-          anonymizeIP: true
         }
       })
     ]
@@ -55,7 +51,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         apiKey: 'b2cfa75a49a88ef384aa3bd4a7977043',
         indexName: 'react-native-material',
         contextualSearch: true,
-        searchParameters: {},
+        searchParameters: {}
+      },
+      gtag: {
+        trackingID: 'G-5L00H23VKJ',
+        anonymizeIP: true
       },
       navbar: {
         title: '@react-native-material',
@@ -90,8 +90,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           {
             href: "https://www.npmjs.com/package/@react-native-material/core",
             label: 'npm',
-            position: 'right',
-          },
+            position: 'right'
+          }
         ]
       },
       // footer: {
