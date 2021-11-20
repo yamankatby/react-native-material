@@ -1764,10 +1764,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-material/core@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.2.0.tgz#e63a0cd25d069e932a9b0952ef36ce7959a35356"
-  integrity sha512-5BWyTHDNs6HYMrXRSEGggvI2tFoPZiO1P+4WZ+r6zHdv7W/A+AOOyI4kMPsm/appVHHik2cRuziLWiFxoCVLrQ==
+"@react-native-material/core@latest":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-material/core/-/core-1.2.1.tgz#52fe500584c296d384873acf86982c738ac1a7a5"
+  integrity sha512-sp2pJ/xBbUmIEuyBLR6O8c7O60XL7U9uHYMum6317WWpo0xUlgi7IaB1Ovmw98ZYbtP4sz2ay68juZF+oJ08cw==
   dependencies:
     chroma-js "^2.1.2"
 
