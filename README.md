@@ -161,6 +161,10 @@ of [good first issues](https://github.com/yamankatby/react-native-material/label
 bugs that have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with
 our contribution process.
 
+## 🙏 Thanks
+
+Special thanks to [Arsen Ghazaryan](https://github.com/arsen) for handing over the `react-native-material` NPM package name.
+
 ## 📝 License
 
 This library is licensed under the MIT License - see
