@@ -37,7 +37,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
             require('./preview')
-          ],
+          ]
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -60,7 +60,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         anonymizeIP: true
       },
       navbar: {
-        title: 'react-native-material',
+        title: '@react-native-material',
         items: [
           {
             type: 'doc',
@@ -93,60 +93,55 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             href: 'https://github.com/yamankatby/react-native-material',
             position: 'right',
             className: 'header-github-link',
-            'aria-label': 'GitHub repository',
-          },
-          {
-            href: "https://www.npmjs.com/package/@react-native-material/core",
-            label: 'npm',
-            position: 'right'
+            'aria-label': 'GitHub repository'
           }
         ]
       },
-      // footer: {
-      //   style: 'dark',
-      //   links: [
-      //     {
-      //       title: 'Docs',
-      //       items: [
-      //         {
-      //           label: 'Tutorial',
-      //           to: '/docs/intro'
-      //         }
-      //       ]
-      //     },
-      //     {
-      //       title: 'Community',
-      //       items: [
-      //         {
-      //           label: 'Stack Overflow',
-      //           href: 'https://stackoverflow.com/questions/tagged/docusaurus'
-      //         },
-      //         {
-      //           label: 'Discord',
-      //           href: 'https://discordapp.com/invite/docusaurus'
-      //         },
-      //         {
-      //           label: 'Twitter',
-      //           href: 'https://twitter.com/docusaurus'
-      //         }
-      //       ]
-      //     },
-      //     {
-      //       title: 'More',
-      //       items: [
-      //         {
-      //           label: 'Blog',
-      //           to: '/blog'
-      //         },
-      //         {
-      //           label: 'GitHub',
-      //           href: 'https://github.com/facebook/docusaurus'
-      //         }
-      //       ]
-      //     }
-      //   ],
-      //   copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
-      // },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Getting Started',
+                to: 'docs/getting-started'
+              },
+              {
+                label: 'Components',
+                to: 'docs/components/app-bar'
+              },
+              {
+                label: 'API Reference',
+                to: 'docs/api/activity-indicator'
+              }
+            ]
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/questions/tagged/react-native-material'
+              }
+            ]
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog'
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/yamankatby/react-native-material'
+              }
+            ]
+          }
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} react-native-material. Built with Docusaurus.`
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme
