@@ -15,6 +15,7 @@ Loved the project? Please share it with your friends and give it a ⭐️
 
 Take a look at our example apps:
 
+- [💨 Expo](https://snack.expo.dev/@yamankatby/react-native-material-explorer)
 - [🤖 Android](https://play.google.com/store/apps/details?id=com.swazer.material)
 - [🌍 Web](https://example.react-native-material.com/)
 
