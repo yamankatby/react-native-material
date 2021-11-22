@@ -13,6 +13,8 @@ import {
   ViewStyle,
 } from "react-native";
 
+import MyPressable from "./Pressable";
+
 const Pressable = Animated.createAnimatedComponent(NativePressable);
 
 export interface TouchableProps extends PressableProps {
@@ -146,4 +148,4 @@ const Touchable: React.FC<TouchableProps> = ({
   );
 };
 
-export default Touchable;
+export default MyPressable;
