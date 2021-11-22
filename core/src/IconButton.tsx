@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { PaletteColor, usePalette } from "./base";
-import Touchable, { TouchableProps } from "./Touchable";
+import Pressable, { PressableProps } from "./Pressable";
 
-export interface IconButtonProps extends TouchableProps {
+export interface IconButtonProps extends PressableProps {
   icon?: React.ReactElement;
 
   color?: PaletteColor;
@@ -22,14 +22,13 @@ const styles = StyleSheet.create({
 const IconButton: React.FC<IconButtonProps> = ({ icon, color = "onBackground", style, ...rest }) => {
   const palette = usePalette(color);
   return (
-    <Touchable
+    <Pressable
       style={[styles.container, style]}
-      underlayColor={palette.color}
-      rippleContainerBorderRadius={24}
+      effectColor={palette.color}
       {...rest}
     >
       {icon}
-    </Touchable>
+    </Pressable>
   );
 };
 

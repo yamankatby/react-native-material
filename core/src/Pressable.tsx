@@ -16,9 +16,9 @@ export interface PressableProps extends RNPressableProps {
   effect?: "android-ripple" | "highlight" | "ripple" | "none";
 
   effectColor?: string;
-}
 
-const AnimatedPressable = Animated.createAnimatedComponent(RNPressable);
+  style: any;
+}
 
 let key = 0;
 
@@ -99,7 +99,7 @@ const Pressable: React.FC<PressableProps> = ({
   );
 
   return (
-    <AnimatedPressable
+    <RNPressable
       android_ripple={effect === "android-ripple" ? { color: effectColor } : undefined}
       onLayout={handleLayout}
       onPressIn={handlePressIn}
@@ -121,7 +121,7 @@ const Pressable: React.FC<PressableProps> = ({
           />
         ))}
       </View>
-    </AnimatedPressable>
+    </RNPressable>
   );
 };
 

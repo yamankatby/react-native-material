@@ -2,9 +2,9 @@ import React, { useMemo } from "react";
 import { Animated, ViewProps } from "react-native";
 import chroma from "chroma-js";
 import { Elevation, ShapeCategory, useTheme } from "./base";
-import Touchable, { TouchableProps } from "./Touchable";
+import Pressable, { PressableProps } from "./Pressable";
 
-export interface SurfaceProps extends Omit<TouchableProps, "hitSlop"> {
+export interface SurfaceProps extends Omit<PressableProps, "hitSlop"> {
   category?: ShapeCategory;
 
   elevation?: Elevation;
@@ -43,10 +43,10 @@ const Surface: React.FC<SurfaceProps> = ({ category, elevation = 0, style, ...re
     rest.testOnly_pressed
   ) {
     return (
-      <Touchable
+      <Pressable
         style={[{ backgroundColor }, elevations[elevation], category && shapes[category], style]}
-        underlayColor={palette.onSurface}
-        rippleContainerStyle={category && shapes[category]}
+        effectColor={palette.onSurface}
+        // rippleContainerStyle={category && shapes[category]}
         {...rest}
       />
     );

@@ -1,14 +1,14 @@
 import React from "react";
-import { Text as NativeText, TextProps as NativeTextProps } from "react-native";
+import { Text as RNText, TextProps as RNTextProps } from "react-native";
 import { TypographyVariant, useTheme } from "./base";
 
-export interface TextProps extends NativeTextProps {
+export interface TextProps extends RNTextProps {
   variant?: TypographyVariant;
 }
 
 const Text: React.FC<TextProps> = ({ variant = "body1", style, ...rest }) => {
   const { typography } = useTheme();
-  return <NativeText style={[typography[variant], style]} {...rest} />;
+  return <RNText style={[typography[variant], style]} {...rest} />;
 };
 
 export default Text;
