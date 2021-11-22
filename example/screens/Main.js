@@ -28,7 +28,11 @@ const data = [
   },
   { title: "Texts", subtitle: "Use text to present your design and content as clearly and efficiently as possible." },
   { title: "Text inputs", subtitle: "Text inputs let users enter and edit text." },
-  { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." }
+  { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." },
+  {
+    title: "Buttons",
+    subtitle: "Buttons are used to trigger an action. They are usually rectangular and have a clear appearance."
+  }
 ];
 
 const Main = () => {

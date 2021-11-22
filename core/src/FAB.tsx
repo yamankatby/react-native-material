@@ -128,8 +128,8 @@ const FAB: React.FC<FABProps> = ({
   return (
     <Surface
       elevation={8}
-      underlayColor={palette.tintColor}
-      rippleContainerBorderRadius={size === 'default' ? 28 : 20}
+      effectColor={palette.tintColor}
+      // rippleContainerBorderRadius={size === 'default' ? 28 : 20}
       style={[styles.container, { transform: [{ scale: animated }] }, style, contentContainerStyle]}
       {...rest}
     >

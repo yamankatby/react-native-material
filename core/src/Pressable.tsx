@@ -20,8 +20,6 @@ export interface PressableProps extends RNPressableProps {
   style: any;
 }
 
-let key = 0;
-
 const Pressable: React.FC<PressableProps> = ({
   effect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
   effectColor = "black",
@@ -59,7 +57,7 @@ const Pressable: React.FC<PressableProps> = ({
         const opacity = new Animated.Value(1);
 
         const ripple = {
-          key: `ripple-#${key++}`,
+          key: `ripple-#${Date.now() + Math.random()}`,
           style: { start: x, top: y, transform: [{ scale }], opacity },
         };
 

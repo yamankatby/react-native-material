@@ -21,6 +21,7 @@ import Switches from "./screens/Switches";
 import TextInputs from "./screens/TextInputs";
 import Texts from "./screens/Texts";
 import Touchable from "./screens/Touchable";
+import Buttons from "./screens/Buttons";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +81,7 @@ const App = () => {
         <Stack.Screen name="Text inputs" component={TextInputs} />
         <Stack.Screen name="Texts" component={Texts} />
         <Stack.Screen name="Touchable" component={Touchable} />
+        <Stack.Screen name="Buttons" component={Buttons} />
       </Stack.Navigator>
     </NavigationContainer>
   );
