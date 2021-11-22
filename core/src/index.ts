@@ -14,6 +14,6 @@ export { default as ListItem, ListItemProps } from "./ListItem";
 export { default as Pressable, PressableProps } from "./Pressable";
 export { default as Snackbar, SnackbarProps } from "./Snackbar";
 export { default as Surface, SurfaceProps } from "./Surface";
-export { default as Switch } from "./Switch";
+export { default as Switch, SwitchProps } from "./Switch";
 export { default as Text, TextProps } from "./Text";
 export { default as TextInput, TextInputProps } from "./TextInput";
