@@ -15,8 +15,20 @@ Loved the project? Please share it with your friends and give it a ⭐️
 
 Take a look at our example apps:
 
+- [💨 Expo Snack](https://snack.expo.dev/@yamankatby/react-native-material-explorer)
 - [🤖 Android](https://play.google.com/store/apps/details?id=com.swazer.material)
 - [🌍 Web](https://example.react-native-material.com/)
+
+### Run the Explorer App on your device
+
+Download Expo Go app on your device and scan this QR code to get started.
+
+- [🤖 Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent)
+- [🍎 App Store](https://apps.apple.com/tr/app/expo-go/id982107779)
+
+> Expo Go for iOS does not include a QR code scanner [learn more](https://blog.expo.dev/upcoming-limitations-to-ios-expo-client-8076d01aee1a). So you have to scan the code using the regular camera app.
+
+![Expo Go QR code](https://raw.githubusercontent.com/yamankatby/react-native-material/main/images/qr.png)
 
 ### Run the Example app locally
 
