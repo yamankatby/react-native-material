@@ -13,12 +13,12 @@ import Surface from "@react-native-material/core/Surface";
 ## Props
 
 ```ts
-interface SurfaceProps extends Omit<TouchableProps, "hitSlop"> {
+interface SurfaceProps extends Omit<ViewProps, "style"> {
   category?: ShapeCategory;
 
   elevation?: Elevation;
 
-  hitSlop?: ViewProps["hitSlop"];
+  style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
 }
 
 ```

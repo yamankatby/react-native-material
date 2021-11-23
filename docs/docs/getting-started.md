@@ -22,9 +22,11 @@ Here's a quick example to get you started, **it's literally all you need**:
 import React from "react";
 import { Button } from "@react-native-material/core";
 
-export default function App() {
-  return <Button title="Click Me" onPress={() => alert("🎉🎉🎉")}/>;
-}
+const App = () => (
+  <Button title="Click Me" onPress={() => alert("🎉🎉🎉")}/>
+);
+
+export default App;
 ```
 
 Yes, this really is all you need to get started, as you can see in this live and interactive demo:
@@ -33,15 +35,11 @@ Yes, this really is all you need to get started, as you can see in this live and
 import React from "react";
 import { Button } from "@react-native-material/core";
 
-export default function App() {
-  return (
-    <Button
-      title="Click Me"
-      style={{ alignSelf: "center", marginTop: 40 }}
-      onPress={() => alert("🎉🎉🎉")}
-    />
-  );
-}
+const App = () => (
+  <Button title="Click Me" style={{ alignSelf: "center", marginTop: 40 }}/>
+);
+
+export default App;
 ```
 
 ## Community help

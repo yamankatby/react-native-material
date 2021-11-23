@@ -13,7 +13,7 @@ import Text from "@react-native-material/core/Text";
 ## Props
 
 ```ts
-interface TextProps extends NativeTextProps {
+interface TextProps extends RNTextProps {
   variant?: TypographyVariant;
 }
 

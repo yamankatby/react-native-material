@@ -13,7 +13,7 @@ import Button from "@react-native-material/core/Button";
 ## Props
 
 ```ts
-interface ButtonProps extends SurfaceProps {
+interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
   leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -37,6 +37,10 @@ interface ButtonProps extends SurfaceProps {
   loadingIndicator?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
   loadingIndicatorPosition?: "leading" | "trailing" | "overlay";
+
+  pressableContainerStyle?: StyleProp<ViewStyle>;
+
+  contentContainerStyle?: PressableProps["style"];
 
   titleStyle?: StyleProp<TextStyle>;
 

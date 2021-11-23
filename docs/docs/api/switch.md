@@ -13,5 +13,8 @@ import Switch from "@react-native-material/core/Switch";
 ## Props
 
 ```ts
-null
+interface SwitchProps extends RNSwitchProps {
+  tintColor?: PaletteColor;
+}
+
 ```

@@ -18,12 +18,9 @@ Then start using the power of Material Design in your React Native app.
 import React from "react";
 import { Button } from "@react-native-material/core";
 
-export default function App() {
-  return (
-    <Button
-      title="Click Me"
-      style={{ alignSelf: "center", marginTop: 40 }}
-    />
-  );
-}
+const App = () => (
+  <Button title="Click Me" style={{ alignSelf: "center", marginTop: 40 }}/>
+);
+
+export default App;
 ```

@@ -2476,15 +2476,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-material/core@latest":
-  version: 1.2.1
-  resolution: "@react-native-material/core@npm:1.2.1"
+"@react-native-material/core@npm:1.2.2":
+  version: 1.2.2
+  resolution: "@react-native-material/core@npm:1.2.2"
   dependencies:
     chroma-js: ^2.1.2
   peerDependencies:
     react: ^17.0.2
     react-native: ^0.65.1
-  checksum: c67b452c97a71a0967542bce8dbc3a72f2113c014c1aded2d8140a9f3556e72bc00a02ef53ca36f55ce7f1c151e5f97405540ef594eaaac0328fee3bd47745c7
+  checksum: 4e7ae1b487d7e998802902ac084e01ecb37e220de8e3d9f0f8c4a0cae2a47cebe4bcbb6481d8759913ddd32845e82055af91a08efb59a4032f6685dad58041a5
   languageName: node
   linkType: hard
 
@@ -7716,7 +7716,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@babel/core": ^7.12.9
-    "@react-native-material/core": latest
+    "@react-native-material/core": 1.2.2
     "@react-navigation/native": ^6.0.6
     "@react-navigation/native-stack": ^6.2.5
     chroma-js: ^2.1.2

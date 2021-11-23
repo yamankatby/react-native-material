@@ -13,10 +13,12 @@ import IconButton from "@react-native-material/core/IconButton";
 ## Props
 
 ```ts
-interface IconButtonProps extends TouchableProps {
+interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   icon?: React.ReactElement;
 
   color?: PaletteColor;
+
+  contentContainerStyle?: PressableProps["style"];
 }
 
 ```

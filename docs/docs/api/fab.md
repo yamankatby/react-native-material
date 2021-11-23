@@ -13,7 +13,7 @@ import FAB from "@react-native-material/core/FAB";
 ## Props
 
 ```ts
-interface FABProps extends SurfaceProps {
+interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -34,7 +34,9 @@ interface FABProps extends SurfaceProps {
 
   visible?: boolean;
 
-  contentContainerStyle?: StyleProp<ViewStyle>;
+  pressableContainerStyle?: StyleProp<ViewStyle>;
+
+  contentContainerStyle?: PressableProps["style"];
 
   iconContainerStyle?: StyleProp<ViewStyle>;
 

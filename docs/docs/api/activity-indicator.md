@@ -13,7 +13,7 @@ import ActivityIndicator from "@react-native-material/core/ActivityIndicator";
 ## Props
 
 ```ts
-interface ActivityIndicatorProps extends NativeActivityIndicatorProps {
+interface ActivityIndicatorProps extends RNActivityIndicatorProps {
   color?: PaletteColor;
 }
 
