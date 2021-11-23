@@ -4,10 +4,12 @@ import {
   Easing,
   GestureResponderEvent,
   LayoutChangeEvent,
+  NativeSyntheticEvent,
   Platform,
   Pressable as RNPressable,
   PressableProps as RNPressableProps,
   StyleSheet,
+  TargetedEvent,
   View,
 } from "react-native";
 import chroma from "chroma-js";
@@ -16,6 +18,10 @@ export interface PressableProps extends RNPressableProps {
   pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
 
   pressEffectColor?: string;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
 
   style?: any;
 }
@@ -26,7 +32,11 @@ const Pressable: React.FC<PressableProps> = ({
   onLayout,
   onPressIn,
   onPressOut,
+  onFocus,
+  onBlur,
   android_ripple,
+  onMouseEnter,
+  onMouseLeave,
   children,
   ...rest
 }) => {
@@ -51,8 +61,10 @@ const Pressable: React.FC<PressableProps> = ({
       onPressIn?.(event);
 
       if (pressEffect === "ripple") {
-        const x = event.nativeEvent.locationX - 0.5;
-        const y = event.nativeEvent.locationY - 0.5;
+        const { locationX, locationY } = event.nativeEvent;
+
+        const x = (locationX ?? size.width / 2) - 0.5;
+        const y = (locationY ?? size.height / 2) - 0.5;
 
         const scale = new Animated.Value(0);
         const opacity = new Animated.Value(1);
@@ -97,15 +109,54 @@ const Pressable: React.FC<PressableProps> = ({
     [pressEffect, ripples, onPressOut],
   );
 
+  const [focused, setFocused] = useState(false);
+
+  const handleFocus = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      setFocused(true);
+      onFocus?.(event);
+    },
+    [onFocus],
+  );
+
+  const handleBlur = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      setFocused(false);
+      onBlur?.(event);
+    },
+    [onBlur],
+  );
+
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = useCallback((e) => {
+    setHovered(true);
+    onMouseEnter?.();
+  }, [onMouseEnter]);
+
+  const handleMouseLeave = useCallback(() => {
+    setHovered(false);
+    onMouseLeave?.();
+  }, [onMouseLeave]);
+
   return (
     <RNPressable
       android_ripple={pressEffect === "android-ripple" ? android_ripple ?? { color: pressEffectColor } : undefined}
       onLayout={handleLayout}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave } as any)}
       {...rest}
     >
-      {children}
+      {hovered && !rest.disabled && (
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.04).hex() }]} />
+      )}
+
+      {focused && !rest.disabled && (
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.12).hex() }]} />
+      )}
 
       {pressEffect === "highlight" && pressed && (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.2).hex() }]} />
@@ -116,11 +167,13 @@ const Pressable: React.FC<PressableProps> = ({
           {ripples.map(ripple => (
             <Animated.View
               key={ripple.key}
-              style={[styles.ripple, { backgroundColor: chroma(pressEffectColor).alpha(0.2).hex() }, ripple.style]}
+              style={[styles.ripple, { backgroundColor: chroma(pressEffectColor).alpha(0.1).hex() }, ripple.style]}
             />
           ))}
         </View>
       )}
+
+      {children}
     </RNPressable>
   );
 };
