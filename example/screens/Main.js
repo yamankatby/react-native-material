@@ -18,22 +18,19 @@ const data = [
   },
   { title: "Badges", subtitle: "Badge generates a small badge to the top-right of its child(ren)." },
   { title: "Banners", subtitle: "A banner displays a prominent message and related optional actions." },
+  { title: "Buttons", subtitle: "Buttons allow users to take actions, and make choices, with a single tap." },
   { title: "Dividers", subtitle: "A divider is a thin line that groups content in lists and layouts." },
   { title: "FAB", subtitle: "A floating action button (FAB) represents the primary action of a screen." },
   { title: "Icon buttons", subtitle: "Icon buttons are commonly found in app bars and toolbars." },
   { title: "Lists", subtitle: "Lists are continuous, vertical indexes of text or images" },
+  { title: "Pressable", subtitle: "A wrapper for making views respond properly to touches." },
   { title: "Snackbars", subtitle: "Snackbars provide brief messages about app processes at the bottom of the screen." },
   {
     title: "Surfaces",
     subtitle: "Surface is a basic container that can give depth to an element with elevation shadow."
   },
   { title: "Texts", subtitle: "Use text to present your design and content as clearly and efficiently as possible." },
-  { title: "Text inputs", subtitle: "Text inputs let users enter and edit text." },
-  { title: "Touchable", subtitle: "A wrapper for making views respond properly to touches." },
-  {
-    title: "Buttons",
-    subtitle: "Buttons are used to trigger an action. They are usually rectangular and have a clear appearance."
-  }
+  { title: "Text inputs", subtitle: "Text inputs let users enter and edit text." }
 ];
 
 const Main = () => {
@@ -72,7 +69,7 @@ const Demo = () => {
         onPress={() => null}
       />
 
-      <View style={{ flexDirection: 'row', alignItems: 'center',marginTop: 16, marginHorizontal: 16 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, marginHorizontal: 16 }}>
         <Button
           title="Button"
           onPress={() => null}

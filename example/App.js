@@ -11,17 +11,18 @@ import Avatars from "./screens/Avatars";
 import Backdrop from "./screens/Backdrop";
 import Badges from "./screens/Badges";
 import Banners from "./screens/Banners";
+import Buttons from "./screens/Buttons";
 import Dividers from "./screens/Dividers";
 import FAB from "./screens/FAB";
 import IconButtons from "./screens/IconButtons";
 import Lists from "./screens/Lists";
+import { PressableScreen } from "./screens/Screens";
 import Snackbars from "./screens/Snackbars";
 import Surfaces from "./screens/Surfaces";
 import Switches from "./screens/Switches";
 import TextInputs from "./screens/TextInputs";
 import Texts from "./screens/Texts";
 import Touchable from "./screens/Touchable";
-import Buttons from "./screens/Buttons";
 
 const Stack = createNativeStackNavigator();
 
@@ -71,17 +72,18 @@ const App = () => {
         <Stack.Screen name="Backdrop" component={Backdrop} options={{ headerShown: false }} />
         <Stack.Screen name="Badges" component={Badges} />
         <Stack.Screen name="Banners" component={Banners} />
+        <Stack.Screen name="Buttons" component={Buttons} />
         <Stack.Screen name="Dividers" component={Dividers} />
         <Stack.Screen name="FAB" component={FAB} />
         <Stack.Screen name="Icon buttons" component={IconButtons} />
         <Stack.Screen name="Lists" component={Lists} />
+        <Stack.Screen name="Pressable" component={PressableScreen} />
         <Stack.Screen name="Snackbars" component={Snackbars} />
         <Stack.Screen name="Surfaces" component={Surfaces} />
         <Stack.Screen name="Switches" component={Switches} />
         <Stack.Screen name="Text inputs" component={TextInputs} />
         <Stack.Screen name="Texts" component={Texts} />
         <Stack.Screen name="Touchable" component={Touchable} />
-        <Stack.Screen name="Buttons" component={Buttons} />
       </Stack.Navigator>
     </NavigationContainer>
   );

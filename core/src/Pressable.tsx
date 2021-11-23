@@ -129,7 +129,7 @@ const Pressable: React.FC<PressableProps> = ({
 
   const [hovered, setHovered] = useState(false);
 
-  const handleMouseEnter = useCallback((e) => {
+  const handleMouseEnter = useCallback(() => {
     setHovered(true);
     onMouseEnter?.();
   }, [onMouseEnter]);
@@ -141,7 +141,11 @@ const Pressable: React.FC<PressableProps> = ({
 
   return (
     <RNPressable
-      android_ripple={pressEffect === "android-ripple" ? android_ripple ?? { color: pressEffectColor } : undefined}
+      android_ripple={
+        pressEffect === "android-ripple"
+          ? android_ripple ?? { color: chroma(pressEffectColor).alpha(0.26).hex() }
+          : undefined
+      }
       onLayout={handleLayout}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
@@ -159,7 +163,7 @@ const Pressable: React.FC<PressableProps> = ({
       )}
 
       {pressEffect === "highlight" && pressed && (
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.2).hex() }]} />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.26).hex() }]} />
       )}
 
       {pressEffect === "ripple" && ripples.length !== 0 && (
