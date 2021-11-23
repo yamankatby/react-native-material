@@ -1,12 +1,14 @@
 import React, { useMemo } from "react";
-import { Animated, ViewProps } from "react-native";
+import { Animated, StyleProp, ViewProps, ViewStyle } from "react-native";
 import chroma from "chroma-js";
 import { Elevation, ShapeCategory, useTheme } from "./base";
 
-export interface SurfaceProps extends ViewProps {
+export interface SurfaceProps extends Omit<ViewProps, "style"> {
   category?: ShapeCategory;
 
   elevation?: Elevation;
+
+  style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
 }
 
 const Surface: React.FC<SurfaceProps> = ({ category, elevation = 0, style, ...rest }) => {
@@ -24,7 +26,7 @@ const Surface: React.FC<SurfaceProps> = ({ category, elevation = 0, style, ...re
       .domain([0, 1, 2, 3, 4, 6, 8, 12, 16, 24].map(x => (x / 24) * 100))((elevation / 24) * 100)
       .hex();
   }, [mode, palette.surface, surfaceScale]);
-  
+
   return (
     <Animated.View
       style={[{ backgroundColor }, elevations[elevation], category && shapes[category], style]}

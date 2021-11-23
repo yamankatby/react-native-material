@@ -72,7 +72,7 @@ const Demo = () => {
         onPress={() => null}
       />
 
-      <View style={{ flexDirection: 'row', marginTop: 16, marginHorizontal: 16 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center',marginTop: 16, marginHorizontal: 16 }}>
         <Button
           title="Button"
           onPress={() => null}

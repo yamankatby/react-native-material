@@ -5,8 +5,9 @@ import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
+import Pressable, { PressableProps } from "./Pressable";
 
-export interface ButtonProps extends SurfaceProps {
+export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   title: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
   leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -31,6 +32,10 @@ export interface ButtonProps extends SurfaceProps {
 
   loadingIndicatorPosition?: "leading" | "trailing" | "overlay";
 
+  pressableContainerStyle?: StyleProp<ViewStyle>;
+
+  contentContainerStyle?: PressableProps["style"];
+
   titleStyle?: StyleProp<TextStyle>;
 
   leadingContainerStyle?: StyleProp<ViewStyle>;
@@ -54,10 +59,27 @@ const Button: React.FC<ButtonProps> = ({
   loadingIndicator,
   loadingIndicatorPosition = "leading",
   style,
+  pressableContainerStyle,
+  contentContainerStyle,
   titleStyle,
   leadingContainerStyle,
   trailingContainerStyle,
   loadingOverlayContainerStyle,
+  effect,
+  effectColor,
+  onPress,
+  onPressIn,
+  onPressOut,
+  onLongPress,
+  onBlur,
+  onFocus,
+  delayLongPress,
+  disabled,
+  hitSlop,
+  pressRetentionOffset,
+  android_disableSound,
+  android_ripple,
+  testOnly_pressed,
   ...rest
 }) => {
   const p = usePalette(color, tintColor);
@@ -74,18 +96,24 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   const styles = useStyleSheet(
-    ({ palette }) => ({
+    ({ palette, shapes }) => ({
       container: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minWidth: 64,
-        height: 36,
-        paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
-        paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
         backgroundColor: variant === "contained" ? p.color : "transparent",
         borderWidth: variant === "outlined" ? 1 : 0,
         borderColor: chroma(palette.onSurface).alpha(0.12).hex(),
+      },
+      pressableContainer: {
+        ...shapes.small,
+        overflow: "hidden",
+      },
+      pressable: {
+        minWidth: 64,
+        height: 36,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
+        paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
       },
       titleStyle: {
         textTransform: uppercase ? "uppercase" : "none",
@@ -150,14 +178,40 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <Surface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]} effectColor={contentColor} category="small" {...rest}>
-      {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
-      {getTitle()}
-      {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}
+    <Surface
+      elevation={variant === "contained" && !disableElevation ? 2 : 0}
+      style={[styles.container, style]}
+      category="small"
+      {...rest}
+    >
+      <View style={[styles.pressableContainer, pressableContainerStyle]}>
+        <Pressable
+          style={[styles.pressable, contentContainerStyle]}
+          effect={effect}
+          effectColor={effectColor ?? contentColor}
+          onPress={onPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+          onLongPress={onLongPress}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          delayLongPress={delayLongPress}
+          disabled={disabled}
+          hitSlop={hitSlop}
+          pressRetentionOffset={pressRetentionOffset}
+          android_disableSound={android_disableSound}
+          android_ripple={android_ripple}
+          testOnly_pressed={testOnly_pressed}
+        >
+          {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
+          {getTitle()}
+          {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}
 
-      {loading && loadingIndicatorPosition === "overlay" && (
-        <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
-      )}
+          {loading && loadingIndicatorPosition === "overlay" && (
+            <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
+          )}
+        </Pressable>
+      </View>
     </Surface>
   );
 };

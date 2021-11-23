@@ -6,7 +6,7 @@ import Pressable, { PressableProps } from "./Pressable";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 
-export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style"> {
+export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -58,6 +58,8 @@ const FAB: React.FC<FABProps> = ({
   labelContainerStyle,
   labelStyle,
   loadingOverlayContainerStyle,
+  effect,
+  effectColor,
   onPress,
   onPressIn,
   onPressOut,
@@ -161,6 +163,8 @@ const FAB: React.FC<FABProps> = ({
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
+          effect={effect}
+          effectColor={effectColor ?? palette.tintColor}
           onPress={onPress}
           onPressIn={onPressIn}
           onPressOut={onPressOut}
