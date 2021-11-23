@@ -4,7 +4,8 @@ import chroma from "chroma-js";
 import { useTheme } from "./base";
 import Divider from "./Divider";
 import Text from "./Text";
-import Surface, { SurfaceProps } from "./Surface";
+import { SurfaceProps } from "./Surface";
+import Pressable from "./Pressable";
 
 export interface ListItemProps extends SurfaceProps {
   title?: string;
@@ -39,7 +40,7 @@ const ListItem: React.FC<ListItemProps> = ({
     [palette.surface, palette.onSurface],
   )
   return (
-    <Surface style={{ backgroundColor: scale(0).hex() }} {...rest}>
+    <Pressable style={{ backgroundColor: scale(0).hex() }} {...rest}>
       <View style={{ flexDirection: "row", alignItems: "center", marginVertical: 12 }}>
         {leading &&
         <View
@@ -75,7 +76,7 @@ const ListItem: React.FC<ListItemProps> = ({
         </View>}
       </View>
       <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
-    </Surface>
+    </Pressable>
   )
 };
 

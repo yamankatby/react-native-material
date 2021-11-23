@@ -150,8 +150,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <Surface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]}
-             effectColor={contentColor} category="small" {...rest}>
+    <Surface elevation={variant === "contained" && !disableElevation ? 2 : 0} style={[styles.container, style]} effectColor={contentColor} category="small" {...rest}>
       {hasLeading && <View style={[styles.leadingContainer, leadingContainerStyle]}>{getLeading()}</View>}
       {getTitle()}
       {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}

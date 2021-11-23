@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
-import Surface, { SurfaceProps } from './Surface'
+import Surface, { SurfaceProps } from "./Surface";
+import Pressable, { PressableProps } from "./Pressable";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 
-export interface FABProps extends SurfaceProps {
+export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style"> {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -26,7 +27,9 @@ export interface FABProps extends SurfaceProps {
 
   visible?: boolean;
 
-  contentContainerStyle?: StyleProp<ViewStyle>;
+  pressableContainerStyle?: StyleProp<ViewStyle>;
+
+  contentContainerStyle?: PressableProps["style"];
 
   iconContainerStyle?: StyleProp<ViewStyle>;
 
@@ -49,26 +52,46 @@ const FAB: React.FC<FABProps> = ({
   loadingIndicatorPosition = "icon",
   visible = true,
   style,
+  pressableContainerStyle,
   contentContainerStyle,
   iconContainerStyle,
   labelContainerStyle,
   labelStyle,
   loadingOverlayContainerStyle,
+  onPress,
+  onPressIn,
+  onPressOut,
+  onLongPress,
+  onBlur,
+  onFocus,
+  delayLongPress,
+  disabled,
+  hitSlop,
+  pressRetentionOffset,
+  android_disableSound,
+  android_ripple,
+  testOnly_pressed,
   ...rest
 }) => {
   const palette = usePalette(color, tintColor);
 
-  const hasIcon = useMemo(() => icon || (loading && loadingIndicatorPosition === 'icon'), [icon, loading, loadingIndicatorPosition]);
+  const hasIcon = useMemo(() => icon || (loading && loadingIndicatorPosition === "icon"), [icon, loading, loadingIndicatorPosition]);
 
-  const styles = useStyleSheet(({ elevations }) => ({
+  const styles = useStyleSheet(() => ({
     container: {
+      backgroundColor: palette.color,
+      borderRadius: size === "default" ? 28 : 20,
+    },
+    pressableContainer: {
+      borderRadius: size === "default" ? 28 : 20,
+      overflow: "hidden",
+    },
+    pressable: {
       flexDirection: "row",
       alignItems: "center",
       paddingStart: variant === "extended" ? (hasIcon ? (size === "default" ? 12 : 6) : size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingEnd: variant === "extended" ? (size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
       paddingVertical: size === "default" ? 16 : 8,
-      backgroundColor: palette.color,
-      borderRadius: size === 'default' ? 28 : 20,
     },
     iconContainer: {
       justifyContent: "center",
@@ -81,8 +104,8 @@ const FAB: React.FC<FABProps> = ({
     },
     loadingOverlayContainer: {
       ...StyleSheet.absoluteFillObject,
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: "center",
+      alignItems: "center",
       backgroundColor: palette.color,
     },
   }), [variant, size, palette, hasIcon]);
@@ -94,51 +117,72 @@ const FAB: React.FC<FABProps> = ({
       toValue: visible ? 1 : 0,
       duration: 200,
       useNativeDriver: true,
-    }).start()
-  }, [visible])
+    }).start();
+  }, [visible]);
 
   const getLoadingIndicator = () => {
-    if (!loadingIndicator) return <ActivityIndicator color={palette.tintColor} />
+    if (!loadingIndicator) return <ActivityIndicator color={palette.tintColor} />;
     switch (typeof loadingIndicator) {
       case "string":
-        return <Text variant="button" style={{ color: palette.tintColor }}>{loadingIndicator}</Text>
+        return (
+          <Text variant="button" style={{ color: palette.tintColor }}>
+            {loadingIndicator}
+          </Text>
+        );
       case "function":
         return loadingIndicator({ color: palette.tintColor });
       default:
         return loadingIndicator;
     }
-  }
+  };
 
   const getIcon = () => {
-    if (loading && loadingIndicatorPosition === "icon") return getLoadingIndicator()
+    if (loading && loadingIndicatorPosition === "icon") return getLoadingIndicator();
     return typeof icon === "function" ? icon({ color: palette.tintColor, size: 24 }) : icon;
   };
 
   const getLabel = () => {
     switch (typeof label) {
       case "string":
-        return <Text variant="button" style={[{ color: palette.tintColor }, labelStyle]}>{label}</Text>
+        return (
+          <Text variant="button" style={[{ color: palette.tintColor }, labelStyle]}>
+            {label}
+          </Text>
+        );
       case "function":
         return label({ color: palette.tintColor });
       default:
         return label;
     }
-  }
+  };
 
   return (
-    <Surface
-      elevation={8}
-      effectColor={palette.tintColor}
-      // rippleContainerBorderRadius={size === 'default' ? 28 : 20}
-      style={[styles.container, style, contentContainerStyle]}
-      {...rest}
-    >
-      {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}
-      {variant === "extended" && <View style={[styles.labelContainer, labelContainerStyle]}>{getLabel()}</View>}
+    <Surface elevation={8} style={[styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
+      <View style={[styles.pressableContainer, pressableContainerStyle]}>
+        <Pressable
+          style={[styles.pressable, contentContainerStyle]}
+          onPress={onPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+          onLongPress={onLongPress}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          delayLongPress={delayLongPress}
+          disabled={disabled}
+          hitSlop={hitSlop}
+          pressRetentionOffset={pressRetentionOffset}
+          android_disableSound={android_disableSound}
+          android_ripple={android_ripple}
+          testOnly_pressed={testOnly_pressed}
+        >
+          {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}
+          {variant === "extended" && <View style={[styles.labelContainer, labelContainerStyle]}>{getLabel()}</View>}
 
-      {loading && loadingIndicatorPosition === "overlay" && (
-        <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
-      )}
+          {loading && loadingIndicatorPosition === "overlay" && (
+            <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
+          )}
+        </Pressable>
+      </View>
     </Surface>
   );
 };

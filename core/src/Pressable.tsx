@@ -17,7 +17,7 @@ export interface PressableProps extends RNPressableProps {
 
   effectColor?: string;
 
-  style: any;
+  style?: any;
 }
 
 const Pressable: React.FC<PressableProps> = ({
@@ -26,6 +26,7 @@ const Pressable: React.FC<PressableProps> = ({
   onLayout,
   onPressIn,
   onPressOut,
+  android_ripple,
   children,
   ...rest
 }) => {
@@ -98,7 +99,7 @@ const Pressable: React.FC<PressableProps> = ({
 
   return (
     <RNPressable
-      android_ripple={effect === "android-ripple" ? { color: effectColor } : undefined}
+      android_ripple={effect === "android-ripple" ? android_ripple ?? { color: effectColor } : undefined}
       onLayout={handleLayout}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
