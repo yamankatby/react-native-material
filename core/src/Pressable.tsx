@@ -13,16 +13,16 @@ import {
 import chroma from "chroma-js";
 
 export interface PressableProps extends RNPressableProps {
-  effect?: "android-ripple" | "highlight" | "ripple" | "none";
+  pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
 
-  effectColor?: string;
+  pressEffectColor?: string;
 
   style?: any;
 }
 
 const Pressable: React.FC<PressableProps> = ({
-  effect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
-  effectColor = "black",
+  pressEffect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
+  pressEffectColor = "black",
   onLayout,
   onPressIn,
   onPressOut,
@@ -50,7 +50,7 @@ const Pressable: React.FC<PressableProps> = ({
       setPressed(true);
       onPressIn?.(event);
 
-      if (effect === "ripple") {
+      if (pressEffect === "ripple") {
         const x = event.nativeEvent.locationX - 0.5;
         const y = event.nativeEvent.locationY - 0.5;
 
@@ -58,7 +58,7 @@ const Pressable: React.FC<PressableProps> = ({
         const opacity = new Animated.Value(1);
 
         const ripple = {
-          key: `ripple-#${Date.now() + Math.random()}`,
+          key: `${Date.now() + Math.random()}`,
           style: { start: x, top: y, transform: [{ scale }], opacity },
         };
 
@@ -75,7 +75,7 @@ const Pressable: React.FC<PressableProps> = ({
         }).start();
       }
     },
-    [onPressIn, effect, size],
+    [onPressIn, pressEffect, size],
   );
 
   const handlePressOut = useCallback(
@@ -83,7 +83,7 @@ const Pressable: React.FC<PressableProps> = ({
       setPressed(false);
       onPressOut?.(event);
 
-      if (effect === "ripple") {
+      if (pressEffect === "ripple") {
         Animated.timing(ripples[ripples.length - 1].style.opacity, {
           toValue: 0,
           easing: Easing.out(Easing.ease),
@@ -94,12 +94,12 @@ const Pressable: React.FC<PressableProps> = ({
         });
       }
     },
-    [effect, ripples, onPressOut],
+    [pressEffect, ripples, onPressOut],
   );
 
   return (
     <RNPressable
-      android_ripple={effect === "android-ripple" ? android_ripple ?? { color: effectColor } : undefined}
+      android_ripple={pressEffect === "android-ripple" ? android_ripple ?? { color: pressEffectColor } : undefined}
       onLayout={handleLayout}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
@@ -107,18 +107,20 @@ const Pressable: React.FC<PressableProps> = ({
     >
       {children}
 
-      {(effect === "highlight" && pressed) &&
-      <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(effectColor).alpha(0.2).hex() }]} />}
+      {pressEffect === "highlight" && pressed && (
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.2).hex() }]} />
+      )}
 
-      {(effect === 'ripple' && ripples.length !== 0) &&
-      <View style={[StyleSheet.absoluteFill, styles.effectContainer]}>
-        {ripples.map(ripple => (
-          <Animated.View
-            key={ripple.key}
-            style={[styles.ripple, { backgroundColor: chroma(effectColor).alpha(0.2).hex() }, ripple.style]}
-          />
-        ))}
-      </View>}
+      {pressEffect === "ripple" && ripples.length !== 0 && (
+        <View style={[StyleSheet.absoluteFill, styles.effectContainer]}>
+          {ripples.map(ripple => (
+            <Animated.View
+              key={ripple.key}
+              style={[styles.ripple, { backgroundColor: chroma(pressEffectColor).alpha(0.2).hex() }, ripple.style]}
+            />
+          ))}
+        </View>
+      )}
     </RNPressable>
   );
 };

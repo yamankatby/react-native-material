@@ -29,8 +29,8 @@ const IconButton: React.FC<IconButtonProps> = ({
   color = "onBackground",
   style,
   contentContainerStyle,
-  effect,
-  effectColor,
+  pressEffect,
+  pressEffectColor,
   onPress,
   onPressIn,
   onPressOut,
@@ -51,8 +51,8 @@ const IconButton: React.FC<IconButtonProps> = ({
     <View style={[styles.container, style]} {...rest}>
       <Pressable
         style={[StyleSheet.absoluteFill, styles.contentContainer, contentContainerStyle]}
-        effect={effect}
-        effectColor={effectColor ?? palette.color}
+        pressEffect={pressEffect}
+        pressEffectColor={pressEffectColor ?? palette.color}
         onPress={onPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}

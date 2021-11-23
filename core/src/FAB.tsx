@@ -58,8 +58,8 @@ const FAB: React.FC<FABProps> = ({
   labelContainerStyle,
   labelStyle,
   loadingOverlayContainerStyle,
-  effect,
-  effectColor,
+  pressEffect,
+  pressEffectColor,
   onPress,
   onPressIn,
   onPressOut,
@@ -163,8 +163,8 @@ const FAB: React.FC<FABProps> = ({
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
-          effect={effect}
-          effectColor={effectColor ?? palette.tintColor}
+          pressEffect={pressEffect}
+          pressEffectColor={pressEffectColor ?? palette.tintColor}
           onPress={onPress}
           onPressIn={onPressIn}
           onPressOut={onPressOut}

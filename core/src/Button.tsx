@@ -65,8 +65,8 @@ const Button: React.FC<ButtonProps> = ({
   leadingContainerStyle,
   trailingContainerStyle,
   loadingOverlayContainerStyle,
-  effect,
-  effectColor,
+  pressEffect,
+  pressEffectColor,
   onPress,
   onPressIn,
   onPressOut,
@@ -187,8 +187,8 @@ const Button: React.FC<ButtonProps> = ({
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
-          effect={effect}
-          effectColor={effectColor ?? contentColor}
+          pressEffect={pressEffect}
+          pressEffectColor={pressEffectColor ?? contentColor}
           onPress={onPress}
           onPressIn={onPressIn}
           onPressOut={onPressOut}
