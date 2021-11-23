@@ -130,7 +130,7 @@ const FAB: React.FC<FABProps> = ({
       elevation={8}
       effectColor={palette.tintColor}
       // rippleContainerBorderRadius={size === 'default' ? 28 : 20}
-      style={[styles.container, { transform: [{ scale: animated }] }, style, contentContainerStyle]}
+      style={[styles.container, style, contentContainerStyle]}
       {...rest}
     >
       {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}

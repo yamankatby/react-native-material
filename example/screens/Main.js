@@ -1,9 +1,10 @@
 import React from "react";
-import { FlatList } from "react-native";
-import { ListItem, useTheme } from "@react-native-material/core";
+import { FlatList, SafeAreaView, View } from "react-native";
+import { Button, FAB, IconButton, ListItem, useTheme } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from 'expo-status-bar';
 
 const data = [
   { title: "App bars", subtitle: "The app bar provides content and actions related to the current screen." },
@@ -58,4 +59,94 @@ const Main = () => {
   );
 };
 
-export default Main;
+const Demo = () => {
+  return (
+    <SafeAreaView>
+      <StatusBar style="light" />
+
+      <ListItem title="Lorem ipsum dolor" onPress={() => null} />
+      <ListItem
+        title="Lorem ipsum dolor"
+        secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        trailing={props => <Icon name="chevron-right" {...props} />}
+        onPress={() => null}
+      />
+
+      <View style={{ flexDirection: 'row', marginTop: 16, marginHorizontal: 16 }}>
+        <Button
+          title="Button"
+          onPress={() => null}
+        />
+        <Button
+          title="Button"
+          variant="outlined"
+          onPress={() => null}
+          style={{ marginStart: 16 }}
+        />
+        <Button
+          title="Button"
+          variant="text"
+          onPress={() => null}
+          style={{ marginStart: 16 }}
+        />
+      </View>
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, marginHorizontal: 16 }}>
+        <FAB
+          icon={(props) => <Icon name="plus" {...props} />}
+          onPress={() => null}
+        />
+        <FAB
+          icon={(props) => <Icon name="plus" {...props} />}
+          size="mini"
+          style={{ marginStart: 16 }}
+          onPress={() => null}
+        />
+        <FAB
+          variant="extended"
+          icon={(props) => <Icon name="plus" {...props} />}
+          label="Create"
+          style={{ marginStart: 16 }}
+          onPress={() => null}
+        />
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, marginHorizontal: 16 }}>
+        <FAB
+          variant="extended"
+          label="Create"
+          onPress={() => null}
+        />
+        <FAB
+          variant="extended"
+          icon={(props) => <Icon name="plus" {...props} />}
+          label="Create"
+          size="mini"
+          style={{ marginStart: 16 }}
+          onPress={() => null}
+        />
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, marginHorizontal: 16 }}>
+        <FAB
+          icon={(props) => <Icon name="plus" {...props} />}
+          loading
+          onPress={() => null}
+        />
+        <FAB
+          variant="extended"
+          icon={(props) => <Icon name="plus" {...props} />}
+          label="Create"
+          loading
+          style={{ marginStart: 16 }}
+          onPress={() => null}
+        />
+      </View>
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, marginHorizontal: 16 }}>
+        <IconButton icon={<Icon name="eye" size={24} />} onPress={() => null} />
+        <IconButton icon={<Icon name="eye-off" size={24} />} style={{ marginStart: 16 }} onPress={() => null} />
+      </View>
+    </SafeAreaView>
+  )
+}
+
+export default Demo;

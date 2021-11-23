@@ -7,7 +7,6 @@
   "repository": "https://github.com/yamankatby/react-native-material",
   "author": "Yaman KATBY <me@yamankatby.com> (https://yamankatby.com/)",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "dev": "ts-node ../../material-dev/index.ts"
   },

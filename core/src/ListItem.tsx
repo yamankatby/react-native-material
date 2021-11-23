@@ -30,6 +30,7 @@ const ListItem: React.FC<ListItemProps> = ({
   leadingMode = "icon",
   leading,
   trailing,
+  style,
   ...rest
 }) => {
   const { palette } = useTheme();
