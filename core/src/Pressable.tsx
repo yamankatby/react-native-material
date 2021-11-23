@@ -106,20 +106,19 @@ const Pressable: React.FC<PressableProps> = ({
       {...rest}
     >
       {children}
-      <View
-        style={[
-          StyleSheet.absoluteFill,
-          styles.effectContainer,
-          { backgroundColor: effect === "highlight" && pressed ? chroma(effectColor).alpha(0.2).hex() : "transparent" },
-        ]}
-      >
+
+      {(effect === "highlight" && pressed) &&
+      <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(effectColor).alpha(0.2).hex() }]} />}
+
+      {(effect === 'ripple' && ripples.length !== 0) &&
+      <View style={[StyleSheet.absoluteFill, styles.effectContainer]}>
         {ripples.map(ripple => (
           <Animated.View
             key={ripple.key}
             style={[styles.ripple, { backgroundColor: chroma(effectColor).alpha(0.2).hex() }, ripple.style]}
           />
         ))}
-      </View>
+      </View>}
     </RNPressable>
   );
 };

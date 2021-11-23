@@ -147,7 +147,7 @@ const FAB: React.FC<FABProps> = ({
     switch (typeof label) {
       case "string":
         return (
-          <Text variant="button" style={[{ color: palette.tintColor }, labelStyle]}>
+          <Text variant="button" selectable={false} style={[{ color: palette.tintColor }, labelStyle]}>
             {label}
           </Text>
         );

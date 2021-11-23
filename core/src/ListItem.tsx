@@ -54,15 +54,15 @@ const ListItem: React.FC<ListItemProps> = ({
         >{leading}</View>}
         <View style={{ flex: 1, marginHorizontal: 16 }}>
           {overline &&
-          <Text variant="overline" style={{ marginBottom: 2, color: scale(0.6).hex() }}>{overline}</Text>}
+          <Text selectable={false} variant="overline" style={{ marginBottom: 2, color: scale(0.6).hex() }}>{overline}</Text>}
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             {title &&
-            <Text variant="subtitle1" style={{ color: scale(0.87).hex() }}>{title}</Text>}
+            <Text selectable={false} variant="subtitle1" style={{ color: scale(0.87).hex() }}>{title}</Text>}
             {meta &&
-            <Text variant="caption" style={{ color: scale(0.87).hex() }}>{meta}</Text>}
+            <Text selectable={false} variant="caption" style={{ color: scale(0.87).hex() }}>{meta}</Text>}
           </View>
           {secondaryText &&
-          <Text variant="body2" style={{ marginTop: 4, color: scale(0.6).hex() }}>{secondaryText}</Text>}
+          <Text selectable={false} variant="body2" style={{ marginTop: 4, color: scale(0.6).hex() }}>{secondaryText}</Text>}
         </View>
         {trailing &&
         <View style={{

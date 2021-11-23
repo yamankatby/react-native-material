@@ -140,7 +140,7 @@ const Button: React.FC<ButtonProps> = ({
     switch (typeof title) {
       case "string":
         return (
-          <Text variant="button" style={[{ color: contentColor }, styles.titleStyle, titleStyle]}>
+          <Text variant="button" selectable={false} style={[{ color: contentColor }, styles.titleStyle, titleStyle]}>
             {title}
           </Text>
         );
