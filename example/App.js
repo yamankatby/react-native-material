@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
-import { Appbar, IconButton, ThemeProvider, useTheme,defaultTheme  } from "@react-native-material/core";
+import { Appbar, IconButton, ThemeProvider, useTheme } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Main from "./screens/Main";
 import Appbars from "./screens/Appbars";
@@ -91,7 +91,7 @@ const App = () => {
 
 const AppProvider = () => (
   <SafeAreaProvider>
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider>
       <App />
     </ThemeProvider>
   </SafeAreaProvider>

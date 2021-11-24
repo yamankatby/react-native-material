@@ -13,11 +13,12 @@ import {
   View,
 } from "react-native";
 import chroma from "chroma-js";
+import { PaletteColor, usePalette } from "./base";
 
 export interface PressableProps extends RNPressableProps {
   pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
 
-  pressEffectColor?: string;
+  pressEffectColor?: PaletteColor;
 
   onMouseEnter?: () => void;
 
@@ -28,7 +29,7 @@ export interface PressableProps extends RNPressableProps {
 
 const Pressable: React.FC<PressableProps> = ({
   pressEffect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
-  pressEffectColor = "black",
+  pressEffectColor = "onBackground",
   onLayout,
   onPressIn,
   onPressOut,
@@ -40,6 +41,8 @@ const Pressable: React.FC<PressableProps> = ({
   children,
   ...rest
 }) => {
+  const { color } = usePalette(pressEffectColor);
+
   const [size, setSize] = useState({ width: 0, height: 0 });
 
   const [ripples, setRipples] = useState<{ key: string; style: any }[]>([]);
@@ -142,9 +145,7 @@ const Pressable: React.FC<PressableProps> = ({
   return (
     <RNPressable
       android_ripple={
-        pressEffect === "android-ripple"
-          ? android_ripple ?? { color: chroma(pressEffectColor).alpha(0.26).hex() }
-          : undefined
+        pressEffect === "android-ripple" ? android_ripple ?? { color: chroma(color).alpha(0.26).hex() } : undefined
       }
       onLayout={handleLayout}
       onPressIn={handlePressIn}
@@ -155,15 +156,15 @@ const Pressable: React.FC<PressableProps> = ({
       {...rest}
     >
       {hovered && !rest.disabled && (
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.04).hex() }]} />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.04).hex() }]} />
       )}
 
       {focused && !rest.disabled && (
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.12).hex() }]} />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.12).hex() }]} />
       )}
 
       {pressEffect === "highlight" && pressed && (
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(pressEffectColor).alpha(0.26).hex() }]} />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.26).hex() }]} />
       )}
 
       {pressEffect === "ripple" && ripples.length !== 0 && (
@@ -171,7 +172,7 @@ const Pressable: React.FC<PressableProps> = ({
           {ripples.map(ripple => (
             <Animated.View
               key={ripple.key}
-              style={[styles.ripple, { backgroundColor: chroma(pressEffectColor).alpha(0.1).hex() }, ripple.style]}
+              style={[styles.ripple, { backgroundColor: chroma(color).alpha(0.1).hex() }, ripple.style]}
             />
           ))}
         </View>
