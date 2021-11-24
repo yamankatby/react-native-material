@@ -20,9 +20,9 @@ export interface PressableProps extends RNPressableProps {
 
   pressEffectColor?: PaletteColor;
 
-  onMouseEnter?: () => void;
+  onMouseEnter?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
 
-  onMouseLeave?: () => void;
+  onMouseLeave?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
 
   style?: any;
 }
@@ -132,15 +132,21 @@ const Pressable: React.FC<PressableProps> = ({
 
   const [hovered, setHovered] = useState(false);
 
-  const handleMouseEnter = useCallback(() => {
-    setHovered(true);
-    onMouseEnter?.();
-  }, [onMouseEnter]);
+  const handleMouseEnter = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      setHovered(true);
+      onMouseEnter?.(event);
+    },
+    [onMouseEnter],
+  );
 
-  const handleMouseLeave = useCallback(() => {
-    setHovered(false);
-    onMouseLeave?.();
-  }, [onMouseLeave]);
+  const handleMouseLeave = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      setHovered(false);
+      onMouseLeave?.(event);
+    },
+    [onMouseLeave],
+  );
 
   return (
     <RNPressable
