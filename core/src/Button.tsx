@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import chroma from "chroma-js";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
+import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
@@ -82,8 +82,17 @@ const Button: React.FC<ButtonProps> = ({
   testOnly_pressed,
   ...rest
 }) => {
-  const p = usePalette(color, tintColor);
-  const contentColor = useMemo(() => (variant === "contained" ? p.tintColor : p.color), [variant, p]);
+  const theme = useTheme();
+
+  const p = usePalette(
+    disabled ? chroma.scale([theme.palette.surface, theme.palette.onSurface])(0.12).hex() : color,
+    disabled ? chroma.scale([theme.palette.surface, theme.palette.onSurface])(0.35).hex() : tintColor,
+  );
+
+  const contentColor = useMemo(
+    () => (variant === "contained" ? p.tintColor : disabled ? p.tintColor : p.color),
+    [variant, p, disabled],
+  );
 
   const hasLeading = useMemo(
     () => !!leading || (loading && loadingIndicatorPosition === "leading"),
@@ -109,9 +118,9 @@ const Button: React.FC<ButtonProps> = ({
       pressable: {
         minWidth: 64,
         height: 36,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
         paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
       },
@@ -179,7 +188,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <Surface
-      elevation={variant === "contained" && !disableElevation ? 2 : 0}
+      elevation={variant === "contained" && !disableElevation && !disabled ? 2 : 0}
       style={[styles.container, style]}
       category="small"
       {...rest}
