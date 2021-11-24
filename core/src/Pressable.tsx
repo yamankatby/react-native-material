@@ -86,7 +86,7 @@ const Pressable: React.FC<PressableProps> = ({
           ),
           easing: Easing.out(Easing.ease),
           duration: 400,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }).start();
       }
     },

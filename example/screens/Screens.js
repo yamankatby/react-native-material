@@ -56,20 +56,8 @@ export const ButtonScreen = () => (
     <Button title="Button" loading loadingIndicatorPosition="trailing" style={{ margin: 8 }} />
     <Button title="Button" loading loadingIndicatorPosition="overlay" style={{ margin: 8 }} />
     <Button title="Button" variant="outlined" loading style={{ margin: 8 }} />
-    <Button
-      title="Button"
-      variant="outlined"
-      loading
-      loadingIndicatorPosition="trailing"
-      style={{ margin: 8 }}
-    />
-    <Button
-      title="Button"
-      variant="outlined"
-      loading
-      loadingIndicatorPosition="overlay"
-      style={{ margin: 8 }}
-    />
+    <Button title="Button" variant="outlined" loading loadingIndicatorPosition="trailing" style={{ margin: 8 }} />
+    <Button title="Button" variant="outlined" loading loadingIndicatorPosition="overlay" style={{ margin: 8 }} />
     <Button title="Button" variant="text" loading style={{ margin: 8 }} />
     <Button title="Button" variant="text" loading loadingIndicatorPosition="trailing" style={{ margin: 8 }} />
     <Button title="Button" variant="text" loading loadingIndicatorPosition="overlay" style={{ margin: 8 }} />
