@@ -1,6 +1,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
@@ -75,9 +76,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             type: 'dropdown',
-            label: 'v1.2.2',
+            label: 'v1.2.3',
             items: [
-              { label: 'v1.2.2', to: '/' },
+              { label: 'v1.2.3', to: '/' },
               {
                 label: 'v1.1.0',
                 href: 'https://react-native-material-38lpom7xc-yamankatby.vercel.app/docs/getting-started'

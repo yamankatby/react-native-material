@@ -26,7 +26,7 @@ It can transform into a contextual action bar or be used as a navbar.
 ```js with-preview
 import React from "react";
 import { Appbar, IconButton } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <Appbar
@@ -61,7 +61,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { Appbar, IconButton } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1 }}>
@@ -98,7 +98,7 @@ export default App;
 ```js with-preview
 import React from "react";
 import { Appbar, IconButton } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <Appbar

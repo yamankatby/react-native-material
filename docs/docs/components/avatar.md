@@ -6,7 +6,7 @@ Avatars are found throughout material design with uses in everything from tables
 import React from "react";
 import { View } from "react-native";
 import { Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -27,7 +27,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   return (
@@ -80,7 +80,7 @@ export default function App() {
 import React from "react";
 import { View } from "react-native";
 import { Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   return (
@@ -127,7 +127,7 @@ export default function App() {
 import React from "react";
 import { View } from "react-native";
 import { Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   return (
@@ -157,7 +157,7 @@ export default function App() {
 import React from "react";
 import { View } from "react-native";
 import { Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   return (

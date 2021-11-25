@@ -16,11 +16,11 @@ import Pressable from "@react-native-material/core/Pressable";
 interface PressableProps extends RNPressableProps {
   pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
 
-  pressEffectColor?: string;
+  pressEffectColor?: PaletteColor;
 
-  onMouseEnter?: () => void;
+  onMouseEnter?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
 
-  onMouseLeave?: () => void;
+  onMouseLeave?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
 
   style?: any;
 }

@@ -6,7 +6,7 @@ A backdrop appears behind all other surfaces in an app, displaying contextual an
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { Backdrop, BackdropSubheader, Appbar, IconButton } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [revealed, setRevealed] = useState(false);

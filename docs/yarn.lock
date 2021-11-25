@@ -3316,6 +3316,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-material/core@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@react-native-material/core@npm:1.2.3"
+  dependencies:
+    chroma-js: ^2.1.2
+  peerDependencies:
+    react: ^17.0.2
+    react-native: ^0.65.1
+  checksum: 443ede4ec0ab1e0804de0b6f12ffe0dca2100932be460bbd931c773b470399fbe99c53181941c80d8ce9250e016857eb81a3b020c2323397a8f3f92e3bc11878
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.0":
   version: 4.1.2
   resolution: "@sideway/address@npm:4.1.2"
@@ -4763,6 +4775,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chroma-js@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "chroma-js@npm:2.1.2"
+  dependencies:
+    cross-env: ^6.0.3
+  checksum: abbd70377446e3cc401ac58c40cdac6c70c41a349e6aca08881d0deb775051ba69c93099f4d47ef83c41b4562b0480b5dfd56d77e2e6f3a81ebb6667ce8d4627
+  languageName: node
+  linkType: hard
+
 "chrome-trace-event@npm:^1.0.2":
   version: 1.0.3
   resolution: "chrome-trace-event@npm:1.0.3"
@@ -5173,6 +5194,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-env@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "cross-env@npm:6.0.3"
+  dependencies:
+    cross-spawn: ^7.0.0
+  bin:
+    cross-env: src/bin/cross-env.js
+    cross-env-shell: src/bin/cross-env-shell.js
+  checksum: 1b2d532ad7beff8017db7c28fbee8f902377969b8090cd2b8716ec93bef958bb2838cd061c89c30e904d72f3ff7d3a4e80f0d762b14e60e8191a576be1376578
+  languageName: node
+  linkType: hard
+
 "cross-fetch@npm:^3.0.4":
   version: 3.1.4
   resolution: "cross-fetch@npm:3.1.4"
@@ -5182,7 +5215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.3":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -5725,6 +5758,7 @@ __metadata:
     "@docusaurus/preset-classic": 2.0.0-beta.9
     "@docusaurus/remark-plugin-npm2yarn": ^2.0.0-beta.9
     "@mdx-js/react": ^1.6.21
+    "@react-native-material/core": 1.2.3
     "@svgr/webpack": ^5.5.0
     clsx: ^1.1.1
     file-loader: ^6.2.0

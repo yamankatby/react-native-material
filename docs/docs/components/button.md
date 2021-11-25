@@ -9,9 +9,9 @@ import { Button } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Contained" onPress={() => undefined} />
-    <Button variant="outlined" title="Outlined" style={{ marginTop: 16 }} onPress={() => undefined} />
-    <Button variant="text" title="Text" style={{ marginTop: 16 }} onPress={() => undefined} />
+    <Button title="Contained" onPress={() => undefined}/>
+    <Button variant="outlined" title="Outlined" style={{ marginTop: 16 }} onPress={() => undefined}/>
+    <Button variant="text" title="Text" style={{ marginTop: 16 }} onPress={() => undefined}/>
   </View>
 );
 
@@ -28,6 +28,24 @@ Buttons communicate actions that users can take. They are typically placed throu
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Button)
 [`🎨 Material Design`](https://material.io/components/buttons)
 
+## Disabled
+
+```js with-preview
+import React from "react";
+import { View } from "react-native";
+import { Button } from "@react-native-material/core";
+
+const App = () => (
+  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Button title="Contained" disabled onPress={() => undefined}/>
+    <Button variant="outlined" title="Outlined" disabled style={{ marginTop: 16 }} onPress={() => undefined}/>
+    <Button variant="text" title="Text" disabled style={{ marginTop: 16 }} onPress={() => undefined}/>
+  </View>
+);
+
+export default App;
+```
+
 ## Coloring
 
 ```js with-preview
@@ -37,10 +55,10 @@ import { Button } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button variant="text" title="Button" color="secondary" onPress={() => undefined} />
-    <Button title="Button" color="error" style={{ marginTop: 16 }} onPress={() => undefined} />
-    <Button variant="outlined" title="Button" color="#d4ac2d" style={{ marginTop: 16 }} onPress={() => undefined} />
-    <Button title="Button" color="pink" tintColor="red" style={{ marginTop: 16 }} onPress={() => undefined} />
+    <Button variant="text" title="Button" color="secondary" onPress={() => undefined}/>
+    <Button title="Button" color="error" style={{ marginTop: 16 }} onPress={() => undefined}/>
+    <Button variant="outlined" title="Button" color="#d4ac2d" style={{ marginTop: 16 }} onPress={() => undefined}/>
+    <Button title="Button" color="pink" tintColor="red" style={{ marginTop: 16 }} onPress={() => undefined}/>
   </View>
 );
 
@@ -53,7 +71,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { Button } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -84,8 +102,8 @@ import { Button } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Button" onPress={() => undefined} />
-    <Button title="Button" uppercase={false} style={{ marginTop: 16 }} onPress={() => undefined} />
+    <Button title="Button" onPress={() => undefined}/>
+    <Button title="Button" uppercase={false} style={{ marginTop: 16 }} onPress={() => undefined}/>
   </View>
 );
 
@@ -101,8 +119,8 @@ import { Button } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Button" onPress={() => undefined} />
-    <Button title="Disable Elevation" disableElevation style={{ marginTop: 16 }} onPress={() => undefined} />
+    <Button title="Button" onPress={() => undefined}/>
+    <Button title="Disable Elevation" disableElevation style={{ marginTop: 16 }} onPress={() => undefined}/>
   </View>
 );
 
@@ -115,13 +133,13 @@ export default App;
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Button, Switch } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Switch value={loading} onValueChange={setLoading} />
+      <Switch value={loading} onValueChange={setLoading}/>
       <Button
         title="Button"
         leading={props => <Icon name="plus" {...props} />}
@@ -157,13 +175,13 @@ export default App;
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Button, Text, Switch } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Switch value={loading} onValueChange={setLoading} />
+      <Switch value={loading} onValueChange={setLoading}/>
       <Button
         title="Button"
         leading={props => <Icon name="plus" {...props} />}

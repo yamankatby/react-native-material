@@ -33,7 +33,7 @@ the user to either ignore them or interact with them at any time. Only one banne
 ```js with-preview
 import React from "react";
 import { Banner, Button, Avatar } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <Banner

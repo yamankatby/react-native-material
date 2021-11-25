@@ -32,7 +32,7 @@ which are represented by icons and text.
 import React from "react";
 import { View } from "react-native";
 import { ListItem } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1 }}>

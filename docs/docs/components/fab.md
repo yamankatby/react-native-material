@@ -6,7 +6,7 @@ A floating action button (FAB) represents the primary action of a screen.
 import React from "react";
 import { View } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -52,7 +52,7 @@ Only use a FAB if it is the most suitable way to present a screen's primary acti
 import React from "react";
 import { View } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -73,7 +73,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -103,7 +103,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -127,7 +127,7 @@ export default App;
 import React from "react";
 import { View } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   return (
@@ -159,7 +159,7 @@ export default App;
 import React from "react";
 import { ScrollView } from "react-native";
 import { FAB } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <ScrollView
@@ -209,7 +209,7 @@ export default App;
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { FAB, Switch } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -266,7 +266,7 @@ export default App;
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { FAB, Text, Switch } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -340,7 +340,7 @@ export default App;
 import React, { useState } from "react";
 import { View } from "react-native";
 import { FAB, Switch } from "@react-native-material/core";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [visible, setVisible] = useState(true);
