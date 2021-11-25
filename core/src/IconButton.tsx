@@ -29,6 +29,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   color = "onBackground",
   style,
   contentContainerStyle,
+
   pressEffect,
   pressEffectColor,
   onPress,
@@ -37,6 +38,8 @@ const IconButton: React.FC<IconButtonProps> = ({
   onLongPress,
   onBlur,
   onFocus,
+  onMouseEnter,
+  onMouseLeave,
   delayLongPress,
   disabled,
   hitSlop,
@@ -59,6 +62,8 @@ const IconButton: React.FC<IconButtonProps> = ({
         onLongPress={onLongPress}
         onBlur={onBlur}
         onFocus={onFocus}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         delayLongPress={delayLongPress}
         disabled={disabled}
         hitSlop={hitSlop}

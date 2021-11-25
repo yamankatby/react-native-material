@@ -128,12 +128,13 @@ const Button: React.FC<ButtonProps> = ({
   variant = "contained",
   color = "primary",
   tintColor,
-  uppercase = true,
   compact = false,
   disableElevation = false,
+  uppercase = true,
   loading = false,
-  loadingIndicator,
   loadingIndicatorPosition = "leading",
+  loadingIndicator,
+
   style,
   pressableContainerStyle,
   contentContainerStyle,
@@ -141,6 +142,7 @@ const Button: React.FC<ButtonProps> = ({
   leadingContainerStyle,
   trailingContainerStyle,
   loadingOverlayContainerStyle,
+
   pressEffect,
   pressEffectColor,
   onPress,
@@ -149,6 +151,8 @@ const Button: React.FC<ButtonProps> = ({
   onLongPress,
   onBlur,
   onFocus,
+  onMouseEnter,
+  onMouseLeave,
   delayLongPress,
   disabled,
   hitSlop,
@@ -156,6 +160,7 @@ const Button: React.FC<ButtonProps> = ({
   android_disableSound,
   android_ripple,
   testOnly_pressed,
+
   ...rest
 }) => {
   const theme = useTheme();
@@ -280,6 +285,8 @@ const Button: React.FC<ButtonProps> = ({
           onLongPress={onLongPress}
           onBlur={onBlur}
           onFocus={onFocus}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           delayLongPress={delayLongPress}
           disabled={disabled}
           hitSlop={hitSlop}

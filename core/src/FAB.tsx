@@ -58,6 +58,7 @@ const FAB: React.FC<FABProps> = ({
   labelContainerStyle,
   labelStyle,
   loadingOverlayContainerStyle,
+
   pressEffect,
   pressEffectColor,
   onPress,
@@ -66,6 +67,8 @@ const FAB: React.FC<FABProps> = ({
   onLongPress,
   onBlur,
   onFocus,
+  onMouseEnter,
+  onMouseLeave,
   delayLongPress,
   disabled,
   hitSlop,
@@ -171,6 +174,8 @@ const FAB: React.FC<FABProps> = ({
           onLongPress={onLongPress}
           onBlur={onBlur}
           onFocus={onFocus}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           delayLongPress={delayLongPress}
           disabled={disabled}
           hitSlop={hitSlop}
