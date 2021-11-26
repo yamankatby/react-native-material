@@ -15,6 +15,7 @@ import Surface, { SurfaceProps } from "./Surface";
 import Pressable, { PressableProps } from "./Pressable";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
+import { useAnimatedElevation } from "./base/elevations";
 
 export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -195,9 +196,10 @@ const FAB: React.FC<FABProps> = ({
     setPressed(false);
   }, [onPressOut])
 
+  const animatedElevation = useAnimatedElevation(pressed ? 12 : hovered ? 8 : 6)
+
   return (
-    <Surface elevation={pressed ? 12 : hovered ? 8 : 6} animateElevation
-             style={[styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
+    <Surface style={[animatedElevation, styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
