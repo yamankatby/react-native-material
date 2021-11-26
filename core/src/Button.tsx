@@ -15,6 +15,7 @@ import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 import Pressable, { PressableProps } from "./Pressable";
+import { useAnimatedElevation } from "./base/elevations";
 
 export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   /**
@@ -303,14 +304,10 @@ const Button: React.FC<ButtonProps> = ({
     setPressed(false);
   }, [onPressOut])
 
+  const animatedElevation = useAnimatedElevation(variant === "contained" && !disableElevation && !disabled ? pressed ? 8 : hovered ? 4 : 2 : 0)
+
   return (
-    <Surface
-      category="small"
-      elevation={variant === "contained" && !disableElevation && !disabled ? pressed ? 8 : hovered ? 4 : 2 : 0}
-      animateElevation
-      style={[styles.container, style]}
-      {...rest}
-    >
+    <Surface category="small" style={[animatedElevation, styles.container, style]} {...rest}>
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
