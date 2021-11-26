@@ -1,5 +1,14 @@
-import React, { useMemo } from "react";
-import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
+import {
+  GestureResponderEvent,
+  NativeSyntheticEvent,
+  StyleProp,
+  StyleSheet,
+  TargetedEvent,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 import chroma from "chroma-js";
 import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
@@ -189,8 +198,11 @@ const Button: React.FC<ButtonProps> = ({
     ({ palette, shapes }) => ({
       container: {
         backgroundColor: variant === "contained" ? p.color : "transparent",
-        borderWidth: variant === "outlined" ? 1 : 0,
-        borderColor: chroma(palette.onSurface).alpha(0.12).hex(),
+      },
+      outline: {
+        ...shapes.small,
+        borderWidth: 1,
+        borderColor: chroma.scale([palette.surface, palette.onSurface])(0.12).hex(),
       },
       pressableContainer: {
         ...shapes.small,
@@ -267,11 +279,36 @@ const Button: React.FC<ButtonProps> = ({
     return typeof trailing === "function" ? trailing({ color: contentColor, size: 18 }) : trailing;
   };
 
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
+    onMouseEnter?.(event);
+    setHovered(true);
+  }, [onMouseEnter]);
+
+  const handleMouseLeave = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
+    onMouseLeave?.(event);
+    setHovered(false);
+  }, [onMouseLeave]);
+
+  const [pressed, setPressed] = useState(false);
+
+  const handlePressIn = useCallback((event: GestureResponderEvent) => {
+    onPressIn?.(event);
+    setPressed(true);
+  }, [onPressIn])
+
+  const handlePressOut = useCallback((event: GestureResponderEvent) => {
+    onPressOut?.(event);
+    setPressed(false);
+  }, [onPressOut])
+
   return (
     <Surface
-      elevation={variant === "contained" && !disableElevation && !disabled ? 2 : 0}
-      style={[styles.container, style]}
       category="small"
+      elevation={variant === "contained" && !disableElevation && !disabled ? pressed ? 8 : hovered ? 4 : 2 : 0}
+      animateElevation
+      style={[styles.container, style]}
       {...rest}
     >
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
@@ -280,13 +317,13 @@ const Button: React.FC<ButtonProps> = ({
           pressEffect={pressEffect}
           pressEffectColor={pressEffectColor ?? contentColor}
           onPress={onPress}
-          onPressIn={onPressIn}
-          onPressOut={onPressOut}
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
           onLongPress={onLongPress}
           onBlur={onBlur}
           onFocus={onFocus}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           delayLongPress={delayLongPress}
           disabled={disabled}
           hitSlop={hitSlop}
@@ -304,6 +341,7 @@ const Button: React.FC<ButtonProps> = ({
           )}
         </Pressable>
       </View>
+      {variant === 'outlined' && <View style={[StyleSheet.absoluteFill, styles.outline]} pointerEvents="none" />}
     </Surface>
   );
 };
