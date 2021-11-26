@@ -13,7 +13,7 @@ const TextInputs = () => {
       style={{ flex: 1 }}
       contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 16 }}
     >
-      {["flat", "outlined"].map(variant => (
+      {["filled", "outlined", 'standard'].map(variant => (
         <React.Fragment key={variant}>
           <TextInput variant={variant} style={{ marginTop: 16 }} />
           <TextInput variant={variant} label="Label" style={{ marginTop: 16 }} />
@@ -43,6 +43,7 @@ const TextInputs = () => {
             assistiveText="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum expedita placeat ut?"
             leading={<Icon name="check-circle" color={palette.success} size={24} />}
             style={{ marginTop: 16 }}
+            placeholder="Placeholder"
           />
           <TextInput
             variant={variant}
