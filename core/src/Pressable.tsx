@@ -163,8 +163,7 @@ const Pressable: React.FC<PressableProps> = ({
     >
       <View style={[StyleSheet.absoluteFill, {
         backgroundColor: hovered && !rest.disabled ? chroma(color).alpha(0.04).hex() : 'transparent',
-        transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-      }]} />
+      }, ({ transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms" } as any)]} />
 
       {focused && !rest.disabled && (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.12).hex() }]} />

@@ -1,5 +1,15 @@
-import React, { useEffect, useMemo, useRef } from "react";
-import { Animated, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Animated,
+  GestureResponderEvent,
+  NativeSyntheticEvent,
+  StyleProp,
+  StyleSheet,
+  TargetedEvent,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Pressable, { PressableProps } from "./Pressable";
@@ -161,21 +171,46 @@ const FAB: React.FC<FABProps> = ({
     }
   };
 
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
+    onMouseEnter?.(event);
+    setHovered(true);
+  }, [onMouseEnter]);
+
+  const handleMouseLeave = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
+    onMouseLeave?.(event);
+    setHovered(false);
+  }, [onMouseLeave]);
+
+  const [pressed, setPressed] = useState(false);
+
+  const handlePressIn = useCallback((event: GestureResponderEvent) => {
+    onPressIn?.(event);
+    setPressed(true);
+  }, [onPressIn])
+
+  const handlePressOut = useCallback((event: GestureResponderEvent) => {
+    onPressOut?.(event);
+    setPressed(false);
+  }, [onPressOut])
+
   return (
-    <Surface elevation={8} style={[styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
+    <Surface elevation={pressed ? 12 : hovered ? 8 : 6} animateElevation
+             style={[styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
       <View style={[styles.pressableContainer, pressableContainerStyle]}>
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
           pressEffect={pressEffect}
           pressEffectColor={pressEffectColor ?? palette.tintColor}
           onPress={onPress}
-          onPressIn={onPressIn}
-          onPressOut={onPressOut}
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
           onLongPress={onLongPress}
           onBlur={onBlur}
           onFocus={onFocus}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           delayLongPress={delayLongPress}
           disabled={disabled}
           hitSlop={hitSlop}
