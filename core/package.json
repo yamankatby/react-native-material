@@ -1,6 +1,6 @@
 {
   "name": "@react-native-material/core",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Modular and customizable Material Design UI components for React Native",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

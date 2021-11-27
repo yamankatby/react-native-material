@@ -5,12 +5,24 @@ Text inputs let users enter and edit text.
 ```js with-preview
 import React from "react";
 import { View } from "react-native";
-import { TextInput } from "@react-native-material/core";
+import { TextInput, IconButton } from "@react-native-material/core";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <View style={{ flex: 1, padding: 16 }}>
-    <TextInput label="Label"/>
-    <TextInput label="Label" variant="outlined" style={{ marginTop: 8 }}/>
+    <TextInput
+      label="Label"
+      leading={props => <Icon name="account" {...props} />}
+    />
+    <TextInput
+      label="Label"
+      variant="outlined"
+      trailing={props => (
+        <IconButton icon={<Icon name="eye" {...props} />} color={props.color} />
+      )}
+      style={{ marginTop: 8 }}
+    />
+    <TextInput label="Label" variant="standard" style={{ marginTop: 8 }} />
   </View>
 );
 
@@ -26,13 +38,11 @@ Text inputs allow users to enter text into a UI. They typically appear in forms 
 
 ## Variants
 
-Text inputs come in two variants:
+Text inputs come in three variants:
 
 - Filled text inputs
 - Outlined text inputs
-
-Both types of text input use a container to provide a clear affordance for interaction, making the fields discoverable
-in layouts.
+- Standard text inputs
 
 ### Filled
 
@@ -53,6 +63,19 @@ import { TextInput } from "@react-native-material/core";
 
 const App = () => (
   <TextInput variant="outlined" label="Label" style={{ margin: 16 }}/>
+);
+
+export default App;
+```
+
+### Standard
+
+```js with-preview
+import React from "react";
+import { TextInput } from "@react-native-material/core";
+
+const App = () => (
+  <TextInput variant="standard" label="Label" style={{ margin: 16 }}/>
 );
 
 export default App;
