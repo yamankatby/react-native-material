@@ -1,247 +1,3 @@
-// import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-// import {
-//   Animated,
-//   Easing,
-//   NativeSyntheticEvent,
-//   StyleSheet,
-//   TextInput as NativeTextInput,
-//   TextInputFocusEventData,
-//   TextInputProps as NativeTextInputProps,
-//   View,
-// } from "react-native";
-// import chroma from "chroma-js";
-// import { PaletteColor, usePalette, useTheme } from "./base";
-// import Text from "./Text";
-//
-// export interface TextInputProps extends NativeTextInputProps {
-//   variant?: "flat" | "outlined";
-//
-//   color?: PaletteColor;
-//
-//   label?: string;
-//
-//   assistiveText?: string;
-//
-//   leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
-//
-//   trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
-// }
-//
-// const TextInput: React.FC<TextInputProps> = ({
-//   variant = "flat",
-//   color = "primary",
-//   label,
-//   assistiveText,
-//   leading,
-//   trailing,
-//   onFocus,
-//   onBlur,
-//   style,
-//   onChangeText,
-//   ...rest
-// }) => {
-//   const { palette, shapes, typography } = useTheme();
-//
-//   const p = usePalette(color);
-//
-//   const surfaceScale = useMemo(
-//     () => chroma.scale([palette.surface, palette.onSurface]),
-//     [palette.surface, palette.onSurface],
-//   )
-//
-//   const [focused, setFocused] = useState(false);
-//
-//   const [text, setText] = useState("");
-//
-//   const active = useMemo(() => focused || text.length > 0, [focused, text]);
-//
-//   const focusAnimation = useRef(new Animated.Value(0)).current;
-//
-//   useEffect(() => {
-//     Animated.timing(focusAnimation, {
-//       toValue: focused ? 1 : 0,
-//       easing: Easing.out(Easing.ease),
-//       duration: 200,
-//       useNativeDriver: false,
-//     }).start();
-//   }, [focused]);
-//
-//   const activeAnimation = useRef(new Animated.Value(0)).current;
-//
-//   useEffect(() => {
-//     Animated.timing(activeAnimation, {
-//       toValue: active ? 1 : 0,
-//       easing: Easing.out(Easing.ease),
-//       duration: 200,
-//       useNativeDriver: false,
-//     }).start();
-//   }, [active]);
-//
-//   const handleOnFocus = useCallback(
-//     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-//       onFocus && onFocus(e);
-//       setFocused(true);
-//     },
-//     [onFocus],
-//   );
-//
-//   const handleOnBlur = useCallback(
-//     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-//       onBlur && onBlur(e);
-//       setFocused(false);
-//     },
-//     [onBlur],
-//   );
-//
-//   const handleOnChangeText = useCallback(
-//     (text: string) => {
-//       onChangeText && onChangeText(text);
-//       setText(text);
-//     },
-//     [onChangeText],
-//   );
-//
-//   return (
-//     <View style={style}>
-//       <View style={[shapes.medium, { flexDirection: 'row' }, variant === 'flat' ? {
-//         backgroundColor: surfaceScale(0.08).hex(),
-//         borderBottomStartRadius: 0,
-//         borderBottomEndRadius: 0,
-//       } : { backgroundColor: palette.surface }]}>
-//         {leading && <View style={{
-//           width: 48,
-//           height: 48,
-//           marginTop: 4,
-//           alignItems: "center",
-//           justifyContent: "center",
-//         }}>{leading}</View>}
-//         <NativeTextInput
-//           {...rest}
-//           onFocus={handleOnFocus}
-//           onBlur={handleOnBlur}
-//           onChangeText={handleOnChangeText}
-//           style={[
-//             typography.subtitle1,
-//             { flex: 1, minHeight: 56, paddingHorizontal: leading ? 8 : 16, color: palette.onSurface },
-//             shapes.medium,
-//             variant === "flat" && { paddingTop: label ? 14 : 0 },
-//           ]}
-//         />
-//         {trailing && <View style={{
-//           width: 48,
-//           height: 48,
-//           marginTop: 4,
-//           alignItems: "center",
-//           justifyContent: "center",
-//         }}>{trailing}</View>}
-//         {variant === "flat" && (
-//           <>
-//             <View
-//               style={{
-//                 height: 1,
-//                 position: "absolute",
-//                 start: 0,
-//                 end: 0,
-//                 bottom: 0,
-//                 backgroundColor: surfaceScale(0.6).hex(),
-//               }}
-//             />
-//             <Animated.View
-//               style={{
-//                 height: 2,
-//                 position: "absolute",
-//                 start: 0,
-//                 end: 0,
-//                 bottom: 0,
-//                 backgroundColor: p.color,
-//                 transform: [{ scaleX: focusAnimation }],
-//               }}
-//             />
-//           </>
-//         )}
-//
-//         {variant === "outlined" && (
-//           <>
-//             <Animated.View
-//               style={[
-//                 StyleSheet.absoluteFill,
-//                 shapes.medium,
-//                 {
-//                   borderWidth: focused ? 2 : 1,
-//                   borderColor: focusAnimation.interpolate({
-//                     inputRange: [0, 1],
-//                     outputRange: [palette.onSurface, p.color],
-//                   }),
-//                 },
-//               ]}
-//               pointerEvents="none"
-//             />
-//           </>
-//         )}
-//
-//         <View
-//           style={{ height: 56, position: "absolute", justifyContent: "center", top: 0, start: leading ? 56 : 16 }}
-//           pointerEvents="none"
-//         >
-//           {variant === "outlined" && label && (
-//             <Animated.View
-//               style={{
-//                 position: "absolute",
-//                 top: 0,
-//                 start: -4,
-//                 end: -4,
-//                 height: focused ? 2 : 1,
-//                 backgroundColor: palette.surface,
-//                 transform: [{ scaleX: activeAnimation }],
-//               }}
-//             />
-//           )}
-//           <Animated.Text
-//             style={[
-//               typography.subtitle1,
-//               {
-//                 color: focusAnimation.interpolate({
-//                   inputRange: [0, 1],
-//                   outputRange: [palette.onSurface, p.color],
-//                 }),
-//                 fontSize: activeAnimation.interpolate({
-//                   inputRange: [0, 1],
-//                   outputRange: [typography.subtitle1.fontSize ?? 16, 12],
-//                 }),
-//                 transform: [
-//                   {
-//                     translateY: activeAnimation.interpolate({
-//                       inputRange: [0, 1],
-//                       outputRange: [0, variant === "flat" ? -12 : -28],
-//                     }),
-//                   },
-//                 ],
-//               },
-//             ]}
-//           >
-//             {label}
-//           </Animated.Text>
-//         </View>
-//       </View>
-//       <View style={{
-//         marginTop: 4,
-//         marginHorizontal: 16,
-//         flexDirection: 'row',
-//         justifyContent: 'space-between',
-//         alignItems: 'flex-start',
-//       }}>
-//         {assistiveText && <Text variant="body2" style={{
-//           fontSize: 12,
-//           color: focused ? p.color : surfaceScale(0.6).hex(),
-//         }}>{assistiveText}</Text>}
-//       </View>
-//     </View>
-//   );
-// };
-//
-// export default TextInput;
-
-
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Animated,
@@ -335,9 +91,25 @@ const TextInput: React.FC<TextInputProps> = ({
   const surfaceScale = useMemo(
     () => chroma.scale([theme.palette.surface, theme.palette.onSurface]),
     [theme.palette.surface, theme.palette.onSurface],
-  )
+  );
 
   const palette = usePalette(color);
+
+  const leadingElement =
+    typeof leading === "function"
+      ? leading({
+        color: surfaceScale(0.62).hex(),
+        size: 24,
+      })
+      : leading;
+
+  const trailingElement =
+    typeof trailing === "function"
+      ? trailing({
+        color: surfaceScale(0.62).hex(),
+        size: 24,
+      })
+      : trailing;
 
   const [hovered, setHovered] = useState(false);
 
@@ -388,16 +160,57 @@ const TextInput: React.FC<TextInputProps> = ({
 
   const active = useMemo(() => focused || !!value, [focused, value]);
 
+  const activeAnimation = useMemo(() => new Animated.Value(active ? 1 : 0), []);
+
+  useEffect(() => {
+    Animated.timing(activeAnimation, {
+      toValue: active ? 1 : 0,
+      duration: 200,
+      easing: Easing.out(Easing.ease),
+      useNativeDriver: false,
+    }).start();
+  }, [active]);
+
   const styles = useStyleSheet(
     () => ({
       container: {
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: variant === 'filled' ? surfaceScale(0.08).hex() : undefined,
+        backgroundColor:
+          variant === "filled"
+            ? focused
+              ? surfaceScale(0.14).hex()
+              : hovered
+                ? surfaceScale(0.08).hex()
+                : surfaceScale(0.04).hex()
+            : variant === "outlined"
+              ? surfaceScale(0).hex()
+              : undefined,
       },
       input: {
         flex: 1,
-        minHeight: 48,
+        minHeight: variant === "standard" ? 48 : 56,
+        paddingStart: variant === "standard" || !!leadingElement ? 0 : 16,
+        paddingEnd: variant === "standard" || !!trailingElement ? 0 : 16,
+        color: surfaceScale(0.87).hex(),
+      },
+      leading: {
+        justifyContent: "center",
+        alignItems: "center",
+        width: 24,
+        height: 24,
+        marginStart: variant === "standard" ? 0 : 12,
+        marginEnd: 12,
+        marginVertical: 12,
+      },
+      trailing: {
+        justifyContent: "center",
+        alignItems: "center",
+        width: 24,
+        height: 24,
+        marginStart: 12,
+        marginEnd: variant === "standard" ? 0 : 12,
+        marginVertical: 12,
       },
       underline: {
         position: "absolute",
@@ -405,7 +218,7 @@ const TextInput: React.FC<TextInputProps> = ({
         end: 0,
         bottom: 0,
         height: 1,
-        backgroundColor: hovered ? surfaceScale(0.6).hex() : surfaceScale(0.23).hex(),
+        backgroundColor: hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
       },
       underlineFocused: {
         height: 2,
@@ -413,22 +226,53 @@ const TextInput: React.FC<TextInputProps> = ({
       },
       outline: {
         borderWidth: focused ? 2 : 1,
-        borderColor: focused ? palette.color : hovered ? surfaceScale(0.6).hex() : surfaceScale(0.23).hex(),
+        borderColor: focused ? palette.color : hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
       },
     }),
-    [surfaceScale, palette.color, variant, hovered, focused],
+    [surfaceScale, palette.color, variant, hovered, focused, !!leadingElement, !!trailingElement],
   );
 
   return (
-    <View style={[styles.container, style]}>
-      <RNTextInput
-        style={[styles.input]}
-        value={value}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...props } as any)}
-        {...props}
-      />
+    <View
+      style={[
+        variant !== "standard" && theme.shapes.medium,
+        variant === "filled" && { borderBottomStartRadius: 0, borderBottomEndRadius: 0 },
+        styles.container,
+        style,
+      ]}
+    >
+      {/*{leadingElement && <View style={[styles.leading]}>{leadingElement}</View>}*/}
+
+      <View style={[styles.input]}>
+        <Animated.Text
+          style={[
+            {
+              backgroundColor: "green",
+              position: "absolute",
+              top: activeAnimation.interpolate({
+                inputRange: [0, 1],
+                outputRange: [variant === "standard" ? 15 : 19, 0],
+              }),
+            },
+            theme.typography.subtitle1,
+          ]}
+        >
+          {label}
+        </Animated.Text>
+
+        <RNTextInput
+          style={[{ backgroundColor: "red" }, theme.typography.subtitle1]}
+          value={value}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          selectionColor={palette.color}
+          placeholderTextColor={surfaceScale(0.4).hex()}
+          {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...props } as any)}
+          {...props}
+        />
+      </View>
+
+      {/*{trailingElement && <View style={[styles.trailing]}>{trailingElement}</View>}*/}
 
       {(variant === "filled" || variant === "standard") && (
         <>
@@ -440,11 +284,11 @@ const TextInput: React.FC<TextInputProps> = ({
         </>
       )}
 
-      {variant === 'outlined' && <View style={[StyleSheet.absoluteFill, styles.outline]} pointerEvents="none" />}
+      {variant === "outlined" && (
+        <View style={[StyleSheet.absoluteFill, theme.shapes.medium, styles.outline]} pointerEvents="none" />
+      )}
     </View>
   );
 };
 
 export default TextInput;
-
-

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Button, Pressable } from "@react-native-material/core";
+import { Button, FAB, Pressable } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export const AppbarScreen = () => {
@@ -48,10 +48,10 @@ export const ButtonScreen = () => (
     <Button
       title="Delete"
       variant="outlined"
-      leading={props => <Icon name="delete" {...props} />}
+      leading={props => <Icon name="delete" selectable={false} {...props} />}
       style={{ margin: 8 }}
     />
-    <Button title="Send" trailing={props => <Icon name="send" {...props} />} style={{ margin: 8 }} />
+    <Button title="Send" trailing={props => <Icon name="send" selectable={false} {...props} />} style={{ margin: 8 }} />
     <Button title="Button" loading style={{ margin: 8 }} />
     <Button title="Button" loading loadingIndicatorPosition="trailing" style={{ margin: 8 }} />
     <Button title="Button" loading loadingIndicatorPosition="overlay" style={{ margin: 8 }} />
@@ -70,11 +70,34 @@ export const DividerScreen = () => {
   );
 }
 
-export const FABScreen = () => {
-  return (
-    <Text>FAB</Text>
-  );
-}
+export const FABScreen = () => (
+  <SafeAreaView style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", margin: 8 }}>
+    <FAB icon={props => <Icon name="plus" selectable={false} {...props} />} style={{ margin: 8 }} />
+    <FAB icon={props => <Icon name="plus" selectable={false} {...props} />} size="mini" style={{ margin: 8 }} />
+    <FAB
+      variant="extended"
+      icon={props => <Icon name="plus" selectable={false} {...props} />}
+      label="Create"
+      style={{ margin: 8 }}
+    />
+    <FAB variant="extended" label="Create" style={{ margin: 8 }} />
+    <FAB
+      variant="extended"
+      icon={props => <Icon name="plus" selectable={false} {...props} />}
+      label="Create"
+      size="mini"
+      style={{ margin: 8 }}
+    />
+    <FAB icon={props => <Icon name="plus" selectable={false} {...props} />} loading style={{ margin: 8 }} />
+    <FAB
+      variant="extended"
+      icon={props => <Icon name="plus" selectable={false} {...props} />}
+      label="Create"
+      loading
+      style={{ margin: 8 }}
+    />
+  </SafeAreaView>
+);
 
 export const IconButtonScreen = () => {
   return (

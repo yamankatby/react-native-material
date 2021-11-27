@@ -1,15 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  Animated,
-  GestureResponderEvent,
-  NativeSyntheticEvent,
-  StyleProp,
-  StyleSheet,
-  TargetedEvent,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Animated, GestureResponderEvent, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Pressable, { PressableProps } from "./Pressable";
@@ -132,7 +122,7 @@ const FAB: React.FC<FABProps> = ({
     Animated.timing(animated, {
       toValue: visible ? 1 : 0,
       duration: 200,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [visible]);
 
@@ -172,18 +162,6 @@ const FAB: React.FC<FABProps> = ({
     }
   };
 
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseEnter = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
-    onMouseEnter?.(event);
-    setHovered(true);
-  }, [onMouseEnter]);
-
-  const handleMouseLeave = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
-    onMouseLeave?.(event);
-    setHovered(false);
-  }, [onMouseLeave]);
-
   const [pressed, setPressed] = useState(false);
 
   const handlePressIn = useCallback((event: GestureResponderEvent) => {
@@ -196,7 +174,7 @@ const FAB: React.FC<FABProps> = ({
     setPressed(false);
   }, [onPressOut])
 
-  const animatedElevation = useAnimatedElevation(pressed ? 12 : hovered ? 8 : 6)
+  const animatedElevation = useAnimatedElevation(pressed ? 12 : 6)
 
   return (
     <Surface style={[animatedElevation, styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
@@ -211,8 +189,8 @@ const FAB: React.FC<FABProps> = ({
           onLongPress={onLongPress}
           onBlur={onBlur}
           onFocus={onFocus}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           delayLongPress={delayLongPress}
           disabled={disabled}
           hitSlop={hitSlop}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Platform } from "react-native";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,10 +12,9 @@ import Backdrop from "./screens/Backdrop";
 import Badges from "./screens/Badges";
 import Banners from "./screens/Banners";
 import Dividers from "./screens/Dividers";
-import FAB from "./screens/FAB";
 import IconButtons from "./screens/IconButtons";
 import Lists from "./screens/Lists";
-import { ButtonScreen, PressableScreen } from "./screens/Screens";
+import { ButtonScreen, FABScreen, PressableScreen } from "./screens/Screens";
 import Snackbars from "./screens/Snackbars";
 import Surfaces from "./screens/Surfaces";
 import Switches from "./screens/Switches";
@@ -27,6 +26,15 @@ const Stack = createNativeStackNavigator();
 
 
 const App = () => {
+
+  useEffect(() => {
+    if (Platform.OS !== 'web') return
+
+    const style = document.createElement('style')
+    style.textContent = `textarea, select, input, button { outline: none!important; }`
+    return document.head.append(style)
+  }, [])
+
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   return (
@@ -73,7 +81,7 @@ const App = () => {
         <Stack.Screen name="Banners" component={Banners} />
         <Stack.Screen name="Buttons" component={ButtonScreen} />
         <Stack.Screen name="Dividers" component={Dividers} />
-        <Stack.Screen name="FAB" component={FAB} />
+        <Stack.Screen name="FAB" component={FABScreen} />
         <Stack.Screen name="Icon buttons" component={IconButtons} />
         <Stack.Screen name="Lists" component={Lists} />
         <Stack.Screen name="Pressable" component={PressableScreen} />

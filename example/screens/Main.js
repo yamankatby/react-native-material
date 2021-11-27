@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from 'expo-status-bar';
+import TextInputs from "./TextInputs";
 
 const data = [
   { title: "App bars", subtitle: "The app bar provides content and actions related to the current screen." },
@@ -146,4 +147,4 @@ const Demo = () => {
   )
 }
 
-export default Main;
+export default TextInputs

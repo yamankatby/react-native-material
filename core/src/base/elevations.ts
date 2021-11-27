@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { Animated, Platform } from "react-native";
-import { useTheme } from "./context";
 import chroma from "chroma-js";
+import { useTheme } from "./context";
 
 export type Elevation =
   | 0
@@ -76,6 +76,8 @@ export const useElevation = (elevation: Elevation) => {
   const { mode, palette } = useTheme();
 
   const backgroundColor = useMemo(() => {
+    if (mode === "light") return palette.surface;
+
     const colorsScale = chroma.scale([palette.surface, palette.onSurface]);
 
     const surfaceScale = chroma
@@ -116,7 +118,7 @@ export const useAnimatedElevation = (elevation: Elevation) => {
     Animated.timing(animatedValue, {
       toValue: elevation,
       duration: 200,
-      useNativeDriver: Platform.OS === "android",
+      useNativeDriver: false,
     }).start();
   }, [elevation]);
 
@@ -173,4 +175,3 @@ export const useAnimatedElevation = (elevation: Elevation) => {
     [elevation],
   );
 };
-
