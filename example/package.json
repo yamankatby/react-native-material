@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-material/core": "1.2.2",
+    "@react-native-material/core": "1.2.4",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "chroma-js": "^2.1.2",
