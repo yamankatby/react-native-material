@@ -10,8 +10,9 @@ import {
   TextInputProps as RNTextInputProps,
   View,
 } from "react-native";
-import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import chroma from "chroma-js";
+import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
+import Text from "./Text";
 
 export interface TextInputProps extends RNTextInputProps {
   /**
@@ -44,16 +45,6 @@ export interface TextInputProps extends RNTextInputProps {
   color?: PaletteColor;
 
   /**
-   * Text to display before the input. Note that the prefix text will override the leading prop if both are provided.
-   */
-  prefix?: string;
-
-  /**
-   * Text to display after the input. Note that the suffix text will override the trailing prop if both are provided.
-   */
-  suffix?: string;
-
-  /**
    * The helper text to display.
    */
   helperText?: string;
@@ -75,16 +66,16 @@ const TextInput: React.FC<TextInputProps> = ({
   leading,
   trailing,
   color = "primary",
-  prefix,
-  suffix,
   helperText,
-  style,
-  value,
-  onFocus,
-  onBlur,
   onMouseEnter,
   onMouseLeave,
-  ...props
+
+  placeholder,
+  onFocus,
+  onBlur,
+  style,
+  onChangeText,
+  ...rest
 }) => {
   const theme = useTheme();
 
@@ -95,21 +86,25 @@ const TextInput: React.FC<TextInputProps> = ({
 
   const palette = usePalette(color);
 
-  const leadingElement =
-    typeof leading === "function"
-      ? leading({
-        color: surfaceScale(0.62).hex(),
-        size: 24,
-      })
-      : leading;
+  const leadingNode = typeof leading === "function" ? leading({ color: surfaceScale(0.62).hex(), size: 24 }) : leading;
 
-  const trailingElement =
+  const trailingNode =
     typeof trailing === "function"
       ? trailing({
         color: surfaceScale(0.62).hex(),
         size: 24,
       })
       : trailing;
+
+  const [text, setText] = useState("");
+
+  const handleChangeText = useCallback(
+    (text: string) => {
+      onChangeText?.(text);
+      setText(text);
+    },
+    [onChangeText],
+  );
 
   const [hovered, setHovered] = useState(false);
 
@@ -154,11 +149,11 @@ const TextInput: React.FC<TextInputProps> = ({
       toValue: focused ? 1 : 0,
       duration: 200,
       easing: Easing.out(Easing.ease),
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [focused]);
 
-  const active = useMemo(() => focused || !!value, [focused, value]);
+  const active = useMemo(() => focused || text.length > 0, [focused, text]);
 
   const activeAnimation = useMemo(() => new Animated.Value(active ? 1 : 0), []);
 
@@ -173,9 +168,8 @@ const TextInput: React.FC<TextInputProps> = ({
 
   const styles = useStyleSheet(
     () => ({
-      container: {
+      inputContainer: {
         flexDirection: "row",
-        alignItems: "center",
         backgroundColor:
           variant === "filled"
             ? focused
@@ -190,8 +184,8 @@ const TextInput: React.FC<TextInputProps> = ({
       input: {
         flex: 1,
         minHeight: variant === "standard" ? 48 : 56,
-        paddingStart: variant === "standard" || !!leadingElement ? 0 : 16,
-        paddingEnd: variant === "standard" || !!trailingElement ? 0 : 16,
+        paddingStart: !!leadingNode ? 12 : variant === "standard" ? 0 : 16,
+        paddingEnd: !!trailingNode ? 12 : variant === "standard" ? 0 : 16,
         color: surfaceScale(0.87).hex(),
       },
       leading: {
@@ -200,17 +194,15 @@ const TextInput: React.FC<TextInputProps> = ({
         width: 24,
         height: 24,
         marginStart: variant === "standard" ? 0 : 12,
-        marginEnd: 12,
-        marginVertical: 12,
+        marginVertical: variant === "standard" ? 12 : 16,
       },
       trailing: {
         justifyContent: "center",
         alignItems: "center",
         width: 24,
         height: 24,
-        marginStart: 12,
         marginEnd: variant === "standard" ? 0 : 12,
-        marginVertical: 12,
+        marginVertical: variant === "standard" ? 12 : 16,
       },
       underline: {
         position: "absolute",
@@ -221,6 +213,10 @@ const TextInput: React.FC<TextInputProps> = ({
         backgroundColor: hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
       },
       underlineFocused: {
+        position: "absolute",
+        start: 0,
+        end: 0,
+        bottom: 0,
         height: 2,
         backgroundColor: palette.color,
       },
@@ -228,65 +224,106 @@ const TextInput: React.FC<TextInputProps> = ({
         borderWidth: focused ? 2 : 1,
         borderColor: focused ? palette.color : hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
       },
+      outlineLabelGap: {
+        position: "absolute",
+        top: 0,
+        start: -4,
+        end: -4,
+        height: focused ? 2 : 1,
+        backgroundColor: surfaceScale(0).hex(),
+      },
+      labelContainer: {
+        justifyContent: "center",
+        position: "absolute",
+        top: 0,
+        start: variant === "standard" ? (!!leadingNode ? 36 : 0) : !!leadingNode ? 48 : 16,
+        height: variant === "standard" ? 48 : 56,
+      },
+      helperText: {
+        color: surfaceScale(0.6).hex(),
+      },
     }),
-    [surfaceScale, palette.color, variant, hovered, focused, !!leadingElement, !!trailingElement],
+    [palette.color, surfaceScale, !!leadingNode, !!trailingNode, variant, focused, hovered],
   );
 
   return (
-    <View
-      style={[
-        variant !== "standard" && theme.shapes.medium,
-        variant === "filled" && { borderBottomStartRadius: 0, borderBottomEndRadius: 0 },
-        styles.container,
-        style,
-      ]}
-    >
-      {/*{leadingElement && <View style={[styles.leading]}>{leadingElement}</View>}*/}
-
-      <View style={[styles.input]}>
-        <Animated.Text
-          style={[
-            {
-              backgroundColor: "green",
-              position: "absolute",
-              top: activeAnimation.interpolate({
-                inputRange: [0, 1],
-                outputRange: [variant === "standard" ? 15 : 19, 0],
-              }),
-            },
-            theme.typography.subtitle1,
-          ]}
-        >
-          {label}
-        </Animated.Text>
+    <View style={style}>
+      <View
+        style={[
+          styles.inputContainer,
+          variant !== "standard" && theme.shapes.medium,
+          variant === "filled" && { borderBottomStartRadius: 0, borderBottomEndRadius: 0 },
+        ]}
+      >
+        {leadingNode && <View style={[styles.leading]}>{leadingNode}</View>}
 
         <RNTextInput
-          style={[{ backgroundColor: "red" }, theme.typography.subtitle1]}
-          value={value}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          style={[styles.input, theme.typography.subtitle1, { paddingTop: variant === 'filled' && label ? 18 : 0 }]}
+          placeholder={label ? focused && placeholder : placeholder}
           selectionColor={palette.color}
           placeholderTextColor={surfaceScale(0.4).hex()}
-          {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...props } as any)}
-          {...props}
+          onChangeText={handleChangeText}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...rest } as any)}
         />
+
+        {trailingNode && <View style={[styles.trailing]}>{trailingNode}</View>}
+
+        {(variant === "filled" || variant === "standard") && (
+          <>
+            <View style={[styles.underline]} pointerEvents="none" />
+            <Animated.View
+              style={[styles.underlineFocused, { transform: [{ scaleX: focusAnimation }] }]}
+              pointerEvents="none"
+            />
+          </>
+        )}
+
+        {variant === "outlined" && (
+          <View style={[StyleSheet.absoluteFill, theme.shapes.medium, styles.outline]} pointerEvents="none" />
+        )}
+
+        {label && (
+          <View style={[styles.labelContainer]} pointerEvents="none">
+            {variant === "outlined" && (
+              <Animated.View style={[styles.outlineLabelGap, { transform: [{ scaleX: activeAnimation }] }]} />
+            )}
+            <Animated.Text
+              style={[
+                theme.typography.subtitle1,
+                {
+                  color: focusAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [surfaceScale(0.87).hex(), palette.color],
+                  }),
+                  fontSize: activeAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [theme.typography.subtitle1.fontSize ?? 16, 12],
+                  }),
+                  transform: [
+                    {
+                      translateY: activeAnimation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, variant === "filled" ? -12 : variant === "outlined" ? -28 : -24],
+                      }),
+                    },
+                  ],
+                },
+              ]}
+            >
+              {label}
+            </Animated.Text>
+          </View>
+        )}
       </View>
-
-      {/*{trailingElement && <View style={[styles.trailing]}>{trailingElement}</View>}*/}
-
-      {(variant === "filled" || variant === "standard") && (
-        <>
-          <View style={[styles.underline]} />
-          <Animated.View
-            style={[styles.underline, styles.underlineFocused, { transform: [{ scaleX: focusAnimation }] }]}
-            pointerEvents="none"
-          />
-        </>
-      )}
-
-      {variant === "outlined" && (
-        <View style={[StyleSheet.absoluteFill, theme.shapes.medium, styles.outline]} pointerEvents="none" />
-      )}
+      <View style={{ marginTop: 4, marginHorizontal: 16 }}>
+        {helperText && (
+          <Text variant="body2" style={[styles.helperText]}>
+            {helperText}
+          </Text>
+        )}
+      </View>
     </View>
   );
 };
