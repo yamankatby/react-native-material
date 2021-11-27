@@ -3,12 +3,14 @@ import {
   Animated,
   Easing,
   NativeSyntheticEvent,
+  StyleProp,
   StyleSheet,
   TargetedEvent,
   TextInput as RNTextInput,
   TextInputFocusEventData,
   TextInputProps as RNTextInputProps,
   View,
+  ViewStyle,
 } from "react-native";
 import chroma from "chroma-js";
 import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
@@ -58,6 +60,31 @@ export interface TextInputProps extends RNTextInputProps {
    * Callback function to call when user moves pointer away from the input.
    */
   onMouseLeave?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
+
+  /**
+   * The style of the container view.
+   */
+  style?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the text input container view.
+   */
+  inputContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the text input.
+   */
+  inputStyle?: RNTextInputProps["style"];
+
+  /**
+   * The style of the text input's leading element container.
+   */
+  leadingContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the text input's trailing element container.
+   */
+  trailingContainerStyle?: StyleProp<ViewStyle>;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -69,11 +96,15 @@ const TextInput: React.FC<TextInputProps> = ({
   helperText,
   onMouseEnter,
   onMouseLeave,
+  style,
+  inputContainerStyle,
+  inputStyle,
+  leadingContainerStyle,
+  trailingContainerStyle,
 
   placeholder,
   onFocus,
   onBlur,
-  style,
   onChangeText,
   ...rest
 }) => {
@@ -247,19 +278,25 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 
   return (
-    <View style={style}>
+    <View style={[style]}>
       <View
         style={[
           styles.inputContainer,
           variant !== "standard" && theme.shapes.medium,
           variant === "filled" && { borderBottomStartRadius: 0, borderBottomEndRadius: 0 },
+          inputContainerStyle,
         ]}
       >
-        {leadingNode && <View style={[styles.leading]}>{leadingNode}</View>}
+        {leadingNode && <View style={[styles.leading, leadingContainerStyle]}>{leadingNode}</View>}
 
         <RNTextInput
-          style={[styles.input, theme.typography.subtitle1, { paddingTop: variant === 'filled' && label ? 18 : 0 }]}
-          placeholder={label ? focused && placeholder : placeholder}
+          style={[
+            styles.input,
+            theme.typography.subtitle1,
+            { paddingTop: variant === "filled" && label ? 18 : 0 },
+            inputStyle,
+          ]}
+          placeholder={label ? (focused ? placeholder : undefined) : placeholder}
           selectionColor={palette.color}
           placeholderTextColor={surfaceScale(0.4).hex()}
           onChangeText={handleChangeText}
@@ -268,7 +305,7 @@ const TextInput: React.FC<TextInputProps> = ({
           {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...rest } as any)}
         />
 
-        {trailingNode && <View style={[styles.trailing]}>{trailingNode}</View>}
+        {trailingNode && <View style={[styles.trailing, trailingContainerStyle]}>{trailingNode}</View>}
 
         {(variant === "filled" || variant === "standard") && (
           <>
