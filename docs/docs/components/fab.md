@@ -4,32 +4,24 @@ A floating action button (FAB) represents the primary action of a screen.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <FAB
-      icon={props => <Icon name="plus" {...props} />}
-      onPress={() => undefined}
-    />
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <FAB icon={props => <Icon name="plus" {...props} />}/>
     <FAB
       icon={props => <Icon name="plus" {...props} />}
       color="primary"
       loading
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
     />
     <FAB
       variant="extended"
       icon={props => <Icon name="navigation" {...props} />}
       label="navigate"
       color="primary"
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
     />
-  </View>
+  </VStack>
 );
 
 export default App;
@@ -50,18 +42,13 @@ Only use a FAB if it is the most suitable way to present a screen's primary acti
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <FAB
-      icon={props => <Icon name="star" {...props} />}
-      color="primary"
-      onPress={() => undefined}
-    />
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center">
+    <FAB icon={props => <Icon name="star" {...props} />} color="primary"/>
+  </VStack>
 );
 
 export default App;
@@ -71,27 +58,19 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <FAB
-      variant="extended"
-      label="Button"
-      color="primary"
-      onPress={() => undefined}
-    />
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <FAB variant="extended" label="Button" color="primary"/>
     <FAB
       variant="extended"
       icon={props => <Icon name="star" {...props} />}
       label="Button"
       color="primary"
-      onPress={() => undefined}
-      style={{ marginTop: 16 }}
     />
-  </View>
+  </VStack>
 );
 
 export default App;
@@ -101,23 +80,14 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <FAB
-      icon={props => <Icon name="account" {...props} />}
-      onPress={() => undefined}
-    />
-    <FAB
-      icon={props => <Icon name="account" {...props} />}
-      size="mini"
-      onPress={() => undefined}
-      style={{ marginTop: 16 }}
-    />
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <FAB icon={props => <Icon name="account" {...props} />}/>
+    <FAB icon={props => <Icon name="account" {...props} />} size="mini"/>
+  </VStack>
 );
 
 export default App;
@@ -125,28 +95,24 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <FAB
         variant="extended"
         icon={props => <Icon name="heart" {...props} />}
         label="Button"
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
         icon={props => <Icon name="heart" {...props} />}
         label="Button"
         size="mini"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-    </View>
+    </VStack>
   );
 };
 
@@ -157,47 +123,26 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { ScrollView } from "react-native";
-import { FAB } from "@react-native-material/core";
+import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <ScrollView
-    style={{ flex: 1 }}
-    contentContainerStyle={{ alignItems: "center", paddingVertical: 16 }}
-  >
-    <FAB
-      icon={props => <Icon name="lock" {...props} />}
-      onPress={() => undefined}
-    />
+  <VStack style={{ flex: 1, paddingVertical: 16 }} justify="center" align="center" spacing={4}>
+    <FAB icon={props => <Icon name="lock" {...props} />}/>
     <FAB
       variant="extended"
       icon={props => <Icon name="lock" {...props} />}
       label="Button"
       tintColor="red"
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
     />
-    <FAB
-      icon={props => <Icon name="lock" {...props} />}
-      color="onPrimary"
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
-    />
-    <FAB
-      icon={props => <Icon name="lock" {...props} />}
-      color="#FDCAE4"
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
-    />
+    <FAB icon={props => <Icon name="lock" {...props} />} color="onPrimary"/>
+    <FAB icon={props => <Icon name="lock" {...props} />} color="#FDCAE4"/>
     <FAB
       icon={props => <Icon name="lock" {...props} />}
       color="#FDCAE4"
       tintColor="yellow"
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
     />
-  </ScrollView>
+  </VStack>
 );
 
 export default App;
@@ -207,24 +152,18 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import { FAB, Switch } from "@react-native-material/core";
+import { VStack, FAB, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <ScrollView
-      style={{ flex: 1 }}
-      contentContainerStyle={{ alignItems: "center", paddingVertical: 16 }}
-    >
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <FAB
         icon={props => <Icon name="plus" {...props} />}
         color="primary"
         loading={loading}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
@@ -232,8 +171,6 @@ const App = () => {
         label="Button"
         color="primary"
         loading={loading}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
@@ -241,8 +178,6 @@ const App = () => {
         label="Button"
         color="primary"
         loading={loading}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
         loadingIndicatorPosition="overlay"
       />
       <FAB
@@ -250,10 +185,8 @@ const App = () => {
         size="mini"
         color="primary"
         loading={loading}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-    </ScrollView>
+    </VStack>
   );
 };
 
@@ -264,25 +197,19 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import { FAB, Text, Switch } from "@react-native-material/core";
+import { VStack, FAB, Text, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <ScrollView
-      style={{ flex: 1 }}
-      contentContainerStyle={{ alignItems: "center", paddingVertical: 16 }}
-    >
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <FAB
         icon={props => <Icon name="plus" {...props} />}
         color="error"
         loading={loading}
         loadingIndicator="⏳"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
@@ -298,14 +225,12 @@ const App = () => {
               backgroundColor: props.color,
               color: "white",
               borderRadius: 12,
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             ...
           </Text>
         )}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
@@ -315,8 +240,6 @@ const App = () => {
         loading={loading}
         loadingIndicator="Loading..."
         loadingIndicatorPosition="overlay"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         icon={props => <Icon name="plus" {...props} />}
@@ -324,10 +247,8 @@ const App = () => {
         color="onError"
         loading={loading}
         loadingIndicator="⏰"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-    </ScrollView>
+    </VStack>
   );
 };
 
@@ -338,27 +259,19 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { View } from "react-native";
-import { FAB, Switch } from "@react-native-material/core";
+import { VStack, FAB, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [visible, setVisible] = useState(true);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <Switch value={visible} onValueChange={setVisible}/>
-      <FAB
-        icon={props => <Icon name="plus" {...props} />}
-        visible={visible}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
-      />
+      <FAB icon={props => <Icon name="plus" {...props} />} visible={visible}/>
       <FAB
         size="mini"
         icon={props => <Icon name="plus" {...props} />}
         visible={visible}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <FAB
         variant="extended"
@@ -366,10 +279,8 @@ const App = () => {
         label="Navigate"
         color="primary"
         visible={visible}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-    </View>
+    </VStack>
   );
 };
 

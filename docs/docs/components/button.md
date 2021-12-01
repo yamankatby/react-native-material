@@ -4,15 +4,14 @@ Buttons allow users to take actions, and make choices, with a single tap.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Contained" onPress={() => undefined}/>
-    <Button variant="outlined" title="Outlined" style={{ marginTop: 16 }} onPress={() => undefined}/>
-    <Button variant="text" title="Text" style={{ marginTop: 16 }} onPress={() => undefined}/>
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button title="Contained"/>
+    <Button variant="outlined" title="Outlined"/>
+    <Button variant="text" title="Text"/>
+  </VStack>
 );
 
 export default App;
@@ -32,15 +31,14 @@ Buttons communicate actions that users can take. They are typically placed throu
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Contained" disabled onPress={() => undefined}/>
-    <Button variant="outlined" title="Outlined" disabled style={{ marginTop: 16 }} onPress={() => undefined}/>
-    <Button variant="text" title="Text" disabled style={{ marginTop: 16 }} onPress={() => undefined}/>
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button title="Contained" disabled/>
+    <Button variant="outlined" title="Outlined" disabled/>
+    <Button variant="text" title="Text" disabled/>
+  </VStack>
 );
 
 export default App;
@@ -50,16 +48,15 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button variant="text" title="Button" color="secondary" onPress={() => undefined}/>
-    <Button title="Button" color="error" style={{ marginTop: 16 }} onPress={() => undefined}/>
-    <Button variant="outlined" title="Button" color="#d4ac2d" style={{ marginTop: 16 }} onPress={() => undefined}/>
-    <Button title="Button" color="pink" tintColor="red" style={{ marginTop: 16 }} onPress={() => undefined}/>
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button variant="text" title="Button" color="secondary"/>
+    <Button title="Button" color="error"/>
+    <Button variant="outlined" title="Button" color="#d4ac2d"/>
+    <Button title="Button" color="pink" tintColor="red"/>
+  </VStack>
 );
 
 export default App;
@@ -69,25 +66,14 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button
-      variant="outlined"
-      title="Delete"
-      leading={props => <Icon name="delete" {...props} />}
-      onPress={() => undefined}
-    />
-    <Button
-      title="Send"
-      trailing={props => <Icon name="send" {...props} />}
-      style={{ marginTop: 16 }}
-      onPress={() => undefined}
-    />
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button variant="outlined" title="Delete" leading={props => <Icon name="delete" {...props} />}/>
+    <Button title="Send" trailing={props => <Icon name="send" {...props} />}/>
+  </VStack>
 );
 
 export default App;
@@ -97,14 +83,13 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Button" onPress={() => undefined}/>
-    <Button title="Button" uppercase={false} style={{ marginTop: 16 }} onPress={() => undefined}/>
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button title="Button"/>
+    <Button title="Button" uppercase={false}/>
+  </VStack>
 );
 
 export default App;
@@ -114,14 +99,13 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Button } from "@react-native-material/core";
+import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Button title="Button" onPress={() => undefined}/>
-    <Button title="Disable Elevation" disableElevation style={{ marginTop: 16 }} onPress={() => undefined}/>
-  </View>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <Button title="Button"/>
+    <Button title="Disable Elevation" disableElevation/>
+  </VStack>
 );
 
 export default App;
@@ -131,38 +115,23 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { View } from "react-native";
-import { Button, Switch } from "@react-native-material/core";
+import { VStack, Button, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
-      <Button
-        title="Button"
-        leading={props => <Icon name="plus" {...props} />}
-        loading={loading}
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
-      />
+      <Button title="Button" leading={props => <Icon name="plus" {...props} />} loading={loading}/>
       <Button
         title="Button"
         trailing={props => <Icon name="plus" {...props} />}
         loading={loading}
         loadingIndicatorPosition="trailing"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-      <Button
-        title="Button"
-        loading={loading}
-        loadingIndicatorPosition="overlay"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
-      />
-    </View>
+      <Button title="Button" loading={loading} loadingIndicatorPosition="overlay"/>
+    </VStack>
   );
 };
 
@@ -173,31 +142,21 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { View } from "react-native";
-import { Button, Text, Switch } from "@react-native-material/core";
+import { VStack, Button, Text, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <Button
         title="Button"
         leading={props => <Icon name="plus" {...props} />}
         loading={loading}
         loadingIndicator="⏰"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-      <Button
-        title="Custom Text"
-        loading={loading}
-        loadingIndicator="Loading..."
-        loadingIndicatorPosition="overlay"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
-      />
+      <Button title="Custom Text" loading={loading} loadingIndicator="Loading..." loadingIndicatorPosition="overlay"/>
       <Button
         title="Button"
         loading={loading}
@@ -209,15 +168,13 @@ const App = () => {
               borderRadius: 50,
               width: 24,
               height: 24,
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             ...
           </Text>
         )}
         loadingIndicatorPosition="overlay"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
       <Button
         title="Button"
@@ -225,10 +182,8 @@ const App = () => {
         loading={loading}
         loadingIndicator="⏰"
         loadingIndicatorPosition="trailing"
-        style={{ marginTop: 16 }}
-        onPress={() => undefined}
       />
-    </View>
+    </VStack>
   );
 };
 

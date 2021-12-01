@@ -4,12 +4,11 @@ Text inputs let users enter and edit text.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { TextInput, IconButton } from "@react-native-material/core";
+import { VStack, TextInput, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1, padding: 16 }}>
+  <VStack spacing={2} style={{ margin: 16 }}>
     <TextInput
       label="Label"
       leading={props => <Icon name="account" {...props} />}
@@ -18,12 +17,11 @@ const App = () => (
       label="Label"
       variant="outlined"
       trailing={props => (
-        <IconButton icon={<Icon name="eye" {...props} />} color={props.color} />
+        <IconButton icon={<Icon name="eye" {...props} />} color={props.color}/>
       )}
-      style={{ marginTop: 8 }}
     />
-    <TextInput label="Label" variant="standard" style={{ marginTop: 8 }} />
-  </View>
+    <TextInput label="Label" variant="standard"/>
+  </VStack>
 );
 
 export default App;
