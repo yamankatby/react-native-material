@@ -48,7 +48,6 @@ const App = () => (
           title="Dismiss"
           color="#BB86FC"
           compact
-          onPress={() => undefined}
         />
       }
       style={{ position: "absolute", start: 16, end: 16, bottom: 16 }}
@@ -76,7 +75,6 @@ const App = () => (
           title="Dismiss"
           color="#BB86FC"
           compact
-          onPress={() => undefined}
         />
       }
       style={{ position: "absolute", start: 16, end: 16, bottom: 16 }}

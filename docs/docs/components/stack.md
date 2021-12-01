@@ -4,7 +4,14 @@ Stack is a layout component that makes it easy to stack elements together and ap
 
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Stack)
 
-- **Stack**: Used to add spacing between elements in the horizontal or vertical direction. It supports responsive values.
+## Import
+
+```js 
+import { Stack, HStack, VStack } from "@react-native-material/core";
+```
+
+- **Stack**: Used to add spacing between elements in the horizontal or vertical direction. It supports responsive
+  values.
 - **HStack**: Used to add spacing between elements in horizontal direction, and centers them.
 - **VStack**: Used to add spacing between elements in vertical direction only, and centers them.
 

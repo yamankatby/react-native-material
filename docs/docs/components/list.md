@@ -9,9 +9,9 @@ import { ListItem } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1 }}>
-    <ListItem title="List Item" onPress={() => undefined}/>
-    <ListItem title="List Item" onPress={() => undefined}/>
-    <ListItem title="List Item" onPress={() => undefined}/>
+    <ListItem title="List Item"/>
+    <ListItem title="List Item"/>
+    <ListItem title="List Item"/>
   </View>
 );
 
@@ -40,23 +40,19 @@ const App = () => (
       title="Inbox"
       leading={<Icon name="inbox" size={24}/>}
       trailing={props => <Icon name="chevron-right" {...props} />}
-      onPress={() => undefined}
     />
     <ListItem
       title="Drafts"
       leading={<Icon name="email-open" size={24}/>}
       trailing={props => <Icon name="chevron-right" {...props} />}
-      onPress={() => undefined}
     />
     <ListItem
       title="Trash"
       trailing={props => <Icon name="chevron-right" {...props} />}
-      onPress={() => undefined}
     />
     <ListItem
       title="Spam"
       trailing={props => <Icon name="chevron-right" {...props} />}
-      onPress={() => undefined}
     />
   </View>
 );
@@ -76,17 +72,14 @@ const App = () => (
     <ListItem
       title="Brunch this weekend?"
       secondaryText="I'll be in your neighborhood doing errands this…"
-      onPress={() => undefined}
     />
     <ListItem
       title="Summer BBQ"
       secondaryText="Wish I could come, but I'm out of town this…"
-      onPress={() => undefined}
     />
     <ListItem
       title="Oui Oui"
       secondaryText="Do you have Paris recommendations? Have you ever…"
-      onPress={() => undefined}
     />
   </View>
 );
@@ -106,29 +99,26 @@ const App = () => (
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}/>
       }
       title="Brunch this weekend?"
       secondaryText="I'll be in your neighborhood doing errands this…"
-      onPress={() => undefined}
     />
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }} />
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }}/>
       }
       title="Summer BBQ"
       secondaryText="Wish I could come, but I'm out of town this…"
-      onPress={() => undefined}
     />
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }} />
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }}/>
       }
       title="Oui Oui"
       secondaryText="Do you have Paris recommendations? Have you ever…"
-      onPress={() => undefined}
     />
   </View>
 );

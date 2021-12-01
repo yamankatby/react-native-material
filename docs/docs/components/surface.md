@@ -62,7 +62,6 @@ const App = () => (
         justifyContent: "center",
         alignItems: "center",
       }}
-      onPress={() => undefined}
     >
       <Text>0</Text>
     </Surface>
@@ -76,7 +75,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>1</Text>
     </Surface>
@@ -90,7 +88,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>2</Text>
     </Surface>
@@ -104,7 +101,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>3</Text>
     </Surface>
@@ -118,7 +114,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>4</Text>
     </Surface>
@@ -132,7 +127,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>6</Text>
     </Surface>
@@ -146,7 +140,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>8</Text>
     </Surface>
@@ -160,7 +153,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>12</Text>
     </Surface>
@@ -174,7 +166,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>16</Text>
     </Surface>
@@ -188,7 +179,6 @@ const App = () => (
         alignItems: "center",
         marginTop: 16,
       }}
-      onPress={() => undefined}
     >
       <Text>24</Text>
     </Surface>
