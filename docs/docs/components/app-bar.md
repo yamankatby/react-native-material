@@ -16,7 +16,7 @@ navigation, and actions.
 
 It can transform into a contextual action bar or be used as a navbar.
 
-[`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Appbar)
+[`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20AppBar)
 [`🎨 Material Design`](https://material.io/components/app-bars-top)
 
 ## Import
