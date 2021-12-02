@@ -115,6 +115,7 @@ const AppBar: React.FC<AppBarProps> = ({
   subtitleStyle,
   leadingContainerStyle,
   trailingContainerStyle,
+  children,
   ...props
 }) => {
   const theme = useTheme();
@@ -169,6 +170,7 @@ const AppBar: React.FC<AppBarProps> = ({
         </View>
         {trailingElement && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailingElement}</View>}
       </View>
+      {children}
     </Surface>
   );
 };

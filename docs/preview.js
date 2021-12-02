@@ -1,7 +1,7 @@
 const defaults = {
   name: "Example",
   description: "Simple code example",
-  dependencies: "@react-native-material/core@1.2.5",
+  dependencies: "@react-native-material/core@1.2.6",
   loading: "lazy",
   supportedPlatforms: "mydevice,ios,android,web",
   platform: "web",

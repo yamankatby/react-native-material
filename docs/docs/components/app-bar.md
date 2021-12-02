@@ -4,9 +4,9 @@ The App Bar displays information and actions relating to the current screen.
 
 ```js with-preview
 import React from "react";
-import { Appbar } from "@react-native-material/core";
+import { AppBar } from "@react-native-material/core";
 
-const App = () => <Appbar title="Screen title"/>;
+const App = () => <AppBar title="Screen title"/>;
 
 export default App;
 ```
@@ -19,112 +19,163 @@ It can transform into a contextual action bar or be used as a navbar.
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Appbar)
 [`🎨 Material Design`](https://material.io/components/app-bars-top)
 
-## Variant
+## Import
 
-### Top
+```js
+import { AppBar } from "@react-native-material/core";
+```
+
+## Usage
+
+### Basic App Bar
 
 ```js with-preview
 import React from "react";
-import { Appbar, IconButton } from "@react-native-material/core";
+import { AppBar, HStack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <Appbar
+  <AppBar
     title="Title"
     leading={props => (
-      <IconButton
-        color={props.color}
-        icon={<Icon name="menu" size={24} color={props.color}/>}
-      />
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={props => [
-      <IconButton
-        key="magnify"
-        color={props.color}
-        icon={<Icon name="magnify" size={24} color={props.color}/>}
-      />,
-      <IconButton
-        key="dots"
-        color={props.color}
-        icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
-      />
-    ]}
+    trailing={props => (
+      <HStack>
+        <IconButton
+          icon={props => <Icon name="magnify" {...props} />}
+          {...props}
+        />
+        <IconButton
+          icon={props => <Icon name="dots-vertical" {...props} />}
+          {...props}
+        />
+      </HStack>
+    )}
   />
 );
 
 export default App;
 ```
 
-### Bottom
+App Bar with `Button` and `Avatar` components
+
+```js with-preview
+import React, { useState } from "react";
+import {
+  AppBar,
+  IconButton,
+  Button,
+  Avatar,
+} from "@react-native-material/core";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  return (
+    <AppBar
+      title="Title"
+      leading={props => (
+        <IconButton
+          icon={props => <Icon name="menu" {...props} />}
+          {...props}
+        />
+      )}
+      trailing={props =>
+        loggedIn ? (
+          <IconButton
+            icon={<Avatar label="Yaman KATBY" size={28}/>}
+            onPress={() => setLoggedIn(!loggedIn)}
+            {...props}
+          />
+        ) : (
+          <Button
+            variant="text"
+            title="Login"
+            compact
+            style={{ marginEnd: 4 }}
+            onPress={() => setLoggedIn(!loggedIn)}
+            {...props}
+          />
+        )
+      }
+    />
+  );
+};
+
+export default App;
+```
+
+### Bottom App Bar
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Appbar, IconButton } from "@react-native-material/core";
+import { AppBar, IconButton, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1 }}>
-    <Appbar
-      variant="bottom"
-      leading={props => (
-        <IconButton
-          color={props.color}
-          icon={<Icon name="menu" size={24} color={props.color}/>}
-        />
-      )}
-      trailing={props => [
-        <IconButton
-          key="magnify"
-          color={props.color}
-          icon={<Icon name="magnify" size={24} color={props.color}/>}
-        />,
-        <IconButton
-          key="dots"
-          color={props.color}
-          icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
-        />
-      ]}
-      style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
+  <AppBar
+    variant="bottom"
+    leading={props => (
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
+    )}
+    trailing={props => (
+      <IconButton
+        icon={props => <Icon name="magnify" {...props} />}
+        {...props}
+      />
+    )}
+    style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
+  >
+    <FAB
+      icon={props => <Icon name="plus" {...props} />}
+      style={{ position: "absolute", top: -28, alignSelf: "center" }}
     />
-  </View>
+  </AppBar>
 );
 
 export default App;
 ```
 
-## Coloring
+### Color and Tint Color
 
 ```js with-preview
 import React from "react";
-import { Appbar, IconButton } from "@react-native-material/core";
+import { AppBar, HStack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <Appbar
+  <AppBar
     title="Title"
     color="pink"
     tintColor="red"
     leading={props => (
-      <IconButton
-        color={props.color}
-        icon={<Icon name="menu" size={24} color={props.color}/>}
-      />
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={props => [
-      <IconButton
-        key="magnify"
-        color={props.color}
-        icon={<Icon name="magnify" size={24} color={props.color}/>}
-      />,
-      <IconButton
-        key="dots"
-        color={props.color}
-        icon={<Icon name="dots-vertical" size={24} color={props.color}/>}
-      />,
-    ]}
+    trailing={props => (
+      <HStack>
+        <IconButton
+          icon={props => <Icon name="magnify" {...props} />}
+          {...props}
+        />
+        <IconButton
+          icon={props => <Icon name="dots-vertical" {...props} />}
+          {...props}
+        />
+      </HStack>
+    )}
   />
 );
 
 export default App;
+```
+
+### Enable Color On Dark
+
+Following the [Material Design guidelines](https://material.io/design/color/dark-theme.html), the `color` prop has no
+effect on the appearance of the app bar in dark mode. You can override this behavior by setting the `enableColorOnDark`
+prop to `true`.
+
+```js
+<AppBar color="primary" enableColorOnDark/>
 ```

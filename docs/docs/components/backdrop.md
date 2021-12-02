@@ -5,7 +5,12 @@ A backdrop appears behind all other surfaces in an app, displaying contextual an
 ```js with-preview
 import React, { useState } from "react";
 import { View, Text } from "react-native";
-import { Backdrop, BackdropSubheader, Appbar, IconButton } from "@react-native-material/core";
+import {
+  Backdrop,
+  BackdropSubheader,
+  AppBar,
+  IconButton,
+} from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
@@ -14,14 +19,16 @@ const App = () => {
     <Backdrop
       revealed={revealed}
       header={
-        <Appbar
+        <AppBar
           title="Screen title"
           transparent
           leading={props => (
             <IconButton
-              color={props.color}
-              icon={<Icon name={revealed ? "close" : "menu"} size={24} color={props.color}/>}
+              icon={props => (
+                <Icon name={revealed ? "close" : "menu"} {...props} />
+              )}
               onPress={() => setRevealed(prevState => !prevState)}
+              {...props}
             />
           )}
         />
