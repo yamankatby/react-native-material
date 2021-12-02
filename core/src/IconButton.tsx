@@ -4,10 +4,21 @@ import { PaletteColor, usePalette } from "./base";
 import Pressable, { PressableProps } from "./Pressable";
 
 export interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
-  icon?: React.ReactElement;
+  /**
+   * The element to render as the icon.
+   */
+  icon?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
+  /**
+   * The color of the icon and the press effect.
+   *
+   * @default "onBackground"
+   */
   color?: PaletteColor;
 
+  /**
+   * The style of the icon's container view.
+   */
   contentContainerStyle?: PressableProps["style"];
 }
 
@@ -72,7 +83,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         android_ripple={android_ripple}
         testOnly_pressed={testOnly_pressed}
       >
-        {icon}
+        {icon ? (typeof icon === "function" ? icon({ color: palette.color, size: 24 }) : icon) : null}
       </Pressable>
     </View>
   );

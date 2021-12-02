@@ -3,18 +3,17 @@ import { Platform } from "react-native";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
-import { Appbar, IconButton, ThemeProvider, useTheme } from "@react-native-material/core";
+import { AppBar, IconButton, ThemeProvider, useTheme } from "@react-native-material/core";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import Main from "./screens/Main";
 import Appbars from "./screens/Appbars";
 import Avatars from "./screens/Avatars";
-import Backdrop from "./screens/Backdrop";
 import Badges from "./screens/Badges";
 import Banners from "./screens/Banners";
 import Dividers from "./screens/Dividers";
 import IconButtons from "./screens/IconButtons";
 import Lists from "./screens/Lists";
-import { ButtonScreen, FABScreen, PressableScreen } from "./screens/Screens";
+import { BackdropScreen, ButtonScreen, FABScreen, PressableScreen } from "./screens/Screens";
 import Snackbars from "./screens/Snackbars";
 import Surfaces from "./screens/Surfaces";
 import Switches from "./screens/Switches";
@@ -49,22 +48,21 @@ const App = () => {
     >
       <Stack.Navigator
         screenOptions={{
-          header: props => (
-            <Appbar
-              title={props.route.name}
+          header: p => (
+            <AppBar
+              title={p.route.name}
               leading={
-                props.back &&
-                (iconProps => (
+                p.back &&
+                (props => (
                   <IconButton
-                    icon={
+                    icon={props =>
                       <Icon
                         name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"}
-                        color={iconProps.color}
-                        size={iconProps.size / 2}
+                        {...props}
                       />
                     }
-                    onPress={() => props.navigation.goBack()}
-                    {...iconProps}
+                    onPress={() => p.navigation.goBack()}
+                    {...props}
                   />
                 ))
               }
@@ -76,7 +74,7 @@ const App = () => {
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="App bars" component={Appbars} options={{ headerShown: false }} />
         <Stack.Screen name="Avatars" component={Avatars} />
-        <Stack.Screen name="Backdrop" component={Backdrop} options={{ headerShown: false }} />
+        <Stack.Screen name="Backdrop" component={BackdropScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Badges" component={Badges} />
         <Stack.Screen name="Banners" component={Banners} />
         <Stack.Screen name="Buttons" component={ButtonScreen} />

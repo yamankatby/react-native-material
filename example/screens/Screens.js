@@ -1,6 +1,16 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Button, FAB, Pressable } from "@react-native-material/core";
+import React, { useState } from 'react';
+import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  AppBar,
+  Backdrop,
+  BackdropSubheader,
+  Button,
+  FAB,
+  HStack,
+  IconButton,
+  Pressable
+} from "@react-native-material/core";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export const AppbarScreen = () => {
@@ -16,10 +26,43 @@ export const AvatarScreen = () => {
 }
 
 export const BackdropScreen = () => {
+  const insets = useSafeAreaInsets();
+  const [revealed, setRevealed] = useState(false);
+
   return (
-    <Text>Backdrop</Text>
+    <Backdrop
+      revealed={revealed}
+      header={
+        <AppBar
+          title={revealed ? "Menu" : "Backdrop"}
+          tintColor="onPrimary"
+          leading={props => (
+            <IconButton
+              icon={props => <Icon name={revealed ? "close" : "menu"} {...props} />}
+              onPress={() => setRevealed(!revealed)}
+              {...props}
+            />
+          )}
+          trailing={props => (
+            <HStack>
+              <IconButton icon={props => <Icon name="heart" {...props} />} {...props} />
+              <IconButton icon={props => <Icon name="magnify" {...props} />} {...props} />
+              <IconButton
+                icon={props => <Icon name={Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"} {...props} />}
+                {...props}
+              />
+            </HStack>
+          )}
+          transparent
+          style={{ paddingTop: insets.top }}
+        />
+      }
+      backLayer={<View style={{ height: 180 }} />}
+    >
+      <BackdropSubheader title="Subheader" />
+    </Backdrop>
   );
-}
+};
 
 export const BadgeScreen = () => {
   return (

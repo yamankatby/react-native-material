@@ -1,4 +1,6 @@
 import { TextStyle } from "react-native";
+import { useTheme } from "./context";
+import { useMemo } from "react";
 
 export type PaletteColorName =
   | "primary"
@@ -169,4 +171,9 @@ export const darkTheme: Theme = {
     onWarning: "#000000",
     onError: "#000000",
   },
+};
+
+export const useColorModeValue = <V, D = V>(value: V, darkValue: D): V | D => {
+  const { mode } = useTheme();
+  return useMemo(() => (mode === "dark" ? darkValue : value), [mode, value, darkValue]);
 };

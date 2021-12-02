@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Platform, View } from "react-native";
-import { Appbar, Button, IconButton, ListItem, useTheme } from "@react-native-material/core";
+import { AppBar, Button, HStack, IconButton, ListItem, useTheme } from "@react-native-material/core";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import chroma from "chroma-js";
@@ -30,7 +30,7 @@ const Appbars = () => {
 
   return (
     <View style={{ flex: 1, paddingTop: variant === "bottom" ? insets.top : 0 }}>
-      <Appbar
+      <AppBar
         title={title && "App bars"}
         subtitle={subtitle && "Lorem ipsum dolor sit amet."}
         variant={variant}
@@ -39,79 +39,40 @@ const Appbars = () => {
         enableColorOnDark={enableColorOnDark}
         transparent={transparent}
         centerTitle={preferCenter}
-        leading={props => {
-          const buttons = [];
-          if (menu) {
-            buttons.push(
-              <IconButton key="menu" icon={<Icon name="menu" size={props.size / 2} color={props.color} />} {...props} />
-            );
-          }
-          if (arrow) {
-            buttons.push(
+        leading={props => (
+          <HStack>
+            {menu && <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />}
+            {arrow && (
               <IconButton
-                key="arrow"
-                icon={
-                  <Icon
-                    name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"}
-                    size={props.size / 2}
-                    color={props.color}
-                  />
-                }
+                icon={props => <Icon name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"} {...props} />}
                 {...props}
                 onPress={() => navigation.goBack()}
               />
-            );
-          }
-          return buttons;
-        }}
-        trailing={props => {
-          const buttons = [];
-          if (heart) {
-            buttons.push(
+            )}
+          </HStack>
+        )}
+        trailing={props => (
+          <HStack>
+            {heart && <IconButton icon={props => <Icon name="heart" {...props} />} {...props} />}
+            {magnify && <IconButton icon={props => <Icon name="magnify" {...props} />} {...props} />}
+            {dots && (
               <IconButton
-                key="heart"
-                icon={<Icon name="heart" size={props.size / 2} color={props.color} />}
+                icon={props => <Icon name={Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"} {...props} />}
                 {...props}
               />
-            );
+            )}
+          </HStack>
+        )}
+        style={[
+          { zIndex: 4 },
+          variant === "top" ? { paddingTop: insets.top } : {
+            position: 'absolute',
+            bottom: 0,
+            start: 0,
+            end: 0,
+            paddingBottom: insets.bottom
           }
-          if (magnify) {
-            buttons.push(
-              <IconButton
-                key="magnify"
-                icon={<Icon name="magnify" size={props.size / 2} color={props.color} />}
-                {...props}
-              />
-            );
-          }
-          if (dots) {
-            buttons.push(
-              <IconButton
-                key="dots"
-                icon={
-                  <Icon
-                    name={Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"}
-                    size={props.size / 2}
-                    color={props.color}
-                  />
-                }
-                {...props}
-              />
-            );
-          }
-          return buttons;
-        }}
-        style={
-          [{ zIndex: 4 }, variant === "top"
-            ? { paddingTop: insets.top }
-            : {
-              position: "absolute",
-              start: 0,
-              end: 0,
-              bottom: 0,
-              paddingBottom: insets.bottom
-            }]
-        }
+        ]}
       />
       <ListItem
         title="Title"
@@ -266,7 +227,7 @@ const Appbars = () => {
             style={{ flexDirection: "row", justifyContent: "flex-end", width: 144, height: 48, marginEnd: 144 - 48 }}
           >
             <IconButton
-              icon={<Icon name="menu" {...props} />}
+              icon={props => <Icon name="menu" {...props} />}
               {...props}
               onPress={() => {
                 setMenu(prevState => !prevState);
