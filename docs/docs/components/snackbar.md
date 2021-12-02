@@ -22,6 +22,12 @@ export default App;
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Snackbar)
 [`🎨 Material Design`](https://material.io/components/snackbars)
 
+## Import
+
+```js
+import { Snackbar } from "@react-native-material/core";
+```
+
 ## Usage
 
 Snackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the

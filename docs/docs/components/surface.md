@@ -40,6 +40,12 @@ The size of shape changes can be subtle or more significant.
 
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Surface)
 
+## Import
+
+```js
+import { Surface } from "@react-native-material/core";
+```
+
 ## Elevation
 
 ```js with-preview

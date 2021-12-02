@@ -27,6 +27,12 @@ Buttons communicate actions that users can take. They are typically placed throu
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Button)
 [`🎨 Material Design`](https://material.io/components/buttons)
 
+## Import
+
+```js
+import { Button } from "@react-native-material/core";
+```
+
 ## Disabled
 
 ```js with-preview

@@ -16,6 +16,12 @@ Dividers separate content into clear groups.
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Divider)
 [`🎨 Material Design`](https://material.io/components/dividers)
 
+## Import
+
+```js
+import { Divider } from "@react-native-material/core";
+```
+
 ## Coloring
 
 ```js with-preview

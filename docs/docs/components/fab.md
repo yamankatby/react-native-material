@@ -36,6 +36,12 @@ Only use a FAB if it is the most suitable way to present a screen's primary acti
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Fab)
 [`🎨 Material Design`](https://material.io/components/buttons-floating-action-button)
 
+## Import
+
+```js
+import { FAB } from "@react-native-material/core";
+```
+
 ## Variants
 
 ### Regular

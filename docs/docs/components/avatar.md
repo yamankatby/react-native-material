@@ -20,6 +20,12 @@ export default App;
 
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Avatar)
 
+## Import
+
+```js
+import { Avatar } from "@react-native-material/core";
+```
+
 ## Letter avatars
 
 ```js with-preview

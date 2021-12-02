@@ -30,6 +30,12 @@ user to either ignore them or interact with them at any time. Only one banner sh
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Banner)
 [`🎨 Material Design`](https://material.io/components/banners)
 
+## Import
+
+```js
+import { Banner } from "@react-native-material/core";
+```
+
 ## Usage
 
 ```js with-preview

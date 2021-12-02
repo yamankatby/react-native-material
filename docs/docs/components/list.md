@@ -21,6 +21,12 @@ export default App;
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20ListItem)
 [`🎨 Material Design`](https://material.io/components/lists)
 
+## Import
+
+```js
+import { ListItem } from "@react-native-material/core";
+```
+
 ## Usage
 
 Lists are a continuous group of text or images. They are composed of items containing primary and supplemental actions,

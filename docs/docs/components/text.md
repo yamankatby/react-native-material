@@ -65,6 +65,12 @@ sizes that work well together along with the layout grid.
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Text)
 [`🎨 Material Design`](https://material.io/design/typography/the-type-system.html)
 
+## Import
+
+```js
+import { Text } from "@react-native-material/core";
+```
+
 ## Variant
 
 ```js with-preview

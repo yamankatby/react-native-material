@@ -48,3 +48,9 @@ these control and inform the front layer's content.
 
 [`💬 Feedback`](https://github.com/yamankatby/react-native-material/labels/component%3A%20Backdrop)
 [`🎨 Material Design`](https://material.io/components/backdrop)
+
+## Import
+
+```js
+import { Backdrop, BackdropSubheader } from "@react-native-material/core";
+```
