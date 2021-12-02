@@ -1,6 +1,12 @@
 # Text Input
 
-Text inputs let users enter and edit text.
+Text inputs allow users to enter text into a UI. They typically appear in forms and dialogs.
+
+Text inputs come in three variants:
+
+- Filled text inputs
+- Outlined text inputs
+- Standard text inputs
 
 ```js with-preview
 import React from "react";
@@ -17,7 +23,7 @@ const App = () => (
       label="Label"
       variant="outlined"
       trailing={props => (
-        <IconButton icon={<Icon name="eye" {...props} />} color={props.color}/>
+        <IconButton icon={props => <Icon name="eye" {...props} />} {...props} />
       )}
     />
     <TextInput label="Label" variant="standard"/>
@@ -38,15 +44,7 @@ import { TextInput } from "@react-native-material/core";
 
 ## Usage
 
-Text inputs allow users to enter text into a UI. They typically appear in forms and dialogs.
-
-## Variants
-
-Text inputs come in three variants:
-
-- Filled text inputs
-- Outlined text inputs
-- Standard text inputs
+Here's a basic usage example of the Input component:
 
 ### Filled
 
