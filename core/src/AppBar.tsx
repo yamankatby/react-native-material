@@ -1,9 +1,9 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import { PaletteColor, usePalette, useTheme } from "./base";
+import { useElevation } from "./base/elevations";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
-import { useElevation } from "./base/elevations";
 
 export interface AppBarProps extends SurfaceProps {
   /**
@@ -65,6 +65,36 @@ export interface AppBarProps extends SurfaceProps {
    * @default false
    */
   enableColorOnDark?: boolean;
+
+  /**
+   * The style of the content container view.
+   */
+  contentContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the title and subtitle container view.
+   */
+  titleContentStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the title text.
+   */
+  titleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * The style of the subtitle text.
+   */
+  subtitleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * The style of the leading element container view.
+   */
+  leadingContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The style of the trailing element container view.
+   */
+  trailingContainerStyle?: StyleProp<ViewStyle>;
 }
 
 const AppBar: React.FC<AppBarProps> = ({
@@ -79,6 +109,12 @@ const AppBar: React.FC<AppBarProps> = ({
   transparent = false,
   enableColorOnDark = false,
   style,
+  contentContainerStyle,
+  titleContentStyle,
+  titleStyle,
+  subtitleStyle,
+  leadingContainerStyle,
+  trailingContainerStyle,
   ...props
 }) => {
   const theme = useTheme();
@@ -89,7 +125,7 @@ const AppBar: React.FC<AppBarProps> = ({
 
   const titleElement =
     typeof title === "string" ? (
-      <Text variant="h6" style={[{ color: palette.tintColor }]}>
+      <Text variant="h6" style={[{ color: palette.tintColor }, titleStyle]}>
         {title}
       </Text>
     ) : typeof title === "function" ? (
@@ -100,7 +136,7 @@ const AppBar: React.FC<AppBarProps> = ({
 
   const subtitleElement =
     typeof subtitle === "string" ? (
-      <Text variant="caption" style={[{ color: palette.tintColor }]}>
+      <Text variant="caption" style={[{ color: palette.tintColor }, subtitleStyle]}>
         {subtitle}
       </Text>
     ) : typeof subtitle === "function" ? (
@@ -119,16 +155,19 @@ const AppBar: React.FC<AppBarProps> = ({
       elevation={transparent ? 0 : variant === "top" ? 4 : 8}
       {...props}
     >
-      <View style={[styles.contentContainer]}>
-        {leadingElement && <View style={[styles.leadingContainer]}>{leadingElement}</View>}
+      <View style={[styles.contentContainer, contentContainerStyle]}>
+        {leadingElement && <View style={[styles.leadingContainer, leadingContainerStyle]}>{leadingElement}</View>}
         <View
-          style={[centerTitle ? [StyleSheet.absoluteFill, styles.centeredTitleContainer] : styles.titleContainer]}
+          style={[
+            centerTitle ? [StyleSheet.absoluteFill, styles.centeredTitleContainer] : styles.titleContainer,
+            titleContentStyle,
+          ]}
           pointerEvents={centerTitle ? "none" : undefined}
         >
           {titleElement}
           {subtitleElement}
         </View>
-        {trailingElement && <View style={[styles.trailingContainer]}>{trailingElement}</View>}
+        {trailingElement && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailingElement}</View>}
       </View>
     </Surface>
   );
