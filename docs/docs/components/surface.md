@@ -5,11 +5,10 @@ and express brand.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Surface } from "@react-native-material/core";
+import { Surface, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
     <Surface
       elevation={2}
       category="medium"
@@ -18,14 +17,14 @@ const App = () => (
     <Surface
       elevation={4}
       category="medium"
-      style={{ width: 70, height: 70, marginTop: 16 }}
+      style={{ width: 70, height: 70 }}
     />
     <Surface
       elevation={6}
       category="medium"
-      style={{ width: 70, height: 70, marginTop: 16 }}
+      style={{ width: 70, height: 70 }}
     />
-  </View>
+  </VStack>
 );
 
 export default App;
@@ -45,22 +44,18 @@ The size of shape changes can be subtle or more significant.
 
 ```js with-preview
 import React from "react";
-import { ScrollView } from "react-native";
-import { Surface, Text } from "@react-native-material/core";
+import { Surface, Text, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <ScrollView
-    style={{ flex: 1 }}
-    contentContainerStyle={{ alignItems: "center", paddingVertical: 16 }}
-  >
+  <VStack style={{ margin: 16 }} justify="center" align="center" spacing={4}>
     <Surface
       elevation={0}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
+        width: 70,
+        height: 70,
       }}
     >
       <Text>0</Text>
@@ -69,11 +64,10 @@ const App = () => (
       elevation={1}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>1</Text>
@@ -82,11 +76,10 @@ const App = () => (
       elevation={2}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>2</Text>
@@ -95,11 +88,10 @@ const App = () => (
       elevation={3}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>3</Text>
@@ -108,11 +100,10 @@ const App = () => (
       elevation={4}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>4</Text>
@@ -121,11 +112,10 @@ const App = () => (
       elevation={6}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>6</Text>
@@ -134,11 +124,10 @@ const App = () => (
       elevation={8}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>8</Text>
@@ -147,11 +136,10 @@ const App = () => (
       elevation={12}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>12</Text>
@@ -160,11 +148,10 @@ const App = () => (
       elevation={16}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>16</Text>
@@ -173,16 +160,15 @@ const App = () => (
       elevation={24}
       category="medium"
       style={{
-        width: 70,
-        height: 70,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 16,
+        width: 70,
+        height: 70,
       }}
     >
       <Text>24</Text>
     </Surface>
-  </ScrollView>
+  </VStack>
 );
 
 export default App;

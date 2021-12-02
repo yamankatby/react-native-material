@@ -4,16 +4,15 @@ A Badge represents dynamic information such as a number of pending requests in a
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
-import { Badge } from "@react-native-material/core";
+import { Badge, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
     <Badge label={4} />
-    <Badge label={23} style={{ marginTop: 16 }} />
-    <Badge label={123} color="primary" style={{ marginTop: 16 }} />
-    <Badge label="error" color="error" style={{ marginTop: 16 }} />
-  </View>
+    <Badge label={23} />
+    <Badge label={123} color="primary" />
+    <Badge label="error" color="error" />
+  </VStack>
 );
 
 export default App;
