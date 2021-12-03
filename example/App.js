@@ -13,7 +13,7 @@ import Banners from "./screens/Banners";
 import Dividers from "./screens/Dividers";
 import IconButtons from "./screens/IconButtons";
 import Lists from "./screens/Lists";
-import { BackdropScreen, ButtonScreen, FABScreen, PressableScreen } from "./screens/Screens";
+import { BackdropScreen, ButtonScreen, ChipScreen, FABScreen, PressableScreen } from "./screens/Screens";
 import Snackbars from "./screens/Snackbars";
 import Surfaces from "./screens/Surfaces";
 import Switches from "./screens/Switches";
@@ -78,6 +78,7 @@ const App = () => {
         <Stack.Screen name="Badges" component={Badges} />
         <Stack.Screen name="Banners" component={Banners} />
         <Stack.Screen name="Buttons" component={ButtonScreen} />
+        <Stack.Screen name="Chips" component={ChipScreen} />
         <Stack.Screen name="Dividers" component={Dividers} />
         <Stack.Screen name="FAB" component={FABScreen} />
         <Stack.Screen name="Icon buttons" component={IconButtons} />

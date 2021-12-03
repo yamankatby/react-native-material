@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import {
   AppBar,
+  Avatar,
   Backdrop,
   BackdropSubheader,
   Button,
+  Chip,
   FAB,
   HStack,
   IconButton,
@@ -106,6 +108,83 @@ export const ButtonScreen = () => (
     <Button title="Button" variant="text" loading loadingIndicatorPosition="overlay" style={{ margin: 8 }} />
   </SafeAreaView>
 );
+
+export const ChipScreen = () => {
+  const [toggle, setToggle] = useState(false);
+  return (
+    <HStack style={{ margin: 16 }} spacing={2}>
+      <Chip label="Label" />
+      <Chip label="Chip" />
+      <Chip label="Long Text" />
+      <Chip label="Long Text" color="primary" leading={props => <Avatar label={"y k"} {...props} />} />
+      <Chip label="Long Text" color="lightgreen" />
+
+      <Chip variant="outlined" label="Label" />
+      <Chip variant="outlined" label="Chip" />
+      <Chip variant="outlined" label="Long Text" />
+      <Chip variant="outlined" label="Long Text" color="primary" />
+      <Chip variant="outlined" label="Long Text" color="darkgreen" />
+
+      <Chip label="Chip" leading={props => <Avatar label={"y k"} {...props} />} />
+
+      <Chip label="Label" leading={props => <Icon name="face" {...props} />} />
+      <Chip label="Chip" leading={props => <Icon name="face" {...props} />} />
+      <Chip label="Long Text" leading={props => <Icon name="face" {...props} />} />
+      <Chip
+        label="Long Text"
+        color="primary"
+        loading
+        leading={props => <Icon name="face" {...props} />}
+        trailing={props => <Icon name="close-circle" {...props} />}
+      />
+      <Chip
+        label="Long Text"
+        color="lightgreen"
+        leading={props => <Icon name="face" {...props} />}
+        trailing={props => <Icon name="close-circle" {...props} />}
+      />
+
+      <Chip
+        variant="outlined"
+        label="Label"
+        leading={props => <Icon name="face" {...props} />}
+        trailing={props => <Icon name="close-circle" {...props} />}
+      />
+      <Chip
+        variant="outlined"
+        label="Chip"
+        leading={props => <Icon name="face" {...props} />}
+        trailing={props => <Icon name="close-circle" {...props} />}
+      />
+      <Chip
+        variant="outlined"
+        label="Long Text"
+        leading={props => <Icon name="face" {...props} />}
+        trailing={props => <Icon name="close-circle" {...props} />}
+      />
+      <Chip
+        variant="outlined"
+        label="Long Text"
+        color="primary"
+        leading={props => <Icon name="face" {...props} />}
+        disabled
+      />
+      <Chip
+        variant="outlined"
+        label="Long Text"
+        color="darkgreen"
+        leading={props => <Icon name="face" {...props} />}
+      />
+
+      <Chip
+        label="Label"
+        variant={toggle ? "filled" : "outlined"}
+        color={"primary"}
+        onPress={() => setToggle(!toggle)}
+      />
+    </HStack>
+  );
+}
 
 export const DividerScreen = () => {
   return (
