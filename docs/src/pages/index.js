@@ -28,6 +28,30 @@ function HomepageHeader() {
             to="/docs/getting-started">
             Get Started with {siteConfig.title}
           </Link>
+
+          <Link
+            className="button button--secondary button--lg"
+            style={{ marginLeft: '1rem' }}
+            target="_blank"
+            href="https://snack.expo.dev/@yamankatby/react-native-material-explorer">
+            Expo Snack
+          </Link>
+
+          <Link
+            className="button button--secondary button--lg"
+            style={{ marginLeft: '1rem' }}
+            target="_blank"
+            href="https://play.google.com/store/apps/details?id=com.swazer.material">
+            Google Play
+          </Link>
+
+          <Link
+            className="button button--secondary button--lg"
+            style={{ marginLeft: '1rem' }}
+            target="_blank"
+            href="https://example.react-native-material.com/">
+            Web
+          </Link>
         </div>
       </div>
     </header>
