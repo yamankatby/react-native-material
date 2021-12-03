@@ -31,16 +31,9 @@ export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressablePro
   variant?: "filled" | "outlined";
 
   /**
-   * The fill color of the chip.
-   * If variant is `filled`, this will be the background color.
-   * If variant is `outlined`, this will be the border color.
+   * The color of the chip.
    */
   color?: PaletteColor;
-
-  /**
-   * The color of the chip's content (text, icons, etc.).
-   */
-  tintColor?: PaletteColor;
 
   /**
    * The style of the chip's container.
@@ -68,8 +61,7 @@ const Chip: React.FC<ChipProps> = ({
   leading,
   trailing,
   variant = "filled",
-  color,
-  tintColor,
+  color = "onSurface",
   style,
   contentContainerStyle,
   labelStyle,
@@ -98,36 +90,30 @@ const Chip: React.FC<ChipProps> = ({
 }) => {
   const theme = useTheme();
 
-  const surfaceScale = useMemo(
-    () => chroma.scale([theme.palette.surface, theme.palette.onSurface]),
-    [theme.palette.surface, theme.palette.onSurface],
-  );
+  const palette = usePalette(color, theme.palette.surface);
 
-  const palette = usePalette(
-    color || surfaceScale(variant === "outlined" ? 0.26 : 0.08).hex(),
-    tintColor || (color === undefined ? surfaceScale(0.66).hex() : variant === "outlined" ? color : undefined),
-  );
+  const scale = useMemo(() => chroma.scale([palette.tintColor, palette.color]), [palette]);
 
   const labelElement =
     typeof label === "string" ? (
-      <Text variant="body2" style={[{ color: color ? palette.tintColor : surfaceScale(0.87).hex() }, labelStyle]}>
+      <Text variant="body2" style={[{ color: scale(0.87).hex() }, labelStyle]}>
         {label}
       </Text>
     ) : typeof label === "function" ? (
-      label({ color: color ? palette.tintColor : surfaceScale(0.87).hex() })
+      label({ color: scale(0.87).hex() })
     ) : (
       label
     );
 
-  const leadingElement = typeof leading === "function" ? leading({ color: palette.tintColor, size: 24 }) : leading;
+  const leadingElement = typeof leading === "function" ? leading({ color: scale(0.66).hex(), size: 24 }) : leading;
 
-  const trailingElement = typeof trailing === "function" ? trailing({ color: palette.tintColor, size: 18 }) : trailing;
+  const trailingElement = typeof trailing === "function" ? trailing({ color: scale(0.66).hex(), size: 18 }) : trailing;
 
   return (
-    <View style={[styles.container, variant === "filled" && { backgroundColor: palette.color }, style]} {...rest}>
+    <View style={[styles.container, variant === "filled" && { backgroundColor: scale(0.08).hex() }, style]} {...rest}>
       <Pressable
         pressEffect={pressEffect}
-        pressEffectColor={pressEffectColor ?? palette.tintColor}
+        pressEffectColor={pressEffectColor ?? scale(0.87).hex()}
         onPress={onPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
@@ -151,7 +137,7 @@ const Chip: React.FC<ChipProps> = ({
         {trailingElement && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailingElement}</View>}
 
         {variant === "outlined" && (
-          <View style={[StyleSheet.absoluteFill, styles.outline, { borderColor: palette.color }]} />
+          <View style={[StyleSheet.absoluteFill, styles.outline, { borderColor: scale(0.26).hex() }]} />
         )}
       </Pressable>
     </View>

@@ -112,7 +112,7 @@ export const ButtonScreen = () => (
 export const ChipScreen = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <HStack style={{ margin: 16 }} spacing={2}>
+    <HStack style={{ margin: 16 }} wrap="wrap" spacing={2}>
       <Chip label="Label" />
       <Chip label="Chip" />
       <Chip label="Long Text" />
