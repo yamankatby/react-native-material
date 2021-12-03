@@ -7,7 +7,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button title="Contained"/>
     <Button variant="outlined" title="Outlined"/>
     <Button variant="text" title="Text"/>
@@ -40,7 +40,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button title="Contained" disabled/>
     <Button variant="outlined" title="Outlined" disabled/>
     <Button variant="text" title="Text" disabled/>
@@ -57,7 +57,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button variant="text" title="Button" color="secondary"/>
     <Button title="Button" color="error"/>
     <Button variant="outlined" title="Button" color="#d4ac2d"/>
@@ -76,7 +76,7 @@ import { VStack, Button } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button variant="outlined" title="Delete" leading={props => <Icon name="delete" {...props} />}/>
     <Button title="Send" trailing={props => <Icon name="send" {...props} />}/>
   </VStack>
@@ -92,7 +92,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button title="Button"/>
     <Button title="Button" uppercase={false}/>
   </VStack>
@@ -108,7 +108,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Button title="Button"/>
     <Button title="Disable Elevation" disableElevation/>
   </VStack>
@@ -127,7 +127,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <Button title="Button" leading={props => <Icon name="plus" {...props} />} loading={loading}/>
       <Button
@@ -154,7 +154,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <Button
         title="Button"

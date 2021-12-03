@@ -9,7 +9,7 @@ export { default as Banner, BannerProps } from "./Banner";
 export { default as Button, ButtonProps } from "./Button";
 export { default as Divider, DividerProps } from "./Divider";
 export { default as FAB, FABProps } from "./FAB";
-export { default as Flex, FlexProps } from "./Flex";
+export { default as Flex, FlexProps, Spacer, SpacerProps } from "./Flex";
 export { default as IconButton, IconButtonProps } from "./IconButton";
 export { default as ListItem, ListItemProps } from "./ListItem";
 export { default as Pressable, PressableProps } from "./Pressable";

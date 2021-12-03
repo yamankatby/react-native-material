@@ -8,7 +8,7 @@ import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <FAB icon={props => <Icon name="plus" {...props} />}/>
     <FAB
       icon={props => <Icon name="plus" {...props} />}
@@ -52,7 +52,7 @@ import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center">
+  <VStack flex justify="center" align="center">
     <FAB icon={props => <Icon name="star" {...props} />} color="primary"/>
   </VStack>
 );
@@ -68,7 +68,7 @@ import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <FAB variant="extended" label="Button" color="primary"/>
     <FAB
       variant="extended"
@@ -90,7 +90,7 @@ import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <FAB icon={props => <Icon name="account" {...props} />}/>
     <FAB icon={props => <Icon name="account" {...props} />} size="mini"/>
   </VStack>
@@ -106,7 +106,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <FAB
         variant="extended"
         icon={props => <Icon name="heart" {...props} />}
@@ -164,7 +164,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <FAB
         icon={props => <Icon name="plus" {...props} />}
@@ -209,7 +209,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <Switch value={loading} onValueChange={setLoading}/>
       <FAB
         icon={props => <Icon name="plus" {...props} />}
@@ -271,7 +271,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [visible, setVisible] = useState(true);
   return (
-    <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+    <VStack flex justify="center" align="center" spacing={4}>
       <Switch value={visible} onValueChange={setVisible}/>
       <FAB icon={props => <Icon name="plus" {...props} />} visible={visible}/>
       <FAB

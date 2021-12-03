@@ -1,13 +1,13 @@
 # Badge
 
-A Badge represents dynamic information such as a number of pending requests in a Bottom Navigation or Tab Bar.
+Badges are used to highlight an item's status for quick recognition.
 
 ```js with-preview
 import React from "react";
 import { Badge, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Badge label={4}/>
     <Badge label={23}/>
     <Badge label={123} color="primary"/>

@@ -1,7 +1,19 @@
-import React from "react";
-import { FlexStyle, View, ViewProps } from "react-native";
+# Flex
 
-export interface FlexProps extends ViewProps {
+API documentation for the React Native Flex component. Learn about the available props.
+
+## Import
+ 
+```js
+import { Flex } from "@react-native-material/core";
+// or
+import Flex from "@react-native-material/core/Flex";
+```
+
+## Props
+
+```ts
+interface FlexProps extends ViewProps {
   /**
    * Define how your items are going to “fill” over the available space along your main axis.
    */
@@ -72,46 +84,4 @@ export interface FlexProps extends ViewProps {
   shrink?: FlexStyle["flexShrink"];
 }
 
-const Flex: React.FC<FlexProps> = ({
-  flex,
-  direction,
-  justify,
-  align,
-  self,
-  content,
-  wrap,
-  basis,
-  grow,
-  shrink,
-  style,
-  ...rest
-}) => (
-  <View
-    style={[
-      {
-        flex: typeof flex === "boolean" ? (flex ? 1 : undefined) : flex,
-        flexDirection: direction,
-        justifyContent: justify,
-        alignItems: align,
-        alignSelf: self,
-        alignContent: content,
-        flexWrap: wrap,
-        flexBasis: basis,
-        flexGrow: grow,
-        flexShrink: shrink,
-      },
-      style,
-    ]}
-    {...rest}
-  />
-);
-
-export interface SpacerProps extends ViewProps {
-
-}
-
-export const Spacer: React.FC<SpacerProps> = ({ style, ...rest }) => {
-  return <View style={[{ flex: 1, alignSelf: "stretch" }]} />;
-};
-
-export default Flex;
+```

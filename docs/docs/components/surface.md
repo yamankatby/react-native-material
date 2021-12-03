@@ -8,7 +8,7 @@ import React from "react";
 import { Surface, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ flex: 1 }} justify="center" align="center" spacing={4}>
+  <VStack flex justify="center" align="center" spacing={4}>
     <Surface
       elevation={2}
       category="medium"
