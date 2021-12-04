@@ -3316,15 +3316,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-material/core@npm:1.2.7":
-  version: 1.2.7
-  resolution: "@react-native-material/core@npm:1.2.7"
+"@react-native-material/core@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@react-native-material/core@npm:1.2.8"
   dependencies:
     chroma-js: ^2.1.2
   peerDependencies:
     react: ^17.0.2
     react-native: ^0.65.1
-  checksum: de4b9a5155c245485f7d5bbe40e21eb22f18e275690ff69cf5c17717ce232257ceaab80bd459e2aafb23c83913abb5a05e576f25024686aea3d28ef68f55154a
+  checksum: c838b6861e1bf5fb80dc67f1082d4dc173b29dc6d85800ffc74b391062665ffc1400400ab2a27103a3bf47e8e19ce7a3e7101118dd7865d8e2dee7d989107c3f
   languageName: node
   linkType: hard
 
@@ -5758,7 +5758,7 @@ __metadata:
     "@docusaurus/preset-classic": 2.0.0-beta.9
     "@docusaurus/remark-plugin-npm2yarn": ^2.0.0-beta.9
     "@mdx-js/react": ^1.6.21
-    "@react-native-material/core": 1.2.7
+    "@react-native-material/core": 1.2.8
     "@svgr/webpack": ^5.5.0
     clsx: ^1.1.1
     file-loader: ^6.2.0
