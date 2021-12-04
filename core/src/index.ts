@@ -13,6 +13,7 @@ export { default as FAB, FABProps } from "./FAB";
 export { default as Flex, FlexProps, Spacer, SpacerProps } from "./Flex";
 export { default as IconButton, IconButtonProps } from "./IconButton";
 export { default as ListItem, ListItemProps } from "./ListItem";
+export { Portal } from "./Portal";
 export { default as Pressable, PressableProps } from "./Pressable";
 export { default as Snackbar, SnackbarProps } from "./Snackbar";
 export { default as Stack, StackProps, HStackProps, HStack, VStackProps, VStack } from "./Stack";

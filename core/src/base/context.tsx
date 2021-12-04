@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useColorScheme } from "react-native";
 import { darkTheme, defaultTheme, Theme } from "./theme";
+import { PortalProvider } from "../Portal";
 
 export interface ThemeProviderProps {
   theme?: Theme;
@@ -17,7 +18,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const colorScheme = useColorScheme();
   return (
     <ThemeContext.Provider value={theme ?? (colorScheme === "dark" ? darkTheme : defaultTheme)}>
-      {children}
+      <PortalProvider>{children}</PortalProvider>
     </ThemeContext.Provider>
   );
 };
