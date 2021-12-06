@@ -91,6 +91,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'right'
           },
           {
+            href: 'https://twitter.com/rn_material',
+            label: 'Twitter',
+            position: 'right'
+          },
+          {
             href: 'https://github.com/yamankatby/react-native-material',
             position: 'right',
             className: 'header-github-link',
