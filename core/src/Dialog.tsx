@@ -37,7 +37,7 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, children })
       <Animated.View
         style={[StyleSheet.absoluteFill, styles.container, { opacity: animatedValue }]}
         pointerEvents="box-none"
-        needsOffscreenAlphaCompositing
+        needsOffscreenAlphaCompositing={Platform.OS === "android"}
       >
         <Surface category="medium" elevation={24} style={[styles.surface]}>
           {children}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   surface: {
-    maxWidth: 280,
+    width: 280,
     marginHorizontal: 40,
   },
 });
