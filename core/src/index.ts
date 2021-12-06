@@ -1,4 +1,5 @@
 export * from "./base";
+export * from "./hooks";
 export { default as ActivityIndicator, ActivityIndicatorProps } from "./ActivityIndicator";
 export { default as AppBar, AppBarProps } from "./AppBar";
 export { default as Avatar, AvatarProps } from "./Avatar";

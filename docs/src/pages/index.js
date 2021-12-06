@@ -26,7 +26,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/getting-started">
-            Get Started with {siteConfig.title}
+            Get Started
           </Link>
 
           <Link
