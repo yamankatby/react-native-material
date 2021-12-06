@@ -10,6 +10,10 @@ import {
   Banner,
   Button,
   Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogHeader,
   FAB,
   HStack,
   IconButton,
@@ -21,7 +25,8 @@ import {
   Text,
   TextInput,
   ThemeProvider,
-  useTheme
+  useTheme,
+  VStack
 } from "@react-native-material/core";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -515,6 +520,28 @@ const ChipScreen = () => {
   );
 };
 
+const DialogScreen = () => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <>
+      <VStack style={{margin: 16}} align="flex-start" spacing={2}>
+        <Button title="Open Simple Dialog" onPress={() => setVisible(true)} />
+      </VStack>
+      <Dialog visible={visible} onDismiss={() => setVisible(false)}>
+        <DialogHeader title="Dialog Header" />
+        <DialogContent>
+          <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus excepturi exercitationem id illo in
+            incidunt necessitatibus officiis rem?</Text>
+        </DialogContent>
+        <DialogActions>
+          <Button title="Cancel" compact variant="text" onPress={() => setVisible(false)} />
+          <Button title="Ok" compact variant="text" onPress={() => setVisible(false)} />
+        </DialogActions>
+      </Dialog>
+    </>
+  )
+}
+
 const DividerScreen = () => (
   <View>
     <ListItem title="alpha" />
@@ -857,6 +884,7 @@ const screens = [
   { name: "Banner", component: BannerScreen },
   { name: "Button", component: ButtonScreen },
   { name: "Chip", component: ChipScreen },
+  { name: "Dialog", component: DialogScreen },
   { name: "Divider", component: DividerScreen },
   { name: "FAB", component: FABScreen },
   { name: "Flex", component: FlexScreen },
