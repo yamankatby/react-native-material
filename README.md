@@ -1,4 +1,4 @@
-# Material UI components for React Native [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com)](https://twitter.com/intent/tweet?text=%23reactnativematerial%20is%20a%20set%20of%20pre-built,%20cross-platform,%20highly%20customizable%20UI%20components%20that%20follow%20%20%23material%20principles.%0Ahttps://www.react-native-material.com)
+# Material UI components for React Native [![Twitter Follow](https://img.shields.io/twitter/follow/rn_material?style=social)](https://twitter.com/intent/user?screen_name=rn_material)
 
 > React Native Material is a set of pre-built, cross-platform, highly customizable UI components that follow Material Design principles.
 
@@ -6,7 +6,6 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/@react-native-material/core.svg)](https://www.npmjs.com/package/@react-native-material/core)
 [![GitHub issues](https://img.shields.io/github/issues-raw/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material/issues)
 [![Used Languages](https://img.shields.io/github/languages/top/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material)
-[![Twitter Follow](https://img.shields.io/twitter/follow/rn_material?style=social)](https://twitter.com/intent/user?screen_name=rn_material)
 
 ![App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/hero.png)
 
