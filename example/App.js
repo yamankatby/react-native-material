@@ -32,6 +32,7 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import chroma from "chroma-js";
+import AuthNavigator from "./examples/auth";
 
 const ActivityIndicatorScreen = () => {
   return null;
@@ -921,15 +922,20 @@ const screens = [
   { name: "Text Input", component: TextInputScreen }
 ];
 
-const MainScreen = ({ navigation }) => (
-  <FlatList
-    data={screens}
-    renderItem={({ item }) => (
-      <ListItem key={item.name} title={item.name} onPress={() => navigation.navigate(item.name)} />
-    )}
-    keyExtractor={item => item.name}
-  />
-);
+const MainScreen = ({ navigation }) => {
+  return (
+    <>
+      <Button title="Auth Example" onPress={() => navigation.replace("AuthExample")} />
+      <FlatList
+        data={screens}
+        renderItem={({ item }) => (
+          <ListItem key={item.name} title={item.name} onPress={() => navigation.navigate(item.name)} />
+        )}
+        keyExtractor={item => item.name}
+      />
+    </>
+  );
+};
 
 const Stack = createNativeStackNavigator();
 
@@ -964,6 +970,8 @@ const Navigator = () => {
         }}
       >
         <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="AuthExample" component={AuthNavigator} options={{ headerShown: false }} />
+
         {screens.map(screen => (
           <Stack.Screen key={screen.name} name={screen.name} component={screen.component} options={screen.options} />
         ))}

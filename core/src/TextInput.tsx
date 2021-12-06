@@ -87,7 +87,7 @@ export interface TextInputProps extends RNTextInputProps {
   trailingContainerStyle?: StyleProp<ViewStyle>;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput: React.FC<TextInputProps> = React.forwardRef(({
   variant = "filled",
   label,
   leading,
@@ -107,7 +107,7 @@ const TextInput: React.FC<TextInputProps> = ({
   onBlur,
   onChangeText,
   ...rest
-}) => {
+}, ref) => {
   const theme = useTheme();
 
   const surfaceScale = useMemo(
@@ -290,6 +290,7 @@ const TextInput: React.FC<TextInputProps> = ({
         {leadingNode && <View style={[styles.leading, leadingContainerStyle]}>{leadingNode}</View>}
 
         <RNTextInput
+          ref={ref}
           style={[
             styles.input,
             theme.typography.subtitle1,
@@ -363,6 +364,6 @@ const TextInput: React.FC<TextInputProps> = ({
       </View>
     </View>
   );
-};
+});
 
 export default TextInput;
