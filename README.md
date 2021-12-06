@@ -6,6 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/@react-native-material/core.svg)](https://www.npmjs.com/package/@react-native-material/core)
 [![GitHub issues](https://img.shields.io/github/issues-raw/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material/issues)
 [![Used Languages](https://img.shields.io/github/languages/top/yamankatby/react-native-material.svg)](https://github.com/yamankatby/react-native-material)
+[![Twitter Follow](https://img.shields.io/twitter/follow/rn_material?style=social)](https://twitter.com/intent/user?screen_name=rn_material)
 
 ![App bar](https://raw.githubusercontent.com/yamankatby/react-native-material/main/hero.png)
 
