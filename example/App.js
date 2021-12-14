@@ -16,7 +16,9 @@ import {
   DialogHeader,
   FAB,
   HStack,
+  Icon,
   IconButton,
+  IconsProvider,
   ListItem,
   Pressable,
   Snackbar,
@@ -26,11 +28,11 @@ import {
   TextInput,
   ThemeProvider,
   useTheme,
-  VStack
+  VStack,
 } from "@react-native-material/core";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import chroma from "chroma-js";
 import AuthNavigator from "./examples/auth";
 
@@ -102,7 +104,7 @@ const AppBarScreen = ({ navigation }) => {
               start: 0,
               end: 0,
               paddingBottom: insets.bottom,
-              zIndex: 8
+              zIndex: 8,
             }
         }
       />
@@ -221,7 +223,7 @@ const AppBarScreen = ({ navigation }) => {
                     "#26a69a",
                     "#ff5722",
                     "#FFFFFF",
-                    "#000000"
+                    "#000000",
                   ][random(0, 7)]
                 );
               }}
@@ -393,7 +395,7 @@ const BannerScreen = () => {
         }
         buttons={[
           <Button variant="text" title="Fix it" compact onPress={() => undefined} />,
-          <Button variant="text" title="Learn more" compact onPress={() => undefined} />
+          <Button variant="text" title="Learn more" compact onPress={() => undefined} />,
         ]}
       />
       <ListItem
@@ -550,9 +552,7 @@ const DialogScreen = () => {
         <DialogHeader title="Form Dialog" />
         <DialogContent>
           <VStack>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing.
-            </Text>
+            <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text>
             <TextInput label="Email" variant="standard" />
           </VStack>
         </DialogContent>
@@ -562,8 +562,8 @@ const DialogScreen = () => {
         </DialogActions>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
 const DividerScreen = () => (
   <View>
@@ -666,7 +666,7 @@ const ListItemScreen = () => {
         leading={
           <Image
             source={{
-              uri: "https://material.io/archive/guidelines/assets/0Bx4BSt6jniD7OVJnOXR3Nlh1YzA/style-imagery-bestpractices-focus3.png"
+              uri: "https://material.io/archive/guidelines/assets/0Bx4BSt6jniD7OVJnOXR3Nlh1YzA/style-imagery-bestpractices-focus3.png",
             }}
             style={{ width: 100, height: 56 }}
           />
@@ -694,7 +694,7 @@ const PressableScreen = () => (
           marginStart: 16,
           borderRadius: 4,
           backgroundColor: "lightgray",
-          overflow: "hidden"
+          overflow: "hidden",
         }}
       >
         <Pressable style={StyleSheet.absoluteFill} />
@@ -749,7 +749,7 @@ const SurfaceScreen = () => {
         [2, 3],
         [4, 6],
         [8, 12],
-        [16, 24]
+        [16, 24],
       ].map((data, index) => (
         <View key={index} style={{ flexDirection: "row", marginTop: 16 }}>
           {data.map(elevation => (
@@ -919,7 +919,7 @@ const screens = [
   { name: "Surface", component: SurfaceScreen },
   { name: "Switch", component: SwitchScreen },
   { name: "Text", component: TextScreen },
-  { name: "Text Input", component: TextInputScreen }
+  { name: "Text Input", component: TextInputScreen },
 ];
 
 const MainScreen = ({ navigation }) => {
@@ -966,7 +966,7 @@ const Navigator = () => {
               }
               style={{ paddingTop: insets.top, zIndex: 4 }}
             />
-          )
+          ),
         }}
       >
         <Stack.Screen name="Main" component={MainScreen} />
@@ -980,14 +980,14 @@ const Navigator = () => {
   );
 };
 
-const App = () => {
-  return (
-    <SafeAreaProvider>
-      <ThemeProvider>
+const App = () => (
+  <SafeAreaProvider>
+    <ThemeProvider>
+      <IconsProvider render={props => <MaterialIcons {...props} />}>
         <Navigator />
-      </ThemeProvider>
-    </SafeAreaProvider>
-  );
-};
+      </IconsProvider>
+    </ThemeProvider>
+  </SafeAreaProvider>
+);
 
 export default App;
