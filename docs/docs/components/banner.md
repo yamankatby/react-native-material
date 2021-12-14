@@ -11,8 +11,8 @@ const App = () => (
     text="There was a problem processing a transaction on your credit card."
     buttons={
       <HStack spacing={2}>
-        <Button key="fix-it" variant="text" title="Fix it" compact/>
-        <Button key="learn-more" variant="text" title="Learn More" compact/>
+        <Button key="fix-it" variant="text" title="Fix it" compact />
+        <Button key="learn-more" variant="text" title="Learn More" compact />
       </HStack>
     }
   />
@@ -45,18 +45,18 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <Banner
-    illustration={props => (
+    illustration={(props) => (
       <Avatar
         color="primary"
-        icon={props => <Icon name="wifi-off" {...props} />}
+        icon={(props) => <Icon name="wifi-off" {...props} />}
         {...props}
       />
     )}
     text="There was a problem processing a transaction on your credit card."
     buttons={
       <HStack spacing={2}>
-        <Button key="fix-it" variant="text" title="Fix it" compact/>
-        <Button key="learn-more" variant="text" title="Learn More" compact/>
+        <Button key="fix-it" variant="text" title="Fix it" compact />
+        <Button key="learn-more" variant="text" title="Learn More" compact />
       </HStack>
     }
   />
@@ -64,3 +64,77 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`text`
+
+Type: string | React.ReactElement | null;
+
+Optional: No
+
+---
+
+`illustration`
+
+Type: React.ReactElement | ((props: { size: number }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`buttons`
+
+Type: React.ReactElement | React.ReactElement[] | null;
+
+Optional: No
+
+---
+
+`style`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`illustrationContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`textContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`textStyle`
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`actionsContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---

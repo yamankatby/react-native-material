@@ -179,3 +179,31 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`category`
+
+Type: ShapeCategory;
+
+Optional: Yes
+
+---
+
+`elevation`
+
+Type: Elevation;
+
+Optional: Yes
+
+---
+
+`style`
+
+Type: Animated.WithAnimatedValue<StyleProp<ViewStyle\>\>;
+
+Optional: Yes
+
+---
+
+`...ViewProps`

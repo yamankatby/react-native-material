@@ -9,15 +9,15 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <FAB icon={props => <Icon name="plus" {...props} />}/>
+    <FAB icon={(props) => <Icon name="plus" {...props} />} />
     <FAB
-      icon={props => <Icon name="plus" {...props} />}
+      icon={(props) => <Icon name="plus" {...props} />}
       color="primary"
       loading
     />
     <FAB
       variant="extended"
-      icon={props => <Icon name="navigation" {...props} />}
+      icon={(props) => <Icon name="navigation" {...props} />}
       label="navigate"
       color="primary"
     />
@@ -53,7 +53,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center">
-    <FAB icon={props => <Icon name="star" {...props} />} color="primary"/>
+    <FAB icon={(props) => <Icon name="star" {...props} />} color="primary" />
   </VStack>
 );
 
@@ -69,10 +69,10 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <FAB variant="extended" label="Button" color="primary"/>
+    <FAB variant="extended" label="Button" color="primary" />
     <FAB
       variant="extended"
-      icon={props => <Icon name="star" {...props} />}
+      icon={(props) => <Icon name="star" {...props} />}
       label="Button"
       color="primary"
     />
@@ -91,8 +91,8 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <FAB icon={props => <Icon name="account" {...props} />}/>
-    <FAB icon={props => <Icon name="account" {...props} />} size="mini"/>
+    <FAB icon={(props) => <Icon name="account" {...props} />} />
+    <FAB icon={(props) => <Icon name="account" {...props} />} size="mini" />
   </VStack>
 );
 
@@ -109,12 +109,12 @@ const App = () => {
     <VStack flex justify="center" align="center" spacing={4}>
       <FAB
         variant="extended"
-        icon={props => <Icon name="heart" {...props} />}
+        icon={(props) => <Icon name="heart" {...props} />}
         label="Button"
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="heart" {...props} />}
+        icon={(props) => <Icon name="heart" {...props} />}
         label="Button"
         size="mini"
       />
@@ -133,18 +133,23 @@ import { VStack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ flex: 1, paddingVertical: 16 }} justify="center" align="center" spacing={4}>
-    <FAB icon={props => <Icon name="lock" {...props} />}/>
+  <VStack
+    style={{ flex: 1, paddingVertical: 16 }}
+    justify="center"
+    align="center"
+    spacing={4}
+  >
+    <FAB icon={(props) => <Icon name="lock" {...props} />} />
     <FAB
       variant="extended"
-      icon={props => <Icon name="lock" {...props} />}
+      icon={(props) => <Icon name="lock" {...props} />}
       label="Button"
       tintColor="red"
     />
-    <FAB icon={props => <Icon name="lock" {...props} />} color="onPrimary"/>
-    <FAB icon={props => <Icon name="lock" {...props} />} color="#FDCAE4"/>
+    <FAB icon={(props) => <Icon name="lock" {...props} />} color="onPrimary" />
+    <FAB icon={(props) => <Icon name="lock" {...props} />} color="#FDCAE4" />
     <FAB
-      icon={props => <Icon name="lock" {...props} />}
+      icon={(props) => <Icon name="lock" {...props} />}
       color="#FDCAE4"
       tintColor="yellow"
     />
@@ -165,29 +170,29 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   return (
     <VStack flex justify="center" align="center" spacing={4}>
-      <Switch value={loading} onValueChange={setLoading}/>
+      <Switch value={loading} onValueChange={setLoading} />
       <FAB
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         color="primary"
         loading={loading}
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         label="Button"
         color="primary"
         loading={loading}
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         label="Button"
         color="primary"
         loading={loading}
         loadingIndicatorPosition="overlay"
       />
       <FAB
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         size="mini"
         color="primary"
         loading={loading}
@@ -210,20 +215,20 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   return (
     <VStack flex justify="center" align="center" spacing={4}>
-      <Switch value={loading} onValueChange={setLoading}/>
+      <Switch value={loading} onValueChange={setLoading} />
       <FAB
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         color="error"
         loading={loading}
         loadingIndicator="⏳"
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         label="Button"
         color="onError"
         loading={loading}
-        loadingIndicator={props => (
+        loadingIndicator={(props) => (
           <Text
             style={{
               width: 24,
@@ -240,7 +245,7 @@ const App = () => {
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         label="Button"
         color="onError"
         loading={loading}
@@ -248,7 +253,7 @@ const App = () => {
         loadingIndicatorPosition="overlay"
       />
       <FAB
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         size="mini"
         color="onError"
         loading={loading}
@@ -272,16 +277,19 @@ const App = () => {
   const [visible, setVisible] = useState(true);
   return (
     <VStack flex justify="center" align="center" spacing={4}>
-      <Switch value={visible} onValueChange={setVisible}/>
-      <FAB icon={props => <Icon name="plus" {...props} />} visible={visible}/>
+      <Switch value={visible} onValueChange={setVisible} />
+      <FAB
+        icon={(props) => <Icon name="plus" {...props} />}
+        visible={visible}
+      />
       <FAB
         size="mini"
-        icon={props => <Icon name="plus" {...props} />}
+        icon={(props) => <Icon name="plus" {...props} />}
         visible={visible}
       />
       <FAB
         variant="extended"
-        icon={props => <Icon name="navigation" {...props} />}
+        icon={(props) => <Icon name="navigation" {...props} />}
         label="Navigate"
         color="primary"
         visible={visible}
@@ -292,3 +300,135 @@ const App = () => {
 
 export default App;
 ```
+
+## Props
+
+`icon`
+
+Type: React.ReactElement | ((props: { color: string; size: number }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`label`
+
+Type: string | React.ReactElement | ((props: { color: string }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`variant`
+
+Type: "standard" | "extended";
+
+Optional: Yes
+
+---
+
+`size`
+
+Type: "default" | "mini";
+
+Optional: Yes
+
+---
+
+`color`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`tintColor`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`loading`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`loadingIndicator`
+
+Type: string | React.ReactElement | ((props: { color: string }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`loadingIndicatorPosition`
+
+Type: "icon" | "overlay";
+
+Optional: Yes
+
+---
+
+`visible`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`pressableContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+Type: PressableProps["style"];
+
+Optional: Yes
+
+---
+
+`iconContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`labelContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`labelStyle`
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`loadingOverlayContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`...SurfaceProps`, `...PressableProps`, `...PressableProps`

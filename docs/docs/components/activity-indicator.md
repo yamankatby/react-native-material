@@ -9,10 +9,10 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <ActivityIndicator/>
-    <ActivityIndicator size="large"/>
-    <ActivityIndicator size="small" color="error"/>
-    <ActivityIndicator size="large" color="#00ff00"/>
+    <ActivityIndicator />
+    <ActivityIndicator size="large" />
+    <ActivityIndicator size="small" color="error" />
+    <ActivityIndicator size="large" color="#00ff00" />
   </VStack>
 );
 
@@ -33,28 +33,58 @@ Here are some examples of where you might use `ActivityIndicator`.
 
 ```js with-preview
 import React from "react";
-import { AppBar, Stack, ActivityIndicator, Button, FAB, IconButton } from "@react-native-material/core";
+import {
+  AppBar,
+  Stack,
+  ActivityIndicator,
+  Button,
+  FAB,
+  IconButton,
+} from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <>
     <AppBar
       title="Title"
-      leading={props => (
-        <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
+      leading={(props) => (
+        <IconButton
+          icon={(props) => <Icon name="menu" {...props} />}
+          {...props}
+        />
       )}
-      trailing={props => (
-        <Stack justify="center" align="center" style={{ width: 48, height: 48 }}>
-          <ActivityIndicator size="small" color="onPrimary"/>
+      trailing={(props) => (
+        <Stack
+          justify="center"
+          align="center"
+          style={{ width: 48, height: 48 }}
+        >
+          <ActivityIndicator size="small" color="onPrimary" />
         </Stack>
       )}
     />
     <Stack flex justify="center" align="center">
-      <Button title="Button" loading disabled/>
+      <Button title="Button" loading disabled />
     </Stack>
-    <FAB loading style={{ position: 'absolute', end: 16, bottom: 16 }} disabled/>
+    <FAB
+      loading
+      style={{ position: "absolute", end: 16, bottom: 16 }}
+      disabled
+    />
   </>
 );
 
 export default App;
 ```
+
+## Props
+
+`color`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`...ActivityIndicatorProps`

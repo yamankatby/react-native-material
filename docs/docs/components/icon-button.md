@@ -9,9 +9,9 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <IconButton icon={props => <Icon name="eye" {...props}/>}/>
-    <IconButton icon={props => <Icon name="dots-vertical" {...props}/>}/>
-    <IconButton icon={props => <Icon name="magnify" {...props}/>}/>
+    <IconButton icon={(props) => <Icon name="eye" {...props} />} />
+    <IconButton icon={(props) => <Icon name="dots-vertical" {...props} />} />
+    <IconButton icon={(props) => <Icon name="magnify" {...props} />} />
   </VStack>
 );
 
@@ -33,11 +33,53 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <IconButton icon={props => <Icon name="wifi" {...props}/>}/>
-    <IconButton icon={props => <Icon name="account" {...props}/>} color="primary"/>
-    <IconButton icon={props => <Icon name="magnify" {...props}/>} color="red"/>
+    <IconButton icon={(props) => <Icon name="wifi" {...props} />} />
+    <IconButton
+      icon={(props) => <Icon name="account" {...props} />}
+      color="primary"
+    />
+    <IconButton
+      icon={(props) => <Icon name="magnify" {...props} />}
+      color="red"
+    />
   </VStack>
 );
 
 export default App;
 ```
+
+## Props
+
+`icon`
+
+The element to render as the icon.
+
+Type: React.ReactNode | ((props: { color: string; size: number }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`color`
+
+The color of the icon and the press effect.
+
+Type: PaletteColor;
+
+Default: "onBackground"
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+The style of the icon's container view.
+
+Type: PressableProps["style"];
+
+Optional: Yes
+
+---
+
+`...ViewProps`, `...PressableProps`, `...PressableProps`

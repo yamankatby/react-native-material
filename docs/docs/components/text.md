@@ -70,3 +70,15 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`variant`
+
+Type: TypographyVariant;
+
+Optional: Yes
+
+---
+
+`...TextProps`

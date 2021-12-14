@@ -22,20 +22,20 @@ const App = () => {
         <AppBar
           title="Screen title"
           transparent
-          leading={props => (
+          leading={(props) => (
             <IconButton
-              icon={props => (
+              icon={(props) => (
                 <Icon name={revealed ? "close" : "menu"} {...props} />
               )}
-              onPress={() => setRevealed(prevState => !prevState)}
+              onPress={() => setRevealed((prevState) => !prevState)}
               {...props}
             />
           )}
         />
       }
-      backLayer={<View style={{ height: 120 }}/>}
+      backLayer={<View style={{ height: 120 }} />}
     >
-      <BackdropSubheader title="Subheader"/>
+      <BackdropSubheader title="Subheader" />
     </Backdrop>
   );
 };
@@ -54,3 +54,101 @@ these control and inform the front layer's content.
 ```js
 import { Backdrop, BackdropSubheader } from "@react-native-material/core";
 ```
+
+## Props
+
+`revealed`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`header`
+
+Type: React.ReactElement | null;
+
+Optional: Yes
+
+---
+
+`headerHeight`
+
+Type: number;
+
+Optional: Yes
+
+---
+
+`backLayer`
+
+Type: React.ReactElement | null;
+
+Optional: Yes
+
+---
+
+`backLayerHeight`
+
+Type: number;
+
+Optional: Yes
+
+---
+
+`subheader`
+
+Type: React.ReactElement | null;
+
+Optional: Yes
+
+---
+
+`subheaderHeight`
+
+Type: number;
+
+Optional: Yes
+
+---
+
+`style`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`headerContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`backLayerContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`frontLayerContainerStyle`
+
+Type: Animated.AnimatedProps<ViewProps\>["style"];
+
+Optional: Yes
+
+---
+
+`subheaderContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---

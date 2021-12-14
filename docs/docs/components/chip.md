@@ -8,8 +8,8 @@ import { VStack, Chip } from "@react-native-material/core";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Chip label="Filled"/>
-    <Chip variant="outlined" label="Outlined"/>
+    <Chip label="Filled" />
+    <Chip variant="outlined" label="Outlined" />
   </VStack>
 );
 
@@ -31,7 +31,7 @@ Chips allow users to enter information, make selections, filter content, or trig
 to appear consistently and with familiar calls to action, chips should appear dynamically as a group of multiple
 interactive elements.
 
-```js with-preview 
+```js with-preview
 import React from "react";
 import { VStack, Chip } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
@@ -41,16 +41,112 @@ const App = () => (
     <Chip
       label="Filled"
       color="primary"
-      leading={props => <Icon name="face" {...props} />}
+      leading={(props) => <Icon name="face" {...props} />}
     />
     <Chip
       variant="outlined"
       label="Outlined"
       color="primary"
-      leading={props => <Icon name="face" {...props} />}
+      leading={(props) => <Icon name="face" {...props} />}
     />
   </VStack>
 );
 
 export default App;
 ```
+
+## Props
+
+`label`
+
+The text to display in the chip.
+
+Type: string | React.ReactNode | ((props: { color: string }) =\> React.ReactNode | null) | null;
+
+Optional: No
+
+---
+
+`leading`
+
+The element placed before the `label`.
+
+Type: React.ReactNode | ((props: { color: string; size: number }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`trailing`
+
+The element placed after the `label`.
+
+Type: React.ReactNode | ((props: { color: string; size: number }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`variant`
+
+The variant of the chip. - `filled`: A filled chip. - `outlined`: A solid background with a border.
+
+Type: "filled" | "outlined";
+
+Default: "filled"
+
+Optional: Yes
+
+---
+
+`color`
+
+The color of the chip.
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+The style of the chip's container.
+
+Type: PressableProps["style"];
+
+Optional: Yes
+
+---
+
+`labelStyle`
+
+The style of the chip's label.
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`leadingContainerStyle`
+
+The style of the chip's leading element.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`trailingContainerStyle`
+
+The style of the chip's trailing element.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`...ViewProps`, `...PressableProps`, `...PressableProps`

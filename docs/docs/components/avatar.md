@@ -9,9 +9,9 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar label="Kent Dodds" autoColor/>
-    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}/>
-    <Avatar icon={props => <Icon name="account" {...props} />}/>
+    <Avatar label="Kent Dodds" autoColor />
+    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
+    <Avatar icon={(props) => <Icon name="account" {...props} />} />
   </VStack>
 );
 
@@ -35,10 +35,10 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar label="Kent Dodds"/>
-    <Avatar label="UN" initials={false}/>
-    <Avatar label="Jed Watson" autoColor/>
-    <Avatar label="Tim Neutkens" autoColor/>
+    <Avatar label="Kent Dodds" />
+    <Avatar label="UN" initials={false} />
+    <Avatar label="Jed Watson" autoColor />
+    <Avatar label="Tim Neutkens" autoColor />
   </VStack>
 );
 
@@ -54,7 +54,7 @@ import { VStack, Avatar } from "@react-native-material/core";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}/>
+    <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
     <Avatar
       image={
         <Image
@@ -85,14 +85,14 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar icon={props => <Icon name="account" {...props} />}/>
+    <Avatar icon={(props) => <Icon name="account" {...props} />} />
     <Avatar
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
       label="Jed Watson"
       autoColor
     />
     <Avatar
-      icon={props => <Icon name="calendar" {...props} />}
+      icon={(props) => <Icon name="calendar" {...props} />}
       label="Tim Neutkens"
       autoColor
     />
@@ -110,9 +110,9 @@ import { VStack, Avatar } from "@react-native-material/core";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar label="Jed Watson" size={32}/>
-    <Avatar label="Jed Watson"/>
-    <Avatar label="Jed Watson" size={72}/>
+    <Avatar label="Jed Watson" size={32} />
+    <Avatar label="Jed Watson" />
+    <Avatar label="Jed Watson" size={72} />
   </VStack>
 );
 
@@ -128,18 +128,18 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar label="Kent Dodds"/>
+    <Avatar label="Kent Dodds" />
     <Avatar
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
       color="primary"
     />
     <Avatar
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
       color="primary"
       tintColor="error"
     />
     <Avatar
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
       color="orange"
       tintColor="white"
     />
@@ -158,14 +158,14 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar label="Jed Watson"/>
+    <Avatar label="Jed Watson" />
     <Avatar
       label="Jed Watson"
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
     />
     <Avatar
       label="Jed Watson"
-      icon={props => <Icon name="account" {...props} />}
+      icon={(props) => <Icon name="account" {...props} />}
       image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
     />
   </VStack>
@@ -173,3 +173,117 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`label`
+
+Type: string | React.ReactElement | ((props: { color: string }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`image`
+
+Type: ImageSourcePropType | React.ReactElement | ((props: { size: number }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`icon`
+
+Type: React.ReactElement | ((props: { color: string; size: number }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`size`
+
+Type: number;
+
+Optional: Yes
+
+---
+
+`color`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`tintColor`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`initials`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`uppercase`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`autoColor`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`style`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`imageContainerStyle`
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`labelStyle`
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`imageStyle`
+
+Type: StyleProp<ImageStyle\>;
+
+Optional: Yes
+
+---

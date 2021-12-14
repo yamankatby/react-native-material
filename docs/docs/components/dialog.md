@@ -14,7 +14,12 @@ Dialogs are purposefully interruptive, so they should be used sparingly.
 ## Import
 
 ```js
-import { Dialog, DialogHeader, DialogContent, DialogActions } from "@react-native-material/core";
+import {
+  Dialog,
+  DialogHeader,
+  DialogContent,
+  DialogActions,
+} from "@react-native-material/core";
 ```
 
 ## Usage
@@ -93,7 +98,7 @@ import {
   DialogContent,
   DialogActions,
   Text,
-  TextInput
+  TextInput,
 } from "@react-native-material/core";
 
 const App = () => {
@@ -107,11 +112,11 @@ const App = () => {
         onPress={() => setVisible(true)}
       />
       <Dialog visible={visible} onDismiss={() => setVisible(false)}>
-        <DialogHeader title="Dialog Header"/>
+        <DialogHeader title="Dialog Header" />
         <DialogContent>
           <VStack spacing={2}>
             <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text>
-            <TextInput label="Email" variant="standard"/>
+            <TextInput label="Email" variant="standard" />
           </VStack>
         </DialogContent>
         <DialogActions>
@@ -135,9 +140,27 @@ const App = () => {
 
 const AppProvider = () => (
   <ThemeProvider>
-    <App/>
+    <App />
   </ThemeProvider>
 );
 
 export default AppProvider;
 ```
+
+## Props
+
+`visible`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`onDismiss`
+
+Type: () =\> void;
+
+Optional: Yes
+
+---

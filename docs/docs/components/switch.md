@@ -10,8 +10,8 @@ const App = () => {
   const [checked, setChecked] = useState(true);
   return (
     <VStack flex justify="center" align="center" spacing={4}>
-      <Switch value={checked} onValueChange={() => setChecked(!checked)}/>
-      <Switch disabled/>
+      <Switch value={checked} onValueChange={() => setChecked(!checked)} />
+      <Switch disabled />
     </VStack>
   );
 };
@@ -48,21 +48,33 @@ const App = () => {
       <ListItem
         title="List Item"
         trailing={
-          <Switch value={checked} onValueChange={() => setChecked(!checked)}/>
+          <Switch value={checked} onValueChange={() => setChecked(!checked)} />
         }
         onPress={() => setChecked(!checked)}
       />
       <ListItem
         title="List Item"
         trailing={
-          <Switch value={enabled} onValueChange={() => setEnabled(!enabled)}/>
+          <Switch value={enabled} onValueChange={() => setEnabled(!enabled)} />
         }
         onPress={() => setEnabled(!enabled)}
       />
-      <ListItem title="List Item" trailing={<Switch disabled/>} disabled/>
+      <ListItem title="List Item" trailing={<Switch disabled />} disabled />
     </>
   );
 };
 
 export default App;
 ```
+
+## Props
+
+`tintColor`
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`...SwitchProps`

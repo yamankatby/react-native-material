@@ -6,7 +6,7 @@ The App Bar displays information and actions relating to the current screen.
 import React from "react";
 import { AppBar } from "@react-native-material/core";
 
-const App = () => <AppBar title="Screen title"/>;
+const App = () => <AppBar title="Screen title" />;
 
 export default App;
 ```
@@ -37,17 +37,20 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => (
   <AppBar
     title="Title"
-    leading={props => (
-      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
+    leading={(props) => (
+      <IconButton
+        icon={(props) => <Icon name="menu" {...props} />}
+        {...props}
+      />
     )}
-    trailing={props => (
+    trailing={(props) => (
       <HStack>
         <IconButton
-          icon={props => <Icon name="magnify" {...props} />}
+          icon={(props) => <Icon name="magnify" {...props} />}
           {...props}
         />
         <IconButton
-          icon={props => <Icon name="dots-vertical" {...props} />}
+          icon={(props) => <Icon name="dots-vertical" {...props} />}
           {...props}
         />
       </HStack>
@@ -75,16 +78,16 @@ const App = () => {
   return (
     <AppBar
       title="Title"
-      leading={props => (
+      leading={(props) => (
         <IconButton
-          icon={props => <Icon name="menu" {...props} />}
+          icon={(props) => <Icon name="menu" {...props} />}
           {...props}
         />
       )}
-      trailing={props =>
+      trailing={(props) =>
         loggedIn ? (
           <IconButton
-            icon={<Avatar label="Yaman KATBY" size={28}/>}
+            icon={<Avatar label="Yaman KATBY" size={28} />}
             onPress={() => setLoggedIn(!loggedIn)}
             {...props}
           />
@@ -116,19 +119,22 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => (
   <AppBar
     variant="bottom"
-    leading={props => (
-      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
-    )}
-    trailing={props => (
+    leading={(props) => (
       <IconButton
-        icon={props => <Icon name="magnify" {...props} />}
+        icon={(props) => <Icon name="menu" {...props} />}
+        {...props}
+      />
+    )}
+    trailing={(props) => (
+      <IconButton
+        icon={(props) => <Icon name="magnify" {...props} />}
         {...props}
       />
     )}
     style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
   >
     <FAB
-      icon={props => <Icon name="plus" {...props} />}
+      icon={(props) => <Icon name="plus" {...props} />}
       style={{ position: "absolute", top: -28, alignSelf: "center" }}
     />
   </AppBar>
@@ -149,17 +155,20 @@ const App = () => (
     title="Title"
     color="pink"
     tintColor="red"
-    leading={props => (
-      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
+    leading={(props) => (
+      <IconButton
+        icon={(props) => <Icon name="menu" {...props} />}
+        {...props}
+      />
     )}
-    trailing={props => (
+    trailing={(props) => (
       <HStack>
         <IconButton
-          icon={props => <Icon name="magnify" {...props} />}
+          icon={(props) => <Icon name="magnify" {...props} />}
           {...props}
         />
         <IconButton
-          icon={props => <Icon name="dots-vertical" {...props} />}
+          icon={(props) => <Icon name="dots-vertical" {...props} />}
           {...props}
         />
       </HStack>
@@ -177,7 +186,7 @@ effect on the appearance of the app bar in dark mode. You can override this beha
 prop to `true`.
 
 ```js
-<AppBar color="primary" enableColorOnDark/>
+<AppBar color="primary" enableColorOnDark />
 ```
 
 ### Center the Title and the Subtitle
@@ -192,12 +201,15 @@ const App = () => (
     title="Title"
     subtitle="Lorem ipsum"
     centerTitle={true}
-    leading={props => (
-      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
-    )}
-    trailing={props => (
+    leading={(props) => (
       <IconButton
-        icon={props => <Icon name="dots-vertical" {...props} />}
+        icon={(props) => <Icon name="menu" {...props} />}
+        {...props}
+      />
+    )}
+    trailing={(props) => (
+      <IconButton
+        icon={(props) => <Icon name="dots-vertical" {...props} />}
         {...props}
       />
     )}
@@ -206,3 +218,177 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`variant`
+
+Whether you want to place the AppBar at the top or the bottom of the screen.
+
+Type: "top" | "bottom";
+
+Default: "top"
+
+Optional: Yes
+
+---
+
+`title`
+
+The primary text to display in the AppBar.
+
+Type: string | React.ReactNode | ((props: { color: string }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`subtitle`
+
+The secondary text to display in the AppBar.
+
+Type: string | React.ReactNode | ((props: { color: string }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`centerTitle`
+
+Whether the `title` and `subtitle` should be centered.
+
+Type: boolean;
+
+Default: false
+
+Optional: Yes
+
+---
+
+`leading`
+
+The element displayed before the `title`.
+
+Type: React.ReactNode | ((props: { color: string; size: number }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`trailing`
+
+The element displayed after the `title`.
+
+Type: React.ReactNode | ((props: { color: string; size: number }) =\> React.ReactNode | null) | null;
+
+Optional: Yes
+
+---
+
+`color`
+
+The fill color of the AppBar's background.
+
+Type: PaletteColor;
+
+Default: "primary"
+
+Optional: Yes
+
+---
+
+`tintColor`
+
+The color of the AppBar's content (title, subtitle, icons, etc.).
+
+Type: PaletteColor;
+
+Optional: Yes
+
+---
+
+`transparent`
+
+Whether the AppBar's background is transparent.
+
+Type: boolean;
+
+Default: false
+
+Optional: Yes
+
+---
+
+`enableColorOnDark`
+
+If `true`, the `color` prop will be applied in dark mode.
+
+Type: boolean;
+
+Default: false
+
+Optional: Yes
+
+---
+
+`contentContainerStyle`
+
+The style of the content container view.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`titleContentStyle`
+
+The style of the title and subtitle container view.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`titleStyle`
+
+The style of the title text.
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`subtitleStyle`
+
+The style of the subtitle text.
+
+Type: StyleProp<TextStyle\>;
+
+Optional: Yes
+
+---
+
+`leadingContainerStyle`
+
+The style of the leading element container view.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`trailingContainerStyle`
+
+The style of the trailing element container view.
+
+Type: StyleProp<ViewStyle\>;
+
+Optional: Yes
+
+---
+
+`...SurfaceProps`

@@ -3,18 +3,18 @@
 Snackbars provide brief messages about app processes at the bottom of the screen.
 
 ```js with-preview
-import React from 'react'
-import { View } from 'react-native'
-import { Snackbar } from '@react-native-material/core'
+import React from "react";
+import { View } from "react-native";
+import { Snackbar } from "@react-native-material/core";
 
 const App = () => (
   <View style={{ flex: 1 }}>
     <Snackbar
       message="Can't send the photo."
-      style={{ position: 'absolute', start: 16, end: 16, bottom: 16 }}
+      style={{ position: "absolute", start: 16, end: 16, bottom: 16 }}
     />
   </View>
-)
+);
 
 export default App;
 ```
@@ -48,14 +48,7 @@ const App = () => (
   <View style={{ flex: 1 }}>
     <Snackbar
       message="Note archived."
-      action={
-        <Button
-          variant="text"
-          title="Dismiss"
-          color="#BB86FC"
-          compact
-        />
-      }
+      action={<Button variant="text" title="Dismiss" color="#BB86FC" compact />}
       style={{ position: "absolute", start: 16, end: 16, bottom: 16 }}
     />
   </View>
@@ -75,14 +68,7 @@ const App = () => (
   <View style={{ flex: 1 }}>
     <Snackbar
       message="This is a two-line message with an action button."
-      action={
-        <Button
-          variant="text"
-          title="Dismiss"
-          color="#BB86FC"
-          compact
-        />
-      }
+      action={<Button variant="text" title="Dismiss" color="#BB86FC" compact />}
       style={{ position: "absolute", start: 16, end: 16, bottom: 16 }}
     />
   </View>
@@ -90,3 +76,23 @@ const App = () => (
 
 export default App;
 ```
+
+## Props
+
+`message`
+
+Type: string;
+
+Optional: No
+
+---
+
+`action`
+
+Type: React.ReactElement;
+
+Optional: Yes
+
+---
+
+`...SurfaceProps`

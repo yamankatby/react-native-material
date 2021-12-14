@@ -6,7 +6,7 @@ Stack is a layout component that makes it easy to stack elements together and ap
 
 ## Import
 
-```js 
+```js
 import { Stack, HStack, VStack } from "@react-native-material/core";
 ```
 
@@ -22,16 +22,16 @@ the `Stack` component as well and pass the `direction` prop.
 
 ```js with-preview
 import React from "react";
-import { View } from 'react-native';
-import { HStack } from "@react-native-material/core"
+import { View } from "react-native";
+import { HStack } from "@react-native-material/core";
 
 const App = () => (
   <HStack spacing={6} style={{ margin: 16 }}>
-    <View style={{ width: 40, height: 40, backgroundColor: '#faf089' }}/>
-    <View style={{ width: 40, height: 40, backgroundColor: '#ff6347' }}/>
-    <View style={{ width: 40, height: 40, backgroundColor: '#fed7e2' }}/>
+    <View style={{ width: 40, height: 40, backgroundColor: "#faf089" }} />
+    <View style={{ width: 40, height: 40, backgroundColor: "#ff6347" }} />
+    <View style={{ width: 40, height: 40, backgroundColor: "#fed7e2" }} />
   </HStack>
-)
+);
 
 export default App;
 ```
@@ -47,12 +47,36 @@ import { View } from "react-native";
 import { VStack, Divider } from "@react-native-material/core";
 
 const App = () => (
-  <VStack divider={<Divider/>} spacing={2} style={{ margin: 16 }}>
-    <View style={{ height: 40, backgroundColor: "#faf089" }}/>
-    <View style={{ height: 40, backgroundColor: "#ff6347" }}/>
-    <View style={{ height: 40, backgroundColor: "#fed7e2" }}/>
+  <VStack divider={<Divider />} spacing={2} style={{ margin: 16 }}>
+    <View style={{ height: 40, backgroundColor: "#faf089" }} />
+    <View style={{ height: 40, backgroundColor: "#ff6347" }} />
+    <View style={{ height: 40, backgroundColor: "#fed7e2" }} />
   </VStack>
 );
 
 export default App;
 ```
+
+## Props
+
+`spacing`
+
+The spacing between the stack items.
+
+Type: number;
+
+Optional: Yes
+
+---
+
+`divider`
+
+A React.Node to render between each stack item.
+
+Type: React.ReactNode;
+
+Optional: Yes
+
+---
+
+`...FlexProps`
