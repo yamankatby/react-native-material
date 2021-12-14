@@ -116,10 +116,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'Components',
                 to: 'docs/components/app-bar'
-              },
-              {
-                label: 'API Reference',
-                to: 'docs/api/activity-indicator'
               }
             ]
           },
@@ -129,6 +125,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'Stack Overflow',
                 href: 'https://stackoverflow.com/questions/tagged/react-native-material'
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/rn_material'
               }
             ]
           },
