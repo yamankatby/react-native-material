@@ -73,7 +73,7 @@ const Register = ({}) => {
           }
         ]}
       >
-        <VStack spacing={2} align="center">
+        <VStack spacing={2} items="center">
           <Avatar icon={props => <Icon name="lock-outline" {...props} />} size={40} />
           <Text variant="h5" style={{ color: palette.onBackground }}>
             Sign up

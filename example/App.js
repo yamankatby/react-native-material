@@ -22,13 +22,14 @@ import {
   ListItem,
   Pressable,
   Snackbar,
+  Stack as MStack,
   Surface,
   Switch,
   Text,
   TextInput,
   ThemeProvider,
   useTheme,
-  VStack,
+  VStack
 } from "@react-native-material/core";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -104,7 +105,7 @@ const AppBarScreen = ({ navigation }) => {
               start: 0,
               end: 0,
               paddingBottom: insets.bottom,
-              zIndex: 8,
+              zIndex: 8
             }
         }
       />
@@ -223,7 +224,7 @@ const AppBarScreen = ({ navigation }) => {
                     "#26a69a",
                     "#ff5722",
                     "#FFFFFF",
-                    "#000000",
+                    "#000000"
                   ][random(0, 7)]
                 );
               }}
@@ -395,7 +396,7 @@ const BannerScreen = () => {
         }
         buttons={[
           <Button variant="text" title="Fix it" compact onPress={() => undefined} />,
-          <Button variant="text" title="Learn more" compact onPress={() => undefined} />,
+          <Button variant="text" title="Learn more" compact onPress={() => undefined} />
         ]}
       />
       <ListItem
@@ -666,7 +667,7 @@ const ListItemScreen = () => {
         leading={
           <Image
             source={{
-              uri: "https://material.io/archive/guidelines/assets/0Bx4BSt6jniD7OVJnOXR3Nlh1YzA/style-imagery-bestpractices-focus3.png",
+              uri: "https://material.io/archive/guidelines/assets/0Bx4BSt6jniD7OVJnOXR3Nlh1YzA/style-imagery-bestpractices-focus3.png"
             }}
             style={{ width: 100, height: 56 }}
           />
@@ -694,7 +695,7 @@ const PressableScreen = () => (
           marginStart: 16,
           borderRadius: 4,
           backgroundColor: "lightgray",
-          overflow: "hidden",
+          overflow: "hidden"
         }}
       >
         <Pressable style={StyleSheet.absoluteFill} />
@@ -737,7 +738,22 @@ const SnackbarScreen = () => {
 };
 
 const StackScreen = () => {
-  return null;
+  return (
+    <VStack spacing={2} fill center>
+      <View style={{ width: 40, height: 40, backgroundColor: "#faf089" }} />
+      <View style={{ width: 40, height: 40, backgroundColor: "#ff6347" }} />
+      <View style={{ width: 40, height: 40, backgroundColor: "#fed7e2" }} />
+      <View style={{ width: 40, height: 40, backgroundColor: "#fed7e2" }} />
+    </VStack>
+  )
+  return (
+    <MStack spacing={5} divider direction="column-reverse" style={{ backgroundColor: 'skyblue' }} self="start">
+      <View style={{ width: 40, height: 40, backgroundColor: "#faf089", flexDirection: 'column-reverse' }} />
+      <View style={{ width: 40, height: 40, backgroundColor: "#ff6347" }} />
+
+      <View style={{ width: 40, height: 40, backgroundColor: "#fed7e2" }} />
+    </MStack>
+  )
 };
 
 const SurfaceScreen = () => {
@@ -749,7 +765,7 @@ const SurfaceScreen = () => {
         [2, 3],
         [4, 6],
         [8, 12],
-        [16, 24],
+        [16, 24]
       ].map((data, index) => (
         <View key={index} style={{ flexDirection: "row", marginTop: 16 }}>
           {data.map(elevation => (
@@ -919,7 +935,7 @@ const screens = [
   { name: "Surface", component: SurfaceScreen },
   { name: "Switch", component: SwitchScreen },
   { name: "Text", component: TextScreen },
-  { name: "Text Input", component: TextInputScreen },
+  { name: "Text Input", component: TextInputScreen }
 ];
 
 const MainScreen = ({ navigation }) => {
@@ -966,7 +982,7 @@ const Navigator = () => {
               }
               style={{ paddingTop: insets.top, zIndex: 4 }}
             />
-          ),
+          )
         }}
       >
         <Stack.Screen name="Main" component={MainScreen} />

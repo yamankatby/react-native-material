@@ -15,7 +15,7 @@ export { default as DialogContent, DialogContentProps } from "./DialogContent";
 export { default as DialogHeader, DialogHeaderProps } from "./DialogHeader";
 export { default as Divider, DividerProps } from "./Divider";
 export { default as FAB, FABProps } from "./FAB";
-export { default as Flex, FlexProps, Spacer, SpacerProps } from "./Flex";
+export { default as Flex, FlexProps, Spacer } from "./Flex";
 export { default as Icon, IconProps } from "./Icon";
 export { default as IconButton, IconButtonProps } from "./IconButton";
 export { default as IconsProvider, IconsProviderProps, IconsContext, IconRenderFunction } from "./IconsProvider";

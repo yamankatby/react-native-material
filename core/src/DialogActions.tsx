@@ -10,7 +10,7 @@ const DialogActions: React.FC<DialogActionsProps> = ({
   children,
 }) => {
   return (
-    <HStack justify="flex-end" spacing={2} style={[styles.container]}>
+    <HStack justify="end" spacing={2} style={[styles.container]}>
       {children}
     </HStack>
   )
