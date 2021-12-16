@@ -4,7 +4,9 @@ import { IconsContext } from "./IconsProvider";
 
 export interface IconProps {
   name: string;
+
   size?: number;
+
   color?: PaletteColor;
 }
 

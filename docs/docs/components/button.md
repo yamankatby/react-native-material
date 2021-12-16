@@ -4,14 +4,14 @@ Buttons allow users to take actions, and make choices, with a single tap.
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button title="Contained" />
     <Button variant="outlined" title="Outlined" />
     <Button variant="text" title="Text" />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -37,14 +37,14 @@ import { Button } from "@react-native-material/core";
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button title="Contained" disabled />
     <Button variant="outlined" title="Outlined" disabled />
     <Button variant="text" title="Text" disabled />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -54,15 +54,15 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button variant="text" title="Button" color="secondary" />
     <Button title="Button" color="error" />
     <Button variant="outlined" title="Button" color="#d4ac2d" />
     <Button title="Button" color="pink" tintColor="red" />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -72,18 +72,18 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button
       variant="outlined"
       title="Delete"
       leading={props => <Icon name="delete" {...props} />}
     />
     <Button title="Send" trailing={props => <Icon name="send" {...props} />} />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -93,13 +93,13 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button title="Button" />
     <Button title="Button" uppercase={false} />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -109,13 +109,13 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Button } from "@react-native-material/core";
+import { Stack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Button title="Button" />
     <Button title="Disable Elevation" disableElevation />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -125,13 +125,13 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, Button, Switch } from "@react-native-material/core";
+import { Stack, Button, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <Button
         title="Button"
@@ -149,7 +149,7 @@ const App = () => {
         loading={loading}
         loadingIndicatorPosition="overlay"
       />
-    </VStack>
+    </Stack>
   );
 };
 
@@ -160,13 +160,13 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, Button, Text, Switch } from "@react-native-material/core";
+import { Stack, Button, Text, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <Button
         title="Button"
@@ -206,7 +206,7 @@ const App = () => {
         loadingIndicator="⏰"
         loadingIndicatorPosition="trailing"
       />
-    </VStack>
+    </Stack>
   );
 };
 

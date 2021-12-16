@@ -4,13 +4,13 @@ A chip is a small block of information, typically used to represent a category.
 
 ```js with-preview
 import React from "react";
-import { VStack, Chip } from "@react-native-material/core";
+import { Stack, Chip } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Chip label="Filled" />
     <Chip variant="outlined" label="Outlined" />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -33,11 +33,11 @@ interactive elements.
 
 ```js with-preview
 import React from "react";
-import { VStack, Chip } from "@react-native-material/core";
+import { Stack, Chip } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Chip
       label="Filled"
       color="primary"
@@ -49,7 +49,7 @@ const App = () => (
       color="primary"
       leading={props => <Icon name="face" {...props} />}
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;

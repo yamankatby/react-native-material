@@ -5,10 +5,10 @@ and express brand.
 
 ```js with-preview
 import React from "react";
-import { Surface, VStack } from "@react-native-material/core";
+import { Surface, Stack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Surface
       elevation={2}
       category="medium"
@@ -24,7 +24,7 @@ const App = () => (
       category="medium"
       style={{ width: 70, height: 70 }}
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -50,10 +50,10 @@ import { Surface } from "@react-native-material/core";
 
 ```js with-preview
 import React from "react";
-import { Surface, Text, VStack } from "@react-native-material/core";
+import { Surface, Text, Stack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ margin: 16 }} items="center" spacing={4}>
+  <Stack style={{ margin: 16 }} items="center" spacing={4}>
     <Surface
       elevation={0}
       category="medium"
@@ -174,7 +174,7 @@ const App = () => (
     >
       <Text>24</Text>
     </Surface>
-  </VStack>
+  </Stack>
 );
 
 export default App;

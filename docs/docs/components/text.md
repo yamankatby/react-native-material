@@ -4,10 +4,10 @@ Use text to present your design and content as clearly and efficiently as possib
 
 ```js with-preview
 import React from "react";
-import { Text, VStack } from "@react-native-material/core";
+import { Text, Stack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ margin: 16 }} spacing={4}>
+  <Stack style={{ margin: 16 }} spacing={4}>
     <Text variant="h1">h1. Heading</Text>
     <Text variant="h2">h2. Heading</Text>
     <Text variant="h3">h3. Heading</Text>
@@ -37,7 +37,7 @@ const App = () => (
     <Text variant="button">BUTTON TEXT</Text>
     <Text variant="caption">caption text</Text>
     <Text variant="overline">overline text</Text>
-  </VStack>
+  </Stack>
 );
 
 export default App;

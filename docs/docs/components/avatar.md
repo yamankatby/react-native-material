@@ -4,15 +4,15 @@ Avatars are found throughout material design with uses in everything from tables
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar label="Kent Dodds" autoColor />
     <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
     <Avatar icon={props => <Icon name="account" {...props} />} />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -30,16 +30,16 @@ import { Avatar } from "@react-native-material/core";
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar label="Kent Dodds" />
     <Avatar label="UN" initials={false} />
     <Avatar label="Jed Watson" autoColor />
     <Avatar label="Tim Neutkens" autoColor />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -50,10 +50,10 @@ export default App;
 ```js with-preview
 import React from "react";
 import { Image } from "react-native";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
     <Avatar
       image={
@@ -70,7 +70,7 @@ const App = () => (
         />
       }
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -80,11 +80,11 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar icon={props => <Icon name="account" {...props} />} />
     <Avatar
       icon={props => <Icon name="account" {...props} />}
@@ -96,7 +96,7 @@ const App = () => (
       label="Tim Neutkens"
       autoColor
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -106,14 +106,14 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar label="Jed Watson" size={32} />
     <Avatar label="Jed Watson" />
     <Avatar label="Jed Watson" size={72} />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -123,11 +123,11 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar label="Kent Dodds" />
     <Avatar
       icon={props => <Icon name="account" {...props} />}
@@ -143,7 +143,7 @@ const App = () => (
       color="orange"
       tintColor="white"
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -153,11 +153,11 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, Avatar } from "@react-native-material/core";
+import { Stack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <Avatar label="Jed Watson" />
     <Avatar
       label="Jed Watson"
@@ -168,7 +168,7 @@ const App = () => (
       icon={props => <Icon name="account" {...props} />}
       image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;

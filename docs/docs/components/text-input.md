@@ -10,11 +10,11 @@ Text inputs come in three variants:
 
 ```js with-preview
 import React from "react";
-import { VStack, TextInput, IconButton } from "@react-native-material/core";
+import { Stack, TextInput, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack spacing={2} style={{ margin: 16 }}>
+  <Stack spacing={2} style={{ margin: 16 }}>
     <TextInput
       label="Label"
       leading={props => <Icon name="account" {...props} />}
@@ -27,7 +27,7 @@ const App = () => (
       )}
     />
     <TextInput label="Label" variant="standard" />
-  </VStack>
+  </Stack>
 );
 
 export default App;

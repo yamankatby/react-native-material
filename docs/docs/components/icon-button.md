@@ -4,15 +4,15 @@
 
 ```js with-preview
 import React from "react";
-import { VStack, IconButton } from "@react-native-material/core";
+import { Stack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <IconButton icon={props => <Icon name="eye" {...props} />} />
     <IconButton icon={props => <Icon name="dots-vertical" {...props} />} />
     <IconButton icon={props => <Icon name="magnify" {...props} />} />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -28,11 +28,11 @@ import { IconButton } from "@react-native-material/core";
 
 ```js with-preview
 import React from "react";
-import { VStack, IconButton } from "@react-native-material/core";
+import { Stack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <IconButton icon={props => <Icon name="wifi" {...props} />} />
     <IconButton
       icon={props => <Icon name="account" {...props} />}
@@ -42,7 +42,7 @@ const App = () => (
       icon={props => <Icon name="magnify" {...props} />}
       color="red"
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;

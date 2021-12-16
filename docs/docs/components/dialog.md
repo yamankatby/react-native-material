@@ -91,7 +91,7 @@ Form Dialog
 import React, { useState } from "react";
 import {
   ThemeProvider,
-  VStack,
+  Stack,
   Button,
   Dialog,
   DialogHeader,
@@ -114,10 +114,10 @@ const App = () => {
       <Dialog visible={visible} onDismiss={() => setVisible(false)}>
         <DialogHeader title="Dialog Header" />
         <DialogContent>
-          <VStack spacing={2}>
+          <Stack spacing={2}>
             <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text>
             <TextInput label="Email" variant="standard" />
-          </VStack>
+          </Stack>
         </DialogContent>
         <DialogActions>
           <Button

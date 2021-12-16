@@ -1,18 +1,17 @@
-# List
+# List Item
 
 Lists are continuous, vertical indexes of text or images.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
 import { ListItem } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1 }}>
-    <ListItem title="List Item"/>
-    <ListItem title="List Item"/>
-    <ListItem title="List Item"/>
-  </View>
+  <>
+    <ListItem title="List Item" />
+    <ListItem title="List Item" />
+    <ListItem title="List Item" />
+  </>
 );
 
 export default App;
@@ -36,20 +35,19 @@ which are represented by icons and text.
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
 import { ListItem } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <View style={{ flex: 1 }}>
+  <>
     <ListItem
       title="Inbox"
-      leading={<Icon name="inbox" size={24}/>}
+      leading={<Icon name="inbox" size={24} />}
       trailing={props => <Icon name="chevron-right" {...props} />}
     />
     <ListItem
       title="Drafts"
-      leading={<Icon name="email-open" size={24}/>}
+      leading={<Icon name="email-open" size={24} />}
       trailing={props => <Icon name="chevron-right" {...props} />}
     />
     <ListItem
@@ -60,7 +58,7 @@ const App = () => (
       title="Spam"
       trailing={props => <Icon name="chevron-right" {...props} />}
     />
-  </View>
+  </>
 );
 
 export default App;
@@ -70,11 +68,10 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
 import { ListItem } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1 }}>
+  <>
     <ListItem
       title="Brunch this weekend?"
       secondaryText="I'll be in your neighborhood doing errands this…"
@@ -87,7 +84,7 @@ const App = () => (
       title="Oui Oui"
       secondaryText="Do you have Paris recommendations? Have you ever…"
     />
-  </View>
+  </>
 );
 
 export default App;
@@ -97,15 +94,14 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { View } from "react-native";
 import { ListItem, Avatar } from "@react-native-material/core";
 
 const App = () => (
-  <View style={{ flex: 1 }}>
+  <>
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}/>
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
       }
       title="Brunch this weekend?"
       secondaryText="I'll be in your neighborhood doing errands this…"
@@ -113,7 +109,7 @@ const App = () => (
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }}/>
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/2.jpg" }} />
       }
       title="Summer BBQ"
       secondaryText="Wish I could come, but I'm out of town this…"
@@ -121,13 +117,73 @@ const App = () => (
     <ListItem
       leadingMode="avatar"
       leading={
-        <Avatar image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }}/>
+        <Avatar image={{ uri: "https://mui.com/static/images/avatar/3.jpg" }} />
       }
       title="Oui Oui"
       secondaryText="Do you have Paris recommendations? Have you ever…"
     />
-  </View>
+  </>
 );
 
 export default App;
 ```
+
+## Props
+
+`title`
+
+Type: string;
+
+Optional: Yes
+
+---
+
+`secondaryText`
+
+Type: string;
+
+Optional: Yes
+
+---
+
+`overline`
+
+Type: string;
+
+Optional: Yes
+
+---
+
+`meta`
+
+Type: string;
+
+Optional: Yes
+
+---
+
+`leadingMode`
+
+Type: "icon" | "avatar" | "image";
+
+Optional: Yes
+
+---
+
+`leading`
+
+Type: React.ReactElement;
+
+Optional: Yes
+
+---
+
+`trailing`
+
+Type: React.ReactElement | ((props: { color: string; size: number }) =\> React.ReactElement | null) | null;
+
+Optional: Yes
+
+---
+
+`...SurfaceProps`

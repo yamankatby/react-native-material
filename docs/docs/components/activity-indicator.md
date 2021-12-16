@@ -4,16 +4,16 @@ Activity Indicators provide a visual cue that an action is either processing, aw
 
 ```js with-preview
 import React from "react";
-import { VStack, ActivityIndicator } from "@react-native-material/core";
+import { Stack, ActivityIndicator } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <ActivityIndicator />
     <ActivityIndicator size="large" />
     <ActivityIndicator size="small" color="error" />
     <ActivityIndicator size="large" color="#00ff00" />
-  </VStack>
+  </Stack>
 );
 
 export default App;

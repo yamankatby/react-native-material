@@ -4,15 +4,15 @@ Switches toggle the state of a single item on or off.
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, Switch } from "@react-native-material/core";
+import { Stack, Switch } from "@react-native-material/core";
 
 const App = () => {
   const [checked, setChecked] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={checked} onValueChange={() => setChecked(!checked)} />
       <Switch disabled />
-    </VStack>
+    </Stack>
   );
 };
 

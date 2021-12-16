@@ -4,11 +4,11 @@ A floating action button (FAB) represents the primary action of a screen.
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <FAB icon={props => <Icon name="plus" {...props} />} />
     <FAB
       icon={props => <Icon name="plus" {...props} />}
@@ -21,7 +21,7 @@ const App = () => (
       label="navigate"
       color="primary"
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -48,13 +48,13 @@ import { FAB } from "@react-native-material/core";
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center>
+  <Stack fill center>
     <FAB icon={props => <Icon name="star" {...props} />} color="primary" />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -64,11 +64,11 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <FAB variant="extended" label="Button" color="primary" />
     <FAB
       variant="extended"
@@ -76,7 +76,7 @@ const App = () => (
       label="Button"
       color="primary"
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -86,14 +86,14 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack fill center spacing={4}>
+  <Stack fill center spacing={4}>
     <FAB icon={props => <Icon name="account" {...props} />} />
     <FAB icon={props => <Icon name="account" {...props} />} size="mini" />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -101,12 +101,12 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <FAB
         variant="extended"
         icon={props => <Icon name="heart" {...props} />}
@@ -118,7 +118,7 @@ const App = () => {
         label="Button"
         size="mini"
       />
-    </VStack>
+    </Stack>
   );
 };
 
@@ -129,11 +129,11 @@ export default App;
 
 ```js with-preview
 import React from "react";
-import { VStack, FAB } from "@react-native-material/core";
+import { Stack, FAB } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack style={{ paddingVertical: 16 }} fill center spacing={4}>
+  <Stack style={{ paddingVertical: 16 }} fill center spacing={4}>
     <FAB icon={props => <Icon name="lock" {...props} />} />
     <FAB
       variant="extended"
@@ -148,7 +148,7 @@ const App = () => (
       color="#FDCAE4"
       tintColor="yellow"
     />
-  </VStack>
+  </Stack>
 );
 
 export default App;
@@ -158,13 +158,13 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, FAB, Switch } from "@react-native-material/core";
+import { Stack, FAB, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <FAB
         icon={props => <Icon name="plus" {...props} />}
@@ -192,7 +192,7 @@ const App = () => {
         color="primary"
         loading={loading}
       />
-    </VStack>
+    </Stack>
   );
 };
 
@@ -203,13 +203,13 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, FAB, Text, Switch } from "@react-native-material/core";
+import { Stack, FAB, Text, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <FAB
         icon={props => <Icon name="plus" {...props} />}
@@ -254,7 +254,7 @@ const App = () => {
         loading={loading}
         loadingIndicator="⏰"
       />
-    </VStack>
+    </Stack>
   );
 };
 
@@ -265,13 +265,13 @@ export default App;
 
 ```js with-preview
 import React, { useState } from "react";
-import { VStack, FAB, Switch } from "@react-native-material/core";
+import { Stack, FAB, Switch } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   const [visible, setVisible] = useState(true);
   return (
-    <VStack fill center spacing={4}>
+    <Stack fill center spacing={4}>
       <Switch value={visible} onValueChange={setVisible} />
       <FAB icon={props => <Icon name="plus" {...props} />} visible={visible} />
       <FAB
@@ -286,7 +286,7 @@ const App = () => {
         color="primary"
         visible={visible}
       />
-    </VStack>
+    </Stack>
   );
 };
 
