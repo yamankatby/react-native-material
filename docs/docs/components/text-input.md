@@ -17,16 +17,13 @@ const App = () => (
   <VStack spacing={2} style={{ margin: 16 }}>
     <TextInput
       label="Label"
-      leading={(props) => <Icon name="account" {...props} />}
+      leading={props => <Icon name="account" {...props} />}
     />
     <TextInput
       label="Label"
       variant="outlined"
-      trailing={(props) => (
-        <IconButton
-          icon={(props) => <Icon name="eye" {...props} />}
-          {...props}
-        />
+      trailing={props => (
+        <IconButton icon={props => <Icon name="eye" {...props} />} {...props} />
       )}
     />
     <TextInput label="Label" variant="standard" />

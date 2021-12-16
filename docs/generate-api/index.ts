@@ -58,6 +58,7 @@ const main = async () => {
       interfaceProps.push({ name, type, optional, comment, defaultValue })
     }
 
+
     const desPath = '../docs/components/'
     const p = `${kebabize(srcFiles[i].split('.')[0])}.md`;
 
@@ -90,6 +91,8 @@ const main = async () => {
     })
 
     const x = prettier.format(str, { parser: "markdown", arrowParens: "avoid" })
+
+
     writeFile(path.join(desPath, p), x).then()
 
     console.table(srcFiles[i])

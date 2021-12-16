@@ -45,10 +45,10 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <Banner
-    illustration={(props) => (
+    illustration={props => (
       <Avatar
         color="primary"
-        icon={(props) => <Icon name="wifi-off" {...props} />}
+        icon={props => <Icon name="wifi-off" {...props} />}
         {...props}
       />
     )}

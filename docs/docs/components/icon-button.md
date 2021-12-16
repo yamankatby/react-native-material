@@ -8,10 +8,10 @@ import { VStack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
-    <IconButton icon={(props) => <Icon name="eye" {...props} />} />
-    <IconButton icon={(props) => <Icon name="dots-vertical" {...props} />} />
-    <IconButton icon={(props) => <Icon name="magnify" {...props} />} />
+  <VStack fill center spacing={4}>
+    <IconButton icon={props => <Icon name="eye" {...props} />} />
+    <IconButton icon={props => <Icon name="dots-vertical" {...props} />} />
+    <IconButton icon={props => <Icon name="magnify" {...props} />} />
   </VStack>
 );
 
@@ -32,14 +32,14 @@ import { VStack, IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
-    <IconButton icon={(props) => <Icon name="wifi" {...props} />} />
+  <VStack fill center spacing={4}>
+    <IconButton icon={props => <Icon name="wifi" {...props} />} />
     <IconButton
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       color="primary"
     />
     <IconButton
-      icon={(props) => <Icon name="magnify" {...props} />}
+      icon={props => <Icon name="magnify" {...props} />}
       color="red"
     />
   </VStack>

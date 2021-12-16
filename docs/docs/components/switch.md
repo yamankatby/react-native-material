@@ -9,7 +9,7 @@ import { VStack, Switch } from "@react-native-material/core";
 const App = () => {
   const [checked, setChecked] = useState(true);
   return (
-    <VStack flex justify="center" align="center" spacing={4}>
+    <VStack fill center spacing={4}>
       <Switch value={checked} onValueChange={() => setChecked(!checked)} />
       <Switch disabled />
     </VStack>

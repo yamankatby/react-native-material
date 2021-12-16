@@ -7,7 +7,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button title="Contained" />
     <Button variant="outlined" title="Outlined" />
     <Button variant="text" title="Text" />
@@ -40,7 +40,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button title="Contained" disabled />
     <Button variant="outlined" title="Outlined" disabled />
     <Button variant="text" title="Text" disabled />
@@ -57,7 +57,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button variant="text" title="Button" color="secondary" />
     <Button title="Button" color="error" />
     <Button variant="outlined" title="Button" color="#d4ac2d" />
@@ -76,16 +76,13 @@ import { VStack, Button } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button
       variant="outlined"
       title="Delete"
-      leading={(props) => <Icon name="delete" {...props} />}
+      leading={props => <Icon name="delete" {...props} />}
     />
-    <Button
-      title="Send"
-      trailing={(props) => <Icon name="send" {...props} />}
-    />
+    <Button title="Send" trailing={props => <Icon name="send" {...props} />} />
   </VStack>
 );
 
@@ -99,7 +96,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button title="Button" />
     <Button title="Button" uppercase={false} />
   </VStack>
@@ -115,7 +112,7 @@ import React from "react";
 import { VStack, Button } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Button title="Button" />
     <Button title="Disable Elevation" disableElevation />
   </VStack>
@@ -134,16 +131,16 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack flex justify="center" align="center" spacing={4}>
+    <VStack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <Button
         title="Button"
-        leading={(props) => <Icon name="plus" {...props} />}
+        leading={props => <Icon name="plus" {...props} />}
         loading={loading}
       />
       <Button
         title="Button"
-        trailing={(props) => <Icon name="plus" {...props} />}
+        trailing={props => <Icon name="plus" {...props} />}
         loading={loading}
         loadingIndicatorPosition="trailing"
       />
@@ -169,11 +166,11 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => {
   const [loading, setLoading] = useState(true);
   return (
-    <VStack flex justify="center" align="center" spacing={4}>
+    <VStack fill center spacing={4}>
       <Switch value={loading} onValueChange={setLoading} />
       <Button
         title="Button"
-        leading={(props) => <Icon name="plus" {...props} />}
+        leading={props => <Icon name="plus" {...props} />}
         loading={loading}
         loadingIndicator="⏰"
       />
@@ -186,7 +183,7 @@ const App = () => {
       <Button
         title="Button"
         loading={loading}
-        loadingIndicator={(props) => (
+        loadingIndicator={props => (
           <Text
             style={{
               backgroundColor: props.color,
@@ -204,7 +201,7 @@ const App = () => {
       />
       <Button
         title="Button"
-        trailing={(props) => <Icon name="plus" {...props} />}
+        trailing={props => <Icon name="plus" {...props} />}
         loading={loading}
         loadingIndicator="⏰"
         loadingIndicatorPosition="trailing"

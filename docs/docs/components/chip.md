@@ -7,7 +7,7 @@ import React from "react";
 import { VStack, Chip } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Chip label="Filled" />
     <Chip variant="outlined" label="Outlined" />
   </VStack>
@@ -37,17 +37,17 @@ import { VStack, Chip } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Chip
       label="Filled"
       color="primary"
-      leading={(props) => <Icon name="face" {...props} />}
+      leading={props => <Icon name="face" {...props} />}
     />
     <Chip
       variant="outlined"
       label="Outlined"
       color="primary"
-      leading={(props) => <Icon name="face" {...props} />}
+      leading={props => <Icon name="face" {...props} />}
     />
   </VStack>
 );

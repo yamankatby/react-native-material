@@ -61,9 +61,11 @@ export default App;
 
 `spacing`
 
-The spacing between the stack items.
+The spacing to leave between items.
 
 Type: number;
+
+Default: 0
 
 Optional: Yes
 
@@ -71,9 +73,11 @@ Optional: Yes
 
 `divider`
 
-A React.Node to render between each stack item.
+Whether to show dividers between items. By default will use the `<Divider />` component. You can also pass a custom component.
 
-Type: React.ReactNode;
+Type: boolean | React.ReactNode;
+
+Default: false
 
 Optional: Yes
 

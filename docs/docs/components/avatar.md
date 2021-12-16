@@ -8,10 +8,10 @@ import { VStack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar label="Kent Dodds" autoColor />
     <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
-    <Avatar icon={(props) => <Icon name="account" {...props} />} />
+    <Avatar icon={props => <Icon name="account" {...props} />} />
   </VStack>
 );
 
@@ -34,7 +34,7 @@ import { VStack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar label="Kent Dodds" />
     <Avatar label="UN" initials={false} />
     <Avatar label="Jed Watson" autoColor />
@@ -53,7 +53,7 @@ import { Image } from "react-native";
 import { VStack, Avatar } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }} />
     <Avatar
       image={
@@ -84,15 +84,15 @@ import { VStack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
-    <Avatar icon={(props) => <Icon name="account" {...props} />} />
+  <VStack fill center spacing={4}>
+    <Avatar icon={props => <Icon name="account" {...props} />} />
     <Avatar
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       label="Jed Watson"
       autoColor
     />
     <Avatar
-      icon={(props) => <Icon name="calendar" {...props} />}
+      icon={props => <Icon name="calendar" {...props} />}
       label="Tim Neutkens"
       autoColor
     />
@@ -109,7 +109,7 @@ import React from "react";
 import { VStack, Avatar } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar label="Jed Watson" size={32} />
     <Avatar label="Jed Watson" />
     <Avatar label="Jed Watson" size={72} />
@@ -127,19 +127,19 @@ import { VStack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar label="Kent Dodds" />
     <Avatar
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       color="primary"
     />
     <Avatar
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       color="primary"
       tintColor="error"
     />
     <Avatar
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       color="orange"
       tintColor="white"
     />
@@ -157,15 +157,15 @@ import { VStack, Avatar } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Avatar label="Jed Watson" />
     <Avatar
       label="Jed Watson"
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
     />
     <Avatar
       label="Jed Watson"
-      icon={(props) => <Icon name="account" {...props} />}
+      icon={props => <Icon name="account" {...props} />}
       image={{ uri: "https://mui.com/static/images/avatar/1.jpg" }}
     />
   </VStack>

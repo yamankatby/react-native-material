@@ -7,7 +7,7 @@ import React from "react";
 import { Badge, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Badge label={4} />
     <Badge label={23} />
     <Badge label={123} color="primary" />

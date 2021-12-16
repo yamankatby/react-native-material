@@ -8,7 +8,7 @@ import { VStack, ActivityIndicator } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <ActivityIndicator />
     <ActivityIndicator size="large" />
     <ActivityIndicator size="small" color="error" />
@@ -47,23 +47,19 @@ const App = () => (
   <>
     <AppBar
       title="Title"
-      leading={(props) => (
+      leading={props => (
         <IconButton
-          icon={(props) => <Icon name="menu" {...props} />}
+          icon={props => <Icon name="menu" {...props} />}
           {...props}
         />
       )}
-      trailing={(props) => (
-        <Stack
-          justify="center"
-          align="center"
-          style={{ width: 48, height: 48 }}
-        >
+      trailing={props => (
+        <Stack center style={{ width: 48, height: 48 }}>
           <ActivityIndicator size="small" color="onPrimary" />
         </Stack>
       )}
     />
-    <Stack flex justify="center" align="center">
+    <Stack fill center>
       <Button title="Button" loading disabled />
     </Stack>
     <FAB

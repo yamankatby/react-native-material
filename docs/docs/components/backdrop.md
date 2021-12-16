@@ -22,12 +22,12 @@ const App = () => {
         <AppBar
           title="Screen title"
           transparent
-          leading={(props) => (
+          leading={props => (
             <IconButton
-              icon={(props) => (
+              icon={props => (
                 <Icon name={revealed ? "close" : "menu"} {...props} />
               )}
-              onPress={() => setRevealed((prevState) => !prevState)}
+              onPress={() => setRevealed(prevState => !prevState)}
               {...props}
             />
           )}

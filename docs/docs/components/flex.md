@@ -8,7 +8,7 @@ import { View } from "react-native";
 import { Flex } from "@react-native-material/core";
 
 const App = () => (
-  <Flex flex>
+  <Flex fill>
     <View style={{ height: 50, backgroundColor: "#faf089" }} />
     <View style={{ height: 100, backgroundColor: "#ff6347" }} />
     <View style={{ flex: 1, backgroundColor: "#fed7e2" }} />
@@ -34,10 +34,10 @@ import { Flex, Spacer } from "@react-native-material/core";
 
 Using the Flex component, here are some helpful shorthand props:
 
-- `flex` is `flex` (if `true` is passed , it will be `1`)
+- `flex` is `fill` (if `true` is passed , it will be `1`)
 - `flexDirection` is `direction`
 - `justifyContent` is `justify`
-- `alignItems` is `align`
+- `alignItems` is `items`
 - `alignSelf` is `self`
 - `alignContent` is `content`
 - `flexWrap` is `wrap`
@@ -53,7 +53,7 @@ import { View } from "react-native";
 import { Flex } from "@react-native-material/core";
 
 const App = () => (
-  <Flex flex direction="row" justify="center" align="center">
+  <Flex fill direction="row" justify="center" items="center">
     <View style={{ width: 80, height: 80, backgroundColor: "#faf089" }} />
     <View style={{ width: 80, height: 80, backgroundColor: "#ff6347" }} />
     <View style={{ width: 80, height: 80, backgroundColor: "#fed7e2" }} />
@@ -73,7 +73,7 @@ import { View } from "react-native";
 import { Flex, Spacer } from "@react-native-material/core";
 
 const App = () => (
-  <Flex flex>
+  <Flex fill>
     <View style={{ height: 50, backgroundColor: "#ff6347" }} />
     <Spacer />
     <View style={{ height: 50, backgroundColor: "#48bb78" }} />
@@ -85,11 +85,25 @@ export default App;
 
 ## Props
 
-`flex`
+`fill`
 
-Define how your items are going to “fill” over the available space along your main axis.
+Type: boolean | number;
 
-Type: boolean | FlexStyle["flex"];
+Optional: Yes
+
+---
+
+`inline`
+
+Type: boolean;
+
+Optional: Yes
+
+---
+
+`center`
+
+Type: boolean;
 
 Optional: Yes
 
@@ -97,12 +111,7 @@ Optional: Yes
 
 `direction`
 
-Shorthand for `flexDirection` style property.
-@type FlexStyle["flexDirection"]
-
 Type: FlexStyle["flexDirection"];
-
-Default: "column"
 
 Optional: Yes
 
@@ -110,25 +119,15 @@ Optional: Yes
 
 `justify`
 
-Shorthand for `justifyContent` style property.
-@type FlexStyle["justifyContent"]
-
-Type: FlexStyle["justifyContent"];
-
-Default: "flex-start"
+Type: "start" | "end" | "center" | "between" | "around" | "evenly";
 
 Optional: Yes
 
 ---
 
-`align`
+`items`
 
-Shorthand for `alignItems` style property.
-@type FlexStyle["alignItems"]
-
-Type: FlexStyle["alignItems"];
-
-Default: "stretch"
+Type: "start" | "end" | "center" | "stretch" | "baseline";
 
 Optional: Yes
 
@@ -136,10 +135,7 @@ Optional: Yes
 
 `self`
 
-Shorthand for `alignSelf` style property.
-@type FlexStyle["alignSelf"]
-
-Type: FlexStyle["alignSelf"];
+Type: "auto" | "start" | "end" | "center" | "stretch" | "baseline";
 
 Optional: Yes
 
@@ -147,12 +143,7 @@ Optional: Yes
 
 `content`
 
-Shorthand for `alignContent` style property.
-@type FlexStyle["alignContent"]
-
-Type: FlexStyle["alignContent"];
-
-Default: "flex-start"
+Type: "start" | "end" | "center" | "stretch" | "between" | "around";
 
 Optional: Yes
 
@@ -160,19 +151,13 @@ Optional: Yes
 
 `wrap`
 
-Shorthand for `flexWrap` style property.
-@type FlexStyle["flexWrap"]
-
-Type: FlexStyle["flexWrap"];
+Type: boolean | FlexStyle["flexWrap"];
 
 Optional: Yes
 
 ---
 
 `basis`
-
-Shorthand for `flexBasis` style property.
-@type FlexStyle["flexBasis"]
 
 Type: FlexStyle["flexBasis"];
 
@@ -182,9 +167,6 @@ Optional: Yes
 
 `grow`
 
-Shorthand for `flexGrow` style property.
-@type FlexStyle["flexGrow"]
-
 Type: FlexStyle["flexGrow"];
 
 Optional: Yes
@@ -193,12 +175,7 @@ Optional: Yes
 
 `shrink`
 
-Shorthand for `flexShrink` style property.
-@type FlexStyle["flexShrink"]
-
 Type: FlexStyle["flexShrink"];
-
-Default: 0
 
 Optional: Yes
 

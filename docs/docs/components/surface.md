@@ -8,7 +8,7 @@ import React from "react";
 import { Surface, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack flex justify="center" align="center" spacing={4}>
+  <VStack fill center spacing={4}>
     <Surface
       elevation={2}
       category="medium"
@@ -53,7 +53,7 @@ import React from "react";
 import { Surface, Text, VStack } from "@react-native-material/core";
 
 const App = () => (
-  <VStack style={{ margin: 16 }} align="center" spacing={4}>
+  <VStack style={{ margin: 16 }} items="center" spacing={4}>
     <Surface
       elevation={0}
       category="medium"

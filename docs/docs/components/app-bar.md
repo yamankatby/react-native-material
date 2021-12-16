@@ -37,20 +37,17 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => (
   <AppBar
     title="Title"
-    leading={(props) => (
-      <IconButton
-        icon={(props) => <Icon name="menu" {...props} />}
-        {...props}
-      />
+    leading={props => (
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={(props) => (
+    trailing={props => (
       <HStack>
         <IconButton
-          icon={(props) => <Icon name="magnify" {...props} />}
+          icon={props => <Icon name="magnify" {...props} />}
           {...props}
         />
         <IconButton
-          icon={(props) => <Icon name="dots-vertical" {...props} />}
+          icon={props => <Icon name="dots-vertical" {...props} />}
           {...props}
         />
       </HStack>
@@ -78,13 +75,13 @@ const App = () => {
   return (
     <AppBar
       title="Title"
-      leading={(props) => (
+      leading={props => (
         <IconButton
-          icon={(props) => <Icon name="menu" {...props} />}
+          icon={props => <Icon name="menu" {...props} />}
           {...props}
         />
       )}
-      trailing={(props) =>
+      trailing={props =>
         loggedIn ? (
           <IconButton
             icon={<Avatar label="Yaman KATBY" size={28} />}
@@ -119,22 +116,19 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 const App = () => (
   <AppBar
     variant="bottom"
-    leading={(props) => (
-      <IconButton
-        icon={(props) => <Icon name="menu" {...props} />}
-        {...props}
-      />
+    leading={props => (
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={(props) => (
+    trailing={props => (
       <IconButton
-        icon={(props) => <Icon name="magnify" {...props} />}
+        icon={props => <Icon name="magnify" {...props} />}
         {...props}
       />
     )}
     style={{ position: "absolute", start: 0, end: 0, bottom: 0 }}
   >
     <FAB
-      icon={(props) => <Icon name="plus" {...props} />}
+      icon={props => <Icon name="plus" {...props} />}
       style={{ position: "absolute", top: -28, alignSelf: "center" }}
     />
   </AppBar>
@@ -155,20 +149,17 @@ const App = () => (
     title="Title"
     color="pink"
     tintColor="red"
-    leading={(props) => (
-      <IconButton
-        icon={(props) => <Icon name="menu" {...props} />}
-        {...props}
-      />
+    leading={props => (
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={(props) => (
+    trailing={props => (
       <HStack>
         <IconButton
-          icon={(props) => <Icon name="magnify" {...props} />}
+          icon={props => <Icon name="magnify" {...props} />}
           {...props}
         />
         <IconButton
-          icon={(props) => <Icon name="dots-vertical" {...props} />}
+          icon={props => <Icon name="dots-vertical" {...props} />}
           {...props}
         />
       </HStack>
@@ -201,15 +192,12 @@ const App = () => (
     title="Title"
     subtitle="Lorem ipsum"
     centerTitle={true}
-    leading={(props) => (
-      <IconButton
-        icon={(props) => <Icon name="menu" {...props} />}
-        {...props}
-      />
+    leading={props => (
+      <IconButton icon={props => <Icon name="menu" {...props} />} {...props} />
     )}
-    trailing={(props) => (
+    trailing={props => (
       <IconButton
-        icon={(props) => <Icon name="dots-vertical" {...props} />}
+        icon={props => <Icon name="dots-vertical" {...props} />}
         {...props}
       />
     )}

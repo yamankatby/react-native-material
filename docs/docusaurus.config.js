@@ -76,9 +76,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             type: 'dropdown',
-            label: 'v1.2.9',
+            label: 'v1.3.0',
             items: [
-              { label: 'v1.2.9', to: '/' },
+              { label: 'v1.3.0', to: '/' },
+              { label: 'v1.2.*', href: 'https://react-native-material-hadt1ykpo-yamankatby.vercel.app' },
               {
                 label: 'v1.1.*',
                 href: 'https://react-native-material-38lpom7xc-yamankatby.vercel.app/docs/getting-started'
