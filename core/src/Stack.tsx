@@ -62,30 +62,4 @@ const Stack: React.FC<StackProps> = ({ spacing = 0, divider = false, children, .
   return <Flex {...rest}>{items}</Flex>;
 };
 
-export interface VStackProps extends Omit<StackProps, "inline" | "direction"> {
-  /**
-   * If `true`, the stack will use `flexDirection: "column-reverse"` instead of `flexDirection: "column"`.
-   *
-   * @default false
-   */
-  reversed?: boolean;
-}
-
-export const VStack: React.FC<VStackProps> = ({ reversed = false, ...rest }) => (
-  <Stack {...rest} direction={reversed ? "column-reverse" : "column"} />
-);
-
-export interface HStackProps extends Omit<StackProps, "inline" | "direction"> {
-  /**
-   * If `true`, the stack will use `flexDirection: "row-reverse"` instead of `flexDirection: "row"`.
-   *
-   * @default false
-   */
-  reversed?: boolean;
-}
-
-export const HStack: React.FC<HStackProps> = ({ reversed = false, ...rest }) => (
-  <Stack {...rest} direction={reversed ? "row-reverse" : "row"} />
-);
-
 export default Stack;

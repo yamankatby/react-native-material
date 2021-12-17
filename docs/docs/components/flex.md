@@ -87,6 +87,9 @@ export default App;
 
 `fill`
 
+Determines how much the `<View />` will fill on the available space along the main axis.
+Shorthand for `flex` (If `true` is passed, `flex` will be set to `1`).
+
 Type: boolean | number;
 
 Optional: Yes
@@ -94,6 +97,8 @@ Optional: Yes
 ---
 
 `inline`
+
+Shorthand for `{ flexDirection: "row }"`.
 
 Type: boolean;
 
@@ -103,6 +108,8 @@ Optional: Yes
 
 `center`
 
+Shorthand for `{ justifyContent: "center", alignItems: "center" }`.
+
 Type: boolean;
 
 Optional: Yes
@@ -110,6 +117,9 @@ Optional: Yes
 ---
 
 `direction`
+
+Controls the direction in which the children of the `<View />` are laid out.
+Shorthand for `flexDirection`.
 
 Type: FlexStyle["flexDirection"];
 
@@ -119,6 +129,9 @@ Optional: Yes
 
 `justify`
 
+Describes how to align children within the main axis of the `<View />`.
+Shorthand for `justifyContent`.
+
 Type: "start" | "end" | "center" | "between" | "around" | "evenly";
 
 Optional: Yes
@@ -126,6 +139,9 @@ Optional: Yes
 ---
 
 `items`
+
+Describes how to align children within the cross axis of the `<View />`.
+Shorthand for `alignItems`.
 
 Type: "start" | "end" | "center" | "stretch" | "baseline";
 
@@ -135,6 +151,8 @@ Optional: Yes
 
 `self`
 
+Shorthand for `alignSelf`.
+
 Type: "auto" | "start" | "end" | "center" | "stretch" | "baseline";
 
 Optional: Yes
@@ -142,6 +160,9 @@ Optional: Yes
 ---
 
 `content`
+
+Defines the distribution of lines along the cross-axis. This only has effect when items are wrapped to multiple lines using `flexWrap`.
+Shorthand for `alignContent`.
 
 Type: "start" | "end" | "center" | "stretch" | "between" | "around";
 
@@ -151,6 +172,9 @@ Optional: Yes
 
 `wrap`
 
+Controls what happens when children overflow the size of the `<View />` along the main axis.
+Shorthand for `flexWrap` (If `true` is passed, `flexWrap` will be set to `"wrap"`).
+
 Type: boolean | FlexStyle["flexWrap"];
 
 Optional: Yes
@@ -158,6 +182,8 @@ Optional: Yes
 ---
 
 `basis`
+
+Shorthand for `flexBasis`.
 
 Type: FlexStyle["flexBasis"];
 
@@ -167,6 +193,8 @@ Optional: Yes
 
 `grow`
 
+Shorthand for `flexGrow`.
+
 Type: FlexStyle["flexGrow"];
 
 Optional: Yes
@@ -174,6 +202,8 @@ Optional: Yes
 ---
 
 `shrink`
+
+Shorthand for `flexShrink`.
 
 Type: FlexStyle["flexShrink"];
 
