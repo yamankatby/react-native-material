@@ -15,8 +15,8 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
-  // clientModules: [require.resolve('./snackPlayerInitializer.js')],
-  // scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
+  clientModules: [require.resolve('./snackPlayerInitializer.js')],
+  scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
 
   presets: [
     [
@@ -29,7 +29,7 @@ const config = {
           editUrl: 'https://github.com/yamankatby/react-native-material/edit/main/docs/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
-            // require('./preview')
+            require('./preview')
           ]
         },
         blog: {
@@ -39,11 +39,15 @@ const config = {
             'https://github.com/yamankatby/react-native-material/edit/main/docs/blog/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
-            // require('./preview')
+            require('./preview')
           ]
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
+        },
+        gtag: {
+          trackingID: 'G-5L00H23VKJ',
+          anonymizeIP: true
         }
       })
     ]
@@ -58,10 +62,6 @@ const config = {
         indexName: 'react-native-material',
         contextualSearch: true,
         searchParameters: {}
-      },
-      gtag: {
-        trackingID: 'G-5L00H23VKJ',
-        anonymizeIP: true
       },
       navbar: {
         title: '@react-native-material',
