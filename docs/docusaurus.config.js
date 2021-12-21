@@ -1,10 +1,11 @@
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-
-// With JSDoc @type annotations, IDEs can provide config autocompletion
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-(module.exports = {
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: 'React Native Material',
   tagline: 'Modular and customizable Material Design UI components for React Native',
   url: 'https://react-native-material.com/',
@@ -14,12 +15,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.ico',
   organizationName: 'yamankatby', // Usually your GitHub org/user name.
   projectName: 'react-native-material', // Usually your repo name.
-  plugins: [],
-  clientModules: [require.resolve('./snackPlayerInitializer.js')],
-  scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
+  // clientModules: [require.resolve('./snackPlayerInitializer.js')],
+  // scripts: [{ src: 'https://snack.expo.dev/embed.js', defer: true }],
+
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
@@ -28,16 +29,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           editUrl: 'https://github.com/yamankatby/react-native-material/edit/main/docs/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
-            require('./preview')
+            // require('./preview')
           ]
         },
         blog: {
           showReadingTime: true,
+          // Please change this to your repo.
           editUrl:
             'https://github.com/yamankatby/react-native-material/edit/main/docs/blog/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
-            require('./preview')
+            // require('./preview')
           ]
         },
         theme: {
@@ -46,6 +48,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       })
     ]
   ],
+
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -69,11 +72,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'left',
             label: 'Docs'
           },
-          {
-            to: 'blog',
-            position: 'left',
-            label: 'Blog'
-          },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             type: 'dropdown',
             label: 'v1.3.0',
@@ -98,9 +97,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             href: 'https://github.com/yamankatby/react-native-material',
-            position: 'right',
-            className: 'header-github-link',
-            'aria-label': 'GitHub repository'
+            label: 'GitHub',
+            position: 'right'
           }
         ]
       },
@@ -112,11 +110,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Getting Started',
-                to: 'docs/getting-started'
-              },
-              {
-                label: 'Components',
-                to: 'docs/components/app-bar'
+                to: '/docs/getting-started'
               }
             ]
           },
@@ -147,11 +141,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} react-native-material. Built with Docusaurus.`
+        copyright: `Copyright © ${new Date().getFullYear()} @react-native-material. Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme
       }
     })
-});
+};
+
+module.exports = config;
