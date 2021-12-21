@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "latest",
-    "@docusaurus/plugin-google-gtag": "latest",
+    "@docusaurus/plugin-google-gtag": "^2.0.0-beta.13",
     "@docusaurus/preset-classic": "latest",
     "@docusaurus/remark-plugin-npm2yarn": "latest",
     "@mdx-js/react": "^1.6.21",
