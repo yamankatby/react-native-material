@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PaletteColor, usePalette } from "./base";
+import { PaletteColor, usePalette } from "../base";
 import { IconsContext } from "./IconsProvider";
 
 export interface IconProps {

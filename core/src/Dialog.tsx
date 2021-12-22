@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Animated, Easing, Platform, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import Portal from "./Portal";
+import Portal from "./portals/Portal";
 import Surface from "./Surface";
 
 export interface DialogProps {

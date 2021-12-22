@@ -38,16 +38,11 @@ export interface ShapeBorderRadius {
 
 export type Shapes = Record<ShapeCategory, ShapeBorderRadius>;
 
-export type BreakpointKey = "sm" | "md" | "lg" | "xl";
-
-export type Breakpoints = Record<BreakpointKey, number>;
-
 export interface Theme {
   colorScheme: "light" | "dark";
   palette: Palette;
   typography: Typography;
   shapes: Shapes;
-  breakpoints: Breakpoints;
 }
 
 export const defaultTheme: Theme = {
@@ -137,12 +132,6 @@ export const defaultTheme: Theme = {
       borderBottomStartRadius: 0,
       borderBottomEndRadius: 0,
     },
-  },
-  breakpoints: {
-    sm: 600,
-    md: 905,
-    lg: 1240,
-    xl: 1440,
   },
 };
 

@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useColorScheme } from "react-native";
 import { darkTheme, defaultTheme, Theme } from "./theme";
-import PortalsProvider, { Outlet } from "../PortalsProvider";
+import PortalsProvider, { Outlet } from "../portals/PortalsProvider";
 
 export interface ThemeProviderProps {
   theme?: Theme;
