@@ -1,17 +1,20 @@
 import { DependencyList, useMemo } from "react";
 import { ImageStyle, TextStyle, ViewStyle } from "react-native";
-import { Theme } from "../theme/theme";
-import { useTheme } from "../theme/use-theme";
-import { ScreenSizeUtility, useScreenSizeUtility } from "../screen-size/use-screen-size-utility";
+import { Theme, useTheme } from "../base/ThemeContext";
+import { useWindowSizeClass, WindowSizeClass } from "../base/WindowSizeClassContext";
+import { useWindowSize, WindowSize } from "./use-window-size";
+import { Spacing, useSpacing } from "../base/SpacingContext";
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
-export function useStyles<T extends NamedStyles<T> | NamedStyles<any>>(
-  factory: (utilities: Theme & { screenSize: ScreenSizeUtility }) => T,
+export const useStyles = <T extends NamedStyles<T>>(
+  factory: (utils: Theme & { windowSizeClass: WindowSizeClass; windowSize: WindowSize; spacing: Spacing }) => T,
   deps?: DependencyList | undefined,
-): T {
+): T => {
   const theme = useTheme();
-  const screenSize = useScreenSizeUtility();
+  const windowSizeClass = useWindowSizeClass();
+  const windowSize = useWindowSize();
+  const spacing = useSpacing();
 
-  return useMemo(() => factory({ ...theme, screenSize }), [theme, screenSize, deps]);
-}
+  return useMemo(() => factory({ ...theme, windowSizeClass, windowSize, spacing }), [theme, windowSizeClass, deps]);
+};

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import chroma from "chroma-js";
-import { useTheme } from "./base";
+import { useTheme } from "./base/ThemeContext";
 
 export interface DividerProps {
   color?: string | undefined;
@@ -28,7 +28,7 @@ const Divider: React.FC<DividerProps> = ({
       style={[
         {
           height: 1,
-          backgroundColor: color ?? chroma(palette.onSurface).alpha(0.08).hex(),
+          backgroundColor: color ?? chroma(palette.surface.on).alpha(0.08).hex(),
           marginStart: inset ?? leadingInset,
           marginEnd: inset ?? trailingInset,
         },

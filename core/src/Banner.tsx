@@ -1,8 +1,8 @@
 import React from "react";
-import { useStyleSheet } from "./base";
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import Text from "./Text";
 import Divider from "./Divider";
+import { useStyles } from "./hooks/use-styles";
 
 export interface BannerProps {
   text: string | React.ReactElement | null;
@@ -35,9 +35,9 @@ const Banner: React.FC<BannerProps> = ({
   textStyle,
   actionsContainerStyle,
 }) => {
-  const styles = useStyleSheet(({ palette }) => ({
+  const styles = useStyles(({ palette }) => ({
     container: {
-      backgroundColor: palette.surface,
+      backgroundColor: palette.surface.main,
     },
     contentContainer: {
       flexDirection: "row",
@@ -52,7 +52,7 @@ const Banner: React.FC<BannerProps> = ({
       flex: 1,
     },
     text: {
-      color: palette.onSurface,
+      color: palette.surface.on,
     },
     actionsContainer: {
       flexDirection: "row",

@@ -1,5 +1,20 @@
-export * from "./base";
-export * from "./hooks";
+export * from "./base/defaultTheme";
+export * from "./base/IconComponentContext";
+export * from "./base/PortalContext";
+export * from "./base/Provider";
+export * from "./base/SpacingContext";
+export * from "./base/ThemeContext";
+export * from "./base/WindowSizeClassContext";
+
+export * from "./hooks/use-animated-elevation";
+export * from "./hooks/use-boolean";
+export * from "./hooks/use-palette-color";
+export * from "./hooks/use-styles";
+export * from "./hooks/use-surface-color";
+export * from "./hooks/use-surface-scale";
+export * from "./hooks/use-window-size";
+export * from "./hooks/use-window-size-value";
+
 export { default as ActivityIndicator, ActivityIndicatorProps } from "./ActivityIndicator";
 export { default as AppBar, AppBarProps } from "./AppBar";
 export { default as Avatar, AvatarProps } from "./Avatar";
@@ -17,12 +32,8 @@ export { default as Divider, DividerProps } from "./Divider";
 export { default as FAB, FABProps } from "./FAB";
 export { default as Flex, FlexProps } from "./Flex";
 export { default as HStack, HStackProps } from "./HStack";
-export { default as Icon, IconProps } from "./icons/Icon";
 export { default as IconButton, IconButtonProps } from "./IconButton";
-export { default as IconsProvider, IconsProviderProps, IconsContext, IconRenderFunction } from "./icons/IconsProvider";
 export { default as ListItem, ListItemProps } from "./ListItem";
-export { default as Portal } from "./portals/Portal";
-export { default as PortalsProvider, Outlet, PortalsContext } from "./portals/PortalsProvider";
 export { default as Pressable, PressableProps } from "./Pressable";
 export { default as Snackbar, SnackbarProps } from "./Snackbar";
 export { default as Spacer, SpacerProps } from "./Spacer";

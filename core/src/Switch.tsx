@@ -1,14 +1,12 @@
 import React from "react";
 import { Switch as RNSwitch, SwitchProps as RNSwitchProps } from "react-native";
-import { PaletteColor, useTheme } from "./base";
 
 export interface SwitchProps extends RNSwitchProps {
-  tintColor?: PaletteColor;
+
 }
 
-const Switch: React.FC<RNSwitchProps> = ({ tintColor = "primary", ...rest }) => {
-  const { palette } = useTheme();
-  return <RNSwitch tintColor={palette.primary} {...rest} />;
+const Switch: React.FC<SwitchProps> = ({ ...rest }) => {
+  return <RNSwitch {...rest} />;
 };
 
 export default Switch;

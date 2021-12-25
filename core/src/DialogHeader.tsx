@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "./base";
 import Text from "./Text";
+import { useTheme } from "./base/ThemeContext";
 
 export interface DialogHeaderProps {
   title: string | React.ReactNode | ((props: { color: string }) => React.ReactNode | null) | null;
@@ -14,11 +14,11 @@ const DialogHeader: React.FC<DialogHeaderProps> = ({
 
   const titleElement =
     typeof title === "string" ? (
-      <Text variant="h6" style={[{ color: theme.palette.onSurface }]}>
+      <Text variant="h6" style={[{ color: theme.palette.surface.on }]}>
         {title}
       </Text>
     ) : typeof title === "function" ? (
-      title({ color: theme.palette.onSurface })
+      title({ color: theme.palette.surface.on })
     ) : (
       title
     );

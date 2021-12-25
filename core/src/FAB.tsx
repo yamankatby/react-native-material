@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Animated, GestureResponderEvent, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Pressable, { PressableProps } from "./Pressable";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
-import { useAnimatedElevation } from "./base/elevations";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useStyles } from "./hooks/use-styles";
+import { useAnimatedElevation } from "./hooks/use-animated-elevation";
 
 export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
@@ -16,9 +17,9 @@ export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableP
 
   size?: "default" | "mini";
 
-  color?: PaletteColor;
+  color?: Color;
 
-  tintColor?: PaletteColor;
+  tintColor?: Color;
 
   loading?: boolean;
 
@@ -79,13 +80,13 @@ const FAB: React.FC<FABProps> = ({
   testOnly_pressed,
   ...rest
 }) => {
-  const palette = usePalette(color, tintColor);
+  const palette = usePaletteColor(color, tintColor);
 
   const hasIcon = useMemo(() => icon || (loading && loadingIndicatorPosition === "icon"), [icon, loading, loadingIndicatorPosition]);
 
-  const styles = useStyleSheet(() => ({
+  const styles = useStyles(() => ({
     container: {
-      backgroundColor: palette.color,
+      backgroundColor: palette.main,
       borderRadius: size === "default" ? 28 : 20,
     },
     pressableContainer: {
@@ -112,7 +113,7 @@ const FAB: React.FC<FABProps> = ({
       ...StyleSheet.absoluteFillObject,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: palette.color,
+      backgroundColor: palette.main,
     },
   }), [variant, size, palette, hasIcon]);
 
@@ -127,16 +128,16 @@ const FAB: React.FC<FABProps> = ({
   }, [visible]);
 
   const getLoadingIndicator = () => {
-    if (!loadingIndicator) return <ActivityIndicator color={palette.tintColor} />;
+    if (!loadingIndicator) return <ActivityIndicator color={palette.on} />;
     switch (typeof loadingIndicator) {
       case "string":
         return (
-          <Text variant="button" style={{ color: palette.tintColor }}>
+          <Text variant="button" style={{ color: palette.on }}>
             {loadingIndicator}
           </Text>
         );
       case "function":
-        return loadingIndicator({ color: palette.tintColor });
+        return loadingIndicator({ color: palette.on });
       default:
         return loadingIndicator;
     }
@@ -144,19 +145,19 @@ const FAB: React.FC<FABProps> = ({
 
   const getIcon = () => {
     if (loading && loadingIndicatorPosition === "icon") return getLoadingIndicator();
-    return typeof icon === "function" ? icon({ color: palette.tintColor, size: 24 }) : icon;
+    return typeof icon === "function" ? icon({ color: palette.on, size: 24 }) : icon;
   };
 
   const getLabel = () => {
     switch (typeof label) {
       case "string":
         return (
-          <Text variant="button" selectable={false} style={[{ color: palette.tintColor }, labelStyle]}>
+          <Text variant="button" selectable={false} style={[{ color: palette.on }, labelStyle]}>
             {label}
           </Text>
         );
       case "function":
-        return label({ color: palette.tintColor });
+        return label({ color: palette.on });
       default:
         return label;
     }
@@ -182,7 +183,7 @@ const FAB: React.FC<FABProps> = ({
         <Pressable
           style={[styles.pressable, contentContainerStyle]}
           pressEffect={pressEffect}
-          pressEffectColor={pressEffectColor ?? palette.tintColor}
+          pressEffectColor={pressEffectColor ?? palette.on}
           onPress={onPress}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}

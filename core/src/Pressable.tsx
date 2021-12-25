@@ -13,12 +13,12 @@ import {
   View,
 } from "react-native";
 import chroma from "chroma-js";
-import { PaletteColor, usePalette } from "./base";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
 
 export interface PressableProps extends RNPressableProps {
   pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
 
-  pressEffectColor?: PaletteColor;
+  pressEffectColor?: Color;
 
   onMouseEnter?: (event: NativeSyntheticEvent<TargetedEvent>) => void;
 
@@ -29,7 +29,7 @@ export interface PressableProps extends RNPressableProps {
 
 const Pressable: React.FC<PressableProps> = ({
   pressEffect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
-  pressEffectColor = "onBackground",
+  pressEffectColor = "on-background",
   onLayout,
   onPressIn,
   onPressOut,
@@ -41,7 +41,7 @@ const Pressable: React.FC<PressableProps> = ({
   children,
   ...rest
 }) => {
-  const { color } = usePalette(pressEffectColor);
+  const { main: color } = usePaletteColor(pressEffectColor);
 
   const [size, setSize] = useState({ width: 0, height: 0 });
 

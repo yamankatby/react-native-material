@@ -9,8 +9,9 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Text from "./Text";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useStyles } from "./hooks/use-styles";
 
 export interface AvatarProps {
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -21,9 +22,9 @@ export interface AvatarProps {
 
   size?: number;
 
-  color?: PaletteColor;
+  color?: Color;
 
-  tintColor?: PaletteColor;
+  tintColor?: Color;
 
   initials?: boolean;
 
@@ -58,14 +59,14 @@ const Avatar: React.FC<AvatarProps> = ({
   labelStyle,
   imageStyle,
 }) => {
-  const palette = usePalette(autoColor ? getColor(typeof label === "string" ? label : "") : color, tintColor);
+  const palette = usePaletteColor(autoColor ? getColor(typeof label === "string" ? label : "") : color, tintColor);
 
-  const styles = useStyleSheet(
+  const styles = useStyles(
     () => ({
       container: {
         width: size,
         height: size,
-        backgroundColor: palette.color,
+        backgroundColor: palette.main,
         borderRadius: size / 2,
       },
       contentContainer: {
@@ -75,7 +76,7 @@ const Avatar: React.FC<AvatarProps> = ({
       },
       label: {
         fontSize: size / 2,
-        color: palette.tintColor,
+        color: palette.on,
         textTransform: uppercase ? "uppercase" : "none",
       },
       image: {
@@ -96,7 +97,7 @@ const Avatar: React.FC<AvatarProps> = ({
           </Text>
         );
       case "function":
-        return label({ color: palette.tintColor });
+        return label({ color: palette.on });
       default:
         return label;
     }
@@ -109,7 +110,7 @@ const Avatar: React.FC<AvatarProps> = ({
   };
 
   const getIcon = () => {
-    if (typeof icon === "function") return icon({ color: palette.tintColor, size: size / 2 });
+    if (typeof icon === "function") return icon({ color: palette.on, size: size / 2 });
     return icon;
   };
 

@@ -1,78 +1,5 @@
-import React, { createContext, useContext, useMemo } from "react";
-import { ImageStyle, Platform, TextStyle, useColorScheme, ViewStyle } from "react-native";
-
-export type ColorScheme = "light" | "dark";
-
-export type Elevation =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24;
-
-export type Elevations = Record<Elevation, ViewStyle | TextStyle | ImageStyle>;
-
-export type PaletteColorName = "primary" | "secondary" | "background" | "surface" | "error" | string;
-
-export type PaletteColor = { main: string; on: string };
-
-export type Palette = Record<PaletteColorName, PaletteColor>;
-
-export type ShapeCategory = "small" | "medium" | "large";
-
-export interface ShapeBorderRadius {
-  borderTopStartRadius: number;
-  borderTopEndRadius: number;
-  borderBottomStartRadius: number;
-  borderBottomEndRadius: number;
-}
-
-export type Shapes = Record<ShapeCategory, ShapeBorderRadius>;
-
-export type TypographyVariant =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "subtitle1"
-  | "subtitle2"
-  | "body1"
-  | "body2"
-  | "button"
-  | "caption"
-  | "overline";
-
-export type Typography = Record<TypographyVariant, TextStyle>;
-
-export interface Theme {
-  colorScheme: ColorScheme;
-  elevations: Elevations;
-  palette: Palette;
-  shapes: Shapes;
-  typography: Typography;
-}
+import { Platform } from "react-native";
+import { Theme } from "./ThemeContext";
 
 export const defaultTheme: Theme = {
   colorScheme: "light",
@@ -81,35 +8,51 @@ export const defaultTheme: Theme = {
       android: {
         elevation: 0,
       },
-      default: { shadowColor: "#000", shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0, shadowRadius: 0 },
+      default: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+      },
       web: {
-        boxShadow: "" + "none",
+        boxShadow: "none",
       },
     }),
     1: Platform.select({
       android: {
         elevation: 1,
       },
-      default: { shadowColor: "#000", shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.18, shadowRadius: 1.0 },
+      default: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 1.0,
+      },
       web: {
-        boxShadow:
-          "" +
-          "0px 2px 1px " +
-          "-1px rgba" +
-          "(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+        boxShadow: "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
       },
     }),
     2: Platform.select({
       android: {
         elevation: 2,
       },
-      default: { shadowColor: "#000", shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.2, shadowRadius: 1.41 },
+      default: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+      },
       web: {
-        boxShadow:
-          "" +
-          "0px 3px 1px " +
-          "-2px rgba" +
-          "(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
+        boxShadow: "0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12)",
       },
     }),
     3: Platform.select({
@@ -205,12 +148,18 @@ export const defaultTheme: Theme = {
       android: {
         elevation: 8,
       },
-      default: { shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 4.65 },
+      default: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+      },
       web: {
         boxShadow:
-          "0px 5px " +
-          "5px -3px" +
-          " rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+          "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
       },
     }),
     9: Platform.select({
@@ -289,12 +238,18 @@ export const defaultTheme: Theme = {
       android: {
         elevation: 13,
       },
-      default: { shadowColor: "#000", shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.39, shadowRadius: 8.3 },
+      default: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+        shadowOpacity: 0.39,
+        shadowRadius: 8.3,
+      },
       web: {
         boxShadow:
-          "0px 7px " +
-          "8px -4px" +
-          " rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+          "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
       },
     }),
     14: Platform.select({
@@ -595,21 +550,3 @@ export const darkTheme: Theme = {
     error: { main: "#CF6679", on: "#000000" },
   },
 };
-
-export interface ThemeProviderProps {
-  theme?: Theme;
-}
-
-export const ThemeContext = createContext(defaultTheme);
-
-export const useTheme = () => useContext(ThemeContext);
-
-const ThemeProvider: React.FC<ThemeProviderProps> = ({ theme, children }) => {
-  const colorScheme = useColorScheme();
-
-  const value = useMemo(() => (theme ?? colorScheme === "dark" ? darkTheme : defaultTheme), [colorScheme, theme]);
-
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-};
-
-export default ThemeProvider;

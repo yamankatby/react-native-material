@@ -1,28 +1,28 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { useWindowDimensions } from "react-native";
 
-export type WindowSizeClass = "xs" | "sm" | "md" | "lg" | "xl";
+export type WindowSizeClass = "base" | "sm" | "md" | "lg" | "xl";
 
 export type WindowSizes = Record<WindowSizeClass, number>;
 
-export const defaultWindowSizes: WindowSizes = { xs: 0, sm: 600, md: 905, lg: 1240, xl: 1440 };
+export const defaultWindowSizes: WindowSizes = { base: 0, sm: 600, md: 905, lg: 1240, xl: 1440 };
 
 export interface WindowSizeClassProviderProps {
   windowSizes?: WindowSizes;
 }
 
-export const WindowSizeClassContext = createContext<WindowSizeClass>("xs");
+export const WindowSizeClassContext = createContext<WindowSizeClass>("base");
 
 export const useWindowSizeClass = () => useContext(WindowSizeClassContext);
 
-const WindowSizeClassProvider: React.FC<WindowSizeClassProviderProps> = ({
+export const WindowSizeClassProvider: React.FC<WindowSizeClassProviderProps> = ({
   windowSizes = defaultWindowSizes,
   children,
 }) => {
   const { width } = useWindowDimensions();
 
-  const windowSizeClass = useMemo(() => {
-    if (width >= windowSizes.xs && width < windowSizes.sm) return "xs";
+  const windowSizeClass: WindowSizeClass = useMemo(() => {
+    if (width >= windowSizes.base && width < windowSizes.sm) return "base";
     if (width >= windowSizes.sm && width < windowSizes.md) return "sm";
     if (width >= windowSizes.md && width < windowSizes.lg) return "md";
     if (width >= windowSizes.lg && width < windowSizes.xl) return "lg";
@@ -31,5 +31,3 @@ const WindowSizeClassProvider: React.FC<WindowSizeClassProviderProps> = ({
 
   return <WindowSizeClassContext.Provider value={windowSizeClass}>{children}</WindowSizeClassContext.Provider>;
 };
-
-export default WindowSizeClassProvider;

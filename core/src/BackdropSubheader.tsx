@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Text from "./Text";
 import Divider from "./Divider";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useStyles } from "./hooks/use-styles";
 
 export interface BackdropSubheaderProps {
   title?: string | React.ReactElement;
@@ -13,7 +14,7 @@ export interface BackdropSubheaderProps {
 
   divider?: boolean | React.ReactElement;
 
-  color?: PaletteColor;
+  color?: Color;
 
   style?: StyleProp<ViewStyle>;
 
@@ -31,16 +32,16 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
   leading,
   trailing,
   divider = true,
-  color = "onSurface",
+  color = "on-surface",
   style,
   contentContainerStyle,
   titleContainerStyle,
   leadingContainerStyle,
   trailingContainerStyle,
 }) => {
-  const palette = usePalette(color);
+  const palette = usePaletteColor(color);
 
-  const styles = useStyleSheet(() => ({
+  const styles = useStyles(() => ({
     container: {
       marginHorizontal: 16,
     },
@@ -64,13 +65,13 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
     <View style={[styles.container, style]}>
       <View style={[styles.contentContainer, contentContainerStyle]}>
         {!!leading &&
-        <View style={[styles.leadingContainer, leadingContainerStyle]}>
-          {typeof leading === "function" ? leading({ color: palette.color, size: 24 }) : leading}
-        </View>
+          <View style={[styles.leadingContainer, leadingContainerStyle]}>
+            {typeof leading === "function" ? leading({ color: palette.main, size: 24 }) : leading}
+          </View>
         }
         <View style={[styles.titleContainer, titleContainerStyle]}>
           {typeof title === "string" ? (
-            <Text variant="subtitle1" style={{ color: palette.color }}>
+            <Text variant="subtitle1" style={{ color: palette.main }}>
               {title}
             </Text>
           ) : (
@@ -78,9 +79,9 @@ const BackdropSubheader: React.FC<BackdropSubheaderProps> = ({
           )}
         </View>
         {!!trailing &&
-        <View style={[styles.trailingContainer, trailingContainerStyle]}>
-          {typeof trailing === "function" ? trailing({ color: palette.color, size: 24 }) : trailing}
-        </View>
+          <View style={[styles.trailingContainer, trailingContainerStyle]}>
+            {typeof trailing === "function" ? trailing({ color: palette.main, size: 24 }) : trailing}
+          </View>
         }
       </View>
       {typeof divider === "boolean" ? divider && <Divider /> : divider}

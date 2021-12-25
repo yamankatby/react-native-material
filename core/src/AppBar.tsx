@@ -1,9 +1,10 @@
 import React from "react";
 import { Platform, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
-import { PaletteColor, usePalette, useTheme } from "./base";
-import { useElevation } from "./base/elevations";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
+import { useSurfaceColorValue } from "./hooks/use-surface-color";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useTheme } from "./base/ThemeContext";
 
 export interface AppBarProps extends SurfaceProps {
   /**
@@ -45,12 +46,12 @@ export interface AppBarProps extends SurfaceProps {
    *
    * @default "primary"
    */
-  color?: PaletteColor;
+  color?: Color;
 
   /**
    * The color of the AppBar's content (title, subtitle, icons, etc.).
    */
-  tintColor?: PaletteColor;
+  tintColor?: Color;
 
   /**
    * Whether the AppBar's background is transparent.
@@ -120,39 +121,39 @@ const AppBar: React.FC<AppBarProps> = ({
 }) => {
   const theme = useTheme();
 
-  const surfaceColor = useElevation(variant === "top" ? 4 : 8).backgroundColor;
+  const surfaceColor = useSurfaceColorValue(variant === "top" ? 4 : 8)
 
-  const palette = usePalette(theme.mode === "dark" && !enableColorOnDark ? surfaceColor : color, tintColor);
+  const palette = usePaletteColor(theme.colorScheme === "dark" && !enableColorOnDark ? surfaceColor : color, tintColor);
 
   const titleElement =
     typeof title === "string" ? (
-      <Text variant="h6" style={[{ color: palette.tintColor }, titleStyle]}>
+      <Text variant="h6" style={[{ color: palette.on }, titleStyle]}>
         {title}
       </Text>
     ) : typeof title === "function" ? (
-      title({ color: palette.tintColor })
+      title({ color: palette.on })
     ) : (
       title
     );
 
   const subtitleElement =
     typeof subtitle === "string" ? (
-      <Text variant="caption" style={[{ color: palette.tintColor }, subtitleStyle]}>
+      <Text variant="caption" style={[{ color: palette.on }, subtitleStyle]}>
         {subtitle}
       </Text>
     ) : typeof subtitle === "function" ? (
-      subtitle({ color: palette.tintColor })
+      subtitle({ color: palette.on })
     ) : (
       subtitle
     );
 
-  const leadingElement = typeof leading === "function" ? leading({ color: palette.tintColor, size: 24 }) : leading;
+  const leadingElement = typeof leading === "function" ? leading({ color: palette.on, size: 24 }) : leading;
 
-  const trailingElement = typeof trailing === "function" ? trailing({ color: palette.tintColor, size: 24 }) : trailing;
+  const trailingElement = typeof trailing === "function" ? trailing({ color: palette.on, size: 24 }) : trailing;
 
   return (
     <Surface
-      style={[{ backgroundColor: transparent ? "transparent" : palette.color }, style]}
+      style={[{ backgroundColor: transparent ? "transparent" : palette.main }, style]}
       elevation={transparent ? 0 : variant === "top" ? 4 : 8}
       {...props}
     >

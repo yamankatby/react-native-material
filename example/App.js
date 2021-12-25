@@ -4,16 +4,15 @@ import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-cont
 import {
   AppBar,
   Button,
+  defaultTheme,
   Icon,
   IconButton,
-  IconsProvider,
   ListItem,
-  ThemeProvider,
+  Provider,
   useTheme
 } from "@react-native-material/core";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MaterialIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AuthNavigator from "./examples/auth";
 
 import ActivityIndicatorScreen from "./src/ActivityIndicator";
@@ -37,6 +36,7 @@ import SurfaceScreen from "./src/Surface";
 import SwitchScreen from "./src/Switch";
 import TextScreen from "./src/Text";
 import TextInputScreen from "./src/TextInput";
+import MaterialIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const screens = [
   { name: "Activity Indicator", component: ActivityIndicatorScreen },
@@ -119,13 +119,29 @@ const Navigator = () => {
   );
 };
 
+
 const App = () => (
   <SafeAreaProvider>
-    <ThemeProvider>
-      <IconsProvider render={props => <MaterialIcons {...props} />}>
-        <Navigator />
-      </IconsProvider>
-    </ThemeProvider>
+    <Provider theme={{
+      ...defaultTheme,
+      palette: {
+        ...defaultTheme.palette,
+        success: {
+          main: "#4CAF50",
+          on: "#fff"
+        },
+        info: {
+          main: "#2196F3",
+          on: "#fff"
+        },
+        warning: {
+          main: "#FFC107",
+          on: "#fff"
+        }
+      }
+    }} IconComponent={MaterialIcons}>
+      <Navigator />
+    </Provider>
   </SafeAreaProvider>
 );
 

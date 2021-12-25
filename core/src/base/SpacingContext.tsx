@@ -12,8 +12,6 @@ export const SpacingContext = createContext<Spacing>(defaultSpacing);
 
 export const useSpacing = () => useContext(SpacingContext);
 
-const SpacingProvider: React.FC<SpacingProviderProps> = ({ spacing = defaultSpacing, children }) => (
-  <SpacingContext.Provider value={spacing}>{children}</SpacingContext.Provider>
-);
-
-export default SpacingProvider;
+export const SpacingProvider: React.FC<SpacingProviderProps> = ({ spacing = defaultSpacing, children }) => {
+  return <SpacingContext.Provider value={spacing}>{children}</SpacingContext.Provider>;
+};

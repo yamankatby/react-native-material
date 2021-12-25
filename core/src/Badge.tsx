@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { Animated, StyleProp, TextStyle, ViewProps } from "react-native";
-import { PaletteColor, usePalette, useStyleSheet } from "./base";
 import Text from "./Text";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useStyles } from "./hooks/use-styles";
 
 export interface BadgeProps {
   label?: number | string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -12,9 +13,9 @@ export interface BadgeProps {
 
   visible?: boolean;
 
-  color?: PaletteColor;
+  color?: Color;
 
-  tintColor?: PaletteColor;
+  tintColor?: Color;
 
   style?: Animated.AnimatedProps<ViewProps>["style"];
 
@@ -32,16 +33,16 @@ const Badge: React.FC<BadgeProps> = ({
   labelStyle,
   children,
 }) => {
-  const palette = usePalette(color, tintColor);
+  const palette = usePaletteColor(color, tintColor);
 
-  const styles = useStyleSheet(() => ({
+  const styles = useStyles(() => ({
     container: {
       minWidth: 20,
       height: 20,
       justifyContent: "center",
       alignItems: "center",
       paddingHorizontal: 6,
-      backgroundColor: palette.color,
+      backgroundColor: palette.main,
       borderRadius: 10,
     },
   }), [palette]);
@@ -63,12 +64,12 @@ const Badge: React.FC<BadgeProps> = ({
       case "number":
       case "string":
         return (
-          <Text variant="body2" style={[{ color: palette.tintColor }, labelStyle]}>
+          <Text variant="body2" style={[{ color: palette.on }, labelStyle]}>
             {typeof label === "number" && label > max ? `${max}+` : label}
           </Text>
         );
       case "function":
-        return label({ color: palette.tintColor });
+        return label({ color: palette.on });
       default:
         return label;
     }

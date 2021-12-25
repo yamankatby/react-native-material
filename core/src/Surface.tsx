@@ -1,7 +1,7 @@
 import React from "react";
 import { Animated, StyleProp, ViewProps, ViewStyle } from "react-native";
-import { ShapeCategory, useTheme } from "./base";
-import { Elevation, useElevation } from "./base/elevations";
+import { Elevation, ShapeCategory, useTheme } from "./base/ThemeContext";
+import { useSurfaceColorValue } from "./hooks/use-surface-color";
 
 export interface SurfaceProps extends Omit<ViewProps, "style"> {
   category?: ShapeCategory;
@@ -12,11 +12,16 @@ export interface SurfaceProps extends Omit<ViewProps, "style"> {
 }
 
 const Surface: React.FC<SurfaceProps> = ({ category, elevation = 0, style, ...rest }) => {
-  const { shapes } = useTheme();
+  const { shapes, elevations } = useTheme();
 
-  const elevationStyle = useElevation(elevation);
+  const backgroundColor = useSurfaceColorValue(elevation);
 
-  return <Animated.View style={[elevationStyle, category && shapes[category], style]} {...rest} />;
+  return (
+    <Animated.View
+      style={[elevations[elevation], { backgroundColor }, category && shapes[category], style]}
+      {...rest}
+    />
+  );
 };
 
 export default Surface;

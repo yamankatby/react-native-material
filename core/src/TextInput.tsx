@@ -12,9 +12,11 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import chroma from "chroma-js";
-import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Text from "./Text";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useTheme } from "./base/ThemeContext";
+import { useSurfaceScale } from "./hooks/use-surface-scale";
+import { useStyles } from "./hooks/use-styles";
 
 export interface TextInputProps extends RNTextInputProps {
   /**
@@ -44,7 +46,7 @@ export interface TextInputProps extends RNTextInputProps {
    *
    * @default "primary"
    */
-  color?: PaletteColor;
+  color?: Color;
 
   /**
    * The helper text to display.
@@ -110,12 +112,9 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
 }, ref) => {
   const theme = useTheme();
 
-  const surfaceScale = useMemo(
-    () => chroma.scale([theme.palette.surface, theme.palette.onSurface]),
-    [theme.palette.surface, theme.palette.onSurface],
-  );
+  const surfaceScale = useSurfaceScale();
 
-  const palette = usePalette(color);
+  const palette = usePaletteColor(color);
 
   const leadingNode = typeof leading === "function" ? leading({ color: surfaceScale(0.62).hex(), size: 24 }) : leading;
 
@@ -197,7 +196,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
     }).start();
   }, [active]);
 
-  const styles = useStyleSheet(
+  const styles = useStyles(
     () => ({
       inputContainer: {
         flexDirection: "row",
@@ -249,11 +248,11 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
         end: 0,
         bottom: 0,
         height: 2,
-        backgroundColor: palette.color,
+        backgroundColor: palette.main,
       },
       outline: {
         borderWidth: focused ? 2 : 1,
-        borderColor: focused ? palette.color : hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
+        borderColor: focused ? palette.main : hovered ? surfaceScale(0.87).hex() : surfaceScale(0.42).hex(),
       },
       outlineLabelGap: {
         position: "absolute",
@@ -274,7 +273,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
         color: surfaceScale(0.6).hex(),
       },
     }),
-    [palette.color, surfaceScale, !!leadingNode, !!trailingNode, variant, focused, hovered],
+    [palette.main, surfaceScale, !!leadingNode, !!trailingNode, variant, focused, hovered],
   );
 
   return (
@@ -298,7 +297,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
             inputStyle,
           ]}
           placeholder={label ? (focused ? placeholder : undefined) : placeholder}
-          selectionColor={palette.color}
+          selectionColor={palette.main}
           placeholderTextColor={surfaceScale(0.4).hex()}
           onChangeText={handleChangeText}
           onFocus={handleFocus}
@@ -333,7 +332,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(({
                 {
                   color: focusAnimation.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [surfaceScale(0.87).hex(), palette.color],
+                    outputRange: [surfaceScale(0.87).hex(), palette.main],
                   }),
                   fontSize: activeAnimation.interpolate({
                     inputRange: [0, 1],

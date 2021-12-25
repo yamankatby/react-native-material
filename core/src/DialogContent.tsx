@@ -1,18 +1,19 @@
 import React, { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import chroma from "chroma-js";
-import { useTheme } from "./base";
-import { useElevation } from "./base/elevations";
+import { useSurfaceColorValue } from "./hooks/use-surface-color";
+import { useTheme } from "./base/ThemeContext";
 
 export interface DialogContentProps {
 }
 
 const DialogContent: React.FC<DialogContentProps> = ({ children }) => {
   const theme = useTheme();
-  const backgroundColor = useElevation(24).backgroundColor;
+
+  const backgroundColor = useSurfaceColorValue(24)
 
   const scale = useMemo(
-    () => chroma.scale([backgroundColor, theme.palette.onSurface]),
+    () => chroma.scale([backgroundColor, theme.palette.surface.on]),
     [backgroundColor, theme.palette.onSurface],
   );
 

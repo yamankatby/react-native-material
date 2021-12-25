@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, StyleProp, useWindowDimensions, View, ViewProps, ViewStyle } from "react-native";
-import { useStyleSheet } from "./base";
 import Surface from "./Surface";
+import { useStyles } from "./hooks/use-styles";
 
 export interface BackdropProps {
   revealed?: boolean;
@@ -48,10 +48,10 @@ const Backdrop: React.FC<BackdropProps> = ({
   const [currentBackLayerHeight, setCurrentBackLayerHeight] = useState(backLayerHeight ?? 0);
   const [currentSubheaderHeight, setCurrentSubheaderHeight] = useState(subheaderHeight ?? 0);
 
-  const styles = useStyleSheet(({ palette }) => ({
+  const styles = useStyles(({ palette }) => ({
     container: {
       flex: 1,
-      backgroundColor: palette.primary,
+      backgroundColor: palette.primary.main,
       overflow: "hidden",
     },
     frontLayer: {
@@ -59,7 +59,7 @@ const Backdrop: React.FC<BackdropProps> = ({
       start: 0,
       end: 0,
       bottom: 0,
-      backgroundColor: palette.surface,
+      backgroundColor: palette.surface.main,
       borderTopStartRadius: 16,
       borderTopEndRadius: 16,
       borderBottomStartRadius: 0,

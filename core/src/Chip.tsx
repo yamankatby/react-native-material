@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import { StyleProp, StyleSheet, TextStyle, View, ViewProps, ViewStyle } from "react-native";
 import chroma from "chroma-js";
-import { PaletteColor, usePalette, useTheme } from "./base";
 import Pressable, { PressableProps } from "./Pressable";
 import Text from "./Text";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useTheme } from "./base/ThemeContext";
 
 export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   /**
@@ -33,7 +34,7 @@ export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressablePro
   /**
    * The color of the chip.
    */
-  color?: PaletteColor;
+  color?: Color;
 
   /**
    * The style of the chip's container.
@@ -90,9 +91,9 @@ const Chip: React.FC<ChipProps> = ({
 }) => {
   const theme = useTheme();
 
-  const palette = usePalette(color, theme.palette.surface);
+  const palette = usePaletteColor(color, theme.palette.surface.main);
 
-  const scale = useMemo(() => chroma.scale([palette.tintColor, palette.color]), [palette]);
+  const scale = useMemo(() => chroma.scale([palette.on, palette.main]), [palette]);
 
   const labelElement =
     typeof label === "string" ? (

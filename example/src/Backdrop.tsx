@@ -13,7 +13,7 @@ const BackdropScreen = () => {
       header={
         <AppBar
           title={revealed ? "Menu" : "Backdrop"}
-          tintColor="onPrimary"
+          tintColor="on-primary"
           leading={props => (
             <IconButton
               icon={props => <Icon name={revealed ? "close" : "menu"} {...props} />}

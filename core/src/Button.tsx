@@ -9,13 +9,15 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import chroma from "chroma-js";
-import { PaletteColor, usePalette, useStyleSheet, useTheme } from "./base";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 import Pressable, { PressableProps } from "./Pressable";
-import { useAnimatedElevation } from "./base/elevations";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import { useTheme } from "./base/ThemeContext";
+import { useSurfaceScale } from "./hooks/use-surface-scale";
+import { useStyles } from "./hooks/use-styles";
+import { useAnimatedElevation } from "./hooks/use-animated-elevation";
 
 export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   /**
@@ -50,12 +52,12 @@ export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<Pressab
    *
    * @default "primary"
    */
-  color?: PaletteColor;
+  color?: Color;
 
   /**
    * The color of the `contained` buttons content (text, icons, etc.). No effect on `outlined` and `text` buttons.
    */
-  tintColor?: PaletteColor;
+  tintColor?: Color;
 
   /**
    * Smaller horizontal padding, useful for `text` buttons in a row.
@@ -175,13 +177,15 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const theme = useTheme();
 
-  const p = usePalette(
-    disabled ? chroma.scale([theme.palette.surface, theme.palette.onSurface])(0.12).hex() : color,
-    disabled ? chroma.scale([theme.palette.surface, theme.palette.onSurface])(0.35).hex() : tintColor,
+  const surfaceScale = useSurfaceScale();
+
+  const p = usePaletteColor(
+    disabled ? surfaceScale(0.12).hex() : color,
+    disabled ? surfaceScale(0.35).hex() : tintColor,
   );
 
   const contentColor = useMemo(
-    () => (variant === "contained" ? p.tintColor : disabled ? p.tintColor : p.color),
+    () => (variant === "contained" ? p.on : disabled ? p.on : p.main),
     [variant, p, disabled],
   );
 
@@ -195,15 +199,15 @@ const Button: React.FC<ButtonProps> = ({
     [trailing, loading, loadingIndicatorPosition],
   );
 
-  const styles = useStyleSheet(
+  const styles = useStyles(
     ({ palette, shapes }) => ({
       container: {
-        backgroundColor: variant === "contained" ? p.color : "transparent",
+        backgroundColor: variant === "contained" ? p.main : "transparent",
       },
       outline: {
         ...shapes.small,
         borderWidth: 1,
-        borderColor: chroma.scale([palette.surface, palette.onSurface])(0.12).hex(),
+        borderColor: surfaceScale(0.12).hex(),
       },
       pressableContainer: {
         ...shapes.small,
@@ -236,7 +240,7 @@ const Button: React.FC<ButtonProps> = ({
         alignItems: "center",
       },
     }),
-    [variant, uppercase, compact, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing],
+    [variant, uppercase, compact, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing, surfaceScale],
   );
 
   const getTitle = () => {

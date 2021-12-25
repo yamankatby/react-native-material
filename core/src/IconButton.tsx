@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewProps } from "react-native";
-import { PaletteColor, usePalette } from "./base";
 import Pressable, { PressableProps } from "./Pressable";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
 
 export interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   /**
@@ -12,9 +12,9 @@ export interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<Pressa
   /**
    * The color of the icon and the press effect.
    *
-   * @default "onBackground"
+   * @default "on-background"
    */
-  color?: PaletteColor;
+  color?: Color;
 
   /**
    * The style of the icon's container view.
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
-  color = "onBackground",
+  color = "on-background",
   style,
   contentContainerStyle,
 
@@ -60,13 +60,13 @@ const IconButton: React.FC<IconButtonProps> = ({
   testOnly_pressed,
   ...rest
 }) => {
-  const palette = usePalette(color);
+  const palette = usePaletteColor(color);
   return (
     <View style={[styles.container, style]} {...rest}>
       <Pressable
         style={[StyleSheet.absoluteFill, styles.contentContainer, contentContainerStyle]}
         pressEffect={pressEffect}
-        pressEffectColor={pressEffectColor ?? palette.color}
+        pressEffectColor={pressEffectColor ?? palette.main}
         onPress={onPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
@@ -83,7 +83,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         android_ripple={android_ripple}
         testOnly_pressed={testOnly_pressed}
       >
-        {icon ? (typeof icon === "function" ? icon({ color: palette.color, size: 24 }) : icon) : null}
+        {icon ? (typeof icon === "function" ? icon({ color: palette.main, size: 24 }) : icon) : null}
       </Pressable>
     </View>
   );

@@ -3,15 +3,20 @@ import {
   ActivityIndicator as RNActivityIndicator,
   ActivityIndicatorProps as RNActivityIndicatorProps,
 } from "react-native";
-import { PaletteColor, usePalette } from "./base";
+import { Color, usePaletteColor } from "./hooks/use-palette-color";
 
-export interface ActivityIndicatorProps extends RNActivityIndicatorProps {
-  color?: PaletteColor;
+export interface ActivityIndicatorProps extends Omit<RNActivityIndicatorProps, "color"> {
+  /**
+   * The color of the spinner.
+   *
+   * @default "primary"
+   */
+  color?: Color;
 }
 
 const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ color = "primary", ...rest }) => {
-  const palette = usePalette(color);
-  return <RNActivityIndicator color={palette.color} {...rest} />;
+  const { main } = usePaletteColor(color);
+  return <RNActivityIndicator {...rest} color={main} />;
 };
 
 export default ActivityIndicator;

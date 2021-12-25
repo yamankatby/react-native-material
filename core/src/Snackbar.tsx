@@ -2,8 +2,8 @@ import React from "react";
 import Surface, { SurfaceProps } from "./Surface";
 import Text from "./Text";
 import { View } from "react-native";
-import { useTheme } from "./base";
-import chroma from "chroma-js";
+import { useTheme } from "./base/ThemeContext";
+import { useSurfaceScale } from "./hooks/use-surface-scale";
 
 export interface SnackbarProps extends SurfaceProps {
   message: string;
@@ -13,6 +13,7 @@ export interface SnackbarProps extends SurfaceProps {
 
 const Snackbar: React.FC<SnackbarProps> = ({ message, action, style, ...rest }) => {
   const { palette } = useTheme()
+  const surfaceScale = useSurfaceScale();
   return (
     <Surface
       elevation={6}
@@ -25,13 +26,13 @@ const Snackbar: React.FC<SnackbarProps> = ({ message, action, style, ...rest }) 
           flexWrap: "wrap",
           paddingVertical: 8,
           paddingHorizontal: 16,
-          backgroundColor: chroma.scale([palette.surface, palette.onSurface])(0.87).hex(),
+          backgroundColor: surfaceScale(0.87).hex(),
         },
         style,
       ]}
       {...rest}
     >
-      <Text variant="body2" style={{ marginVertical: 8, color: palette.surface }}>{message}</Text>
+      <Text variant="body2" style={{ marginVertical: 8, color: palette.surface.main }}>{message}</Text>
       <View style={{ marginStart: 'auto', marginEnd: -8 }}>
         {action}
       </View>

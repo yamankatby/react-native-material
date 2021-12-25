@@ -13,7 +13,7 @@ const BannerScreen = () => {
           illustration &&
           (props => (
             <Avatar
-              icon={<Icon name="credit-card-off-outline" size={24} color={palette.onPrimary} />}
+              icon={<Icon name="credit-card-off-outline" size={24} color={palette.primary.on} />}
               color="primary"
               {...props}
             />
