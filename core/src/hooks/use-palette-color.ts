@@ -19,7 +19,6 @@ export const usePaletteColor = (main: Color, on?: Color): PaletteColor => {
   const { palette } = useTheme();
 
   return useMemo(() => {
-    console.log(main, on);
     let _main = main;
     if (palette[main]) _main = palette[main].main;
     else if (main.startsWith("on-") && palette[main.replace("on-", "")]) _main = palette[main.replace("on-", "")].on;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SwitchScreen = () => {
+const SwitchScreen: React.FC = () => {
   return null;
 };
 

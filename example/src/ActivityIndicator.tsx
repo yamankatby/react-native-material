@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-const ActivityIndicatorScreen = () => {
+const ActivityIndicatorScreen: React.FC = () => {
   return null;
 };
 
