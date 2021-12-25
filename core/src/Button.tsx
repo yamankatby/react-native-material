@@ -175,8 +175,6 @@ const Button: React.FC<ButtonProps> = ({
 
   ...rest
 }) => {
-  const theme = useTheme();
-
   const surfaceScale = useSurfaceScale();
 
   const p = usePaletteColor(

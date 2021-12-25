@@ -153,7 +153,10 @@ const AppBar: React.FC<AppBarProps> = ({
 
   return (
     <Surface
-      style={[{ backgroundColor: transparent ? "transparent" : palette.main }, style]}
+      style={[{
+        backgroundColor: transparent ? "transparent" : palette.main,
+        zIndex: variant === "top" ? 4 : 8,
+      }, style]}
       elevation={transparent ? 0 : variant === "top" ? 4 : 8}
       {...props}
     >

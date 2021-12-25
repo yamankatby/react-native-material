@@ -16,7 +16,7 @@ export const useSurfaceColor = () => {
 };
 
 export const useSurfaceColorValue = (elevation: Elevation) => {
-  const surfaceScale = useSurfaceScale();
+  const surfaceScale = useSurfaceColor();
 
   return useMemo(() => surfaceScale(elevation).hex(), [surfaceScale, elevation]);
 };

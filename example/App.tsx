@@ -1,10 +1,11 @@
-import { useEffect, useMemo } from "react";
-import { FlatList, Platform, View } from "react-native";
-import { ListItem, Provider, useTheme } from "@react-native-material/core";
+import React, { useEffect, useMemo } from "react";
+import { Platform, ScrollView } from "react-native";
+import { AppBar, Icon, IconButton, ListItem, Provider, useTheme } from "@react-native-material/core";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
 import { DarkTheme, DefaultTheme, NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator, NativeStackHeaderProps } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
 import ActivityIndicatorScreen from "./src/ActivityIndicator";
 import AppBarScreen from "./src/AppBar";
 import AvatarScreen from "./src/Avatar";
@@ -49,19 +50,38 @@ const screens = [
 
 const Main = () => {
   const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
   const { palette } = useTheme();
   return (
-    <View style={{ flex: 1, backgroundColor: palette.background.main }}>
-      <FlatList
-        data={screens}
-        renderItem={({ item }) => <ListItem title={item.name} onPress={() => navigation.navigate(item.name)} />}
-        keyExtractor={item => item.name}
-      />
-    </View>
+    <ScrollView style={{ flex: 1, backgroundColor: palette.background.main, paddingBottom: insets.bottom }}>
+      {screens.map(({ name }) => (
+        <ListItem key={name} title={name} onPress={() => navigation.navigate(name as any)} />
+      ))}
+    </ScrollView>
   );
 };
 
 const Stack = createNativeStackNavigator();
+
+const Header: React.FC<NativeStackHeaderProps> = ({ route, back, navigation }) => {
+  const insets = useSafeAreaInsets();
+  return (
+    <AppBar
+      title={route.name}
+      leading={
+        back &&
+        (props => (
+          <IconButton
+            icon={props => <Icon name={Platform.OS === "ios" ? "chevron-left" : "arrow-left"} {...props} />}
+            onPress={navigation.goBack}
+            {...props}
+          />
+        ))
+      }
+      style={{ paddingTop: insets.top }}
+    />
+  );
+};
 
 const Navigator = () => {
   const { colorScheme, palette } = useTheme();
@@ -81,12 +101,12 @@ const Navigator = () => {
         background: palette.background.main,
         card: palette.background.main,
       },
-    }
-  }, [colorScheme, palette])
+    };
+  }, [colorScheme, palette]);
 
   return (
     <NavigationContainer theme={theme}>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ header: Header }}>
         <Stack.Screen name="Main" component={Main} />
         {screens.map(props => (
           <Stack.Screen key={props.name} name={props.name} component={props.component} options={props.options} />
@@ -99,6 +119,7 @@ const Navigator = () => {
 export default () => (
   <SafeAreaProvider>
     <Provider IconComponent={MaterialCommunityIcons as any}>
+      <StatusBar style="light" />
       <Navigator />
     </Provider>
   </SafeAreaProvider>

@@ -3,10 +3,10 @@ import { View } from "react-native";
 import Divider from "./Divider";
 import Text from "./Text";
 import { SurfaceProps } from "./Surface";
-import Pressable from "./Pressable";
+import Pressable, { PressableProps } from "./Pressable";
 import { useSurfaceScale } from "./hooks/use-surface-scale";
 
-export interface ListItemProps extends SurfaceProps {
+export interface ListItemProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
   title?: string;
 
   secondaryText?: string;
@@ -31,12 +31,49 @@ const ListItem: React.FC<ListItemProps> = ({
   leading,
   trailing,
   style,
+
+  pressEffect,
+  pressEffectColor,
+  onPress,
+  onPressIn,
+  onPressOut,
+  onLongPress,
+  onBlur,
+  onFocus,
+  onMouseEnter,
+  onMouseLeave,
+  delayLongPress,
+  disabled,
+  hitSlop,
+  pressRetentionOffset,
+  android_disableSound,
+  android_ripple,
+  testOnly_pressed,
   ...rest
 }) => {
   const scale = useSurfaceScale()
 
   return (
-    <Pressable style={{ backgroundColor: scale(0).hex() }} {...rest}>
+    <Pressable
+      style={{ backgroundColor: scale(0).hex() }}
+      pressEffect={pressEffect}
+      pressEffectColor={pressEffectColor}
+      onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      onLongPress={onLongPress}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      delayLongPress={delayLongPress}
+      disabled={disabled}
+      hitSlop={hitSlop}
+      pressRetentionOffset={pressRetentionOffset}
+      android_disableSound={android_disableSound}
+      android_ripple={android_ripple}
+      testOnly_pressed={testOnly_pressed}
+    >
       <View style={{ flexDirection: "row", alignItems: "center", marginVertical: 12 }}>
         {leading &&
           <View
