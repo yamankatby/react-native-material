@@ -2014,6 +2014,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chroma-js@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@types/chroma-js@npm:2.1.3"
+  checksum: 8c94c421b9613c534471b18912b11cdbb267ab8da380ce6d484115f48fb08583e7ab1f7e26fa0e7811a0d42ac531fe9a9b8475afe7b7b91d86cd08b758ca3add
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.2":
   version: 4.1.5
   resolution: "@types/graceful-fs@npm:4.1.5"
@@ -3503,8 +3510,10 @@ __metadata:
     "@react-native-material/core": ^1.3.0
     "@react-navigation/native": ^6.0.6
     "@react-navigation/native-stack": ^6.2.5
+    "@types/chroma-js": ^2.1.3
     "@types/react": ~17.0.21
     "@types/react-native": ~0.64.12
+    chroma-js: ^2.1.2
     expo: ~44.0.0
     expo-status-bar: ~1.2.0
     react: 17.0.1

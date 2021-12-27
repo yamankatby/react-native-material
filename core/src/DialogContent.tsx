@@ -14,7 +14,7 @@ const DialogContent: React.FC<DialogContentProps> = ({ children }) => {
 
   const scale = useMemo(
     () => chroma.scale([backgroundColor, theme.palette.surface.on]),
-    [backgroundColor, theme.palette.onSurface],
+    [backgroundColor, theme.palette.surface.on],
   );
 
   return <View style={[styles.container, { borderColor: scale(0.08).hex() }]}>{children}</View>;

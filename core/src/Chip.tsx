@@ -62,7 +62,7 @@ const Chip: React.FC<ChipProps> = ({
   leading,
   trailing,
   variant = "filled",
-  color = "onSurface",
+  color = "on-surface",
   style,
   contentContainerStyle,
   labelStyle,

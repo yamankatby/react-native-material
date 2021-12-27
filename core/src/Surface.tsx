@@ -11,6 +11,8 @@ export interface SurfaceProps extends Omit<ViewProps, "style"> {
 
   /**
    * The elevation of the surface.
+   *
+   * @default 0
    */
   elevation?: Elevation;
 

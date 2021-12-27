@@ -14,7 +14,6 @@ import Text from "./Text";
 import ActivityIndicator from "./ActivityIndicator";
 import Pressable, { PressableProps } from "./Pressable";
 import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useTheme } from "./base/ThemeContext";
 import { useSurfaceScale } from "./hooks/use-surface-scale";
 import { useStyles } from "./hooks/use-styles";
 import { useAnimatedElevation } from "./hooks/use-animated-elevation";

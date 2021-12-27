@@ -6,7 +6,6 @@ import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-cont
 import { DarkTheme, DefaultTheme, NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import ActivityIndicatorScreen from "./src/ActivityIndicator";
 import AppBarScreen from "./src/AppBar";
 import AvatarScreen from "./src/Avatar";
 import BackdropScreen from "./src/Backdrop";
@@ -22,12 +21,10 @@ import ListItemScreen from "./src/ListItem";
 import PressableScreen from "./src/Pressable";
 import SnackbarScreen from "./src/Snackbar";
 import SurfaceScreen from "./src/Surface";
-import SwitchScreen from "./src/Switch";
 import TextScreen from "./src/Text";
 import TextInputScreen from "./src/TextInput";
 
 const screens = [
-  { name: "Activity Indicator", component: ActivityIndicatorScreen },
   { name: "App Bar", component: AppBarScreen, options: { headerShown: false } },
   { name: "Avatar", component: AvatarScreen },
   { name: "Backdrop", component: BackdropScreen, options: { headerShown: false } },
@@ -43,7 +40,6 @@ const screens = [
   { name: "Pressable", component: PressableScreen },
   { name: "Snackbar", component: SnackbarScreen },
   { name: "Surface", component: SurfaceScreen },
-  { name: "Switch", component: SwitchScreen },
   { name: "Text", component: TextScreen },
   { name: "Text Input", component: TextInputScreen },
 ];
