@@ -184,6 +184,8 @@ export default App;
 
 `category`
 
+The relative size of the surface.
+
 Type: ShapeCategory;
 
 Optional: Yes
@@ -192,7 +194,11 @@ Optional: Yes
 
 `elevation`
 
+The elevation of the surface.
+
 Type: Elevation;
+
+Default: 0
 
 Optional: Yes
 

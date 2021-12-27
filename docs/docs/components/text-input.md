@@ -131,7 +131,7 @@ Optional: Yes
 
 The color of the text input's content (e.g. label, icons, selection).
 
-Type: PaletteColor;
+Type: Color;
 
 Default: "primary"
 

@@ -2,19 +2,19 @@
 
 ```js with-preview
 import React from "react";
-import { IconsProvider, Icon } from "@react-native-material/core";
+import { IconComponentProvider, Icon } from "@react-native-material/core";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const App = () => (
   <>
-    <Icon name="home" size={24} color="red" />
+    <Icon name="home" size={24} color="red"/>
   </>
 );
 
 export default () => (
-  <IconsProvider render={props => <MaterialCommunityIcons {...props} />}>
-    <App />
-  </IconsProvider>
+  <IconComponentProvider IconComponent={MaterialCommunityIcons}>
+    <App/>
+  </IconComponentProvider>
 );
 ```
 

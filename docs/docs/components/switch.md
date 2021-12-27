@@ -69,11 +69,11 @@ export default App;
 
 ## Props
 
-`tintColor`
+``
 
-Type: PaletteColor;
+Type:
 
-Optional: Yes
+Optional: No
 
 ---
 

@@ -55,7 +55,7 @@ const App = () => (
       )}
       trailing={props => (
         <Stack center style={{ width: 48, height: 48 }}>
-          <ActivityIndicator size="small" color="onPrimary" />
+          <ActivityIndicator size="small" color="on-primary" />
         </Stack>
       )}
     />
@@ -77,7 +77,11 @@ export default App;
 
 `color`
 
-Type: PaletteColor;
+The color of the spinner.
+
+Type: Color;
+
+Default: "primary"
 
 Optional: Yes
 

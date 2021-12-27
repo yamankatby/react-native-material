@@ -186,4 +186,4 @@ Optional: Yes
 
 ---
 
-`...SurfaceProps`
+`...SurfaceProps`, `...PressableProps`

@@ -210,7 +210,7 @@ Optional: Yes
 
 `color`
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 
@@ -218,7 +218,7 @@ Optional: Yes
 
 `tintColor`
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 

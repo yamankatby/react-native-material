@@ -277,7 +277,7 @@ Optional: Yes
 
 The fill color of the AppBar's background.
 
-Type: PaletteColor;
+Type: Color;
 
 Default: "primary"
 
@@ -289,7 +289,7 @@ Optional: Yes
 
 The color of the AppBar's content (title, subtitle, icons, etc.).
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 

@@ -75,7 +75,23 @@ export default App;
 
 `variant`
 
+The variant of the text.
+
 Type: TypographyVariant;
+
+Default: "body1"
+
+Optional: Yes
+
+---
+
+`color`
+
+The color of the text.
+
+Type: Color;
+
+Default: "on-background"
 
 Optional: Yes
 

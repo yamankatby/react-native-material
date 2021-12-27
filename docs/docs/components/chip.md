@@ -103,7 +103,7 @@ Optional: Yes
 
 The color of the chip.
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 

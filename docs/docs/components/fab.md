@@ -141,7 +141,7 @@ const App = () => (
       label="Button"
       tintColor="red"
     />
-    <FAB icon={props => <Icon name="lock" {...props} />} color="onPrimary" />
+    <FAB icon={props => <Icon name="lock" {...props} />} color="on-primary" />
     <FAB icon={props => <Icon name="lock" {...props} />} color="#FDCAE4" />
     <FAB
       icon={props => <Icon name="lock" {...props} />}
@@ -221,7 +221,7 @@ const App = () => {
         variant="extended"
         icon={props => <Icon name="plus" {...props} />}
         label="Button"
-        color="onError"
+        color="on-error"
         loading={loading}
         loadingIndicator={props => (
           <Text
@@ -242,7 +242,7 @@ const App = () => {
         variant="extended"
         icon={props => <Icon name="plus" {...props} />}
         label="Button"
-        color="onError"
+        color="on-error"
         loading={loading}
         loadingIndicator="Loading..."
         loadingIndicatorPosition="overlay"
@@ -250,7 +250,7 @@ const App = () => {
       <FAB
         icon={props => <Icon name="plus" {...props} />}
         size="mini"
-        color="onError"
+        color="on-error"
         loading={loading}
         loadingIndicator="⏰"
       />
@@ -329,7 +329,7 @@ Optional: Yes
 
 `color`
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 
@@ -337,7 +337,7 @@ Optional: Yes
 
 `tintColor`
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 

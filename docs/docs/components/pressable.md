@@ -31,7 +31,7 @@ Optional: Yes
 
 `pressEffectColor`
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 

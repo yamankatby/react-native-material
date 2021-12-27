@@ -64,9 +64,9 @@ Optional: Yes
 
 The color of the icon and the press effect.
 
-Type: PaletteColor;
+Type: Color;
 
-Default: "onBackground"
+Default: "on-background"
 
 Optional: Yes
 

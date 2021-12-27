@@ -263,7 +263,7 @@ The main color of the button.
 for `contained` buttons, this is the background color.
 for `outlined` and `text` buttons, this is the color of the content (text, icons, etc.).
 
-Type: PaletteColor;
+Type: Color;
 
 Default: "primary"
 
@@ -275,7 +275,7 @@ Optional: Yes
 
 The color of the `contained` buttons content (text, icons, etc.). No effect on `outlined` and `text` buttons.
 
-Type: PaletteColor;
+Type: Color;
 
 Optional: Yes
 
