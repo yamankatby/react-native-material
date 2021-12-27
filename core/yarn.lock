@@ -10,12 +10,12 @@ __metadata:
   resolution: "@react-native-material/core@workspace:."
   dependencies:
     "@types/chroma-js": ^2.1.3
-    "@types/react": ^17.0.19
-    "@types/react-native": ^0.64.13
+    "@types/react": ^17.0.38
+    "@types/react-native": ^0.66.10
     chroma-js: ^2.1.2
   peerDependencies:
-    react: ^17.0.2
-    react-native: ^0.65.1
+    react: "*"
+    react-native: "*"
   languageName: unknown
   linkType: soft
 
@@ -33,16 +33,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.64.13":
-  version: 0.64.19
-  resolution: "@types/react-native@npm:0.64.19"
+"@types/react-native@npm:^0.66.10":
+  version: 0.66.10
+  resolution: "@types/react-native@npm:0.66.10"
   dependencies:
     "@types/react": "*"
-  checksum: e6d4608d64387d4b261412d7deb242942ba37313e5284743869d9dd29c2c0d1d3f5c5b1066f736967d6e0970f9c163d5447b7c1e9f356935d5aa66487a43e961
+  checksum: 5d0e6a2b4b05839fb43ea1a1bfbfd054c60ece8c1554b0c61f096c77f6fc01cddb7ac5338c5030db9296830bc4426eca7966d1249e7aa6eb6b10fea568957b7a
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^17.0.19":
+"@types/react@npm:*":
   version: 17.0.36
   resolution: "@types/react@npm:17.0.36"
   dependencies:
@@ -50,6 +50,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: feeaa484d5d7e354ba6830b06342dec6fd1a2ac87f73d21d3d4f2a3d311459de4090330a1e8af7275c8d1e7737b655a7550c8dd3dbc74ccf34ffd3fc824bbd12
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.38":
+  version: 17.0.38
+  resolution: "@types/react@npm:17.0.38"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 4079f4f959cd4a4bfaeda8b89fe8a1b1f8bdc9d87acfdc5f74a0b39cec9ec6a470724357c62778c0f063180b360c250e920c5a142f1dbcda67d9cc25a6d43a85
   languageName: node
   linkType: hard
 
