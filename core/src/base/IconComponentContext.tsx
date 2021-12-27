@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from "react";
+import { Color, usePaletteColor } from "../hooks/use-palette-color";
 
 export type IconComponent = React.ComponentType<IconProps>;
 
@@ -19,15 +20,16 @@ export interface IconProps {
 
   size?: number;
 
-  color?: string;
+  color?: Color;
 
   [key: string]: any;
 }
 
-export const Icon: React.FC<IconProps> = props => {
+export const Icon: React.FC<IconProps> = ({ color = "on-background", ...rest }) => {
   const IconComponent = useIconComponent();
   if (!IconComponent) {
     throw new Error("`IconComponent` is undefined. Seems like you forgot to wrap your component with `Provider`.");
   }
-  return <IconComponent {...props} />;
+  const { main } = usePaletteColor(color);
+  return <IconComponent {...rest} color={main} />;
 };
