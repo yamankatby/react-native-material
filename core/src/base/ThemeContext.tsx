@@ -86,7 +86,7 @@ export const useTheme = () => useContext(ThemeContext);
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ theme, children }) => {
   const colorScheme = useColorScheme();
 
-  const value = useMemo(() => (theme ?? colorScheme === "dark" ? darkTheme : defaultTheme), [colorScheme, theme]);
+  const value = useMemo(() => (theme ? theme : colorScheme === "dark" ? darkTheme : defaultTheme), [colorScheme, theme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
