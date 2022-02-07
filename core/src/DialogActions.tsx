@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import HStack from "./HStack";
+import { HStack } from "react-native-flex-layout";
 
 export interface DialogActionsProps {
 

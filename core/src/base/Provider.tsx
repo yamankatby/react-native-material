@@ -1,26 +1,26 @@
 import React from "react";
+import { SpacingFuncProvider, SpacingFuncProviderProps } from "react-native-flex-layout";
 import { ThemeProvider, ThemeProviderProps } from "./ThemeContext";
 import { WindowSizeClassProvider, WindowSizeClassProviderProps } from "./WindowSizeClassContext";
-import { SpacingProvider, SpacingProviderProps } from "./SpacingContext";
 import { IconComponentProvider, IconComponentProviderProps } from "./IconComponentContext";
 import { Outlet, PortalProvider } from "./PortalContext";
 
 export type ProviderProps = ThemeProviderProps &
   WindowSizeClassProviderProps &
-  SpacingProviderProps &
+  SpacingFuncProviderProps &
   IconComponentProviderProps;
 
-export const Provider: React.FC<ProviderProps> = ({ theme, windowSizes, spacing, IconComponent, children }) => (
+export const Provider: React.FC<ProviderProps> = ({ theme, windowSizes, spacingFunc, IconComponent, children }) => (
   <ThemeProvider theme={theme}>
     <WindowSizeClassProvider windowSizes={windowSizes}>
-      <SpacingProvider spacing={spacing}>
+      <SpacingFuncProvider spacingFunc={spacingFunc}>
         <IconComponentProvider IconComponent={IconComponent}>
           <PortalProvider>
             {children}
             <Outlet />
           </PortalProvider>
         </IconComponentProvider>
-      </SpacingProvider>
+      </SpacingFuncProvider>
     </WindowSizeClassProvider>
   </ThemeProvider>
 );

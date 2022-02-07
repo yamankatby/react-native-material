@@ -13,6 +13,7 @@ __metadata:
     "@types/react": ^17.0.38
     "@types/react-native": ^0.66.10
     chroma-js: ^2.1.2
+    react-native-flex-layout: ^0.1.2
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -121,6 +122,16 @@ __metadata:
   version: 3.1.1
   resolution: "path-key@npm:3.1.1"
   checksum: 55cd7a9dd4b343412a8386a743f9c746ef196e57c823d90ca3ab917f90ab9f13dd0ded27252ba49dbdfcab2b091d998bc446f6220cd3cea65db407502a740020
+  languageName: node
+  linkType: hard
+
+"react-native-flex-layout@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "react-native-flex-layout@npm:0.1.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: a3e4635c61e1120470f4f7dd4e0092e8c5ff3ddb9bce08e7452a054944a8b75d4b0094c93a50267372206345000caa0a118b08dd9347878e3fa99edd6a1518c6
   languageName: node
   linkType: hard
 
