@@ -17,25 +17,34 @@ import { Spacer } from 'react-native-flex-layout';
 
 ## Usage
 
-<div className="eg">
-  <div>01</div>
-  <div className="ml-auto">02</div>
-</div>
+```jsx with-preview
+import React from "react";
+import { Flex, Box, Spacer } from "@react-native-material/core";
 
-```jsx
-<Flex inline>
-  <Box w={56} h={56} />
-  <Spacer />
-  <Box w={56} h={56} />
-</Flex>
+const App = () => (
+  <Flex fill>
+    <Box h={12} style={{ backgroundColor: 'lightgreen' }}/>
+    <Spacer />
+    <Box h={12} style={{ backgroundColor: 'lightblue' }} />
+  </Flex>
+);
+
+export default App;
 ```
 
 Usage with `Stack`
 
-```jsx
-<HStack>
-  <Box w={56} h={56} />
-  <Spacer />
-  <Box w={56} h={56} />
-</HStack>
+```jsx with-preview
+import React from "react";
+import { HStack, Box, Spacer } from "@react-native-material/core";
+
+const App = () => (
+  <HStack fill>
+    <Box w={12} h={12} style={{ backgroundColor: 'lightgreen' }}/>
+    <Spacer />
+    <Box w={12} h={12} style={{ backgroundColor: 'lightblue' }} />
+  </HStack>
+);
+
+export default App;
 ```

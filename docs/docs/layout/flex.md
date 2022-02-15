@@ -38,38 +38,44 @@ Here are some helpful shorthand props:
 
 While you can pass the verbose props, using the shorthand can save you some time.
 
-<div className="eg">
-  <div>01</div>
-  <div>02</div>
-  <div>03</div>
-</div>
+```jsx with-preview
+import React from "react";
+import { Flex, Box, Text } from "@react-native-material/core";
 
-```jsx
-<Flex direction="row">
-  <Box w={56} h={56} />
-  <Box w={56} h={56} ms={16} />
-  <Box w={56} h={56} ms={16} />
-</Flex>
+const App = () => (
+  <Flex fill>
+    <Box h={12} style={{ backgroundColor: 'lightgreen' }}>
+      <Text>Box 1</Text>
+    </Box>
+    <Box h={12} style={{ backgroundColor: 'lightblue' }}>
+      <Text>Box 2</Text>
+    </Box>
+    <Flex fill style={{ backgroundColor: 'tomato' }}>
+      <Text>Box 3</Text>
+    </Flex>
+  </Flex>
+);
+
+export default App;
 ```
-
 
 ### Using the Spacer
 
 As an alternative to `Stack`, you can combine `Flex` and `Spacer` to create stackable and responsive layouts.
 
-<div className="eg">
-  <div>01</div>
-  <div>02</div>
-  <div className="ml-auto">03</div>
-</div>
+```jsx with-preview
+import React from "react";
+import { Flex, Box, Spacer } from "@react-native-material/core";
 
-```jsx
-<Flex direction="row">
-  <Box w={56} h={56} />
-  <Box w={56} h={56} ms={16} />
-  <Spacer />
-  <Box w={56} h={56} />
-</Flex>
+const App = () => (
+  <Flex fill>
+    <Box h={12} style={{ backgroundColor: 'lightgreen' }}/>
+    <Spacer />
+    <Box h={12} style={{ backgroundColor: 'lightblue' }} />
+  </Flex>
+);
+
+export default App;
 ```
 
 ## Props
@@ -89,4 +95,4 @@ As an alternative to `Stack`, you can combine `Flex` and `Spacer` to create stac
 | `grow`      | `number`                                                     | Shorthand for the `flexGrow` style property.                        |
 | `shrink`    | `number`                                                     | Shorthand for the `flexShrink` style property.                      |
 
-[`...BoxProps`](/components/box#props)
+[`...BoxProps`](/docs/layout/box#props)

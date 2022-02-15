@@ -7,7 +7,7 @@ import React from "react";
 import { Text, Stack } from "@react-native-material/core";
 
 const App = () => (
-  <Stack style={{ margin: 16 }} spacing={4}>
+  <Stack m={4} spacing={4}>
     <Text variant="h1">h1. Heading</Text>
     <Text variant="h2">h2. Heading</Text>
     <Text variant="h3">h3. Heading</Text>

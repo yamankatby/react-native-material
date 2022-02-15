@@ -17,3 +17,11 @@ import { Divider } from "@react-native-material/core";
 
 ## Usage
 
+```js with-preview
+import React from "react";
+import { Divider } from "@react-native-material/core";
+
+const App = () => <Divider style={{ marginTop: 60 }} />;
+
+export default App;
+```

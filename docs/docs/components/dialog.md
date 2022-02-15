@@ -29,7 +29,7 @@ Simple Alert Dialog
 ```js with-preview
 import React, { useState } from "react";
 import {
-  ThemeProvider,
+  Provider,
   Button,
   Dialog,
   DialogHeader,
@@ -77,9 +77,9 @@ const App = () => {
 };
 
 const AppProvider = () => (
-  <ThemeProvider>
+  <Provider>
     <App />
-  </ThemeProvider>
+  </Provider>
 );
 
 export default AppProvider;
@@ -90,7 +90,7 @@ Form Dialog
 ```js with-preview
 import React, { useState } from "react";
 import {
-  ThemeProvider,
+  Provider,
   Stack,
   Button,
   Dialog,
@@ -139,9 +139,9 @@ const App = () => {
 };
 
 const AppProvider = () => (
-  <ThemeProvider>
+  <Provider>
     <App />
-  </ThemeProvider>
+  </Provider>
 );
 
 export default AppProvider;

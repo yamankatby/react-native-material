@@ -75,9 +75,9 @@ const config = {
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             type: 'dropdown',
-            label: 'v1.3.1',
+            label: 'v1.3.5',
             items: [
-              { label: 'v1.3.1', to: '/' },
+              { label: 'v1.3.5', to: '/' },
               { label: 'v1.2.*', href: 'https://react-native-material-hadt1ykpo-yamankatby.vercel.app' },
               {
                 label: 'v1.1.*',
