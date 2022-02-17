@@ -6,23 +6,23 @@ import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-cont
 import { DarkTheme, DefaultTheme, NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import AppBarScreen from "./src/AppBar";
-import AvatarScreen from "./src/Avatar";
-import BackdropScreen from "./src/Backdrop";
-import BadgeScreen from "./src/Badge";
-import BannerScreen from "./src/Banner";
-import ButtonScreen from "./src/Button";
-import ChipScreen from "./src/Chip";
-import DialogScreen from "./src/Dialog";
-import DividerScreen from "./src/Divider";
-import FABScreen from "./src/FAB";
-import IconButtonScreen from "./src/IconButton";
-import ListItemScreen from "./src/ListItem";
-import PressableScreen from "./src/Pressable";
-import SnackbarScreen from "./src/Snackbar";
-import SurfaceScreen from "./src/Surface";
-import TextScreen from "./src/Text";
-import TextInputScreen from "./src/TextInput";
+import AppBarScreen from "./AppBar";
+import AvatarScreen from "./Avatar";
+import BackdropScreen from "./Backdrop";
+import BadgeScreen from "./Badge";
+import BannerScreen from "./Banner";
+import ButtonScreen from "./Button";
+import ChipScreen from "./Chip";
+import DialogScreen from "./Dialog";
+import DividerScreen from "./Divider";
+import FABScreen from "./FAB";
+import IconButtonScreen from "./IconButton";
+import ListItemScreen from "./ListItem";
+import PressableScreen from "./Pressable";
+import SnackbarScreen from "./Snackbar";
+import SurfaceScreen from "./Surface";
+import TextScreen from "./Text";
+import TextInputScreen from "./TextInput";
 
 const screens = [
   { name: "App Bar", component: AppBarScreen, options: { headerShown: false } },

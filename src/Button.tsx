@@ -197,7 +197,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   const styles = useStyles(
-    ({ palette, shapes }) => ({
+    ({ shapes }) => ({
       container: {
         backgroundColor: variant === "contained" ? p.main : "transparent",
       },

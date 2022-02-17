@@ -30,7 +30,6 @@ const ListItem: React.FC<ListItemProps> = ({
   leadingMode = "icon",
   leading,
   trailing,
-  style,
 
   pressEffect,
   pressEffectColor,
@@ -49,7 +48,6 @@ const ListItem: React.FC<ListItemProps> = ({
   android_disableSound,
   android_ripple,
   testOnly_pressed,
-  ...rest
 }) => {
   const scale = useSurfaceScale()
 
