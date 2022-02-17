@@ -1,7 +1,7 @@
-import React from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
-import chroma from "chroma-js";
-import { useTheme } from "./base/ThemeContext";
+import React from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import chroma from 'chroma-js';
+import { useTheme } from './base/ThemeContext';
 
 export interface DividerProps {
   color?: string | undefined;
@@ -15,13 +15,7 @@ export interface DividerProps {
   style?: StyleProp<ViewStyle> | undefined;
 }
 
-const Divider: React.FC<DividerProps> = ({
-  color,
-  inset,
-  leadingInset,
-  trailingInset,
-  style,
-}) => {
+const Divider: React.FC<DividerProps> = ({ color, inset, leadingInset, trailingInset, style }) => {
   const { palette } = useTheme();
   return (
     <View

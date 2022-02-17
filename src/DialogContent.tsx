@@ -1,20 +1,19 @@
-import React, { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
-import chroma from "chroma-js";
-import { useSurfaceColorValue } from "./hooks/use-surface-color";
-import { useTheme } from "./base/ThemeContext";
+import React, { useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
+import chroma from 'chroma-js';
+import { useSurfaceColorValue } from './hooks/use-surface-color';
+import { useTheme } from './base/ThemeContext';
 
-export interface DialogContentProps {
-}
+export interface DialogContentProps {}
 
 const DialogContent: React.FC<DialogContentProps> = ({ children }) => {
   const theme = useTheme();
 
-  const backgroundColor = useSurfaceColorValue(24)
+  const backgroundColor = useSurfaceColorValue(24);
 
   const scale = useMemo(
     () => chroma.scale([backgroundColor, theme.palette.surface.on]),
-    [backgroundColor, theme.palette.surface.on],
+    [backgroundColor, theme.palette.surface.on]
   );
 
   return <View style={[styles.container, { borderColor: scale(0.08).hex() }]}>{children}</View>;

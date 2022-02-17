@@ -1,7 +1,7 @@
-import React from "react";
-import { Text as RNText, TextProps as RNTextProps } from "react-native";
-import { TypographyVariant, useTheme } from "./base/ThemeContext";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import React from 'react';
+import { Text as RNText, TextProps as RNTextProps } from 'react-native';
+import { TypographyVariant, useTheme } from './base/ThemeContext';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
 
 export interface TextProps extends RNTextProps {
   /**
@@ -19,7 +19,7 @@ export interface TextProps extends RNTextProps {
   color?: Color;
 }
 
-const Text: React.FC<TextProps> = ({ variant = "body1", color = "on-background", style, ...rest }) => {
+const Text: React.FC<TextProps> = ({ variant = 'body1', color = 'on-background', style, ...rest }) => {
   const { typography } = useTheme();
   const palette = usePaletteColor(color);
 

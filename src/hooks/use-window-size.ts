@@ -1,9 +1,9 @@
-import { useCallback } from "react";
-import { useWindowSizeClass, WindowSizeClass } from "../base/WindowSizeClassContext";
+import { useCallback } from 'react';
+import { useWindowSizeClass, WindowSizeClass } from '../base/WindowSizeClassContext';
 
 export type WindowSizeQuery<T> = Partial<Record<WindowSizeClass, T>> & { base: T };
 
-const classes: WindowSizeClass[] = ["base", "sm", "md", "lg", "xl"];
+const classes: WindowSizeClass[] = ['base', 'sm', 'md', 'lg', 'xl'];
 
 export type WindowSize = <T>(query: WindowSizeQuery<T>) => T;
 
@@ -11,7 +11,7 @@ export const useWindowSize = (): WindowSize => {
   const windowSizeClass = useWindowSizeClass();
 
   return useCallback(
-    query => {
+    (query) => {
       const keys = Object.keys(query) as WindowSizeClass[];
 
       let nearest = windowSizeClass;
@@ -20,6 +20,6 @@ export const useWindowSize = (): WindowSize => {
       }
       return query[nearest]!;
     },
-    [windowSizeClass],
+    [windowSizeClass]
   );
 };

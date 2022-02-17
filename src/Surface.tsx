@@ -1,9 +1,9 @@
-import React from "react";
-import { Animated, StyleProp, ViewProps, ViewStyle } from "react-native";
-import { Elevation, ShapeCategory } from "./base/ThemeContext";
-import { useStyles } from "./hooks/use-styles";
+import React from 'react';
+import { Animated, StyleProp, ViewProps, ViewStyle } from 'react-native';
+import { Elevation, ShapeCategory } from './base/ThemeContext';
+import { useStyles } from './hooks/use-styles';
 
-export interface SurfaceProps extends Omit<ViewProps, "style"> {
+export interface SurfaceProps extends Omit<ViewProps, 'style'> {
   /**
    * The relative size of the surface.
    */
@@ -28,7 +28,7 @@ const Surface: React.FC<SurfaceProps> = ({ category, elevation = 0, style, ...re
         backgroundColor: surfaceColor(elevation).hex(),
       },
     }),
-    [category, elevation],
+    [category, elevation]
   );
 
   return <Animated.View style={[styles.surface, style]} {...rest} />;

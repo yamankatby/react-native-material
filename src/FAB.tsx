@@ -1,21 +1,21 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Animated, GestureResponderEvent, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
-import Surface, { SurfaceProps } from "./Surface";
-import Pressable, { PressableProps } from "./Pressable";
-import Text from "./Text";
-import ActivityIndicator from "./ActivityIndicator";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useStyles } from "./hooks/use-styles";
-import { useAnimatedElevation } from "./hooks/use-animated-elevation";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Animated, GestureResponderEvent, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import Surface, { SurfaceProps } from './Surface';
+import Pressable, { PressableProps } from './Pressable';
+import Text from './Text';
+import ActivityIndicator from './ActivityIndicator';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
+import { useStyles } from './hooks/use-styles';
+import { useAnimatedElevation } from './hooks/use-animated-elevation';
 
-export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
-  icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
+export interface FABProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<PressableProps, 'style' | 'children'> {
+  icon?: React.ReactElement | ((props: { color: string, size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
-  variant?: "standard" | "extended";
+  variant?: 'standard' | 'extended';
 
-  size?: "default" | "mini";
+  size?: 'default' | 'mini';
 
   color?: Color;
 
@@ -25,13 +25,13 @@ export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableP
 
   loadingIndicator?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
-  loadingIndicatorPosition?: "icon" | "overlay";
+  loadingIndicatorPosition?: 'icon' | 'overlay';
 
   visible?: boolean;
 
   pressableContainerStyle?: StyleProp<ViewStyle>;
 
-  contentContainerStyle?: PressableProps["style"];
+  contentContainerStyle?: PressableProps['style'];
 
   iconContainerStyle?: StyleProp<ViewStyle>;
 
@@ -45,13 +45,13 @@ export interface FABProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableP
 const FAB: React.FC<FABProps> = ({
   icon,
   label,
-  variant = "standard",
-  size = "default",
-  color = "secondary",
+  variant = 'standard',
+  size = 'default',
+  color = 'secondary',
   tintColor,
   loading = false,
   loadingIndicator,
-  loadingIndicatorPosition = "icon",
+  loadingIndicatorPosition = 'icon',
   visible = true,
   style,
   pressableContainerStyle,
@@ -82,40 +82,57 @@ const FAB: React.FC<FABProps> = ({
 }) => {
   const palette = usePaletteColor(color, tintColor);
 
-  const hasIcon = useMemo(() => icon || (loading && loadingIndicatorPosition === "icon"), [icon, loading, loadingIndicatorPosition]);
+  const hasIcon = useMemo(
+    () => icon || (loading && loadingIndicatorPosition === 'icon'),
+    [icon, loading, loadingIndicatorPosition]
+  );
 
-  const styles = useStyles(() => ({
-    container: {
-      backgroundColor: palette.main,
-      borderRadius: size === "default" ? 28 : 20,
-    },
-    pressableContainer: {
-      borderRadius: size === "default" ? 28 : 20,
-      overflow: "hidden",
-    },
-    pressable: {
-      flexDirection: "row",
-      alignItems: "center",
-      paddingStart: variant === "extended" ? (hasIcon ? (size === "default" ? 12 : 6) : size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
-      paddingEnd: variant === "extended" ? (size === "default" ? 20 : 10) : size === "default" ? 16 : 8,
-      paddingVertical: size === "default" ? 16 : 8,
-    },
-    iconContainer: {
-      justifyContent: "center",
-      alignItems: "center",
-      width: 24,
-      height: 24,
-    },
-    labelContainer: {
-      marginStart: hasIcon ? (size === "default" ? 12 : 6) : 0,
-    },
-    loadingOverlayContainer: {
-      ...StyleSheet.absoluteFillObject,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: palette.main,
-    },
-  }), [variant, size, palette, hasIcon]);
+  const styles = useStyles(
+    () => ({
+      container: {
+        backgroundColor: palette.main,
+        borderRadius: size === 'default' ? 28 : 20,
+      },
+      pressableContainer: {
+        borderRadius: size === 'default' ? 28 : 20,
+        overflow: 'hidden',
+      },
+      pressable: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingStart:
+          variant === 'extended'
+            ? hasIcon
+              ? size === 'default'
+                ? 12
+                : 6
+              : size === 'default'
+                ? 20
+                : 10
+            : size === 'default'
+              ? 16
+              : 8,
+        paddingEnd: variant === 'extended' ? (size === 'default' ? 20 : 10) : size === 'default' ? 16 : 8,
+        paddingVertical: size === 'default' ? 16 : 8,
+      },
+      iconContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 24,
+        height: 24,
+      },
+      labelContainer: {
+        marginStart: hasIcon ? (size === 'default' ? 12 : 6) : 0,
+      },
+      loadingOverlayContainer: {
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: palette.main,
+      },
+    }),
+    [variant, size, palette, hasIcon]
+  );
 
   const animated = useRef(new Animated.Value(visible ? 1 : 0)).current;
 
@@ -130,13 +147,13 @@ const FAB: React.FC<FABProps> = ({
   const getLoadingIndicator = () => {
     if (!loadingIndicator) return <ActivityIndicator color={palette.on} />;
     switch (typeof loadingIndicator) {
-      case "string":
+      case 'string':
         return (
           <Text variant="button" style={{ color: palette.on }}>
             {loadingIndicator}
           </Text>
         );
-      case "function":
+      case 'function':
         return loadingIndicator({ color: palette.on });
       default:
         return loadingIndicator;
@@ -144,19 +161,19 @@ const FAB: React.FC<FABProps> = ({
   };
 
   const getIcon = () => {
-    if (loading && loadingIndicatorPosition === "icon") return getLoadingIndicator();
-    return typeof icon === "function" ? icon({ color: palette.on, size: 24 }) : icon;
+    if (loading && loadingIndicatorPosition === 'icon') return getLoadingIndicator();
+    return typeof icon === 'function' ? icon({ color: palette.on, size: 24 }) : icon;
   };
 
   const getLabel = () => {
     switch (typeof label) {
-      case "string":
+      case 'string':
         return (
           <Text variant="button" selectable={false} style={[{ color: palette.on }, labelStyle]}>
             {label}
           </Text>
         );
-      case "function":
+      case 'function':
         return label({ color: palette.on });
       default:
         return label;
@@ -165,17 +182,23 @@ const FAB: React.FC<FABProps> = ({
 
   const [pressed, setPressed] = useState(false);
 
-  const handlePressIn = useCallback((event: GestureResponderEvent) => {
-    onPressIn?.(event);
-    setPressed(true);
-  }, [onPressIn])
+  const handlePressIn = useCallback(
+    (event: GestureResponderEvent) => {
+      onPressIn?.(event);
+      setPressed(true);
+    },
+    [onPressIn]
+  );
 
-  const handlePressOut = useCallback((event: GestureResponderEvent) => {
-    onPressOut?.(event);
-    setPressed(false);
-  }, [onPressOut])
+  const handlePressOut = useCallback(
+    (event: GestureResponderEvent) => {
+      onPressOut?.(event);
+      setPressed(false);
+    },
+    [onPressOut]
+  );
 
-  const animatedElevation = useAnimatedElevation(pressed ? 12 : 6)
+  const animatedElevation = useAnimatedElevation(pressed ? 12 : 6);
 
   return (
     <Surface style={[animatedElevation, styles.container, { transform: [{ scale: animated }] }, style]} {...rest}>
@@ -201,9 +224,9 @@ const FAB: React.FC<FABProps> = ({
           testOnly_pressed={testOnly_pressed}
         >
           {hasIcon && <View style={[styles.iconContainer, iconContainerStyle]}>{getIcon()}</View>}
-          {variant === "extended" && <View style={[styles.labelContainer, labelContainerStyle]}>{getLabel()}</View>}
+          {variant === 'extended' && <View style={[styles.labelContainer, labelContainerStyle]}>{getLabel()}</View>}
 
-          {loading && loadingIndicatorPosition === "overlay" && (
+          {loading && loadingIndicatorPosition === 'overlay' && (
             <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
           )}
         </Pressable>

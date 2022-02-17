@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import {
   ActivityIndicator as RNActivityIndicator,
   ActivityIndicatorProps as RNActivityIndicatorProps,
-} from "react-native";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
+} from 'react-native';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
 
-export interface ActivityIndicatorProps extends Omit<RNActivityIndicatorProps, "color"> {
+export interface ActivityIndicatorProps extends Omit<RNActivityIndicatorProps, 'color'> {
   /**
    * The color of the spinner.
    *
@@ -14,7 +14,7 @@ export interface ActivityIndicatorProps extends Omit<RNActivityIndicatorProps, "
   color?: Color;
 }
 
-const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ color = "primary", ...rest }) => {
+const ActivityIndicator: React.FC<ActivityIndicatorProps> = ({ color = 'primary', ...rest }) => {
   const { main } = usePaletteColor(color);
   return <RNActivityIndicator {...rest} color={main} />;
 };

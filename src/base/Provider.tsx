@@ -1,9 +1,9 @@
-import React from "react";
-import { SpacingFuncProvider, SpacingFuncProviderProps } from "react-native-flex-layout";
-import { ThemeProvider, ThemeProviderProps } from "./ThemeContext";
-import { WindowSizeClassProvider, WindowSizeClassProviderProps } from "./WindowSizeClassContext";
-import { IconComponentProvider, IconComponentProviderProps } from "./IconComponentContext";
-import { Outlet, PortalProvider } from "./PortalContext";
+import React from 'react';
+import { SpacingFuncProvider, SpacingFuncProviderProps } from 'react-native-flex-layout';
+import { ThemeProvider, ThemeProviderProps } from './ThemeContext';
+import { WindowSizeClassProvider, WindowSizeClassProviderProps } from './WindowSizeClassContext';
+import { IconComponentProvider, IconComponentProviderProps } from './IconComponentContext';
+import { Outlet, PortalProvider } from './PortalContext';
 
 export type ProviderProps = ThemeProviderProps &
   WindowSizeClassProviderProps &

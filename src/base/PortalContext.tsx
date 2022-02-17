@@ -1,5 +1,5 @@
-import React, { createContext, Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { createContext, Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export const PortalContext = createContext<{
   portals: PortalProps[];
@@ -9,7 +9,7 @@ export const PortalContext = createContext<{
 export const usePortalContext = () => {
   const portal = useContext(PortalContext);
   if (!portal) {
-    throw new Error("usePortalContext must be used within a PortalContext");
+    throw new Error('usePortalContext must be used within a PortalContext');
   }
   return portal;
 };
@@ -46,10 +46,10 @@ export const Portal: React.FC<PortalProps> = ({ key, children }) => {
   const _key = useMemo(() => key ?? `${Date.now() + Math.random()}`, [key]);
 
   useEffect(() => {
-    setPortals(portals => [...portals, { key: _key, children }]);
+    setPortals((portals) => [...portals, { key: _key, children }]);
 
     return () => {
-      setPortals(portals => portals.filter(p => p.key !== _key));
+      setPortals((portals) => portals.filter((p) => p.key !== _key));
     };
   }, [_key, setPortals, children]);
 

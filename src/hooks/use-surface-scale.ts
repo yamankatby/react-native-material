@@ -1,6 +1,6 @@
-import { useTheme } from "../base/ThemeContext";
-import { useMemo } from "react";
-import chroma from "chroma-js";
+import { useTheme } from '../base/ThemeContext';
+import { useMemo } from 'react';
+import chroma from 'chroma-js';
 
 export const useSurfaceScale = () => {
   const { palette } = useTheme();

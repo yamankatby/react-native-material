@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Animated, Easing, Platform, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import { Portal } from "./base/PortalContext";
-import Surface from "./Surface";
+import React, { useEffect, useMemo, useState } from 'react';
+import { Animated, Easing, Platform, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { Portal } from './base/PortalContext';
+import Surface from './Surface';
 
 export interface DialogProps {
   visible?: boolean;
@@ -21,7 +21,7 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, children })
       toValue: visible ? 1 : 0,
       duration: 225,
       easing: Easing.out(Easing.cubic),
-      useNativeDriver: Platform.OS !== "android",
+      useNativeDriver: Platform.OS !== 'android',
     }).start(() => {
       if (!visible) setPortalVisible(false);
     });
@@ -37,7 +37,7 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, children })
       <Animated.View
         style={[StyleSheet.absoluteFill, styles.container, { opacity: animatedValue }]}
         pointerEvents="box-none"
-        needsOffscreenAlphaCompositing={Platform.OS === "android"}
+        needsOffscreenAlphaCompositing={Platform.OS === 'android'}
       >
         <Surface category="medium" elevation={24} style={[styles.surface]}>
           {children}
@@ -49,11 +49,11 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, children })
 
 const styles = StyleSheet.create({
   backdrop: {
-    backgroundColor: "rgba(0,0,0,.5)",
+    backgroundColor: 'rgba(0,0,0,.5)',
   },
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   surface: {
     width: 280,

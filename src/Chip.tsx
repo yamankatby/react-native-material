@@ -1,12 +1,12 @@
-import React, { useMemo } from "react";
-import { StyleProp, StyleSheet, TextStyle, View, ViewProps, ViewStyle } from "react-native";
-import chroma from "chroma-js";
-import Pressable, { PressableProps } from "./Pressable";
-import Text from "./Text";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useTheme } from "./base/ThemeContext";
+import React, { useMemo } from 'react';
+import { StyleProp, StyleSheet, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
+import chroma from 'chroma-js';
+import Pressable, { PressableProps } from './Pressable';
+import Text from './Text';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
+import { useTheme } from './base/ThemeContext';
 
-export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
+export interface ChipProps extends Omit<ViewProps, 'hitSlop'>, Omit<PressableProps, 'style' | 'children'> {
   /**
    * The text to display in the chip.
    */
@@ -15,12 +15,12 @@ export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressablePro
   /**
    * The element placed before the `label`.
    */
-  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element placed after the `label`.
    */
-  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The variant of the chip.
@@ -29,7 +29,7 @@ export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressablePro
    *
    * @default "filled"
    */
-  variant?: "filled" | "outlined";
+  variant?: 'filled' | 'outlined';
 
   /**
    * The color of the chip.
@@ -39,7 +39,7 @@ export interface ChipProps extends Omit<ViewProps, "hitSlop">, Omit<PressablePro
   /**
    * The style of the chip's container.
    */
-  contentContainerStyle?: PressableProps["style"];
+  contentContainerStyle?: PressableProps['style'];
 
   /**
    * The style of the chip's label.
@@ -61,8 +61,8 @@ const Chip: React.FC<ChipProps> = ({
   label,
   leading,
   trailing,
-  variant = "filled",
-  color = "on-surface",
+  variant = 'filled',
+  color = 'on-surface',
   style,
   contentContainerStyle,
   labelStyle,
@@ -96,22 +96,22 @@ const Chip: React.FC<ChipProps> = ({
   const scale = useMemo(() => chroma.scale([palette.on, palette.main]), [palette]);
 
   const labelElement =
-    typeof label === "string" ? (
+    typeof label === 'string' ? (
       <Text variant="body2" style={[{ color: scale(0.87).hex() }, labelStyle]}>
         {label}
       </Text>
-    ) : typeof label === "function" ? (
+    ) : typeof label === 'function' ? (
       label({ color: scale(0.87).hex() })
     ) : (
       label
     );
 
-  const leadingElement = typeof leading === "function" ? leading({ color: scale(0.66).hex(), size: 24 }) : leading;
+  const leadingElement = typeof leading === 'function' ? leading({ color: scale(0.66).hex(), size: 24 }) : leading;
 
-  const trailingElement = typeof trailing === "function" ? trailing({ color: scale(0.66).hex(), size: 18 }) : trailing;
+  const trailingElement = typeof trailing === 'function' ? trailing({ color: scale(0.66).hex(), size: 18 }) : trailing;
 
   return (
-    <View style={[styles.container, variant === "filled" && { backgroundColor: scale(0.08).hex() }, style]} {...rest}>
+    <View style={[styles.container, variant === 'filled' && { backgroundColor: scale(0.08).hex() }, style]} {...rest}>
       <Pressable
         pressEffect={pressEffect}
         pressEffectColor={pressEffectColor ?? scale(0.87).hex()}
@@ -137,7 +137,7 @@ const Chip: React.FC<ChipProps> = ({
         {children}
         {trailingElement && <View style={[styles.trailingContainer, trailingContainerStyle]}>{trailingElement}</View>}
 
-        {variant === "outlined" && (
+        {variant === 'outlined' && (
           <View style={[StyleSheet.absoluteFill, styles.outline, { borderColor: scale(0.26).hex() }]} />
         )}
       </Pressable>
@@ -148,11 +148,11 @@ const Chip: React.FC<ChipProps> = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 16,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   contentContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 12,
     height: 32,
   },

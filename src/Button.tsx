@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
@@ -8,17 +8,17 @@ import {
   TextStyle,
   View,
   ViewStyle,
-} from "react-native";
-import Surface, { SurfaceProps } from "./Surface";
-import Text from "./Text";
-import ActivityIndicator from "./ActivityIndicator";
-import Pressable, { PressableProps } from "./Pressable";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useSurfaceScale } from "./hooks/use-surface-scale";
-import { useStyles } from "./hooks/use-styles";
-import { useAnimatedElevation } from "./hooks/use-animated-elevation";
+} from 'react-native';
+import Surface, { SurfaceProps } from './Surface';
+import Text from './Text';
+import ActivityIndicator from './ActivityIndicator';
+import Pressable, { PressableProps } from './Pressable';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
+import { useSurfaceScale } from './hooks/use-surface-scale';
+import { useStyles } from './hooks/use-styles';
+import { useAnimatedElevation } from './hooks/use-animated-elevation';
 
-export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
+export interface ButtonProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<PressableProps, 'style' | 'children'> {
   /**
    * The text content of the button.
    */
@@ -27,12 +27,12 @@ export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<Pressab
   /**
    * The element placed before the `title`.
    */
-  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element placed after the `title`.
    */
-  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The style of the button.
@@ -42,7 +42,7 @@ export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<Pressab
    *
    * @default "contained"
    */
-  variant?: "text" | "outlined" | "contained";
+  variant?: 'text' | 'outlined' | 'contained';
 
   /**
    * The main color of the button.
@@ -94,7 +94,7 @@ export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<Pressab
    *
    * @default "leading"
    */
-  loadingIndicatorPosition?: "leading" | "trailing" | "overlay";
+  loadingIndicatorPosition?: 'leading' | 'trailing' | 'overlay';
 
   /**
    * A React.Node to replace the default loading indicator. Also, you can pass a string to show a text (e.g. "Loading...").
@@ -109,7 +109,7 @@ export interface ButtonProps extends Omit<SurfaceProps, "hitSlop">, Omit<Pressab
   /**
    * The style of the button's container.
    */
-  contentContainerStyle?: PressableProps["style"];
+  contentContainerStyle?: PressableProps['style'];
 
   /**
    * The style of the button's text. No effect if you pass a React.Node as the `title` prop.
@@ -136,14 +136,14 @@ const Button: React.FC<ButtonProps> = ({
   title,
   leading,
   trailing,
-  variant = "contained",
-  color = "primary",
+  variant = 'contained',
+  color = 'primary',
   tintColor,
   compact = false,
   disableElevation = false,
   uppercase = true,
   loading = false,
-  loadingIndicatorPosition = "leading",
+  loadingIndicatorPosition = 'leading',
   loadingIndicator,
 
   style,
@@ -178,28 +178,28 @@ const Button: React.FC<ButtonProps> = ({
 
   const p = usePaletteColor(
     disabled ? surfaceScale(0.12).hex() : color,
-    disabled ? surfaceScale(0.35).hex() : tintColor,
+    disabled ? surfaceScale(0.35).hex() : tintColor
   );
 
   const contentColor = useMemo(
-    () => (variant === "contained" ? p.on : disabled ? p.on : p.main),
-    [variant, p, disabled],
+    () => (variant === 'contained' ? p.on : disabled ? p.on : p.main),
+    [variant, p, disabled]
   );
 
   const hasLeading = useMemo(
-    () => !!leading || (loading && loadingIndicatorPosition === "leading"),
-    [leading, loading, loadingIndicatorPosition],
+    () => !!leading || (loading && loadingIndicatorPosition === 'leading'),
+    [leading, loading, loadingIndicatorPosition]
   );
 
   const hasTrailing = useMemo(
-    () => !!trailing || (loading && loadingIndicatorPosition === "trailing"),
-    [trailing, loading, loadingIndicatorPosition],
+    () => !!trailing || (loading && loadingIndicatorPosition === 'trailing'),
+    [trailing, loading, loadingIndicatorPosition]
   );
 
   const styles = useStyles(
     ({ shapes }) => ({
       container: {
-        backgroundColor: variant === "contained" ? p.main : "transparent",
+        backgroundColor: variant === 'contained' ? p.main : 'transparent',
       },
       outline: {
         ...shapes.small,
@@ -208,47 +208,47 @@ const Button: React.FC<ButtonProps> = ({
       },
       pressableContainer: {
         ...shapes.small,
-        overflow: "hidden",
+        overflow: 'hidden',
       },
       pressable: {
         minWidth: 64,
         height: 36,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingStart: hasLeading ? (compact ? 6 : 12) : compact ? 8 : 16,
         paddingEnd: hasTrailing ? (compact ? 6 : 12) : compact ? 8 : 16,
       },
       titleStyle: {
-        textTransform: uppercase ? "uppercase" : "none",
-        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+        textTransform: uppercase ? 'uppercase' : 'none',
+        opacity: loading && loadingIndicatorPosition === 'overlay' ? 0 : 1,
       },
       leadingContainer: {
         marginEnd: compact ? 6 : 8,
-        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+        opacity: loading && loadingIndicatorPosition === 'overlay' ? 0 : 1,
       },
       trailingContainer: {
         marginStart: compact ? 6 : 8,
-        opacity: loading && loadingIndicatorPosition === "overlay" ? 0 : 1,
+        opacity: loading && loadingIndicatorPosition === 'overlay' ? 0 : 1,
       },
       loadingOverlayContainer: {
         ...StyleSheet.absoluteFillObject,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
       },
     }),
-    [variant, uppercase, compact, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing, surfaceScale],
+    [variant, uppercase, compact, loading, loadingIndicatorPosition, p, hasLeading, hasTrailing, surfaceScale]
   );
 
   const getTitle = () => {
     switch (typeof title) {
-      case "string":
+      case 'string':
         return (
           <Text variant="button" selectable={false} style={[{ color: contentColor }, styles.titleStyle, titleStyle]}>
             {title}
           </Text>
         );
-      case "function":
+      case 'function':
         return title({ color: contentColor });
       default:
         return title;
@@ -258,13 +258,13 @@ const Button: React.FC<ButtonProps> = ({
   const getLoadingIndicator = () => {
     if (!loadingIndicator) return <ActivityIndicator color={contentColor} />;
     switch (typeof loadingIndicator) {
-      case "string":
+      case 'string':
         return (
           <Text variant="button" style={{ color: contentColor }}>
             {loadingIndicator}
           </Text>
         );
-      case "function":
+      case 'function':
         return loadingIndicator({ color: contentColor });
       default:
         return loadingIndicator;
@@ -272,40 +272,54 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const getLeading = () => {
-    if (loading && loadingIndicatorPosition === "leading") return getLoadingIndicator();
-    return typeof leading === "function" ? leading({ color: contentColor, size: 18 }) : leading;
+    if (loading && loadingIndicatorPosition === 'leading') return getLoadingIndicator();
+    return typeof leading === 'function' ? leading({ color: contentColor, size: 18 }) : leading;
   };
 
   const getTrailing = () => {
-    if (loading && loadingIndicatorPosition === "trailing") return getLoadingIndicator();
-    return typeof trailing === "function" ? trailing({ color: contentColor, size: 18 }) : trailing;
+    if (loading && loadingIndicatorPosition === 'trailing') return getLoadingIndicator();
+    return typeof trailing === 'function' ? trailing({ color: contentColor, size: 18 }) : trailing;
   };
 
   const [hovered, setHovered] = useState(false);
 
-  const handleMouseEnter = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
-    onMouseEnter?.(event);
-    setHovered(true);
-  }, [onMouseEnter]);
+  const handleMouseEnter = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      onMouseEnter?.(event);
+      setHovered(true);
+    },
+    [onMouseEnter]
+  );
 
-  const handleMouseLeave = useCallback((event: NativeSyntheticEvent<TargetedEvent>) => {
-    onMouseLeave?.(event);
-    setHovered(false);
-  }, [onMouseLeave]);
+  const handleMouseLeave = useCallback(
+    (event: NativeSyntheticEvent<TargetedEvent>) => {
+      onMouseLeave?.(event);
+      setHovered(false);
+    },
+    [onMouseLeave]
+  );
 
   const [pressed, setPressed] = useState(false);
 
-  const handlePressIn = useCallback((event: GestureResponderEvent) => {
-    onPressIn?.(event);
-    setPressed(true);
-  }, [onPressIn])
+  const handlePressIn = useCallback(
+    (event: GestureResponderEvent) => {
+      onPressIn?.(event);
+      setPressed(true);
+    },
+    [onPressIn]
+  );
 
-  const handlePressOut = useCallback((event: GestureResponderEvent) => {
-    onPressOut?.(event);
-    setPressed(false);
-  }, [onPressOut])
+  const handlePressOut = useCallback(
+    (event: GestureResponderEvent) => {
+      onPressOut?.(event);
+      setPressed(false);
+    },
+    [onPressOut]
+  );
 
-  const animatedElevation = useAnimatedElevation(variant === "contained" && !disableElevation && !disabled ? pressed ? 8 : hovered ? 4 : 2 : 0)
+  const animatedElevation = useAnimatedElevation(
+    variant === 'contained' && !disableElevation && !disabled ? (pressed ? 8 : hovered ? 4 : 2) : 0
+  );
 
   return (
     <Surface category="small" style={[animatedElevation, styles.container, style]} {...rest}>
@@ -334,7 +348,7 @@ const Button: React.FC<ButtonProps> = ({
           {getTitle()}
           {hasTrailing && <View style={[styles.trailingContainer, trailingContainerStyle]}>{getTrailing()}</View>}
 
-          {loading && loadingIndicatorPosition === "overlay" && (
+          {loading && loadingIndicatorPosition === 'overlay' && (
             <View style={[styles.loadingOverlayContainer, loadingOverlayContainerStyle]}>{getLoadingIndicator()}</View>
           )}
         </Pressable>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -11,12 +11,12 @@ import {
   StyleSheet,
   TargetedEvent,
   View,
-} from "react-native";
-import chroma from "chroma-js";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
+} from 'react-native';
+import chroma from 'chroma-js';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
 
 export interface PressableProps extends RNPressableProps {
-  pressEffect?: "none" | "highlight" | "ripple" | "android-ripple";
+  pressEffect?: 'none' | 'highlight' | 'ripple' | 'android-ripple';
 
   pressEffectColor?: Color;
 
@@ -28,8 +28,8 @@ export interface PressableProps extends RNPressableProps {
 }
 
 const Pressable: React.FC<PressableProps> = ({
-  pressEffect = Platform.select({ android: "android-ripple", web: "ripple", default: "highlight" }),
-  pressEffectColor = "on-background",
+  pressEffect = Platform.select({ android: 'android-ripple', web: 'ripple', default: 'highlight' }),
+  pressEffectColor = 'on-background',
   onLayout,
   onPressIn,
   onPressOut,
@@ -53,7 +53,7 @@ const Pressable: React.FC<PressableProps> = ({
       setSize({ width, height });
       onLayout?.(event);
     },
-    [onLayout],
+    [onLayout]
   );
 
   const [pressed, setPressed] = useState(false);
@@ -63,7 +63,7 @@ const Pressable: React.FC<PressableProps> = ({
       setPressed(true);
       onPressIn?.(event);
 
-      if (pressEffect === "ripple") {
+      if (pressEffect === 'ripple') {
         const { locationX, locationY } = event.nativeEvent;
 
         const x = (locationX ?? size.width / 2) - 0.5;
@@ -77,12 +77,12 @@ const Pressable: React.FC<PressableProps> = ({
           style: { start: x, top: y, transform: [{ scale }], opacity },
         };
 
-        setRipples(prevState => [...prevState, ripple]);
+        setRipples((prevState) => [...prevState, ripple]);
 
         Animated.timing(scale, {
           toValue: Math.max(
             size.width * 1.25 + Math.abs(size.width / 2 - x) * 2,
-            size.height * 1.25 + Math.abs(size.height / 2 - y) * 2,
+            size.height * 1.25 + Math.abs(size.height / 2 - y) * 2
           ),
           easing: Easing.out(Easing.ease),
           duration: 400,
@@ -90,7 +90,7 @@ const Pressable: React.FC<PressableProps> = ({
         }).start();
       }
     },
-    [onPressIn, pressEffect, size],
+    [onPressIn, pressEffect, size]
   );
 
   const handlePressOut = useCallback(
@@ -98,18 +98,18 @@ const Pressable: React.FC<PressableProps> = ({
       setPressed(false);
       onPressOut?.(event);
 
-      if (pressEffect === "ripple") {
+      if (pressEffect === 'ripple') {
         Animated.timing(ripples[ripples.length - 1].style.opacity, {
           toValue: 0,
           easing: Easing.out(Easing.ease),
           duration: 400,
           useNativeDriver: false,
         }).start(() => {
-          setRipples(prevState => prevState.slice(1));
+          setRipples((prevState) => prevState.slice(1));
         });
       }
     },
-    [pressEffect, ripples, onPressOut],
+    [pressEffect, ripples, onPressOut]
   );
 
   const [focused, setFocused] = useState(false);
@@ -119,7 +119,7 @@ const Pressable: React.FC<PressableProps> = ({
       setFocused(true);
       onFocus?.(event);
     },
-    [onFocus],
+    [onFocus]
   );
 
   const handleBlur = useCallback(
@@ -127,7 +127,7 @@ const Pressable: React.FC<PressableProps> = ({
       setFocused(false);
       onBlur?.(event);
     },
-    [onBlur],
+    [onBlur]
   );
 
   const [hovered, setHovered] = useState(false);
@@ -137,7 +137,7 @@ const Pressable: React.FC<PressableProps> = ({
       setHovered(true);
       onMouseEnter?.(event);
     },
-    [onMouseEnter],
+    [onMouseEnter]
   );
 
   const handleMouseLeave = useCallback(
@@ -145,13 +145,13 @@ const Pressable: React.FC<PressableProps> = ({
       setHovered(false);
       onMouseLeave?.(event);
     },
-    [onMouseLeave],
+    [onMouseLeave]
   );
 
   return (
     <RNPressable
       android_ripple={
-        pressEffect === "android-ripple" ? android_ripple ?? { color: chroma(color).alpha(0.26).hex() } : undefined
+        pressEffect === 'android-ripple' ? android_ripple ?? { color: chroma(color).alpha(0.26).hex() } : undefined
       }
       onLayout={handleLayout}
       onPressIn={handlePressIn}
@@ -161,21 +161,27 @@ const Pressable: React.FC<PressableProps> = ({
       {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave } as any)}
       {...rest}
     >
-      <View style={[StyleSheet.absoluteFill, {
-        backgroundColor: hovered && !rest.disabled ? chroma(color).alpha(0.04).hex() : 'transparent',
-      }, ({ transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms" } as any)]} />
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            backgroundColor: hovered && !rest.disabled ? chroma(color).alpha(0.04).hex() : 'transparent',
+          },
+          { transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms' } as any,
+        ]}
+      />
 
       {focused && !rest.disabled && (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.12).hex() }]} />
       )}
 
-      {pressEffect === "highlight" && pressed && (
+      {pressEffect === 'highlight' && pressed && (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: chroma(color).alpha(0.26).hex() }]} />
       )}
 
-      {pressEffect === "ripple" && ripples.length !== 0 && (
+      {pressEffect === 'ripple' && ripples.length !== 0 && (
         <View style={[StyleSheet.absoluteFill, styles.effectContainer]}>
-          {ripples.map(ripple => (
+          {ripples.map((ripple) => (
             <Animated.View
               key={ripple.key}
               style={[styles.ripple, { backgroundColor: chroma(color).alpha(0.1).hex() }, ripple.style]}
@@ -191,10 +197,10 @@ const Pressable: React.FC<PressableProps> = ({
 
 const styles = StyleSheet.create({
   effectContainer: {
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   ripple: {
-    position: "absolute",
+    position: 'absolute',
     width: 1,
     height: 1,
     borderRadius: 0.5,

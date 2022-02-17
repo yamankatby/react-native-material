@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Animated, StyleProp, useWindowDimensions, View, ViewProps, ViewStyle } from "react-native";
-import Surface from "./Surface";
-import { useStyles } from "./hooks/use-styles";
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, StyleProp, useWindowDimensions, View, ViewProps, ViewStyle } from 'react-native';
+import Surface from './Surface';
+import { useStyles } from './hooks/use-styles';
 
 export interface BackdropProps {
   revealed?: boolean;
@@ -24,7 +24,7 @@ export interface BackdropProps {
 
   backLayerContainerStyle?: StyleProp<ViewStyle>;
 
-  frontLayerContainerStyle?: Animated.AnimatedProps<ViewProps>["style"];
+  frontLayerContainerStyle?: Animated.AnimatedProps<ViewProps>['style'];
 
   subheaderContainerStyle?: StyleProp<ViewStyle>;
 }
@@ -52,10 +52,10 @@ const Backdrop: React.FC<BackdropProps> = ({
     container: {
       flex: 1,
       backgroundColor: palette.primary.main,
-      overflow: "hidden",
+      overflow: 'hidden',
     },
     frontLayer: {
-      position: "absolute",
+      position: 'absolute',
       start: 0,
       end: 0,
       bottom: 0,

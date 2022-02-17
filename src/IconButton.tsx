@@ -1,13 +1,13 @@
-import React from "react";
-import { StyleSheet, View, ViewProps } from "react-native";
-import Pressable, { PressableProps } from "./Pressable";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
+import React from 'react';
+import { StyleSheet, View, ViewProps } from 'react-native';
+import Pressable, { PressableProps } from './Pressable';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
 
-export interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<PressableProps, "style" | "children"> {
+export interface IconButtonProps extends Omit<ViewProps, 'hitSlop'>, Omit<PressableProps, 'style' | 'children'> {
   /**
    * The element to render as the icon.
    */
-  icon?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  icon?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The color of the icon and the press effect.
@@ -19,7 +19,7 @@ export interface IconButtonProps extends Omit<ViewProps, "hitSlop">, Omit<Pressa
   /**
    * The style of the icon's container view.
    */
-  contentContainerStyle?: PressableProps["style"];
+  contentContainerStyle?: PressableProps['style'];
 }
 
 const styles = StyleSheet.create({
@@ -27,17 +27,17 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 48 / 2,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   contentContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
-  color = "on-background",
+  color = 'on-background',
   style,
   contentContainerStyle,
 
@@ -83,7 +83,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         android_ripple={android_ripple}
         testOnly_pressed={testOnly_pressed}
       >
-        {icon ? (typeof icon === "function" ? icon({ color: palette.main, size: 24 }) : icon) : null}
+        {icon ? (typeof icon === 'function' ? icon({ color: palette.main, size: 24 }) : icon) : null}
       </Pressable>
     </View>
   );

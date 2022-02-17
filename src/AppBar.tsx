@@ -1,10 +1,10 @@
-import React from "react";
-import { Platform, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from "react-native";
-import Surface, { SurfaceProps } from "./Surface";
-import Text from "./Text";
-import { useSurfaceColorValue } from "./hooks/use-surface-color";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useTheme } from "./base/ThemeContext";
+import React from 'react';
+import { Platform, StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import Surface, { SurfaceProps } from './Surface';
+import Text from './Text';
+import { useSurfaceColorValue } from './hooks/use-surface-color';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
+import { useTheme } from './base/ThemeContext';
 
 export interface AppBarProps extends SurfaceProps {
   /**
@@ -12,7 +12,7 @@ export interface AppBarProps extends SurfaceProps {
    *
    * @default "top"
    */
-  variant?: "top" | "bottom";
+  variant?: 'top' | 'bottom';
 
   /**
    * The primary text to display in the AppBar.
@@ -34,12 +34,12 @@ export interface AppBarProps extends SurfaceProps {
   /**
    * The element displayed before the `title`.
    */
-  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element displayed after the `title`.
    */
-  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
 
   /**
    * The fill color of the AppBar's background.
@@ -99,13 +99,13 @@ export interface AppBarProps extends SurfaceProps {
 }
 
 const AppBar: React.FC<AppBarProps> = ({
-  variant = "top",
+  variant = 'top',
   title,
   subtitle,
   centerTitle = false,
   leading,
   trailing,
-  color = "primary",
+  color = 'primary',
   tintColor,
   transparent = false,
   enableColorOnDark = false,
@@ -121,43 +121,46 @@ const AppBar: React.FC<AppBarProps> = ({
 }) => {
   const theme = useTheme();
 
-  const surfaceColor = useSurfaceColorValue(variant === "top" ? 4 : 8)
+  const surfaceColor = useSurfaceColorValue(variant === 'top' ? 4 : 8);
 
-  const palette = usePaletteColor(theme.colorScheme === "dark" && !enableColorOnDark ? surfaceColor : color, tintColor);
+  const palette = usePaletteColor(theme.colorScheme === 'dark' && !enableColorOnDark ? surfaceColor : color, tintColor);
 
   const titleElement =
-    typeof title === "string" ? (
+    typeof title === 'string' ? (
       <Text variant="h6" style={[{ color: palette.on }, titleStyle]}>
         {title}
       </Text>
-    ) : typeof title === "function" ? (
+    ) : typeof title === 'function' ? (
       title({ color: palette.on })
     ) : (
       title
     );
 
   const subtitleElement =
-    typeof subtitle === "string" ? (
+    typeof subtitle === 'string' ? (
       <Text variant="caption" style={[{ color: palette.on }, subtitleStyle]}>
         {subtitle}
       </Text>
-    ) : typeof subtitle === "function" ? (
+    ) : typeof subtitle === 'function' ? (
       subtitle({ color: palette.on })
     ) : (
       subtitle
     );
 
-  const leadingElement = typeof leading === "function" ? leading({ color: palette.on, size: 24 }) : leading;
+  const leadingElement = typeof leading === 'function' ? leading({ color: palette.on, size: 24 }) : leading;
 
-  const trailingElement = typeof trailing === "function" ? trailing({ color: palette.on, size: 24 }) : trailing;
+  const trailingElement = typeof trailing === 'function' ? trailing({ color: palette.on, size: 24 }) : trailing;
 
   return (
     <Surface
-      style={[{
-        backgroundColor: transparent ? "transparent" : palette.main,
-        zIndex: variant === "top" ? 4 : 8,
-      }, style]}
-      elevation={transparent ? 0 : variant === "top" ? 4 : 8}
+      style={[
+        {
+          backgroundColor: transparent ? 'transparent' : palette.main,
+          zIndex: variant === 'top' ? 4 : 8,
+        },
+        style,
+      ]}
+      elevation={transparent ? 0 : variant === 'top' ? 4 : 8}
       {...props}
     >
       <View style={[styles.contentContainer, contentContainerStyle]}>
@@ -167,7 +170,7 @@ const AppBar: React.FC<AppBarProps> = ({
             centerTitle ? [StyleSheet.absoluteFill, styles.centeredTitleContainer] : styles.titleContainer,
             titleContentStyle,
           ]}
-          pointerEvents={centerTitle ? "none" : undefined}
+          pointerEvents={centerTitle ? 'none' : undefined}
         >
           {titleElement}
           {subtitleElement}
@@ -181,9 +184,9 @@ const AppBar: React.FC<AppBarProps> = ({
 
 const styles = StyleSheet.create({
   contentContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     height: Platform.select({ ios: 44, web: 64, default: 56 }),
     paddingHorizontal: 16,
   },
@@ -197,11 +200,11 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   centeredTitleContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

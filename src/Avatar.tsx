@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Image,
   ImageSourcePropType,
@@ -8,10 +8,10 @@ import {
   TextStyle,
   View,
   ViewStyle,
-} from "react-native";
-import Text from "./Text";
-import { Color, usePaletteColor } from "./hooks/use-palette-color";
-import { useStyles } from "./hooks/use-styles";
+} from 'react-native';
+import Text from './Text';
+import { Color, usePaletteColor } from './hooks/use-palette-color';
+import { useStyles } from './hooks/use-styles';
 
 export interface AvatarProps {
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
@@ -48,7 +48,7 @@ const Avatar: React.FC<AvatarProps> = ({
   image,
   icon,
   size = 56,
-  color = "secondary",
+  color = 'secondary',
   tintColor,
   initials = true,
   uppercase = true,
@@ -59,7 +59,7 @@ const Avatar: React.FC<AvatarProps> = ({
   labelStyle,
   imageStyle,
 }) => {
-  const palette = usePaletteColor(autoColor ? getColor(typeof label === "string" ? label : "") : color, tintColor);
+  const palette = usePaletteColor(autoColor ? getColor(typeof label === 'string' ? label : '') : color, tintColor);
 
   const styles = useStyles(
     () => ({
@@ -71,13 +71,13 @@ const Avatar: React.FC<AvatarProps> = ({
       },
       contentContainer: {
         ...StyleSheet.absoluteFillObject,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
       },
       label: {
         fontSize: size / 2,
         color: palette.on,
-        textTransform: uppercase ? "uppercase" : "none",
+        textTransform: uppercase ? 'uppercase' : 'none',
       },
       image: {
         width: size,
@@ -85,18 +85,18 @@ const Avatar: React.FC<AvatarProps> = ({
         borderRadius: size / 2,
       },
     }),
-    [size, uppercase, palette],
+    [size, uppercase, palette]
   );
 
   const getLabel = () => {
     switch (typeof label) {
-      case "string":
+      case 'string':
         return (
           <Text variant="h6" style={[styles.label, labelStyle]}>
             {initials ? getInitials(label) : label}
           </Text>
         );
-      case "function":
+      case 'function':
         return label({ color: palette.on });
       default:
         return label;
@@ -105,12 +105,12 @@ const Avatar: React.FC<AvatarProps> = ({
 
   const getImage = () => {
     if (!image || React.isValidElement(image)) return image;
-    if (typeof image === "function") return image({ size });
+    if (typeof image === 'function') return image({ size });
     return <Image source={image} style={[styles.image, imageStyle]} />;
   };
 
   const getIcon = () => {
-    if (typeof icon === "function") return icon({ color: palette.on, size: size / 2 });
+    if (typeof icon === 'function') return icon({ color: palette.on, size: size / 2 });
     return icon;
   };
 
@@ -130,7 +130,7 @@ function getColor(label: string) {
   for (i = 0; i < label.length; i += 1) {
     hash = label.charCodeAt(i) + ((hash << 5) - hash);
   }
-  let color = "#";
+  let color = '#';
   for (i = 0; i < 3; i += 1) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.substr(-2);
@@ -139,7 +139,7 @@ function getColor(label: string) {
 }
 
 function getInitials(label: string) {
-  const namesArray = label.trim().split(" ");
+  const namesArray = label.trim().split(' ');
   if (namesArray.length === 1) return `${namesArray[0].charAt(0)}`;
   else return `${namesArray[0].charAt(0)}${namesArray[namesArray.length - 1].charAt(0)}`;
 }
