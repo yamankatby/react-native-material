@@ -1,6 +1,6 @@
 {
-  "name": "@react-native-material/core-example",
-  "description": "Example app for @react-native-material/core",
+  "name": "rn-material-example",
+  "description": "Example app for rn-material",
   "version": "0.0.1",
   "private": true,
   "main": "index",
