@@ -109,7 +109,6 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
       placeholder,
       onFocus,
       onBlur,
-      onChangeText,
       ...rest
     },
     ref
@@ -126,20 +125,10 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
     const trailingNode =
       typeof trailing === 'function'
         ? trailing({
-          color: surfaceScale(0.62).hex(),
-          size: 24,
-        })
+            color: surfaceScale(0.62).hex(),
+            size: 24,
+          })
         : trailing;
-
-    const [text, setText] = useState('');
-
-    const handleChangeText = useCallback(
-      (text: string) => {
-        onChangeText?.(text);
-        setText(text);
-      },
-      [onChangeText]
-    );
 
     const [hovered, setHovered] = useState(false);
 
@@ -188,7 +177,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
       }).start();
     }, [focused]);
 
-    const active = useMemo(() => focused || text.length > 0, [focused, text]);
+    const active = useMemo(() => focused || (rest.value?.length || 0) > 0, [focused, rest.value]);
 
     const activeAnimation = useMemo(() => new Animated.Value(active ? 1 : 0), []);
 
@@ -210,17 +199,17 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
               ? focused
                 ? surfaceScale(0.14).hex()
                 : hovered
-                  ? surfaceScale(0.08).hex()
-                  : surfaceScale(0.04).hex()
+                ? surfaceScale(0.08).hex()
+                : surfaceScale(0.04).hex()
               : variant === 'outlined'
-                ? surfaceScale(0).hex()
-                : undefined,
+              ? surfaceScale(0).hex()
+              : undefined,
         },
         input: {
           flex: 1,
           minHeight: variant === 'standard' ? 48 : 56,
-          paddingStart: !!leadingNode ? 12 : variant === 'standard' ? 0 : 16,
-          paddingEnd: !!trailingNode ? 12 : variant === 'standard' ? 0 : 16,
+          paddingStart: leadingNode ? 12 : variant === 'standard' ? 0 : 16,
+          paddingEnd: trailingNode ? 12 : variant === 'standard' ? 0 : 16,
           color: surfaceScale(0.87).hex(),
         },
         leading: {
@@ -271,7 +260,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
           justifyContent: 'center',
           position: 'absolute',
           top: 0,
-          start: variant === 'standard' ? (!!leadingNode ? 36 : 0) : !!leadingNode ? 48 : 16,
+          start: variant === 'standard' ? (leadingNode ? 36 : 0) : leadingNode ? 48 : 16,
           height: variant === 'standard' ? 48 : 56,
         },
         helperText: {
@@ -304,7 +293,6 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef(
             placeholder={label ? (focused ? placeholder : undefined) : placeholder}
             selectionColor={palette.main}
             placeholderTextColor={surfaceScale(0.4).hex()}
-            onChangeText={handleChangeText}
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, ...rest } as any)}

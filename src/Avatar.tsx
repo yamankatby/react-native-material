@@ -85,7 +85,7 @@ const Avatar: React.FC<AvatarProps> = ({
         borderRadius: size / 2,
       },
     }),
-    [size, uppercase, palette]
+    [size, uppercase, palette],
   );
 
   const getLabel = () => {
@@ -117,7 +117,7 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <View style={[styles.container, style]}>
       {(label || icon) && (
-        <View style={[styles.contentContainer, contentContainerStyle]}>{icon ? getIcon() : label && getLabel()}</View>
+        <View style={[styles.contentContainer, contentContainerStyle]}>{label ? getLabel() : icon && getIcon()}</View>
       )}
       {image && <View style={[StyleSheet.absoluteFillObject, imageContainerStyle]}>{getImage()}</View>}
     </View>
