@@ -7,7 +7,7 @@ export interface IconButtonProps extends Omit<ViewProps, 'hitSlop'>, Omit<Pressa
   /**
    * The element to render as the icon.
    */
-  icon?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  icon?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The color of the icon and the press effect.

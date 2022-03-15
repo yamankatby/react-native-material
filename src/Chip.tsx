@@ -15,12 +15,12 @@ export interface ChipProps extends Omit<ViewProps, 'hitSlop'>, Omit<PressablePro
   /**
    * The element placed before the `label`.
    */
-  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element placed after the `label`.
    */
-  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The variant of the chip.

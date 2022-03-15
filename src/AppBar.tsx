@@ -34,12 +34,12 @@ export interface AppBarProps extends SurfaceProps {
   /**
    * The element displayed before the `title`.
    */
-  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element displayed after the `title`.
    */
-  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The fill color of the AppBar's background.

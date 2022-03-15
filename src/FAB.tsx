@@ -9,7 +9,7 @@ import { useStyles } from './hooks/use-styles';
 import { useAnimatedElevation } from './hooks/use-animated-elevation';
 
 export interface FABProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<PressableProps, 'style' | 'children'> {
-  icon?: React.ReactElement | ((props: { color: string, size: number }) => React.ReactElement | null) | null;
+  icon?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   label?: string | React.ReactElement | ((props: { color: string }) => React.ReactElement | null) | null;
 
@@ -107,11 +107,11 @@ const FAB: React.FC<FABProps> = ({
                 ? 12
                 : 6
               : size === 'default'
-                ? 20
-                : 10
+              ? 20
+              : 10
             : size === 'default'
-              ? 16
-              : 8,
+            ? 16
+            : 8,
         paddingEnd: variant === 'extended' ? (size === 'default' ? 20 : 10) : size === 'default' ? 16 : 8,
         paddingVertical: size === 'default' ? 16 : 8,
       },

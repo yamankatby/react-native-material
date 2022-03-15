@@ -19,7 +19,7 @@ export interface ListItemProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<Press
 
   leading?: React.ReactElement;
 
-  trailing?: React.ReactElement | ((props: { color: string, size: number }) => React.ReactElement | null) | null;
+  trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 }
 
 const ListItem: React.FC<ListItemProps> = ({

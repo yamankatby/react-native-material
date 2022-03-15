@@ -85,7 +85,7 @@ const Avatar: React.FC<AvatarProps> = ({
         borderRadius: size / 2,
       },
     }),
-    [size, uppercase, palette],
+    [size, uppercase, palette]
   );
 
   const getLabel = () => {

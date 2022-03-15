@@ -86,11 +86,11 @@ const Banner: React.FC<BannerProps> = ({
       <View style={[styles.actionsContainer, actionsContainerStyle]}>
         {Array.isArray(buttons)
           ? buttons.map((button, index) => (
-            <React.Fragment key={index}>
-              {button}
-              {index !== buttons.length - 1 && <View style={{ width: 8 }} />}
-            </React.Fragment>
-          ))
+              <React.Fragment key={index}>
+                {button}
+                {index !== buttons.length - 1 && <View style={{ width: 8 }} />}
+              </React.Fragment>
+            ))
           : buttons}
       </View>
       <Divider />

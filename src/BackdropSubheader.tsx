@@ -8,9 +8,9 @@ import { useStyles } from './hooks/use-styles';
 export interface BackdropSubheaderProps {
   title?: string | React.ReactElement;
 
-  leading?: React.ReactElement | ((props: { color: string, size: number }) => React.ReactElement | null) | null;
+  leading?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
-  trailing?: React.ReactElement | ((props: { color: string, size: number }) => React.ReactElement | null) | null;
+  trailing?: React.ReactElement | ((props: { color: string; size: number }) => React.ReactElement | null) | null;
 
   divider?: boolean | React.ReactElement;
 

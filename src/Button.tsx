@@ -27,12 +27,12 @@ export interface ButtonProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<Pressab
   /**
    * The element placed before the `title`.
    */
-  leading?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  leading?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The element placed after the `title`.
    */
-  trailing?: React.ReactNode | ((props: { color: string, size: number }) => React.ReactNode | null) | null;
+  trailing?: React.ReactNode | ((props: { color: string; size: number }) => React.ReactNode | null) | null;
 
   /**
    * The style of the button.
