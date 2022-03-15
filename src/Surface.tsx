@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, StyleProp, ViewProps, ViewStyle } from 'react-native';
-import { Elevation, ShapeCategory } from './base/ThemeContext';
+import type { Elevation, ShapeCategory } from './base/ThemeContext';
 import { useStyles } from './hooks/use-styles';
 
 export interface SurfaceProps extends Omit<ViewProps, 'style'> {

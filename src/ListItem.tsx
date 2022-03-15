@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Divider from './Divider';
 import Text from './Text';
-import { SurfaceProps } from './Surface';
+import type { SurfaceProps } from './Surface';
 import Pressable, { PressableProps } from './Pressable';
 import { useSurfaceScale } from './hooks/use-surface-scale';
 

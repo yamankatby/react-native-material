@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import { Theme } from './ThemeContext';
+import type { Theme } from './ThemeContext';
 
 export const defaultTheme: Theme = {
   colorScheme: 'light',

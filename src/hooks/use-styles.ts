@@ -1,6 +1,6 @@
 import { DependencyList, useMemo } from 'react';
-import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
-import chroma from 'chroma-js';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import type chroma from 'chroma-js';
 import { SpacingFunc, useSpacingFunc } from 'react-native-flex-layout';
 import { Theme, useTheme } from '../base/ThemeContext';
 import { useWindowSizeClass, WindowSizeClass } from '../base/WindowSizeClassContext';
@@ -31,6 +31,6 @@ export const useStyles = <T extends NamedStyles<T>>(
 
   return useMemo(
     () => factory({ ...theme, surfaceScale, surfaceColor, windowSizeClass, windowSize, spacing }),
-    [theme, windowSizeClass, deps]
+    [factory, theme, surfaceScale, surfaceColor, windowSizeClass, windowSize, spacing, deps]
   );
 };
