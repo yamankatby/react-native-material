@@ -16,26 +16,98 @@ export * from './hooks/use-surface-scale';
 export * from './hooks/use-window-size';
 export * from './hooks/use-window-size-value';
 
-export { default as ActivityIndicator, ActivityIndicatorProps } from './ActivityIndicator';
-export { default as AppBar, AppBarProps } from './AppBar';
-export { default as Avatar, AvatarProps } from './Avatar';
-export { default as Backdrop, BackdropProps } from './Backdrop';
-export { default as BackdropSubheader, BackdropSubheaderProps } from './BackdropSubheader';
-export { default as Badge, BadgeProps } from './Badge';
-export { default as Banner, BannerProps } from './Banner';
-export { default as Button, ButtonProps } from './Button';
-export { default as Chip, ChipProps } from './Chip';
-export { default as Dialog, DialogProps } from './Dialog';
-export { default as DialogActions, DialogActionsProps } from './DialogActions';
-export { default as DialogContent, DialogContentProps } from './DialogContent';
-export { default as DialogHeader, DialogHeaderProps } from './DialogHeader';
-export { default as Divider, DividerProps } from './Divider';
-export { default as FAB, FABProps } from './FAB';
-export { default as IconButton, IconButtonProps } from './IconButton';
-export { default as ListItem, ListItemProps } from './ListItem';
-export { default as Pressable, PressableProps } from './Pressable';
-export { default as Snackbar, SnackbarProps } from './Snackbar';
-export { default as Surface, SurfaceProps } from './Surface';
-export { default as Switch, SwitchProps } from './Switch';
-export { default as Text, TextProps } from './Text';
-export { default as TextInput, TextInputProps } from './TextInput';
+import type { ActivityIndicatorProps } from './ActivityIndicator';
+import ActivityIndicator from './ActivityIndicator';
+import type { AppBarProps } from './AppBar';
+import AppBar from './AppBar';
+import type { AvatarProps } from './Avatar';
+import Avatar from './Avatar';
+import type { BackdropProps } from './Backdrop';
+import Backdrop from './Backdrop';
+import type { BackdropSubheaderProps } from './BackdropSubheader';
+import BackdropSubheader from './BackdropSubheader';
+import type { BadgeProps } from './Badge';
+import Badge from './Badge';
+import type { BannerProps } from './Banner';
+import Banner from './Banner';
+import type { ButtonProps } from './Button';
+import Button from './Button';
+import type { ChipProps } from './Chip';
+import Chip from './Chip';
+import type { DialogProps } from './Dialog';
+import Dialog from './Dialog';
+import type { DialogActionsProps } from './DialogActions';
+import DialogActions from './DialogActions';
+import type { DialogContentProps } from './DialogContent';
+import DialogContent from './DialogContent';
+import type { DialogHeaderProps } from './DialogHeader';
+import DialogHeader from './DialogHeader';
+import type { DividerProps } from './Divider';
+import Divider from './Divider';
+import type { FABProps } from './FAB';
+import FAB from './FAB';
+import type { IconButtonProps } from './IconButton';
+import IconButton from './IconButton';
+import type { ListItemProps } from './ListItem';
+import ListItem from './ListItem';
+import type { PressableProps } from './Pressable';
+import Pressable from './Pressable';
+import type { SnackbarProps } from './Snackbar';
+import Snackbar from './Snackbar';
+import type { SurfaceProps } from './Surface';
+import Surface from './Surface';
+import type { SwitchProps } from './Switch';
+import Switch from './Switch';
+import type { TextProps } from './Text';
+import Text from './Text';
+import type { TextInputProps } from './TextInput';
+import TextInput from './TextInput';
+
+export {
+  ActivityIndicator,
+  AppBar,
+  Avatar,
+  Backdrop,
+  BackdropSubheader,
+  Badge,
+  Banner,
+  Button,
+  Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogHeader,
+  Divider,
+  FAB,
+  IconButton,
+  ListItem,
+  Pressable,
+  Snackbar,
+  Surface,
+  Switch,
+  Text,
+  TextInput,
+  ActivityIndicatorProps,
+  AppBarProps,
+  AvatarProps,
+  BackdropProps,
+  BackdropSubheaderProps,
+  BadgeProps,
+  BannerProps,
+  ButtonProps,
+  ChipProps,
+  DialogProps,
+  DialogActionsProps,
+  DialogContentProps,
+  DialogHeaderProps,
+  DividerProps,
+  FABProps,
+  IconButtonProps,
+  ListItemProps,
+  PressableProps,
+  SnackbarProps,
+  SurfaceProps,
+  SwitchProps,
+  TextProps,
+  TextInputProps,
+};

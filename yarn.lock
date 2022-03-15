@@ -2459,38 +2459,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-material/core@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@react-native-material/core@workspace:."
-  dependencies:
-    "@commitlint/config-conventional": ^11.0.0
-    "@react-native-community/eslint-config": ^2.0.0
-    "@release-it/conventional-changelog": ^2.0.0
-    "@types/chroma-js": ^2.1.3
-    "@types/jest": ^26.0.0
-    "@types/react": ^17.0.39
-    "@types/react-native": 0.66.16
-    chroma-js: ^2.4.2
-    commitlint: ^11.0.0
-    eslint: ^7.2.0
-    eslint-config-prettier: ^7.0.0
-    eslint-plugin-prettier: ^3.1.3
-    husky: ^6.0.0
-    jest: ^26.0.1
-    pod-install: ^0.1.0
-    prettier: ^2.0.5
-    react: 16.13.1
-    react-native: 0.63.4
-    react-native-builder-bob: ^0.18.0
-    react-native-flex-layout: ^0.1.2
-    release-it: ^14.2.2
-    typescript: ^4.1.3
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  languageName: unknown
-  linkType: soft
-
 "@release-it/conventional-changelog@npm:^2.0.0":
   version: 2.0.1
   resolution: "@release-it/conventional-changelog@npm:2.0.1"
@@ -11060,6 +11028,38 @@ __metadata:
   checksum: 01804e1c0430eeece3fd778e836e9682c011e126d42a4f560e930f8cdc2d99c7e586e63d18c5a65accbd51f9ac57706177550de0538c1dd45c335755605de166
   languageName: node
   linkType: hard
+
+"rn-material@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "rn-material@workspace:."
+  dependencies:
+    "@commitlint/config-conventional": ^11.0.0
+    "@react-native-community/eslint-config": ^2.0.0
+    "@release-it/conventional-changelog": ^2.0.0
+    "@types/chroma-js": ^2.1.3
+    "@types/jest": ^26.0.0
+    "@types/react": ^17.0.39
+    "@types/react-native": 0.66.16
+    chroma-js: ^2.4.2
+    commitlint: ^11.0.0
+    eslint: ^7.2.0
+    eslint-config-prettier: ^7.0.0
+    eslint-plugin-prettier: ^3.1.3
+    husky: ^6.0.0
+    jest: ^26.0.1
+    pod-install: ^0.1.0
+    prettier: ^2.0.5
+    react: 16.13.1
+    react-native: 0.63.4
+    react-native-builder-bob: ^0.18.0
+    react-native-flex-layout: ^0.1.2
+    release-it: ^14.2.2
+    typescript: ^4.1.3
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
 
 "rsvp@npm:^4.8.4":
   version: 4.8.5
