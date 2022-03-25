@@ -1,11 +1,35 @@
 export * from 'react-native-flex-layout';
+import {
+  Provider as WindowSizeProvider,
+  ProviderProps as WindowSizeProviderProps,
+  Breakpoint,
+  WindowSize,
+  ActiveBreakpointContext,
+  useWindowSize,
+  BreakpointsContext,
+  useActiveBreakpoint,
+  useBreakpoints,
+  Breakpoints,
+} from 'react-native-window-size';
+
+export {
+  WindowSizeProvider,
+  WindowSizeProviderProps,
+  Breakpoint,
+  WindowSize,
+  ActiveBreakpointContext,
+  useWindowSize,
+  BreakpointsContext,
+  useActiveBreakpoint,
+  useBreakpoints,
+  Breakpoints,
+};
 
 export * from './base/defaultTheme';
 export * from './base/IconComponentContext';
 export * from './base/PortalContext';
 export * from './base/Provider';
 export * from './base/ThemeContext';
-export * from './base/WindowSizeClassContext';
 
 export * from './hooks/use-animated-elevation';
 export * from './hooks/use-boolean';
@@ -13,8 +37,6 @@ export * from './hooks/use-palette-color';
 export * from './hooks/use-styles';
 export * from './hooks/use-surface-color';
 export * from './hooks/use-surface-scale';
-export * from './hooks/use-window-size';
-export * from './hooks/use-window-size-value';
 
 import type { ActivityIndicatorProps } from './ActivityIndicator';
 import ActivityIndicator from './ActivityIndicator';
