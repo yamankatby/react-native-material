@@ -33,6 +33,7 @@ export * from './base/ThemeContext';
 
 export * from './hooks/use-animated-elevation';
 export * from './hooks/use-boolean';
+export * from './hooks/use-palette';
 export * from './hooks/use-palette-color';
 export * from './hooks/use-styles';
 export * from './hooks/use-surface-color';

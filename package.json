@@ -149,6 +149,6 @@
   "dependencies": {
     "chroma-js": "^2.4.2",
     "react-native-flex-layout": "^0.1.5",
-    "react-native-window-size": "^0.4.0"
+    "react-native-window-size": "^0.4.1"
   }
 }

@@ -5,10 +5,9 @@ import { ThemeProvider, ThemeProviderProps } from './ThemeContext';
 import { IconComponentProvider, IconComponentProviderProps } from './IconComponentContext';
 import { Outlet, PortalProvider } from './PortalContext';
 
-export type ProviderProps = ThemeProviderProps &
-  WindowSizeProviderProps &
-  SpacingFuncProviderProps &
-  IconComponentProviderProps;
+export interface ProviderProps extends ThemeProviderProps, SpacingFuncProviderProps, IconComponentProviderProps {
+  breakpoints?: WindowSizeProviderProps['breakpoints'];
+}
 
 export const Provider: React.FC<ProviderProps> = ({
   theme,

@@ -10335,13 +10335,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-window-size@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "react-native-window-size@npm:0.4.0"
+"react-native-window-size@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "react-native-window-size@npm:0.4.1"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 72f240f2fbd9b40189288cbde36293dc4f3137cd4acc76f6a1e77f253ffd9bcda339cea0837b17d329982c0a724e735062b2c4269bd4c1b998483ebf668ae437
+  checksum: 5e9efedc9b10b12127703abaff552e96928374201bcbc0d85d2a6464290a75309497a2c9a336062190f09d39b47897bcfdfc3bc669e046f9a1c84b6155c53953
   languageName: node
   linkType: hard
 
@@ -10933,7 +10933,7 @@ __metadata:
     react-native: ^0.67.3
     react-native-builder-bob: ^0.18.0
     react-native-flex-layout: ^0.1.5
-    react-native-window-size: ^0.4.0
+    react-native-window-size: ^0.4.1
     release-it: ^14.12.5
     typescript: ^4.6.2
   peerDependencies:
