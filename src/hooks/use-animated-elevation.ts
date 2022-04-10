@@ -12,7 +12,7 @@ export const useAnimatedElevation = (elevation: Elevation): StyleProp<ViewStyle>
     Animated.timing(animated, {
       toValue: elevation,
       duration: 200,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [elevation]);
 
