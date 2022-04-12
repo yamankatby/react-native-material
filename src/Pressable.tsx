@@ -98,7 +98,7 @@ const Pressable: React.FC<PressableProps> = ({
       setPressed(false);
       onPressOut?.(event);
 
-      if (pressEffect === 'ripple') {
+      if (pressEffect === 'ripple' && ripples.length) {
         Animated.timing(ripples[ripples.length - 1].style.opacity, {
           toValue: 0,
           easing: Easing.out(Easing.ease),
