@@ -1,5 +1,5 @@
 {
-  "name": "rn-material",
+  "name": "@react-native-material/core",
   "version": "1.4.1",
   "description": "Modular and customizable Material Design UI components for React Native",
   "main": "lib/commonjs/index",
