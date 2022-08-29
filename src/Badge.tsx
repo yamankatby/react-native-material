@@ -58,7 +58,7 @@ const Badge: React.FC<BadgeProps> = ({
     Animated.timing(animated, {
       toValue: isVisible ? 1 : 0,
       duration: 200,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [isVisible]);
 

@@ -21,7 +21,7 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, children })
       toValue: visible ? 1 : 0,
       duration: 225,
       easing: Easing.out(Easing.cubic),
-      useNativeDriver: Platform.OS !== 'android',
+      useNativeDriver: false,
     }).start(() => {
       if (!visible) setPortalVisible(false);
     });
