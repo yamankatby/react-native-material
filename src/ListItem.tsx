@@ -12,6 +12,7 @@ export interface ListItemProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<Press
   secondaryText?: string;
 
   overline?: string;
+  divider?: Boolean;
 
   meta?: string;
 
