@@ -30,6 +30,7 @@ const ListItem: React.FC<ListItemProps> = ({
   leadingMode = 'icon',
   leading,
   trailing,
+  divider,
 
   pressEffect,
   pressEffectColor,
@@ -124,7 +125,9 @@ const ListItem: React.FC<ListItemProps> = ({
           </View>
         )}
       </View>
-      <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
+      {divider && (
+        <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
+      )}
     </Pressable>
   );
 };
