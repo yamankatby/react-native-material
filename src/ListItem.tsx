@@ -12,6 +12,7 @@ export interface ListItemProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<Press
   secondaryText?: string;
 
   overline?: string;
+  divider?: Boolean;
 
   meta?: string;
 
@@ -30,6 +31,7 @@ const ListItem: React.FC<ListItemProps> = ({
   leadingMode = 'icon',
   leading,
   trailing,
+  divider,
 
   pressEffect,
   pressEffectColor,
@@ -124,7 +126,9 @@ const ListItem: React.FC<ListItemProps> = ({
           </View>
         )}
       </View>
-      <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
+      {divider && (
+        <Divider leadingInset={leading ? (leadingMode === 'icon' ? 56 : leadingMode === 'avatar' ? 88 : 116) : 16} />
+      )}
     </Pressable>
   );
 };
