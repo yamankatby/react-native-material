@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/yamankatby/rn-material",
+  "repository": "https://github.com/yamankatby/react-native-material",
   "author": "Yaman KATBY <me@yamankatby.com> (https://yamankatby.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yamankatby/rn-material/issues"
+    "url": "https://github.com/yamankatby/react-native-material/issues"
   },
-  "homepage": "https://github.com/yamankatby/rn-material#readme",
+  "homepage": "https://github.com/yamankatby/react-native-material#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
