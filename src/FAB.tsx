@@ -40,6 +40,8 @@ export interface FABProps extends Omit<SurfaceProps, 'hitSlop'>, Omit<PressableP
   labelStyle?: StyleProp<TextStyle>;
 
   loadingOverlayContainerStyle?: StyleProp<ViewStyle>;
+
+  disableNativeAnimation?: boolean;
 }
 
 const FAB: React.FC<FABProps> = ({
@@ -60,6 +62,7 @@ const FAB: React.FC<FABProps> = ({
   labelContainerStyle,
   labelStyle,
   loadingOverlayContainerStyle,
+  disableNativeAnimation,
 
   pressEffect,
   pressEffectColor,
@@ -140,7 +143,7 @@ const FAB: React.FC<FABProps> = ({
     Animated.timing(animated, {
       toValue: visible ? 1 : 0,
       duration: 200,
-      useNativeDriver: false,
+      useNativeDriver: !disableNativeAnimation,
     }).start();
   }, [visible]);
 
