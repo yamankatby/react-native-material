@@ -1,3 +1,11 @@
+## ⚠️ Maintenance & support
+
+I am currently unable to actively maintain this library. While I continue to use it in my projects, I am facing time constraints that prevent me from dedicating proper attention to its maintenance.
+
+Please understand that I may not be able to address issues, implement new features, or release updates at this time. However, I intend to resume maintenance as soon as I find the necessary resources.
+
+---
+
 # Material UI components for React Native [![Twitter Follow](https://img.shields.io/twitter/follow/yamankatby?style=social)](https://twitter.com/intent/user?screen_name=yamankatby)
 
 > React Native Material is a set of pre-built, cross-platform, highly customizable UI components that follow Material Design principles.
