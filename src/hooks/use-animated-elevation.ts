@@ -4,7 +4,7 @@ import { Elevation, useTheme } from '../base/ThemeContext';
 
 const inputRange = Array.from(Array(25).keys());
 
-export const useAnimatedElevation = (elevation: Elevation, useNativeDriver?: boolean): StyleProp<ViewStyle> => {
+export const useAnimatedElevation = (elevation: Elevation, useNativeDriver: boolean = true): StyleProp<ViewStyle> => {
   const animated = useMemo(() => new Animated.Value(elevation), []);
 
   useEffect(() => {
