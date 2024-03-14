@@ -20,6 +20,8 @@ export interface BadgeProps {
   style?: Animated.AnimatedProps<ViewProps>['style'];
 
   labelStyle?: StyleProp<TextStyle>;
+
+  useNativeDriver?: boolean;
 }
 
 const Badge: React.FC<BadgeProps> = ({
@@ -31,6 +33,7 @@ const Badge: React.FC<BadgeProps> = ({
   tintColor,
   style,
   labelStyle,
+  useNativeDriver,
   children,
 }) => {
   const palette = usePaletteColor(color, tintColor);
@@ -58,7 +61,7 @@ const Badge: React.FC<BadgeProps> = ({
     Animated.timing(animated, {
       toValue: isVisible ? 1 : 0,
       duration: 200,
-      useNativeDriver: false,
+      useNativeDriver,
     }).start();
   }, [isVisible]);
 

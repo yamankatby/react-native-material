@@ -27,6 +27,8 @@ export interface BackdropProps {
   frontLayerContainerStyle?: Animated.AnimatedProps<ViewProps>['style'];
 
   subheaderContainerStyle?: StyleProp<ViewStyle>;
+
+  useNativeDriver?: boolean;
 }
 
 const Backdrop: React.FC<BackdropProps> = ({
@@ -42,6 +44,7 @@ const Backdrop: React.FC<BackdropProps> = ({
   backLayerContainerStyle,
   frontLayerContainerStyle,
   subheaderContainerStyle,
+  useNativeDriver,
   children,
 }) => {
   const [currentHeaderHeight, setCurrentHeaderHeight] = useState(headerHeight ?? 0);
@@ -74,7 +77,7 @@ const Backdrop: React.FC<BackdropProps> = ({
     Animated.timing(animated, {
       toValue: revealed ? 1 : 0,
       duration: 300,
-      useNativeDriver: false,
+      useNativeDriver,
     }).start();
   }, [revealed]);
 
