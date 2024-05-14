@@ -6,14 +6,22 @@ const inputRange = Array.from(Array(25).keys());
 
 export const useAnimatedElevation = (elevation: Elevation): StyleProp<ViewStyle> => {
   const animated = useMemo(() => new Animated.Value(elevation), []);
+  const noNativeAnimated = useMemo(() => new Animated.Value(elevation), []);
 
   useEffect(() => {
     if (Platform.OS === 'web') return;
-    Animated.timing(animated, {
-      toValue: elevation,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
+    Animated.parallel([
+      Animated.timing(noNativeAnimated, {
+        toValue: elevation,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+      Animated.timing(animated, {
+        toValue: elevation,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start();
   }, [elevation]);
 
   const { elevations } = useTheme();
@@ -22,6 +30,18 @@ export const useAnimatedElevation = (elevation: Elevation): StyleProp<ViewStyle>
     () => [
       Platform.select({
         android: { elevation: animated },
+        ios: {
+          shadowOffset: {
+            width: noNativeAnimated.interpolate({
+              inputRange,
+              outputRange: Object.values(elevations).map((e) => e.shadowOffset?.width ?? 0),
+            }),
+            height: noNativeAnimated.interpolate({
+              inputRange,
+              outputRange: Object.values(elevations).map((e) => e.shadowOffset?.height ?? 0),
+            }),
+          },
+        },
         default: {
           shadowColor: elevations[elevation].shadowColor,
           shadowOffset: {
