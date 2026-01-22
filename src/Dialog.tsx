@@ -10,10 +10,12 @@ export interface DialogProps {
 
   surfaceStyles?: SurfaceProps;
 
+  useNativeDriver?: boolean;
+
   children: ReactNode;
 }
 
-const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, surfaceStyles, children }) => {
+const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, surfaceStyles, useNativeDriver, children }) => {
   const [portalVisible, setPortalVisible] = useState(visible);
 
   const animatedValue = useMemo(() => new Animated.Value(visible ? 1 : 0), []);
@@ -25,7 +27,7 @@ const Dialog: React.FC<DialogProps> = ({ visible = false, onDismiss, surfaceStyl
       toValue: visible ? 1 : 0,
       duration: 225,
       easing: Easing.out(Easing.cubic),
-      useNativeDriver: false,
+      useNativeDriver,
     }).start(() => {
       if (!visible) setPortalVisible(false);
     });
